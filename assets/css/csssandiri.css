@@ -1,0 +1,50 @@
+/* all version */
+* {
+	font-family: "Reem Kufi", sans-serif;
+}
+
+.bg-dua {
+	background-color: #206a5d;
+}
+.text-satu {
+	color: #ffcc29;
+}
+.bg-satu {
+	background-color: #ffcc29;
+}
+.border-satu {
+	border-width: 7px;
+	border-bottom-style: solid;
+	border-color: #ffcc29;
+}
+
+.bg-home {
+	background: url("http://localhost/laperbang/assets/img/bg_home.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.tengah {
+	margin-left: auto;
+	margin-right: auto;
+	width: 18rem;
+}
+.abu {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* desktop version  */
+
+@media (min-width: 992px) {
+	.tesbg {
+		background: url("http://localhost/laperbang/assets/img/wallpaper.png");
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
+
+	.tes {
+		margin-top: 8%;
+	}
+	.transparant {
+		background: rgba(255, 255, 255, 0.5);
+	}
+}

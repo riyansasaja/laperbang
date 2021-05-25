@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap" rel="stylesheet">
+    <!-- css sandiri  -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/') ?>csssandiri.css">
+
+
+
+    <title>LOGIN</title>
+</head>
+
+<body>
+
+    </div>
+    <div class="container-fluid tesbg">
+
+
+        <div class="row justify-content-end" style="height: 680px;">
+            <div class="col-md-12 col-lg-4 mr-2 tes">
+                <div class="tes">
+                    <div class="card transparant" style="width: 20rem;">
+                        <div class="card-body  text-center">
+                            <img class="img-fluid" src="<?= base_url('assets/img/') ?>logo.png" style="width: 20%;">
+                            <h3 class="card-title mt-3 mb-4">Silahkan Masuk</h3>
+                            <!-- disini mo taruh depe form -->
+                            <form>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                </div>
+
+                                <button type="submit" class="mt-5 btn btn-block btn-warning">MASUK</button>
+                                <p class="mt-3">
+                                    <a href=""> <small>Lupa kata sandi?</small></a>
+                                </p>
+                                <small class="text-muted">Copyright © PTA Manado 2021</small>
+                            </form>
+                            <!-- end form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+
+</html>
