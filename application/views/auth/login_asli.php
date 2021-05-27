@@ -43,7 +43,7 @@
                             <img class="img-fluid" src="<?= base_url('assets/img/') ?>logo.png" style="width: 20%;">
                             <h3 class="card-title mt-3 mb-4">Silahkan Masuk</h3>
                             <h4 class="card-title mt-3 mb-4 d-lg-none">APLIKASI LAPERBANG</h4>
-                            <!-- disini mo taruh depe form -->
+                            <!-- form login -->
                             <form>
                                 <div class="form-group">
                                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
