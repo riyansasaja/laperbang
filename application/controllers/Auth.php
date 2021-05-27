@@ -18,7 +18,7 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             # di sini tampilan
-            $this->load->view('auth/login');
+            $this->load->view('auth/login_asli');
         } else {
             #di sini lolos form validation
         }

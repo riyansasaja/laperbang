@@ -3,12 +3,13 @@
 	font-family: "Reem Kufi", sans-serif;
 }
 
+
 .bg-dua {
 	background-color: #206a5d;
 }
 .text-satu {
 	color: #ffcc29;
-}
+} 
 .bg-satu {
 	background-color: #ffcc29;
 }
@@ -38,7 +39,7 @@
 	.tesbg {
 		background: url("http://localhost/laperbang/assets/img/wallpaper.png");
 		background-repeat: no-repeat;
-		background-size: 100%;
+		background-size: 100% 100%;
 	}
 
 	.tes {
