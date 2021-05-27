@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12 bg-home" style="height: 600px;">
             <div class="row align-items-center text-center" style="height: 550px;">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12 mt-2 mb-2">
                     <div class="card tengah abu">
                         <div class="card-body">
                             <h5 class="mt-4">EKSAMINASI <br> </h5>
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12 mt-2 mb-2">
                     <div class="card tengah abu">
                         <div class="card-body">
                             <h5>PENGAJUAN <br>BANDING</h5>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12 mt-2 mb-2">
                     <div class="card tengah abu">
                         <div class="card-body">
                             <h5>PELAPORAN <br>PERKARA</h5>
