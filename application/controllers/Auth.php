@@ -21,6 +21,46 @@ class Auth extends CI_Controller
             $this->load->view('auth/login_asli');
         } else {
             #di sini lolos form validation
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            $user = $this->db->get_where('users', array('username' => $username))->row_array();
+            if ($user) {
+                if ($user['is_active'] == 1) {
+                    if (password_verify($password, $user['password'])) {
+                        $data = [
+                            'id' => $user['id'],
+                            'username' => $user['username'],
+                            'role_id' => $user['role_id']
+                        ];
+                        $this->session->set_userdata($data);
+                        if ($user['role_id'] == 1) {
+                            redirect('home');
+                        } else {
+                            redirect('banding');
+                        }
+                    } else {
+                        $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">Password salah</div>');
+                        redirect('auth');
+                    }
+                }else {
+                    $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">User Tidak aktif</div>');
+                    redirect('auth');
+                }
+            } else {
+                $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">Username dan Password tidak sama</div>');
+                redirect('auth/index');
+            }
+
         }
+        
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('id');
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('role_id');
+        $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Logout sukses..</div>');
+        redirect('auth/');
     }
 }
