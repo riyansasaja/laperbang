@@ -12,12 +12,11 @@ class Banding extends CI_Controller
         $this->load->view('templates/sbadmin/footer');
     }
 
-<<<<<<< HEAD
-    public function tambah_perkara(){
-    
+
+    public function tambah_perkara()
+    {
     }
-        
-=======
+
     public function uploadbundle()
     {
         $this->load->view('templates/sbadmin/header');
@@ -25,6 +24,5 @@ class Banding extends CI_Controller
         $this->load->view('templates/sbadmin/sidebar');
         $this->load->view('banding/uploadbundle');
         $this->load->view('templates/sbadmin/footer');
->>>>>>> 1f20d3c7cefd8235876c0ba57d77349eeb241e1f
     }
 }
