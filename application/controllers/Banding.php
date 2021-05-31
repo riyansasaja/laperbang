@@ -11,4 +11,8 @@ class Banding extends CI_Controller
         $this->load->view('banding/index');
         $this->load->view('templates/sbadmin/footer');
     }
+
+    public function tambah_perkara(){
+        
+    }
 }
