@@ -76,7 +76,7 @@
                         <td>@mdo</td>
                         <td>@mdo</td>
                         <td>
-                            <a class="" href="">
+                            <a class="" href="<?= base_url('banding/uploadbundle') ?>">
                                 <span class="badge rounded-pill bg-primary">Unggah Berkas</span>
                             </a> <br>
                             <a href="">
