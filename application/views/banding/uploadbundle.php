@@ -40,6 +40,7 @@
         <div class="col">
             <!-- accordion -->
             <div class="accordion" id="accordionExample">
+                <!-- upload bundle A -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bundleA" aria-expanded="true" aria-controls="collapseOne">
@@ -178,10 +179,130 @@
                         </div>
                     </div>
                 </div>
+                <!-- upload Bundle B -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bundleA" aria-expanded="true" aria-controls="collapseOne">
+                            Bundle B
+                        </button>
+                    </h2>
+                    <div id="bundleA" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <form>
+                                <div class="row justify-content-start mb-3">
+                                    <div class="col-1" style="width: 1rem;">1.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Salinan Putusan Pengadilan Agama /Mahkamah Syari'yah --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">2.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Surat Kuasa dari Kedua Belah Pihak (bila ada) --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">3.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Akta Banding --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">4.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Akta Penerimaan Memori Banding --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">5.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Memori Banding (bila ada) --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">6.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Akta Pemberitahuan Banding --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">7.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Pemberitahuan Penyerahan Memori Banding --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">8.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Akta Penerimaan Kontra Memori Banding (bila ada) --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">9.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Kontra Memori Banding (bila ada) --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">10.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Pemberitahuan Penyerahan Kotra Memori Banding (bila ada) --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">11.</div>
+                                    <label for="formFileSm" class=" col-4 col-label form-label">Relaas Pemberitahuan untuk memeriksa (Inzage) Berkas Perkara Banding --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">12.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Surat Kuasa Khusus (bila ada) --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">13.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Bukti Penerimaan Biaya Perkara Banding --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">14.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Bukti Setor Biaya Pendaftaran Ke Kas Negara --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-block btn-primary">Kirim</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- upload putusan -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bundleB" aria-expanded="false" aria-controls="collapseTwo">
-                            Bundle B
+                            Putusan
                         </button>
                     </h2>
                     <div id="bundleB" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
