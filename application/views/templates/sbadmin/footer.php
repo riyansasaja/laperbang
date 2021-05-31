@@ -1,23 +1,16 @@
-</div>
-<!-- /.container-fluid -->
+</main>
 
-</div>
-<!-- End of Main Content -->
+<footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid px-4">
+        <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; PTA Manado 2021</div>
 
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2021</span>
         </div>
     </div>
 </footer>
-<!-- End of Footer -->
-
 </div>
-<!-- End of Content Wrapper -->
-
 </div>
+<<<<<<< HEAD
 <!-- End of Page Wrapper -->
 
 <!-- Scroll to Top Button-->
@@ -61,6 +54,15 @@
 <script src="<?= base_url('assets/') ?>js/demo/chart-area-demo.js"></script>
 <script src="<?= base_url('assets/') ?>js/demo/chart-pie-demo.js"></script>
 
+=======
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="<?= base_url('assets/') ?>js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="<?= base_url('assets/') ?>assets/demo/chart-area-demo.js"></script>
+<script src="<?= base_url('assets/') ?>assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="<?= base_url('assets/') ?>js/datatables-simple-demo.js"></script>
+>>>>>>> frontend_edit
 </body>
 
 </html>

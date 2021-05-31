@@ -1,38 +1,35 @@
- <!-- Sidebar -->
- <ul class="navbar-nav bg-dasar sidebar sidebar-dark accordion" id="accordionSidebar">
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark bg-dasar" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Beranda
+                    </a>
+                    <div class="sb-sidenav-menu-heading">Menu</div>
 
-     <!-- Sidebar - Brand -->
-     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-         <!-- <div class="sidebar-brand-icon rotate-n-15">
-             <i class="fas fa-laugh-wink"></i>
-         </div> -->
-         <div class="sidebar-brand-text mx-3">LaperBang</div>
-     </a>
+                    <a class="nav-link active" href="charts.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Dasbor
+                    </a>
+                    <a class="nav-link" href="tables.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Template Surat Pengantar
+                    </a>
+                    <div class="sb-sidenav-menu-heading">Keluar</div>
+                    <a class="nav-link" href="tables.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Keluar
+                    </a>
+                </div>
+            </div>
+            <div class="sb-sidenav-footer">
+                <div class="small">&copy;PTA MANADO</div>
 
-     <!-- Divider -->
-     <hr class="sidebar-divider my-0">
-
-     <!-- Nav Item - Dashboard -->
-     <li class="nav-item active">
-         <a class="nav-link" href="index.html">
-             <i class="fas fa-fw fa-tachometer-alt"></i>
-             <span>Dasbor</span></a>
-     </li>
-
-     <li class="nav-item">
-         <a class="nav-link" href="index.html">
-             <i class="fas fa-fw fa-home"></i>
-             <span>Beranda</span></a>
-     </li>
-
-
-     <!-- Divider -->
-     <hr class="sidebar-divider">
-     <li class="nav-item">
-         <a class="nav-link" href="index.html" data-toggle="modal" data-target="#logoutModal">
-             <i class=" fas fa-fw fa-sign-out-alt"></i>
-             <span>Keluar</span></a>
-     </li>
-
- </ul>
- <!-- End of Sidebar -->
+            </div>
+        </nav>
+    </div>
+    <div id="layoutSidenav_content">
+        <main>
