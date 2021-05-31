@@ -1,146 +1,147 @@
-<!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dasbor</h1>
-    <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+<div class="container-fluid px-4">
+    <h3 class="mt-4">Dasbor Pengajuan Banding</h3>
+    <ol class="breadcrumb mb-4">
+        <!-- <li class="breadcrumb-item active">Dashboard</li> -->
+    </ol>
+    <div class="row">
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">Perkara Masuk</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <small>1550</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">Perkara Putus</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <small>1500</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">Sisa Perkara</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <small>50</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Daftar Perkara
+        </div>
+        <div class="card-body">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn bg-dasar mb-3 text-white" data-bs-toggle="modal" data-bs-target="#modalAddperkara">
+                Tambah Perkara
+            </button>
+
+            <button class="btn text-white btn-warning mb-3">Download Template Surat</button>
+            <!-- button tambah perkara -->
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nomor Perkara</th>
+                        <th>Jenis Perkara</th>
+                        <th>Nomor Perkara Banding</th>
+                        <th>Tanggal Register</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Nomor Perkara</th>
+                        <th>Jenis Perkara</th>
+                        <th>Nomor Perkara Banding</th>
+                        <th>Tanggal Register</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1500/PDT.Y/2021/PA.Ktg</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>
+                            <a class="" href="<?= base_url('banding/uploadbundle') ?>">
+                                <span class="badge rounded-pill bg-primary">Unggah Berkas</span>
+                            </a> <br>
+                            <a href="">
+                                <span class="badge rounded-pill bg-warning">Edit</span>
+                            </a>
+                        </td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
-<!-- Content Row -->
-<div class="row">
 
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-4 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Perkara Masuk</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">1200</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                </div>
+
+<!-- ==modalAddperkara -->
+<div class="modal fade" id="modalAddperkara" tabindex="-1" aria-labelledby="modalAddperkara" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Data Perkara</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-        </div>
-    </div>
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-4 col-md-6 mb-4">
-        <div class="card border-left-success shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Perkara Putus</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">1109</div>
+            <div class="modal-body">
+                <!-- form addBerkas -->
+                <form>
+                    <div class="row mb-3">
+                        <label for="nomorPerkara" class="col-sm-2 col-form-label">Nomor Perkara</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="nomorPerkara">
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    <div class="row mb-3">
+                        <label for="jenisPerkara" class="col-sm-2 col-form-label">Jenis Perkara</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" id="jenisPerkara">
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
+                    <div class="row mb-3">
+                        <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="namaPihak">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="namaPihak" class="col-sm-2 col-form-label">Surat Pengantar</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="file" id="formFile">
+                        </div>
+                    </div>
+                </form>
+                <!-- end form addBerkas -->
             </div>
-        </div>
-    </div>
-
-
-    <!-- Pending Requests Card Example -->
-    <div class="col-xl-4 col-md-6 mb-4">
-        <div class="card border-left-warning shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Sisa Perkara</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">1888</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-primary">Simpan</button>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Content Row -->
-
-<div class="row">
-
-    <!-- Area Chart -->
-    <div class="col">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-
-            </div>
-            <div class="card-body">
-                <div class="row mb-2">
-                    <div class="col">
-                        <button class="btn btn-warning">Tambah Perkara</button>
-                        <button class="btn btn-warning">Surat Pengantar</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nomor Perkara</th>
-                                    <th scope="col">Jenis Perkara</th>
-                                    <th scope="col">Nomor Perkara Banding</th>
-                                    <th scope="col">Tanggal Register</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>1/Pdt.G/2020/PTA.Mdo</td>
-                                    <td>xxxxx</td>
-                                    <td>xxxxx</td>
-                                    <td>xxxxx</td>
-                                    <td>xxxxx</td>
-                                    <td>
-                                        <span class="badge">Upload</span>
-                                        <span class="badge">Edit</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>1/Pdt.G/2020/PTA.Mdo</td>
-                                    <td>xxxxx</td>
-                                    <td>xxxxx</td>
-                                    <td>xxxxx</td>
-                                    <td>xxxxx</td>
-                                    <td>
-                                        <span class="badge">Upload</span>
-                                        <span class="badge">Edit</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>1/Pdt.G/2020/PTA.Mdo</td>
-                                    <td>xxxxx</td>
-                                    <td>xxxxx</td>
-                                    <td>xxxxx</td>
-                                    <td>xxxxx</td>
-                                    <td>
-                                        <span class="badge">Upload</span>
-                                        <span class="badge">Edit</span>
-                                    </td>
-                                </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
+<!-- end modalAddperkara -->
