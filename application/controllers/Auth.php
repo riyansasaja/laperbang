@@ -42,7 +42,7 @@ class Auth extends CI_Controller
                         $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">Password salah</div>');
                         redirect('auth');
                     }
-                }else {
+                } else {
                     $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">User Tidak aktif</div>');
                     redirect('auth');
                 }
@@ -50,9 +50,7 @@ class Auth extends CI_Controller
                 $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">Username dan Password tidak sama</div>');
                 redirect('auth/index');
             }
-
         }
-        
     }
 
     public function logout()

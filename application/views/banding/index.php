@@ -3,6 +3,7 @@
     <ol class="breadcrumb mb-4">
         <!-- <li class="breadcrumb-item active">Dashboard</li> -->
     </ol>
+    <?php echo $this->session->flashdata('message'); ?>
     <div class="row">
         <div class="col-xl-4 col-md-6">
             <div class="card bg-primary text-white mb-4">
@@ -68,23 +69,25 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1500/PDT.Y/2021/PA.Ktg</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>
-                            <a class="" href="<?= base_url('banding/uploadbundle') ?>">
-                                <span class="badge rounded-pill bg-primary">Unggah Berkas</span>
-                            </a> <br>
-                            <a href="">
-                                <span class="badge rounded-pill bg-warning">Edit</span>
-                            </a>
-                        </td>
-                    </tr>
-
+                    <?php $i = 1; ?>
+                    <?php foreach ($perkara_banding as $lhs) : ?>
+                        <tr>
+                            <td><?php echo $i++; ?></td>
+                            <td><?php echo $lhs['no_perkara']; ?></td>
+                            <td><?php echo $lhs['jns_perkara']; ?></td>
+                            <td><?php echo $lhs['no_perkara_banding']; ?></td>
+                            <td><?php echo $lhs['tgl_register']; ?></td>
+                            <td><?php echo $lhs['status_perkara']; ?></td>
+                            <td>
+                                <a class="" href="<?= base_url('banding/uploadbundle/') . $lhs['id_perkara'] ?>">
+                                    <span class="badge rounded-pill bg-primary">Unggah Berkas</span>
+                                </a> <br>
+                                <a href="">
+                                    <span class="badge rounded-pill bg-warning">Edit</span>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
 
 
                 </tbody>
@@ -105,42 +108,43 @@
             </div>
             <div class="modal-body">
                 <!-- form addBerkas -->
-                <form>
+                <form method="post" action="<?php echo base_url('banding/tambah_perkara'); ?>" enctype="multipart/form-data">
                     <div class="row mb-3">
                         <label for="nomorPerkara" class="col-sm-2 col-form-label">Nomor Perkara</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nomorPerkara">
+                            <input type="text" class="form-control" id="nomorPerkara" name="no_perkara">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="jenisPerkara" class="col-sm-2 col-form-label">Jenis Perkara</label>
                         <div class="col-sm-10">
-                            <select class="form-select" id="jenisPerkara">
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select" id="jenisPerkara" name="jns_perkara">
+                                <?php foreach ($perkara as $perk) : ?>
+                                    <option value="<?= $perk['jns_kaper'] ?>"><?= $perk['jns_kaper'] ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="namaPihak">
+                            <input type="text" class="form-control" id="namaPihak" name="nm_pihak">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="namaPihak" class="col-sm-2 col-form-label">Surat Pengantar</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="file" id="formFile">
+                            <input class="form-control" type="file" id="formFile" name="file_upload">
                         </div>
                     </div>
-                </form>
-                <!-- end form addBerkas -->
+
+                    <!-- end form addBerkas -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="button" class="btn btn-primary">Simpan</button>
+                <button type="submit" class="btn btn-primary" value="upload">Simpan</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
