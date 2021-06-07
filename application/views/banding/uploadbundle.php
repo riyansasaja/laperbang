@@ -54,14 +54,14 @@
                                     <div class="col-1" style="width: 1rem;">1.</div>
                                     <label for="formFileSm" class="col-4 form-label">Surat Gugatan --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class=" row mb-3">
                                     <div class="col-1" style="width: 1rem;">2.</div>
                                     <label for="formFileSm" class="col-4 form-label">Surat Kuasa dari Kedua Belah Pihak (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
 
@@ -69,7 +69,7 @@
                                     <div class="col-1" style="width: 1rem;">3.</div>
                                     <label for="formFileSm" class="col-4 form-label">Bukti Pembayaran Panjar Biaya Perkara (SKUM) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
 
@@ -77,7 +77,7 @@
                                     <div class="col-1" style="width: 1rem;">4.</div>
                                     <label for="formFileSm" class="col-4 form-label">Penetapan Majelis Hakim --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
 
@@ -85,7 +85,7 @@
                                     <div class="col-1" style="width: 1rem;">5.</div>
                                     <label for="formFileSm" class="col-4 form-label">Penunjukan Panitera Pengganti --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
 
@@ -93,84 +93,84 @@
                                     <div class="col-1" style="width: 1rem;">6.</div>
                                     <label for="formFileSm" class="col-4 form-label">Penetapan Hari Sidang --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">7.</div>
                                     <label for="formFileSm" class="col-4 form-label">Relaas-relaas Panggilan --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">8.</div>
                                     <label for="formFileSm" class="col-4 form-label">Berita Acara Sidang --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">9.</div>
                                     <label for="formFileSm" class="col-4 form-label">Penetapan Sita Conservatoir/Revindicatoir (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">10.</div>
                                     <label for="formFileSm" class="col-4 form-label">Berita Acara Sita Conservatoir/Revindicatoir (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">11.</div>
                                     <label for="formFileSm" class=" col-4 col-label form-label">Lampiran-lampiran surat yang diajukan oleh kedua belah pihak (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">12.</div>
                                     <label for="formFileSm" class="col-4 form-label">Surat-surat bukti penggugat (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">13.</div>
                                     <label for="formFileSm" class="col-4 form-label">surat-surat bukti tergugat (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">14.</div>
                                     <label for="formFileSm" class="col-4 form-label">Tanggapan bukti-bukti tergugat dari penggugat (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">15.</div>
                                     <label for="formFileSm" class="col-4 form-label">Tanggapan bukti-bukti penggugat dari tergugat (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">16.</div>
                                     <label for="formFileSm" class="col-4 form-label">Gambar situasi (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">17.</div>
                                     <label for="formFileSm" class="col-4 form-label">Surat-surat lain (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
 
@@ -193,14 +193,14 @@
                                     <div class="col-1" style="width: 1rem;">1.</div>
                                     <label for="formFileSm" class="col-4 form-label">Salinan Putusan Pengadilan Agama /Mahkamah Syari'yah --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">2.</div>
                                     <label for="formFileSm" class="col-4 form-label">Surat Kuasa dari Kedua Belah Pihak (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
 
@@ -208,7 +208,7 @@
                                     <div class="col-1" style="width: 1rem;">3.</div>
                                     <label for="formFileSm" class="col-4 form-label">Akta Banding --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
 
@@ -216,7 +216,7 @@
                                     <div class="col-1" style="width: 1rem;">4.</div>
                                     <label for="formFileSm" class="col-4 form-label">Akta Penerimaan Memori Banding --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
 
@@ -224,7 +224,7 @@
                                     <div class="col-1" style="width: 1rem;">5.</div>
                                     <label for="formFileSm" class="col-4 form-label">Memori Banding (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
 
@@ -232,63 +232,63 @@
                                     <div class="col-1" style="width: 1rem;">6.</div>
                                     <label for="formFileSm" class="col-4 form-label">Akta Pemberitahuan Banding --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">7.</div>
                                     <label for="formFileSm" class="col-4 form-label">Pemberitahuan Penyerahan Memori Banding --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">8.</div>
                                     <label for="formFileSm" class="col-4 form-label">Akta Penerimaan Kontra Memori Banding (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">9.</div>
                                     <label for="formFileSm" class="col-4 form-label">Kontra Memori Banding (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">10.</div>
                                     <label for="formFileSm" class="col-4 form-label">Pemberitahuan Penyerahan Kotra Memori Banding (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">11.</div>
                                     <label for="formFileSm" class=" col-4 col-label form-label">Relaas Pemberitahuan untuk memeriksa (Inzage) Berkas Perkara Banding --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">12.</div>
                                     <label for="formFileSm" class="col-4 form-label">Surat Kuasa Khusus (bila ada) --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">13.</div>
                                     <label for="formFileSm" class="col-4 form-label">Bukti Penerimaan Biaya Perkara Banding --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">14.</div>
                                     <label for="formFileSm" class="col-4 form-label">Bukti Setor Biaya Pendaftaran Ke Kas Negara --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" placeholder="tes">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
                                     </div>
                                 </div>
 
