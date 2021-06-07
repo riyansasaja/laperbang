@@ -81,9 +81,7 @@ class Banding extends CI_Controller
         ];
         $chek = $this->db->insert('bundel_a', $data);
         $this->session->set_flashdata('message', 'Upload data berhasil');
-        // redirect('banding/uploadbundle');
-        var_dump($chek);
-        die;
+        redirect('banding/uploadbundle');
     }
 
 
