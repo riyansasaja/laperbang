@@ -29,7 +29,7 @@ class Banding extends CI_Controller
             'no_perkara' => $this->input->post('no_perkara', true),
             'nm_pihak' => $this->input->post('nm_pihak', true),
             'jns_perkara' => $this->input->post('jns_perkara', true),
-            'tgl_register' => date(DATE_RFC2822),
+            'tgl_register' => $this->input->post('tgl_register', true),
             'status_perkara' => '',
             'sp_perkara' => $this->_uploadFile('SuratPengantar'),
             'no_perkara_banding' => ''
@@ -52,8 +52,6 @@ class Banding extends CI_Controller
             return $this->upload->data("file_name");
         } else {
             $this->session->set_flashdata('msg', 'Upload data gagal');
-            var_dump($this->upload->display_errors());
-            die;
             redirect('banding/');
         }
     }

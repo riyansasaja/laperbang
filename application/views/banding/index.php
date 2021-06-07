@@ -1,9 +1,16 @@
 <div class="container-fluid px-4">
+    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
+    <?php echo $this->session->flashdata('msg'); ?>
+    <?php if (validation_errors()) { ?>
+        <div class="alert alert-danger">
+            <a class="close" data-dismiss="alert">x</a>
+            <strong><?php echo strip_tags(validation_errors()); ?></strong>
+        </div>
+    <?php } ?>
     <h3 class="mt-4">Dasbor Pengajuan Banding</h3>
     <ol class="breadcrumb mb-4">
         <!-- <li class="breadcrumb-item active">Dashboard</li> -->
     </ol>
-    <?php echo $this->session->flashdata('message'); ?>
     <div class="row">
         <div class="col-xl-4 col-md-6">
             <div class="card bg-primary text-white mb-4">
@@ -109,6 +116,7 @@
             <div class="modal-body">
                 <!-- form addBerkas -->
                 <form method="post" action="<?php echo base_url('banding/tambah_perkara'); ?>" enctype="multipart/form-data">
+                    <input type="hidden" class="form-control" id="tanggalregister" name="tgl_register" value="<?php echo date('Y/m/d'); ?>">
                     <div class="row mb-3">
                         <label for="nomorPerkara" class="col-sm-2 col-form-label">Nomor Perkara</label>
                         <div class="col-sm-10">
