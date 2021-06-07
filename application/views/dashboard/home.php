@@ -23,7 +23,7 @@
                             <h5>PENGAJUAN <br>BANDING</h5>
                             <img src="<?= base_url('assets/img/') ?>banding_logo.png" alt="" style="width: 8rem;">
                             <p>Pengunggahan dokumen perkara yang akan dilakukan upaya banding</p>
-                            <a href="" class="btn btn-block text-white bg-dua">MASUK</a>
+                            <a href="<?= base_url('banding/'); ?>" class="btn btn-block text-white bg-dua">MASUK</a>
                         </div>
                     </div>
                 </div>
