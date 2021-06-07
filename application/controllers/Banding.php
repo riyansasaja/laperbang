@@ -95,4 +95,12 @@ class Banding extends CI_Controller
         $this->load->view('banding/uploadbundle', $data);
         $this->load->view('templates/sbadmin/footer');
     }
+    public function userProfile()
+    {
+        $this->load->view('templates/sbadmin/header');
+        $this->load->view('templates/sbadmin/topbar');
+        $this->load->view('templates/sbadmin/sidebar');
+        $this->load->view('banding/userprofile');
+        $this->load->view('templates/sbadmin/footer');
+    }
 }

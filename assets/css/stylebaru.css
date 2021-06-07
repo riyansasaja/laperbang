@@ -17,6 +17,9 @@ body {
 .bg-dasar {
 	background-color: #206a5d;
 }
+.text-dasar {
+	color: #206a5d;
+}
 
 /* desktop version  */
 @media (min-width: 992px) {
