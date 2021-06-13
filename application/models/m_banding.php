@@ -14,4 +14,10 @@ class m_banding extends CI_model
         $query = $this->db->get()->result_array();
         return $query;
     }
+
+    public function UpdatePerkara($tabelName, $data, $where)
+    {
+        $res = $this->db->update($tabelName, $data, $where);
+        return $res;
+    }
 }

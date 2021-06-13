@@ -9,18 +9,13 @@
     <!-- <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <script type="text/javascript" src="assets/js/jquery.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.js"></script> -->
+    <link rel="stylesheet" href="<?= base_url('assets/');  ?>dist/sweetalert2.min.css">
 </head>
 
 <body>
+    <div id="flash" data-flash="<?= $this->session->flashdata('success'); ?>"></div>
+
     <div class="container-fluid px-4">
-        <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
-        <?php echo $this->session->flashdata('msg'); ?>
-        <?php if (validation_errors()) { ?>
-            <div class="alert alert-danger">
-                <a class="close" data-dismiss="alert">x</a>
-                <strong><?php echo strip_tags(validation_errors()); ?></strong>
-            </div>
-        <?php } ?>
         <h3 class="mt-4">Dasbor Pengajuan Banding</h3>
         <ol class="breadcrumb mb-4">
             <!-- <li class="breadcrumb-item active">Dashboard</li> -->
@@ -159,7 +154,7 @@
                         <div class="row mb-3">
                             <label for="namaPihak" class="col-sm-2 col-form-label">Surat Pengantar</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="file" id="formFile" name="file">
+                                <input class="form-control" type="file" id="formFile" name="file1">
                             </div>
                         </div>
 
@@ -187,8 +182,9 @@
                     </div>
                     <div class="modal-body">
                         <!-- form editBerkas -->
-                        <form method="post" action="<?php echo base_url('banding/tambah_perkara'); ?>" enctype="multipart/form-data">
-                            <input type="hidden" class="form-control" id="tanggalregister" name="tgl_register" value="<?php echo date('Y/m/d'); ?>">
+                        <form method="post" action="<?php echo base_url('banding/edit_perkara'); ?>" enctype="multipart/form-data">
+                            <!-- <input type="hidden" class="form-control" id="tanggalregister" name="tgl_register" value="<?php echo date('Y/m/d'); ?>"> -->
+                            <input type="hidden" class="form-control" id="id_perkara" value="<?php echo $lhs['id_perkara']; ?>" name="id_perkara">
                             <div class="row mb-3">
                                 <label for="nomorPerkara" class="col-sm-2 col-form-label">Nomor Perkara</label>
                                 <div class="col-sm-10">
@@ -214,7 +210,7 @@
                             <div class=" row mb-3">
                                 <label for="namaPihak" class="col-sm-2 col-form-label">Surat Pengantar</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="file" id="formFile" name="file">
+                                    <input class="form-control" type="file" id="formFile" name="file1">
                                 </div>
                             </div>
 
@@ -230,6 +226,19 @@
         </div>
     <?php endforeach; ?>
     <!-- end modalupdateperkara -->
+
+    <script src="<?= base_url('assets/');  ?>dist/sweetalert2.min.js"></script>
+    <script>
+        // Swal.fire('coba sweetalert')
+        var flash = $('#flash').data('flash');
+        if (flash) {
+            Swal.fire({
+                icon: 'success',
+                title: 'success',
+                text: flash
+            })
+        }
+    </script>
 </body>
 
 </html>
