@@ -60,8 +60,29 @@
     <script src="<?= base_url('assets/') ?>assets/demo/chart-bar-demo.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="<?= base_url('assets/') ?>js/datatables-simple-demo.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="<?= base_url('assets/');  ?>dist/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('assets/dist/') ?>myscript.js"></script>
+
+<script>
+    $('.tombol-logout').on('click', function(e) {
+        e.preventDefault();
+        const href = $(this).attr('href');
+        Swal.fire({
+            title: 'Konfirmasi Logout',
+            text: 'Klik logout untuk mengakhiri session',
+            type: 'danger',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Logout'
+        }).then((result) => {
+            if (result.value) {
+                document.location.href = href;
+            }
+        })
+    });
+</script>
 
 </body>
 

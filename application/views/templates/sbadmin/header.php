@@ -14,6 +14,7 @@
 
     <!-- css sandiri -->
     <link rel="stylesheet" href="<?= base_url('assets/') ?>css/stylebaru.css">
+    <link rel="stylesheet" href="<?= base_url('assets/');  ?>dist/sweetalert2.min.css">
 
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">

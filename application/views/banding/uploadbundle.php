@@ -52,6 +52,8 @@
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/multiple_upload'); ?>" enctype="multipart/form-data">
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
+                                <input type="hidden" class="form-control" name="jam_upload" value="<?php date_default_timezone_set('Asia/Jakarta');
+                                                                                                    echo date('H:i:s'); ?>">
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
                                     <label for="formFileSm" class="col-4 form-label">Surat Gugatan --pdf</label>
@@ -200,6 +202,8 @@
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/multiple_uploadB'); ?>" enctype="multipart/form-data">
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
+                                <input type="hidden" class="form-control" name="jam_upload" value="<?php date_default_timezone_set('Asia/Jakarta');
+                                                                                                    echo date('H:i:s'); ?>">
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
                                     <label for="formFileSm" class="col-4 form-label">Salinan Putusan Pengadilan Agama /Mahkamah Syari'yah --pdf</label>

@@ -14,6 +14,9 @@ class Banding extends CI_Controller
     {
         $data['perkara'] = $this->db->get('kategori_perkara')->result_array();
         $data['perkara_banding'] = $this->m_banding->get_list_perkara();
+        $data['data_harian'] = $this->m_banding->countLapHarian();
+        $data['putus_harian'] = $this->m_banding->countPerkaraPutus();
+        $data['sisa_harian'] = $this->m_banding->countSisaPerkara();
         $this->load->view('templates/sbadmin/header');
         $this->load->view('templates/sbadmin/topbar');
         $this->load->view('templates/sbadmin/sidebar');
@@ -49,10 +52,12 @@ class Banding extends CI_Controller
             'tgl_register' => $this->input->post('tgl_register', true),
             'status_perkara' => '',
             'sp_perkara' => $sp_perkara,
-            'no_perkara_banding' => ''
+            'no_perkara_banding' => '',
+            'putusan_banding' => '',
+            'is_nomor' => ''
         ];
         $this->db->insert('list_perkara', $data);
-        $this->session->set_flashdata('message', 'Upload data berhasil');
+        $this->session->set_flashdata('flash', 'berhasil disimpan');
         redirect('banding/');
     }
 
@@ -88,7 +93,7 @@ class Banding extends CI_Controller
         $this->db->where('id_perkara', $id_perkara);
         $this->db->update('list_perkara');
 
-        $this->session->set_flashdata('message', 'Update data berhasil');
+        $this->session->set_flashdata('flash', 'berhasil diubah');
         redirect('banding/');
 
         // $data = [
@@ -112,22 +117,22 @@ class Banding extends CI_Controller
         // }
     }
 
-    private function _uploadFile($path)
-    {
-        $config['upload_path']          = './assets/files/' . $path;
-        $config['allowed_types']        = 'doc|docx|pdf';
-        $config['max_size']             = 5000;
+    // private function _uploadFile($path)
+    // {
+    //     $config['upload_path']          = './assets/files/' . $path;
+    //     $config['allowed_types']        = 'doc|docx|pdf';
+    //     $config['max_size']             = 5000;
 
 
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        if ($this->upload->do_upload('file_upload')) {
-            return $this->upload->data("file_name");
-        } else {
-            $this->session->set_flashdata('msg', 'Upload data gagal');
-            redirect('banding/');
-        }
-    }
+    //     $this->load->library('upload', $config);
+    //     $this->upload->initialize($config);
+    //     if ($this->upload->do_upload('file_upload')) {
+    //         return $this->upload->data("file_name");
+    //     } else {
+    //         $this->session->set_flashdata('msg', 'Upload data gagal');
+    //         redirect('banding/');
+    //     }
+    // }
 
     function multiple_upload()
     {
@@ -304,6 +309,7 @@ class Banding extends CI_Controller
 
         $data = [
             'id_perkara' => $this->input->post('id_perkara'),
+            'jam_upload' => $this->input->post('jam_upload'),
             'surat_gugatan' => $suratgugatan,
             'sk_bundelA' => $skbundlea,
             'bukti_pemb_panjar' => $bukti_pemb_panjar,
@@ -324,7 +330,7 @@ class Banding extends CI_Controller
             'surat_lain' => $surat_lain,
         ];
         $this->db->insert('bundel_a', $data);
-        $this->session->set_flashdata('message', 'Upload data berhasil');
+        $this->session->set_flashdata('flash', 'Berhasil diupload');
         redirect('banding/');
     }
 
@@ -467,6 +473,7 @@ class Banding extends CI_Controller
 
         $data = [
             'id_perkara' => $this->input->post('id_perkara'),
+            'jam_upload' => $this->input->post('jam_upload'),
             'salinan_putusan_pa' => $salinan_putusan_pa,
             'sk_bundelb' => $skbundleb,
             'akta_banding' => $akta_banding,
@@ -483,7 +490,7 @@ class Banding extends CI_Controller
             'bukti_setor_bp_kasnegara' => $bukti_setor_bp_kasnegara,
         ];
         $this->db->insert('bundel_b', $data);
-        $this->session->set_flashdata('message', 'Upload data berhasil');
+        $this->session->set_flashdata('flash', 'Berhasil diupload');
         redirect('banding/');
     }
 

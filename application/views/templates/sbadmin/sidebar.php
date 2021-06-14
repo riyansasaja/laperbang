@@ -19,7 +19,7 @@
                         Template Surat Pengantar
                     </a> -->
                     <div class="sb-sidenav-menu-heading">Keluar</div>
-                    <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
+                    <a class="nav-link tombol-logout" href="<?= base_url('auth/logout'); ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Keluar
                     </a>
