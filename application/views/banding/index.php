@@ -14,12 +14,9 @@
 <body>
     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
     <?php echo $this->session->flashdata('msg'); ?>
-    <?php if (validation_errors()) { ?>
-        <div class="alert alert-danger">
-            <a class="close" data-dismiss="alert">x</a>
-            <strong><?php echo strip_tags(validation_errors()); ?></strong>
-        </div>
-    <?php } ?>
+    <!-- <?php if (validation_errors()) { ?>
+        <div class="flash-data" data-flashdata="<?= $this->session->flashdata('msg'); ?>"></div>
+    <?php } ?> -->
 
     <div class="container-fluid px-4">
         <h3 class="mt-4">Dasbor Pengajuan Banding</h3>

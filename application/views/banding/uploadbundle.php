@@ -59,6 +59,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Surat Gugatan --pdf</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
+                                        <small><?php echo $this->session->flashdata('msg'); ?></small>
                                     </div>
                                 </div>
                                 <div class=" row mb-3">

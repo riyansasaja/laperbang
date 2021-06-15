@@ -7,3 +7,4 @@ if (flashData) {
 		type: 'Success'
 	});
 }
+
