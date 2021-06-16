@@ -13,6 +13,7 @@
 
 <body>
     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+    <div class="flash-data2" data-flashdata="<?= $this->session->flashdata('msg'); ?>"></div>
     <?php echo $this->session->flashdata('msg'); ?>
     <!-- <?php if (validation_errors()) { ?>
         <div class="flash-data" data-flashdata="<?= $this->session->flashdata('msg'); ?>"></div>
@@ -61,8 +62,6 @@
                 <button type="button" class="btn bg-dasar mb-3 text-white" data-bs-toggle="modal" data-bs-target="#modalAddperkara">
                     Tambah Perkara
                 </button>
-
-                <button class="btn text-white btn-warning mb-3">Download Template Surat</button>
                 <!-- button tambah perkara -->
                 <table id="datatablesSimple">
                     <thead>
@@ -107,6 +106,9 @@
                                     <a href="" data-bs-toggle="modal" data-bs-target="#modalupdateperkara<?= $lhs['id_perkara'] ?>">
                                         <span class="badge rounded-pill bg-warning">Edit</span>
                                     </a>
+                                    <a class="" href="<?= base_url('template_word/surat_pengantar/') . $lhs['id_perkara'] ?>">
+                                        <span class="badge rounded-pill bg-primary">Template</span>
+                                    </a> <br>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -131,11 +133,11 @@
                 <div class="modal-body">
                     <!-- form addBerkas -->
                     <form method="post" action="<?php echo base_url('banding/tambah_perkara'); ?>" enctype="multipart/form-data">
-                        <input type="hidden" class="form-control" id="tanggalregister" name="tgl_register" value="<?php echo date('Y/m/d'); ?>">
+                        <input type="hidden" class="form-control" id="tanggalregister" name="tgl_register" value="<?php echo date('Y-m-d'); ?>">
                         <div class="row mb-3">
                             <label for="nomorPerkara" class="col-sm-2 col-form-label">Nomor Perkara</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nomorPerkara" name="no_perkara">
+                                <input type="text" class="form-control" id="nomorPerkara" name="no_perkara" required>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -155,11 +157,36 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="namaPihak" class="col-sm-2 col-form-label">Surat Pengantar</label>
+                            <label for="nomor_surat" class="col-sm-2 col-form-label">Nomor Surat Pengantar</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="file" id="formFile" name="file1">
+                                <input type="text" class="form-control" id="nomor_surat" name="no_surat_pengantar" required>
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="namaPanitera" class="col-sm-2 col-form-label">Nama Panitera</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="namaPanitera" name="nm_panitera" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="nipPanitera" class="col-sm-2 col-form-label">NIP Panitera</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="nipPanitera" name="nip_panitera" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="banyaknya" class="col-sm-2 col-form-label">Banyaknya Berkas</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="banyaknya" name="banyaknya">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
+                            <div class="col-sm-10">
+                                <textarea type="text" class="form-control" id="keterangan" name="keterangan"></textarea>
+                            </div>
+                        </div>
+
 
                         <!-- end form addBerkas -->
                 </div>

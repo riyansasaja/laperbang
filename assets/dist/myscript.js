@@ -8,3 +8,11 @@ if (flashData) {
 	});
 }
 
+const flashMsg = $('.flash-data2').data('flashdata');
+if (flashMsg) {
+	Swal.fire({
+		icon: 'error',
+		title: 'Failed',
+		text: 'Data ' + flashMsg,
+	});
+}

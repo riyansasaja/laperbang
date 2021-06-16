@@ -27,38 +27,35 @@ class Banding extends CI_Controller
 
     public function tambah_perkara()
     {
-        $config['upload_path']          = './assets/files/SuratPengantar';
-        $config['allowed_types']        = 'doc|docx|pdf';
-        $config['max_size']             = 5000;
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
+        $this->load->library('form_validation');
 
-        //untuk upload file 1 dan seterusnya.....
-        if (($_FILES['file1']['name'])) {
-            if ($this->upload->do_upload('file1')) {
-                $sp_perkara = $this->upload->data("file_name");
-            } else {
-                $this->session->set_flashdata('msg', 'Upload data Surat Pengantar gagal');
-                redirect('banding/');
-            }
+        $this->form_validation->set_rules('no_perkara', 'Nomor Perkara', 'required');
+        $this->form_validation->set_rules('no_surat_pengantar', 'Nomor Surat Pengantar', 'required');
+        $this->form_validation->set_rules('nm_panitera', 'Nama Panitera', 'required');
+        $this->form_validation->set_rules('nip_panitera', 'NIP Panitera', 'required');
+        $this->form_validation->set_rules('banyaknya', 'Banyaknya berkas', 'numeric');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('banding/index');
+        } else {
+            $data = [
+                'id_perkara' => '',
+                'id_user' => $this->session->userdata('id'),
+                'no_perkara' => $this->input->post('no_perkara', true),
+                'nm_pihak' => $this->input->post('nm_pihak', true),
+                'jns_perkara' => $this->input->post('jns_perkara', true),
+                'tgl_register' => $this->input->post('tgl_register', true),
+                'status_perkara' => '',
+                'no_surat_pengantar' => $this->input->post('no_surat_pengantar', true),
+                'nm_panitera' => $this->input->post('nm_panitera', true),
+                'nip_panitera' => $this->input->post('nip_panitera', true),
+                'banyaknya' => $this->input->post('banyaknya', true),
+                'keterangan' => $this->input->post('keterangan', true),
+            ];
+            $this->db->insert('list_perkara', $data);
+            $this->session->set_flashdata('flash', 'berhasil disimpan');
+            redirect('banding/');
         }
-
-        $data = [
-            'id_perkara' => '',
-            'id_user' => $this->session->userdata('id'),
-            'no_perkara' => $this->input->post('no_perkara', true),
-            'nm_pihak' => $this->input->post('nm_pihak', true),
-            'jns_perkara' => $this->input->post('jns_perkara', true),
-            'tgl_register' => $this->input->post('tgl_register', true),
-            'status_perkara' => '',
-            'sp_perkara' => $sp_perkara,
-            'no_perkara_banding' => '',
-            'putusan_banding' => '',
-            'is_nomor' => ''
-        ];
-        $this->db->insert('list_perkara', $data);
-        $this->session->set_flashdata('flash', 'berhasil disimpan');
-        redirect('banding/');
     }
 
 
