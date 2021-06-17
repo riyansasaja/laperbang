@@ -131,6 +131,35 @@ class Banding extends CI_Controller
     //     }
     // }
 
+    function pengantar_upload()
+    {
+        $config['upload_path']          = './assets/files/SuratPengantar';
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5000;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file1']['name'] != null)) {
+            if ($this->upload->do_upload('file1')) {
+                $sp_perkara = $this->upload->data("file_name");
+                $this->db->set('sp_perkara', $sp_perkara);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal, ekstensi file harus pdf dan ukuran tidak boleh lebih dari 5 mb');
+                redirect('banding/');
+            }
+        } else {
+            $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
+            redirect('banding/');
+        }
+
+        $id_perkara = $this->input->post('id_perkara');
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('list_perkara');
+
+        $this->session->set_flashdata('flash', 'berhasil diubah');
+        redirect('banding/');
+    }
+
     function multiple_upload()
     {
         $config['upload_path']          = './assets/files/bundle_a';
@@ -325,10 +354,8 @@ class Banding extends CI_Controller
         $id_perkara = $this->input->post('id_perkara');
         $this->db->where('id_perkara', $id_perkara);
         $this->db->update('list_perkara');
-
         $this->session->set_flashdata('flash', 'berhasil diubah');
         redirect('banding/');
-
         // 
 
         // $data = [

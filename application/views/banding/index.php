@@ -144,6 +144,7 @@
                             <label for="jenisPerkara" class="col-sm-2 col-form-label">Jenis Perkara</label>
                             <div class="col-sm-10">
                                 <select class="form-select" id="jenisPerkara" name="jns_perkara">
+                                    <option value="">--Pilih Jenis Perkara--</option>
                                     <?php foreach ($perkara as $perk) : ?>
                                         <option value="<?= $perk['jns_kaper'] ?>"><?= $perk['jns_kaper'] ?></option>
                                     <?php endforeach; ?>

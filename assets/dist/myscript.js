@@ -13,6 +13,6 @@ if (flashMsg) {
 	Swal.fire({
 		icon: 'error',
 		title: 'Failed',
-		text: 'Data ' + flashMsg,
+		text: flashMsg,
 	});
 }

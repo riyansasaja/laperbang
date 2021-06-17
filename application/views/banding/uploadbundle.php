@@ -41,6 +41,34 @@
         <div class="col">
             <!-- accordion -->
             <div class="accordion" id="accordionExample">
+
+                <!-- upload surat pengantar -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button bg-warning text-white" type="button" data-bs-toggle="collapse" data-bs-target="#suratPengantar" aria-expanded="true" aria-controls="collapseOne">
+                            Surat Pengantar
+                        </button>
+                    </h2>
+                    <div id="suratPengantar" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <form method="post" action="<?php echo base_url('banding/pengantar_upload'); ?>" enctype="multipart/form-data">
+                                <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
+                                <div class="row justify-content-start mb-3">
+                                    <div class="col-1" style="width: 1rem;">1.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Surat Pengantar --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-block btn-primary" value="upload">Kirim</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- end upload surat pengantar -->
                 <!-- upload bundle A -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
@@ -52,14 +80,12 @@
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/multiple_upload'); ?>" enctype="multipart/form-data">
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
-                                <input type="hidden" class="form-control" name="jam_upload" value="<?php date_default_timezone_set('Asia/Jakarta');
-                                                                                                    echo date('H:i:s'); ?>">
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
                                     <label for="formFileSm" class="col-4 form-label">Surat Gugatan --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
-                                        <small><?php echo $this->session->flashdata('msg'); ?></small>
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1" required>
+
                                     </div>
                                 </div>
                                 <div class=" row mb-3">
@@ -203,8 +229,6 @@
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/multiple_uploadB'); ?>" enctype="multipart/form-data">
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
-                                <input type="hidden" class="form-control" name="jam_upload" value="<?php date_default_timezone_set('Asia/Jakarta');
-                                                                                                    echo date('H:i:s'); ?>">
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
                                     <label for="formFileSm" class="col-4 form-label">Salinan Putusan Pengadilan Agama /Mahkamah Syari'yah --pdf</label>
