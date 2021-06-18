@@ -1,0 +1,34 @@
+/* all version */
+
+.bg-satu    {
+    background-color: #206A5D;
+}
+.bg-dua{
+    background-color: #81B214;
+}
+.bg-tiga{
+    background-color: #FFCC29;
+}
+.bg-empat{
+    background-color: #F58634;
+}
+
+.bg-gradient-satu{
+    background: rgb(32,106,93);
+    background: linear-gradient(277deg, rgba(32,106,93,1) 0%, rgba(129,178,20,1) 76%, rgba(255,204,41,1) 100%);
+
+}
+
+.drop-shadow {
+    filter: drop-shadow(1px 1px 1px rgb(0, 0, 0));
+}
+
+
+
+
+/* desktop version  */
+@media (min-width: 992px) {
+
+
+
+}

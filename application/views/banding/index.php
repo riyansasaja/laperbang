@@ -1,17 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title>Document</title> -->
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-    <script type="text/javascript" src="assets/js/jquery.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.js"></script> -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- datatables css -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <!-- sweet alert css -->
+    <link rel="stylesheet" href="<?= base_url('assets/');  ?>dist/sweetalert2.min.css">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/f8c43fa68d.js" crossorigin="anonymous"></script>
+    <!-- css sandiri -->
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/dashboard_banding.css">
+
+    <title>Hello, world!</title>
 </head>
 
 <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-satu">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="<?= base_url('assets/img/') ?>logoapp.png" alt="" width="100" class="drop-shadow">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"> <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i> User
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#"> Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
     <div class="flash-data2" data-flashdata="<?= $this->session->flashdata('msg'); ?>"></div>
     <?php echo $this->session->flashdata('msg'); ?>
@@ -19,14 +62,16 @@
         <div class="flash-data" data-flashdata="<?= $this->session->flashdata('msg'); ?>"></div>
     <?php } ?> -->
 
-    <div class="container-fluid px-4">
+
+
+    <div class="container ">
         <h3 class="mt-4">Dasbor Pengajuan Banding</h3>
         <ol class="breadcrumb mb-4">
             <!-- <li class="breadcrumb-item active">Dashboard</li> -->
         </ol>
         <div class="row">
             <div class="col-xl-4 col-md-6">
-                <div class="card bg-primary text-white mb-4">
+                <div class="card bg-satu text-white mb-4 shadow">
                     <div class="card-body">Perkara Masuk</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <small><?php echo $data_harian; ?></small>
@@ -34,7 +79,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-6">
-                <div class="card bg-warning text-white mb-4">
+                <div class="card bg-dua text-white mb-4 shadow">
                     <div class="card-body">Perkara Putus</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <small><?php echo $putus_harian; ?></small>
@@ -42,7 +87,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-6">
-                <div class="card bg-success text-white mb-4">
+                <div class="card bg-empat text-white mb-4 shadow">
                     <div class="card-body">Sisa Perkara</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <small><?php echo $sisa_harian; ?></small>
@@ -282,6 +327,26 @@
         </div>
     <?php endforeach; ?>
     <!-- end modalupdateperkara -->
+
+
+
+
+
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- javascript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- datatables -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <!-- sweet alert -->
+    <script src="<?= base_url('assets/');  ?>dist/sweetalert2.all.min.js"></script>
+    <!-- jspribadi -->
+    <script src="<?= base_url('assets/dist/') ?>myscript.js"></script>
+
+
 </body>
 
 </html>
