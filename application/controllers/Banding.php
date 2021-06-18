@@ -61,57 +61,45 @@ class Banding extends CI_Controller
 
     public function edit_perkara()
     {
-        $config['upload_path']          = './assets/files/SuratPengantar';
-        $config['allowed_types']        = 'doc|docx|pdf';
-        $config['max_size']             = 5000;
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-
-        //untuk upload file 1 dan seterusnya.....
-        if (($_FILES['file1']['name']) != null) {
-            if ($this->upload->do_upload('file1')) {
-                $sp_perkara = $this->upload->data("file_name");
-                $this->db->set('sp_perkara', $sp_perkara);
-            } else {
-
-                $this->session->set_flashdata('msg', 'Upload data Surat Pengantar gagal');
-                redirect('banding/');
-            }
-        }
-
         $id_perkara = $this->input->post('id_perkara');
         $no_perkara = $this->input->post('no_perkara');
         $nm_pihak = $this->input->post('nm_pihak');
         $jns_perkara = $this->input->post('jns_perkara');
+        $no_surat_pengantar = $this->input->post('no_surat_pengantar');
+        $nm_panitera = $this->input->post('nm_panitera');
+        $nip_panitera = $this->input->post('nip_panitera');
+        $banyaknya = $this->input->post('banyaknya');
+        $keterangan = $this->input->post('keterangan');
 
-        $this->db->set('no_perkara', $no_perkara);
-        $this->db->set('nm_pihak', $nm_pihak);
-        $this->db->set('jns_perkara', $jns_perkara);
-        $this->db->where('id_perkara', $id_perkara);
-        $this->db->update('list_perkara');
+        // $this->db->set('no_perkara', $no_perkara);
+        // $this->db->set('nm_pihak', $nm_pihak);
+        // $this->db->set('jns_perkara', $jns_perkara);
+        // $this->db->where('id_perkara', $id_perkara);
+        // $this->db->update('list_perkara');
 
-        $this->session->set_flashdata('flash', 'berhasil diubah');
-        redirect('banding/');
+        // $this->session->set_flashdata('flash', 'berhasil diubah');
+        // redirect('banding/');
 
-        // $data = [
-        //     'id_perkara' => $id_perkara,
-        //     'no_perkara' => $no_perkara,
-        //     'nm_pihak' => $nm_pihak,
-        //     'jns_perkara' => $jns_perkara,
-        //     // 'sp_perkara' => $sp_perkara,
-        // ];
-        // if ($_POST['sp_perkara'] != null) {
-        //     $data['sp_perkara'] = $_POST['sp_perkara'];
-        // }
-        // $where = array('id_perkara' => $id_perkara);
-        // $res = $this->m_banding->UpdatePerkara('list_perkara', $data, $where);
-        // if ($res >= 1) {
-        //     $this->session->set_flashdata('message', 'Update data berhasil');
-        //     redirect('banding/');
-        // } else {
-        //     $this->session->set_flashdata('msg', 'update data gagal');
-        //     redirect('banding/');
-        // }
+        $data = [
+            'id_perkara' => $id_perkara,
+            'no_perkara' => $no_perkara,
+            'nm_pihak' => $nm_pihak,
+            'jns_perkara' => $jns_perkara,
+            'no_surat_pengantar' => $no_surat_pengantar,
+            'nm_panitera' => $nm_panitera,
+            'nip_panitera' => $nip_panitera,
+            'banyaknya' => $banyaknya,
+            'keterangan' => $keterangan,
+        ];
+        $where = array('id_perkara' => $id_perkara);
+        $res = $this->m_banding->UpdatePerkara('list_perkara', $data, $where);
+        if ($res >= 1) {
+            $this->session->set_flashdata('flash', 'Berhasil di update');
+            redirect('banding/');
+        } else {
+            $this->session->set_flashdata('msg', 'update data gagal');
+            redirect('banding/');
+        }
     }
 
     // private function _uploadFile($path)
@@ -356,6 +344,16 @@ class Banding extends CI_Controller
         $this->db->update('list_perkara');
         $this->session->set_flashdata('flash', 'berhasil diubah');
         redirect('banding/');
+
+        // $where = array('id_perkara' => $id_perkara);
+        // $res = $this->m_banding->UpdatePerkara('list_perkara', $data, $where);
+        // if ($res >= 1) {
+        //     $this->session->set_flashdata('message', 'Update data berhasil');
+        //     redirect('banding/');
+        // } else {
+        //     $this->session->set_flashdata('msg', 'update data gagal');
+        //     redirect('banding/');
+        // }
         // 
 
         // $data = [

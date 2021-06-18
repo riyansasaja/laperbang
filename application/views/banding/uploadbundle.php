@@ -84,7 +84,7 @@
                                     <div class="col-1" style="width: 1rem;">1.</div>
                                     <label for="formFileSm" class="col-4 form-label">Surat Gugatan --pdf</label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1" required>
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
 
                                     </div>
                                 </div>
