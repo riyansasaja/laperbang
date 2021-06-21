@@ -76,8 +76,14 @@
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
                                     </div>
+                                    <div class="col-3 my-auto <?= $perkara['0']['sp_perkara'] ? '' : 'd-none' ?> ">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id=" <?= $perkara['0']['sp_perkara'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['0']['sp_perkara'] ?>
+                                        </a>
+                                    </div>
                                 </div>
-                                <button type="submit" class="btn btn-block btn-primary" value="upload">Kirim</button>
+                                <button type="submit" class="btn text-white bg-satu" value="upload">Kirim</button>
                             </form>
                         </div>
                     </div>
@@ -375,3 +381,30 @@
 
 
     </div>
+
+
+    <!-- //modal tampil pdf -->
+
+    <div class="modal fade" id="modalPdf">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="tampil">
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary mx-auto" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- end modal tampil pdf -->

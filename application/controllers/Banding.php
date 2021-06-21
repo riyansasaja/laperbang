@@ -575,6 +575,7 @@ class Banding extends CI_Controller
         $data['css'] = 'dashboard_banding.css';
         $data['judul'] = 'Upload Banding';
 
+        //ambil data
         $data['perkara'] = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
 
         $this->load->view('banding/header', $data);
