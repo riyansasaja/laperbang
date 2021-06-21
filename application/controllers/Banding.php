@@ -12,16 +12,20 @@ class Banding extends CI_Controller
     }
     public function index()
     {
+        //konten
+        $data['js'] = 'indexbanding.js';
+        $data['css'] = 'dashboard_banding.css';
+        $data['judul'] = 'Dashboard Banding';
+        //data in database
         $data['perkara'] = $this->db->get('kategori_perkara')->result_array();
         $data['perkara_banding'] = $this->m_banding->get_list_perkara();
         $data['data_harian'] = $this->m_banding->countLapHarian();
         $data['putus_harian'] = $this->m_banding->countPerkaraPutus();
         $data['sisa_harian'] = $this->m_banding->countSisaPerkara();
-        // $this->load->view('templates/sbadmin/header');
-        // $this->load->view('templates/sbadmin/topbar');
-        // $this->load->view('templates/sbadmin/sidebar');
+
+        $this->load->view('banding/header', $data);
         $this->load->view('banding/index', $data);
-        // $this->load->view('templates/sbadmin/footer');
+        $this->load->view('banding/footer', $data);
     }
 
 

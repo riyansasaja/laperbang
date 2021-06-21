@@ -1,4 +1,7 @@
 /* all version */
+body{
+    font-family: 'Reem Kufi', sans-serif;
+}
 
 .bg-satu    {
     background-color: #206A5D;
@@ -11,6 +14,19 @@
 }
 .bg-empat{
     background-color: #F58634;
+}
+
+.text-satu {
+    color:#206A5D ;
+}
+.text-dua {
+    color:#81B214 ;
+}
+.text-tiga {
+    color:#FFCC29 ;
+}
+.text-empat {
+    color:#F58634 ;
 }
 
 .bg-gradient-satu{
