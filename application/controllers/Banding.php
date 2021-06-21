@@ -570,12 +570,16 @@ class Banding extends CI_Controller
 
     public function uploadbundle($id)
     {
+        //konten
+        $data['js'] = 'uploadbanding.js';
+        $data['css'] = 'dashboard_banding.css';
+        $data['judul'] = 'Upload Banding';
+
         $data['perkara'] = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
-        $this->load->view('templates/sbadmin/header');
-        $this->load->view('templates/sbadmin/topbar');
-        $this->load->view('templates/sbadmin/sidebar');
+
+        $this->load->view('banding/header', $data);
         $this->load->view('banding/uploadbundle', $data);
-        $this->load->view('templates/sbadmin/footer');
+        $this->load->view('banding/footer', $data);
     }
     public function userProfile()
     {

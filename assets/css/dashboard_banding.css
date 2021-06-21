@@ -3,17 +3,35 @@ body{
     font-family: 'Reem Kufi', sans-serif;
 }
 
-.bg-satu    {
+.bg-satu{
     background-color: #206A5D;
+}
+.bg-satu-dark{
+    background-color: rgb(20, 85, 73);
 }
 .bg-dua{
     background-color: #81B214;
 }
+.bg-dua-dark{
+    background-color: #719e0f;
+}
 .bg-tiga{
     background-color: #FFCC29;
 }
+.bg-tiga-dark{
+    background-color: #be9a21;
+}
 .bg-empat{
     background-color: #F58634;
+}
+.bg-empat-dark{
+    background-color: #d6722b;
+}
+
+.garis-bawah{
+    border-bottom-style: solid;
+    border-bottom-color: #81B214;
+
 }
 
 .text-satu {

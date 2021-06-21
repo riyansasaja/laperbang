@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-lg-5 mt-3">
-            <div class="card">
+            <div class="card bg-light">
                 <div class="card-header">
                     <h6>Data Perkara</h6>
                 </div>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col-12 col-lg-7 mt-3">
+        <div class="col-12 col-lg-7 mt-3">
             <div class="card h-100">
                 <div class="card-header">
                     <h6>Upload File</h6>
@@ -50,20 +50,20 @@
                     </form>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 
 
     <div class="row mt-2">
         <div class="col">
             <!-- accordion -->
-            <div class="accordion accordion-flush" id="accordionExample">
+            <div class="accordion" id="accordionExample">
 
                 <!-- upload surat pengantar -->
                 <div class="accordion-item">
-                    <h2 class="accordion-header garis-bawah" id="headingOne">
-                        <button class="accordion-button bg-light" data-bs-toggle="collapse" data-bs-target="#suratPengantar" aria-expanded="true" aria-controls="collapseOne">
-                            <span class="text-satu">Surat Pengantar</span>
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button bg-warning text-white" type="button" data-bs-toggle="collapse" data-bs-target="#suratPengantar" aria-expanded="true" aria-controls="collapseOne">
+                            Surat Pengantar
                         </button>
                     </h2>
                     <div id="suratPengantar" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -82,13 +82,15 @@
                         </div>
                     </div>
                 </div>
-                <!-- end upload surat pengantar -->
 
+
+
+                <!-- end upload surat pengantar -->
                 <!-- upload bundle A -->
                 <div class="accordion-item">
-                    <h2 class="accordion-header garis-bawah" id="headingOne">
-                        <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#bundleA" aria-expanded="true" aria-controls="collapseOne">
-                            <span class="text-satu">Bundle A</span>
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button bg-success text-white" type="button" data-bs-toggle="collapse" data-bs-target="#bundleA" aria-expanded="true" aria-controls="collapseOne">
+                            Bundle A
                         </button>
                     </h2>
                     <div id="bundleA" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -233,12 +235,11 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- upload Bundle B -->
                 <div class="accordion-item">
-                    <h2 class="accordion-header garis-bawah" id="headingTwo">
-                        <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#bundleB" aria-expanded="true" aria-controls="collapseOne">
-                            <span class="text-satu">Bundle B</span>
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button bg-danger text-white" type="button" data-bs-toggle="collapse" data-bs-target="#bundleB" aria-expanded="true" aria-controls="collapseOne">
+                            Bundle B
                         </button>
                     </h2>
                     <div id="bundleB" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -355,7 +356,7 @@
                 </div>
 
                 <!-- upload putusan -->
-                <!-- <div class="accordion-item">
+                <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed bg-primary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#putusan" aria-expanded="false" aria-controls="collapseTwo">
                             Putusan
@@ -366,12 +367,12 @@
                             <a class="btn btn-primary" href="">Download Putusan</a>
                         </div>
                     </div>
-                </div> -->
-                <!-- </ div> -->
-                <!-- end accordion -->
+                </div>
             </div>
+            <!-- end accordion -->
         </div>
-
-
-
     </div>
+
+
+
+</div>

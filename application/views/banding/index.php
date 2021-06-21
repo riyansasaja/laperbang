@@ -1,9 +1,6 @@
 <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
 <div class="flash-data2" data-flashdata="<?= $this->session->flashdata('msg'); ?>"></div>
-<?php echo $this->session->flashdata('msg'); ?>
-<!-- <?php if (validation_errors()) { ?>
-        <div class="flash-data" data-flashdata="<?= $this->session->flashdata('msg'); ?>"></div>
-    <?php } ?> -->
+
 
 
 
@@ -14,34 +11,33 @@
     </ol>
     <div class="row">
         <div class="col-xl-4 col-md-6">
-            <div class="card bg-satu text-white mb-4 shadow">
-                <div class="card-body">
-
-                    <h4> <i class="fas fa-fw fa-book"></i> PERKARA MASUK</h4>
+            <div class="card text-white mb-4 shadow">
+                <div class="card-body bg-satu ">
+                    <h6> <i class="fas fa-fw fa-book"></i> PERKARA MASUK</h6>
                 </div>
-                <div class="card-footer">
-                    <h5 class="text-end"><?php echo $data_harian; ?> Perkara</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-6">
-            <div class="card bg-dua text-white mb-4 shadow">
-                <div class="card-body">
-                    <h4><i class="fas fa-fw fa-gavel"></i>PERKARA PUTUS</h4>
-                </div>
-                <div class="card-footer">
-                    <h5 class="text-end"><?php echo $putus_harian; ?> Perkara</h5>
+                <div class="bg-satu-dark">
+                    <h6 class="text-end  mx-2 my-2"><?php echo $data_harian; ?> Perkara</h6>
                 </div>
             </div>
         </div>
         <div class="col-xl-4 col-md-6">
-            <div class="card bg-empat text-white mb-4 shadow">
-                <div class="card-body">
-                    <h4><i class="fas fa-fw fa-balance-scale-left"></i> SISA PERKARA</h4>
+            <div class="card text-white mb-4 shadow">
+                <div class="card-body  bg-dua">
+                    <h6><i class="fas fa-fw fa-gavel"></i>PERKARA PUTUS</h6>
+                </div>
+                <div class="bg-dua-dark">
+                    <h6 class="text-end mx-2 my-2"><?php echo $putus_harian; ?> Perkara</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card text-white mb-4 shadow">
+                <div class="card-body  bg-empat">
+                    <h6><i class="fas fa-fw fa-balance-scale-left"></i> SISA PERKARA</h6>
 
                 </div>
-                <div class="card-footer">
-                    <h5 class="text-end"><?php echo $sisa_harian; ?> Perkara</h5>
+                <div class=" bg-empat-dark">
+                    <h6 class="text-end mx-2 my-2"><?php echo $sisa_harian; ?> Perkara</h6>
                 </div>
             </div>
         </div>
@@ -59,56 +55,48 @@
                 Tambah Perkara
             </button>
             <!-- button tambah perkara -->
-            <table id="tablePerkara">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nomor Perkara</th>
-                        <th>Jenis Perkara</th>
-                        <th>Nomor Perkara Banding</th>
-                        <th>Tanggal Register</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>#</th>
-                        <th>Nomor Perkara</th>
-                        <th>Jenis Perkara</th>
-                        <th>Nomor Perkara Banding</th>
-                        <th>Tanggal Register</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($perkara_banding as $lhs) : ?>
+            <div class="table-responsive">
+                <table class="table" id="tablePerkara">
+                    <thead>
                         <tr>
-                            <td><?php echo $i++; ?></td>
-                            <td><?php echo $lhs['no_perkara']; ?></td>
-                            <td><?php echo $lhs['jns_perkara']; ?></td>
-                            <td><?php echo $lhs['no_perkara_banding']; ?></td>
-                            <td><?php echo $lhs['tgl_register']; ?></td>
-                            <td><?php echo $lhs['status_perkara']; ?></td>
-                            <td>
-                                <a class="text-decoration-none mx-1" href="<?= base_url('banding/uploadbundle/') . $lhs['id_perkara'] ?>">
-                                    <i class="fas fa-fw fa-upload" style="color: #206A5D ;" title="Unggah Berkas"></i>
-                                </a>
-                                <a class="text-decoration-none mx-1" href="" data-bs-toggle="modal" data-bs-target="#modalupdateperkara<?= $lhs['id_perkara'] ?>">
-                                    <i class="fas fa-pen-square" style="color: #206A5D ;" title="Edit"></i>
-                                </a>
-                                <a class="text-decoration-none mx-1" href="<?= base_url('template_word/surat_pengantar/') . $lhs['id_perkara'] ?>">
-                                    <i class="fas fa-fw fa-file-download" style="color: #206A5D ;" title="Download Surat Pengantar"></i>
-                                </a>
-                            </td>
+                            <th>#</th>
+                            <th>Nomor Perkara</th>
+                            <th>Jenis Perkara</th>
+                            <th>Nomor Perkara Banding</th>
+                            <th>Tanggal Register</th>
+                            <th>Status</th>
+                            <th style="width: 10%;">Action</th>
                         </tr>
-                    <?php endforeach; ?>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($perkara_banding as $lhs) : ?>
+                            <tr>
+                                <td><?php echo $i++; ?></td>
+                                <td><?php echo $lhs['no_perkara']; ?></td>
+                                <td><?php echo $lhs['jns_perkara']; ?></td>
+                                <td><?php echo $lhs['no_perkara_banding']; ?></td>
+                                <td><?php echo $lhs['tgl_register']; ?></td>
+                                <td><?php echo $lhs['status_perkara']; ?></td>
+                                <td>
+
+                                    <a class="text-decoration-none mx-1 col-12 col-lg-4" href="<?= base_url('banding/uploadbundle/') . $lhs['id_perkara'] ?>">
+                                        <i class="fas fa-fw fa-upload" style="color: #206A5D ;" title="Unggah Berkas"></i>
+                                    </a>
+                                    <a class="text-decoration-none mx-1 col-12 col-lg-4" href="" data-bs-toggle="modal" data-bs-target="#modalupdateperkara<?= $lhs['id_perkara'] ?>">
+                                        <i class="fas fa-pen-square" style="color: #206A5D ;" title="Edit"></i>
+                                    </a>
+                                    <a class="text-decoration-none mx-1 col-12 col-lg-4" href="<?= base_url('template_word/surat_pengantar/') . $lhs['id_perkara'] ?>">
+                                        <i class="fas fa-fw fa-file-download" style="color: #206A5D ;" title="Download Surat Pengantar"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
 
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
