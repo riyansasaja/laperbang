@@ -41,13 +41,12 @@
                     <div class="card card-login">
                         <div class="card-body  text-center">
                             <img class="img-fluid" src="<?= base_url('assets/img/') ?>logo.png" style="width: 20%;">
-                            <h3 class="card-title mt-3 mb-4">Silahkan Masuk</h3><?php echo $this->session->flashdata('msg'); ?>
                             <h4 class="card-title mt-3 mb-4 d-lg-none">APLIKASI LAPERBANG</h4>
+                            <h3 class="card-title mt-3 mb-4">Silahkan Masuk</h3><?php echo $this->session->flashdata('msg'); ?>
                             <!-- form login -->
                             <form action="<?php echo base_url('Auth'); ?>" method="post" class="input">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
-                                    value="<?php echo set_value('username'); ?>" name="username" placeholder="Username">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo set_value('username'); ?>" name="username" placeholder="Username">
                                     <?php echo form_error('username', '<small class="red">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">

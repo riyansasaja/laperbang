@@ -196,17 +196,17 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                     <!-- form editBerkas -->
                     <form method="post" action="<?php echo base_url('banding/edit_perkara'); ?>" enctype="multipart/form-data">
                         <!-- <input type="hidden" class="form-control" id="tanggalregister" name="tgl_register" value="<?php echo date('Y/m/d'); ?>"> -->
-                        <input type="hidden" class="form-control" id="id_perkara" value="<?php echo $lhs['id_perkara']; ?>" name="id_perkara">
+                        <input type="hidden" class="form-control" id="id_perkara<?= $no ?>" value="<?php echo $lhs['id_perkara']; ?>" name="id_perkara">
                         <div class="row mb-3">
                             <label for="nomorPerkara" class="col-sm-2 col-form-label">Nomor Perkara</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nomorPerkara" name="no_perkara" value="<?php echo $lhs['no_perkara']; ?>">
+                                <input type="text" class="form-control" id="nomorPerkara<?= $no ?>" name="no_perkara" value="<?php echo $lhs['no_perkara']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="jenisPerkara" class="col-sm-2 col-form-label">Jenis Perkara</label>
                             <div class="col-sm-10">
-                                <select class="form-select" id="jenisPerkara" name="jns_perkara">
+                                <select class="form-select" name="jns_perkara">
                                     <option value="">--Pilih Jenis Perkara--</option>
                                     <?php foreach ($perkara as $perk) : ?>
                                         <option value="<?= $perk['jns_kaper'] ?>" <?= $perk['jns_kaper'] == $lhs['jns_perkara'] ? 'selected' : '' ?>> <?= $perk['jns_kaper'] ?> </option>
@@ -217,37 +217,37 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                         <div class="row mb-3">
                             <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="namaPihak" name="nm_pihak" value="<?php echo $lhs['nm_pihak']; ?>">
+                                <input type="text" class="form-control" name="nm_pihak" value="<?php echo $lhs['nm_pihak']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="no_surat_pengantar" class="col-sm-2 col-form-label">Nomor Surat Pengantar</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="no_surat_pengantar" name="no_surat_pengantar" value="<?php echo $lhs['no_surat_pengantar']; ?>">
+                                <input type="text" class="form-control" name="no_surat_pengantar" value="<?php echo $lhs['no_surat_pengantar']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="namaPanitera" class="col-sm-2 col-form-label">Nama Panitera</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="namaPanitera" name="nm_panitera" value="<?php echo $lhs['nm_panitera']; ?>">
+                                <input type="text" class="form-control" name="nm_panitera" value="<?php echo $lhs['nm_panitera']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="nipPanitera" class="col-sm-2 col-form-label">NIP Panitera</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nipPanitera" name="nip_panitera" value="<?php echo $lhs['nip_panitera']; ?>">
+                                <input type="text" class="form-control" name="nip_panitera" value="<?php echo $lhs['nip_panitera']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="banyaknya" class="col-sm-2 col-form-label">Banyaknya Berkas</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="banyaknya" name="banyaknya" value="<?php echo $lhs['banyaknya']; ?>">
+                                <input type="text" class="form-control" name="banyaknya" value="<?php echo $lhs['banyaknya']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="keterangan" name="keterangan" value="<?php echo $lhs['keterangan']; ?>">
+                                <input type="text" class="form-control" name="keterangan" value="<?php echo $lhs['keterangan']; ?>">
                             </div>
                         </div>
 

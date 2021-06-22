@@ -29,7 +29,7 @@
 <!-- datatables -->
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 <!-- sweet alert -->
-<script src="<?= base_url('assets/');  ?>dist/sweetalert2.all.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- jspribadi -->
 <script src="<?= base_url('assets/js/') . $js ?>"></script>
 <!-- dropzone -->

@@ -12,7 +12,7 @@ class template_word extends CI_Controller
         // $template = new \PhpOffice\PhpWord\TemplateProcessor(FCPATH.'resources/template/surat_template.docx');
         switch ($this->session->userdata('id')) {
             case '2':
-                $templateProcessor = new TemplateProcessor('resources/template/surat_template_manado.docx');
+                $templateProcessor = new TemplateProcessor(FCPATH . 'resources/template/surat_template_manado.docx');
                 break;
             case '3':
                 $templateProcessor = new TemplateProcessor('resources/template/surat_template_tty.docx');
