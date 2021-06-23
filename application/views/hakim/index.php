@@ -1,10 +1,9 @@
 <div class="container">
-    <h3 class="mt-4">Dasbor Hakim/Panitera</h3>
 
     <div class="row mt-5">
         <!-- //card dashboard -->
         <div class="col-xl-4 col-md-6">
-            <div class="card bg-primary text-white mb-4">
+            <div class="card bg-satu text-white mb-4">
                 <div class="card-body">
                     <h3>Perkara Banding</h3>
                 </div>
@@ -20,7 +19,7 @@
         </div>
 
         <div class="col-xl-4 col-md-6">
-            <div class="card bg-primary text-white mb-4">
+            <div class="card bg-satu text-white mb-4">
                 <div class="card-body">
                     <h3>Eksaminasi</h3>
                 </div>
@@ -36,7 +35,7 @@
         </div>
 
         <div class="col-xl-4 col-md-6">
-            <div class="card bg-primary text-white mb-4">
+            <div class="card bg-satu text-white mb-4">
                 <div class="card-body">
                     <h3>Laporan Perkara</h3>
                 </div>
