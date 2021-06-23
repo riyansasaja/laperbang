@@ -37,16 +37,16 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?= base_url('viewhakim/') ?>">Dasbor</a>
+                        <a class="nav-link <?= $judul == 'Dashboard' ? 'active' : '' ?>" aria-current="page" href="<?= base_url('viewhakim/') ?>">Dasbor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('viewhakim/banding/') ?>">Banding</a>
+                        <a class="nav-link <?= $judul == 'Banding' ? 'active' : '' ?>" href="<?= base_url('viewhakim/banding/') ?>">Banding</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('viewhakim/eksaminasi/') ?>">Eksaminasi</a>
+                        <a class="nav-link <?= $judul == 'Eksaminasi' ? 'active' : '' ?>" href="<?= base_url('viewhakim/eksaminasi/') ?>">Eksaminasi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('viewhakim/laper/') ?>">Laporan Perkara</a>
+                        <a class="nav-link <?= $judul == 'Laper' ? 'active' : '' ?>" href="<?= base_url('viewhakim/laper/') ?>">Laporan Perkara</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
