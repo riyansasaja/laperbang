@@ -28,7 +28,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-satu">
         <div class="container">
-            <a class="navbar-brand" href="<?= base_url('home/') ?>">
+            <a class="navbar-brand" href="<?= base_url('viewhakim/') ?>">
                 <img src="<?= base_url('assets/img/') ?>logoapp.png" alt="" width="80" class="drop-shadow">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
