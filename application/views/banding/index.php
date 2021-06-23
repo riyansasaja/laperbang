@@ -217,7 +217,7 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                         <div class="row mb-3">
                             <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nm_pihak" value="<?php echo $lhs['nm_pihak']; ?>">
+                                <input type="text" class="form-control" name="nm_pihak" value="<?php echo $lhs['nm_pihak_penggugat']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -229,13 +229,13 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                         <div class="row mb-3">
                             <label for="namaPanitera" class="col-sm-2 col-form-label">Nama Panitera</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nm_panitera" value="<?php echo $lhs['nm_panitera']; ?>">
+                                <input type="text" class="form-control" name="nm_panitera" value="<?php echo $lhs['nm_pejabat']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="nipPanitera" class="col-sm-2 col-form-label">NIP Panitera</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nip_panitera" value="<?php echo $lhs['nip_panitera']; ?>">
+                                <input type="text" class="form-control" name="nip_panitera" value="<?php echo $lhs['nip_pejabat']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -263,22 +263,3 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
     </div>
 <?php endforeach; ?>
 <!-- end modalupdateperkara -->
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Siap untuk keluar?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Klik tombol "Keluar" jika ingin keluar.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="<?php echo base_url('auth/logout') ?>">Keluar</a>
-            </div>
-        </div>
-    </div>
-</div>
