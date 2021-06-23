@@ -170,7 +170,7 @@
                         <div class="row mb-3">
                             <label for="nipPanitera" class="col-sm-2 col-form-label">NIP Pejabat</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nipPanitera" name="nip_pejabat" onkeypress="return hanyaAngka(event)" required maxlength="16" minlength="16">
+                                <input type="text" class="form-control" id="nipPanitera" name="nip_pejabat" onkeypress="return hanyaAngka(event)" required maxlength="18" minlength="18">
                             </div>
                         </div>
                         <div class="row mb-3">
