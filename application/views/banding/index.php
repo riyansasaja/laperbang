@@ -197,86 +197,87 @@
             </div>
         </div>
     </div>
-    <!-- end modalAddperkara -->
+</div>
+<!-- end modalAddperkara -->
 
-    <!-- ==modalupdateperkara -->
-    <?php $no = 0;
-    foreach ($perkara_banding as $lhs) : $no++; ?>
-        <div class="modal fade" id="modalupdateperkara<?= $lhs['id_perkara'] ?>" tabindex="-1" aria-labelledby="modalupdateperkara" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Data Perkara</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- form editBerkas -->
-                        <form method="post" action="<?php echo base_url('banding/edit_perkara'); ?>" enctype="multipart/form-data">
-                            <!-- <input type="hidden" class="form-control" id="tanggalregister" name="tgl_register" value="<?php echo date('Y/m/d'); ?>"> -->
-                            <input type="hidden" class="form-control" id="id_perkara<?= $no ?>" value="<?php echo $lhs['id_perkara']; ?>" name="id_perkara">
-                            <div class="row mb-3">
-                                <label for="nomorPerkara" class="col-sm-2 col-form-label">Nomor Perkara</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nomorPerkara<?= $no ?>" name="no_perkara" value="<?php echo $lhs['no_perkara']; ?>">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="jenisPerkara" class="col-sm-2 col-form-label">Jenis Perkara</label>
-                                <div class="col-sm-10">
-                                    <select class="form-select" name="jns_perkara">
-                                        <option value="">--Pilih Jenis Perkara--</option>
-                                        <?php foreach ($perkara as $perk) : ?>
-                                            <option value="<?= $perk['jns_kaper'] ?>" <?= $perk['jns_kaper'] == $lhs['jns_perkara'] ? 'selected' : '' ?>> <?= $perk['jns_kaper'] ?> </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="nm_pihak" value="<?php echo $lhs['nm_pihak_penggugat']; ?>">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="no_surat_pengantar" class="col-sm-2 col-form-label">Nomor Surat Pengantar</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="no_surat_pengantar" value="<?php echo $lhs['no_surat_pengantar']; ?>">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="namaPanitera" class="col-sm-2 col-form-label">Nama Panitera</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="nm_panitera" value="<?php echo $lhs['nm_pejabat']; ?>">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="nipPanitera" class="col-sm-2 col-form-label">NIP Panitera</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="nip_panitera" value="<?php echo $lhs['nip_pejabat']; ?>">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="banyaknya" class="col-sm-2 col-form-label">Banyaknya Berkas</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="banyaknya" value="<?php echo $lhs['banyaknya']; ?>">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="keterangan" value="<?php echo $lhs['keterangan']; ?>">
-                                </div>
-                            </div>
-
-                            <!-- end form editBerkas -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn bg-satu text-white" value="upload">Simpan</button>
-                    </div>
-                    </form>
+<!-- ==modalupdateperkara -->
+<?php $no = 0;
+foreach ($perkara_banding as $lhs) : $no++; ?>
+    <div class="modal fade" id="modalupdateperkara<?= $lhs['id_perkara'] ?>" tabindex="-1" aria-labelledby="modalupdateperkara" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Data Perkara</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body">
+                    <!-- form editBerkas -->
+                    <form method="post" action="<?php echo base_url('banding/edit_perkara'); ?>" enctype="multipart/form-data">
+                        <!-- <input type="hidden" class="form-control" id="tanggalregister" name="tgl_register" value="<?php echo date('Y/m/d'); ?>"> -->
+                        <input type="hidden" class="form-control" id="id_perkara<?= $no ?>" value="<?php echo $lhs['id_perkara']; ?>" name="id_perkara">
+                        <div class="row mb-3">
+                            <label for="nomorPerkara" class="col-sm-2 col-form-label">Nomor Perkara</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="nomorPerkara<?= $no ?>" name="no_perkara" value="<?php echo $lhs['no_perkara']; ?>">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="jenisPerkara" class="col-sm-2 col-form-label">Jenis Perkara</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" name="jns_perkara">
+                                    <option value="">--Pilih Jenis Perkara--</option>
+                                    <?php foreach ($perkara as $perk) : ?>
+                                        <option value="<?= $perk['jns_kaper'] ?>" <?= $perk['jns_kaper'] == $lhs['jns_perkara'] ? 'selected' : '' ?>> <?= $perk['jns_kaper'] ?> </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="nm_pihak" value="<?php echo $lhs['nm_pihak_penggugat']; ?>">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="no_surat_pengantar" class="col-sm-2 col-form-label">Nomor Surat Pengantar</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="no_surat_pengantar" value="<?php echo $lhs['no_surat_pengantar']; ?>">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="namaPanitera" class="col-sm-2 col-form-label">Nama Panitera</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="nm_panitera" value="<?php echo $lhs['nm_pejabat']; ?>">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="nipPanitera" class="col-sm-2 col-form-label">NIP Panitera</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="nip_panitera" value="<?php echo $lhs['nip_pejabat']; ?>">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="banyaknya" class="col-sm-2 col-form-label">Banyaknya Berkas</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="banyaknya" value="<?php echo $lhs['banyaknya']; ?>">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="keterangan" value="<?php echo $lhs['keterangan']; ?>">
+                            </div>
+                        </div>
+
+                        <!-- end form editBerkas -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn bg-satu text-white" value="upload">Simpan</button>
+                </div>
+                </form>
             </div>
         </div>
-    <?php endforeach; ?>
-    <!-- end modalupdateperkara -->
+    </div>
+<?php endforeach; ?>
+<!-- end modalupdateperkara -->
