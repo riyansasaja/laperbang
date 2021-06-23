@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2021 at 03:48 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.1.32
+-- Generation Time: Jun 23, 2021 at 05:13 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.4.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -94,8 +94,13 @@ CREATE TABLE `kategori_perkara` (
 --
 
 INSERT INTO `kategori_perkara` (`id_kaper`, `jns_kaper`, `status_kaper`) VALUES
-(1, 'cerai', 1),
-(2, 'poligami', 1);
+(3, 'Cerai Talak', 1),
+(4, 'Cerai Gugat', 1),
+(5, 'Harta Bersama', 1),
+(6, 'Kewarisan', 1),
+(7, 'Wasiat', 1),
+(8, 'Hibah', 1),
+(9, 'Wakaf', 1);
 
 -- --------------------------------------------------------
 
@@ -170,7 +175,8 @@ INSERT INTO `list_perkara` (`id_perkara`, `id_user`, `no_perkara`, `nm_pihak_pen
 (34, 8, '213123', 'fsdfsdf', '', 'poligami', '2021-06-18', '3435345', '', 'dfdfgdf', '34345345', 2, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (35, 8, '234234', 'ererte', '', 'cerai', '2021-06-18', '45345', '', 'scsdf', '455', 3, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (36, 10, 'XI/13/06/2021', 'dfsfsdfg', '', 'poligami', '2021-06-18', '4535435', '', 'dfdgd', 'dfgdg', 1, 'dsfdfg', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(37, 2, '23234234', 'wwrewer', 'sdfsfs', 'cerai', '2021-06-23', '4324243', 'panitera', 'fsfds', '23423434554654657', 1, 'sfefre', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(37, 2, '23234234', 'wwrewer', 'sdfsfs', 'cerai', '2021-06-23', '4324243', 'panitera', 'fsfds', '23423434554654657', 1, 'sfefre', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(38, 3, '152/Pdt.G/2021/PA.Tty', 'Andi Law', 'Yo Sheng Yi', 'Cerai Talak', '2021-06-23', '1202525587', 'Panitera', 'Kim Jong Un', '197822522545454825', 10, 'Kasus Hibah Kim Jong Un terhadap Nam Do San', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -185,6 +191,7 @@ CREATE TABLE `users` (
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `role_id` int(11) DEFAULT NULL,
+  `kode_pa` varchar(20) NOT NULL,
   `is_active` int(11) NOT NULL,
   `data_created` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -193,18 +200,18 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `nama`, `email`, `username`, `password`, `role_id`, `is_active`, `data_created`) VALUES
-(1, 'Pengadilan Tinggi Agama Manado', '', 'pta-manado', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 1, 1, '2021-05-27'),
-(2, 'Pengadilan Agama Manado', '', 'pa-manado', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 1, '2021-05-27'),
-(3, 'Pengadilan Agama Tutuyan', '', 'pa-tutuyan', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 1, '2021-05-27'),
-(4, 'Pengadilan Agama Bolaang Uki', '', 'pa-blu', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 1, '2021-05-27'),
-(5, 'Pengadilan Agama Tondano', '', 'pa-tondano', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 1, '2021-05-27'),
-(6, 'Pengadilan Agama Lolak', '', 'pa-lolak', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 1, '2021-05-27'),
-(7, 'Pengadilan Agama Boroko', '', 'pa-boroko', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 1, '2021-05-27'),
-(8, 'Pengadilan Agama Amurang', '', 'pa-amurang', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 1, '2021-05-27'),
-(9, 'Pengadilan Agama Kotamobagu', '', 'pa-kotamobagu', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 1, '2021-05-27'),
-(10, 'Pengadilan Agama Tahuna', '', 'pa-tahuna', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 1, '2021-05-27'),
-(11, 'Pengadilan Agama Bitung', '', 'pa-bitung', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 1, '2021-05-27');
+INSERT INTO `users` (`id`, `nama`, `email`, `username`, `password`, `role_id`, `kode_pa`, `is_active`, `data_created`) VALUES
+(1, 'Pengadilan Tinggi Agama Manado', '', 'pta-manado', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 1, 'PTA.Mdo', 1, '2021-05-27'),
+(2, 'Pengadilan Agama Manado', '', 'pa-manado', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Mdo', 1, '2021-05-27'),
+(3, 'Pengadilan Agama Tutuyan', '', 'pa-tutuyan', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Tty', 1, '2021-05-27'),
+(4, 'Pengadilan Agama Bolaang Uki', '', 'pa-blu', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Blu', 1, '2021-05-27'),
+(5, 'Pengadilan Agama Tondano', '', 'pa-tondano', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Tdo', 1, '2021-05-27'),
+(6, 'Pengadilan Agama Lolak', '', 'pa-lolak', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Llk', 1, '2021-05-27'),
+(7, 'Pengadilan Agama Boroko', '', 'pa-boroko', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Brk', 1, '2021-05-27'),
+(8, 'Pengadilan Agama Amurang', '', 'pa-amurang', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Amg', 1, '2021-05-27'),
+(9, 'Pengadilan Agama Kotamobagu', '', 'pa-kotamobagu', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Ktg', 1, '2021-05-27'),
+(10, 'Pengadilan Agama Tahuna', '', 'pa-tahuna', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Thn', 1, '2021-05-27'),
+(11, 'Pengadilan Agama Bitung', '', 'pa-bitung', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Btg', 1, '2021-05-27');
 
 --
 -- Indexes for dumped tables
@@ -263,13 +270,13 @@ ALTER TABLE `bundel_b`
 -- AUTO_INCREMENT for table `kategori_perkara`
 --
 ALTER TABLE `kategori_perkara`
-  MODIFY `id_kaper` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kaper` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `list_perkara`
 --
 ALTER TABLE `list_perkara`
-  MODIFY `id_perkara` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_perkara` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `users`
