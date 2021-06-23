@@ -3,19 +3,21 @@
     <div class="row mt-5">
         <!-- //card dashboard -->
         <div class="col-xl-4 col-md-6">
-            <div class="card bg-satu text-white mb-4">
-                <div class="card-body">
-                    <h3>Perkara Banding</h3>
-                </div>
-                <div class="card-footer">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <small>Perkara Masuk</small> 18
+            <a class="text-reset text-decoration-none" href="<?= base_url('viewhakim/banding') ?>">
+                <div class="card bg-satu text-white mb-4">
+                    <div class="card-body">
+                        <h3>Perkara Banding</h3>
                     </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <small>Teregistrasi</small> 16
+                    <div class="card-footer">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <small>Perkara Masuk</small> 18
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <small>Teregistrasi</small> 16
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-xl-4 col-md-6">

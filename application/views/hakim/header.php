@@ -28,7 +28,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-satu">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="<?= base_url('home/') ?>">
                 <img src="<?= base_url('assets/img/') ?>logoapp.png" alt="" width="80" class="drop-shadow">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,16 +37,16 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="<?= base_url('viewhakim/') ?>">Dasbor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Banding</a>
+                        <a class="nav-link" href="<?= base_url('viewhakim/banding/') ?>">Banding</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Eksaminasi</a>
+                        <a class="nav-link" href="<?= base_url('viewhakim/eksaminasi/') ?>">Eksaminasi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Laporan Perkara</a>
+                        <a class="nav-link" href="<?= base_url('viewhakim/laper/') ?>">Laporan Perkara</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
