@@ -105,7 +105,7 @@
 
 <!-- ==modalAddperkara -->
 <div class="modal fade" id="modalAddperkara" tabindex="-1" aria-labelledby="modalAddperkara" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Data Perkara</h5>
@@ -117,21 +117,21 @@
                     <input type="hidden" class="form-control" id="tanggalregister" name="tgl_register" value="<?php echo date('Y-m-d'); ?>">
                     <div class="row mb-3">
                         <label for="nomorPerkara" class="col-sm-2 col-form-label">Nomor Perkara</label>
-                        <div class="col-sm-2">
-                            <input type="text" class="form-control" name="nomor_perkara">
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="nomor_perkara">
+                                <span class="input-group-text">/</span>
+                                <select class="form-select" aria-label="Default select example" name="kode_perkara">
+                                    <option value="Pdt.P">Pdt.P</option>
+                                    <option value="Pdt.G" selected>Pdt.G</option>
+                                </select>
+                                <span class="input-group-text">/</span>
+                                <input type="text" class="form-control" name="tahun_perkara" value="<?= date('Y'); ?>">
+                                <span class="input-group-text">/</span>
+                                <input type="text" class="form-control" name="kode_pa" value="<?= $this->session->userdata('kode_pa'); ?>" readonly>
+                            </div>
                         </div>
-                        <div class="col-sm-3">
-                            <select class="form-select" aria-label="Default select example" name="kode_perkara">
-                                <option value="Pdt.P">Pdt.P</option>
-                                <option value="Pdt.G" selected>Pdt.G</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" class="form-control" name="tahun_perkara" value="<?= date('Y'); ?>">
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" name="kode_pa" value="<?= $this->session->userdata('kode_pa'); ?>" readonly>
-                        </div>
+
                     </div>
                     <div class="row mb-3">
                         <label for="jenisPerkara" class="col-sm-2 col-form-label">Jenis Perkara</label>
@@ -149,66 +149,116 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="namaPihak" name="nm_pihak_penggugat">
                         </div>
-                        <div class="row mb-3">
-                            <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak Tergugat</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="namaPihak" name="nm_pihak_tergugat">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="nomor_surat" class="col-sm-2 col-form-label">Nomor Surat Pengantar</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nomor_surat" name="no_surat_pengantar" required>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="jenisPerkara" class="col-sm-2 col-form-label">Pejabat Berwenang</label>
-                            <div class="col-sm-10">
-                                <select class="form-select" id="jenisPerkara" name="pejabat_berwenang">
-                                    <option value="">-- Pilih --</option>
-
-                                    <option value="Panitera"> Panitera</option>
-                                    <option value="Panmud Hukum"> Panmud Hukum</option>
-
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="namaPanitera" class="col-sm-2 col-form-label">Nama Pejabat</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="namaPanitera" name="nm_pejabat" required>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="nipPanitera" class="col-sm-2 col-form-label">NIP Pejabat</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nipPanitera" name="nip_pejabat" onkeypress="return hanyaAngka(event)" required maxlength="18" minlength="18">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="banyaknya" class="col-sm-2 col-form-label">Banyaknya Berkas</label>
-                            <div class="col-sm-10">
-                                <input type="number" class="form-control" id="banyaknya" name="banyaknya">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
-                            <div class="col-sm-10">
-                                <textarea type="text" class="form-control" id="keterangan" name="keterangan"></textarea>
-                            </div>
-                        </div>
-
-
-                        <!-- end form addBerkas -->
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn bg-satu text-white" value="upload">Simpan</button>
+                    <div class="row mb-3">
+                        <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak Tergugat</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="namaPihak" name="nm_pihak_tergugat">
+                        </div>
                     </div>
-                </form>
+
+                    <!-- cek jenis PA -->
+                    <?php
+
+                    switch ($this->session->userdata('kode_pa')) {
+                        case 'PA.Mdo':
+                            $kode_surat_pa = 'W18.A1';
+                            break;
+                        case 'PA.Ktg':
+                            $kode_surat_pa = 'W18.A2';
+                            break;
+                        case 'PA.Thn':
+                            $kode_surat_pa = 'W18.A3';
+                            break;
+                        case 'PA.Tdo':
+                            $kode_surat_pa = 'W18.A4';
+                            break;
+                        case 'PA.Btg':
+                            $kode_surat_pa = 'W18.A5';
+                            break;
+                        case 'PA.Amg':
+                            $kode_surat_pa = 'W18.A6';
+                            break;
+                        case 'PA.Llk':
+                            $kode_surat_pa = 'W18.A7';
+                            break;
+                        case 'PA.Blu':
+                            $kode_surat_pa = 'W18.A8';
+                            break;
+                        case 'PA.Brk':
+                            $kode_surat_pa = 'W18.A9';
+                            break;
+                        case 'PA.Tty':
+                            $kode_surat_pa = 'W18.A10';
+                            break;
+                    }
+
+                    ?>
+
+
+                    <div class="row mb-3">
+                        <label for="nomorPerkara" class="col-sm-2">Nomor Surat Pengantar</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-text"><?= $kode_surat_pa ?>/</span>
+                                <input type="text" class="form-control" name="nomor_surat_pengantar">
+                                <span class="input-group-text">/HK.05/</span>
+                                <input type="text" class="form-control" name="tahun_perkara" value="<?= date('m'); ?>">
+                                <span class="input-group-text">/</span>
+                                <input type="text" class="form-control" name="tahun_perkara" value="<?= date('Y'); ?>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="jenisPerkara" class="col-sm-2 col-form-label">Pejabat Berwenang</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" id="jenisPerkara" name="pejabat_berwenang">
+                                <option value="">-- Pilih --</option>
+
+                                <option value="Panitera"> Panitera</option>
+                                <option value="Panmud Hukum"> Panmud Hukum</option>
+                                <option value="Panmud Hukum"> Panmud Gugatan</option>
+                                <option value="Panmud Hukum"> Panmud Permohonan</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="namaPanitera" class="col-sm-2 col-form-label">Nama Pejabat</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="namaPanitera" name="nm_pejabat" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="nipPanitera" class="col-sm-2 col-form-label">NIP Pejabat</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="nipPanitera" name="nip_pejabat" onkeypress="return hanyaAngka(event)" required maxlength="18" minlength="18">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="banyaknya" class="col-sm-2 col-form-label">Banyaknya Berkas</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="banyaknya" name="banyaknya">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
+                        <div class="col-sm-10">
+                            <textarea type="text" class="form-control" id="keterangan" name="keterangan"></textarea>
+                        </div>
+                    </div>
+
+
+                    <!-- end form addBerkas -->
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn bg-satu text-white" value="upload">Simpan</button>
+            </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 <!-- end modalAddperkara -->
 
