@@ -31,38 +31,31 @@ class Banding extends CI_Controller
 
     public function tambah_perkara()
     {
-        $this->load->library('form_validation');
+        $nomor_perkara = $this->input->post('nomor_perkara', true);
+        $kode_perkara = $this->input->post('kode_perkara', true);
+        $tahun_perkara = $this->input->post('tahun_perkara', true);
+        $kode_pa = $this->input->post('kode_pa');
 
-        $this->form_validation->set_rules('no_perkara', 'Nomor Perkara', 'required');
-        $this->form_validation->set_rules('no_surat_pengantar', 'Nomor Surat Pengantar', 'required');
-        $this->form_validation->set_rules('nm_pejabat', 'Nama Pejabat', 'required');
-        $this->form_validation->set_rules('nip_pejabat', 'NIP Pejabat', 'required');
-        $this->form_validation->set_rules('banyaknya', 'Banyaknya berkas', 'numeric');
-
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('banding/index');
-        } else {
-            $data = [
-                'id_perkara' => '',
-                'id_user' => $this->session->userdata('id'),
-                'no_perkara' => $this->input->post('no_perkara', true),
-                'nm_pihak_penggugat' => $this->input->post('nm_pihak_penggugat', true),
-                'nm_pihak_tergugat' => $this->input->post('nm_pihak_tergugat', true),
-                'jns_perkara' => $this->input->post('jns_perkara', true),
-                'tgl_register' => $this->input->post('tgl_register', true),
-                'no_surat_pengantar' => $this->input->post('no_surat_pengantar', true),
-                'pejabat_berwenang' => $this->input->post('pejabat_berwenang', true),
-                'nm_pejabat' => $this->input->post('nm_pejabat', true),
-                'nip_pejabat' => $this->input->post('nip_pejabat', true),
-                'banyaknya' => $this->input->post('banyaknya', true),
-                'keterangan' => $this->input->post('keterangan', true),
-            ];
-            $this->db->insert('list_perkara', $data);
-            $this->session->set_flashdata('flash', 'berhasil disimpan');
-            redirect('banding/');
-        }
+        $no_perkara_input = $nomor_perkara . '/' . $kode_perkara . '/' . $tahun_perkara . '/' . $kode_pa;
+        $data = [
+            'id_perkara' => '',
+            'id_user' => $this->session->userdata('id'),
+            'no_perkara' => $no_perkara_input,
+            'nm_pihak_penggugat' => $this->input->post('nm_pihak_penggugat', true),
+            'nm_pihak_tergugat' => $this->input->post('nm_pihak_tergugat', true),
+            'jns_perkara' => $this->input->post('jns_perkara', true),
+            'tgl_register' => $this->input->post('tgl_register', true),
+            'no_surat_pengantar' => $this->input->post('no_surat_pengantar', true),
+            'pejabat_berwenang' => $this->input->post('pejabat_berwenang', true),
+            'nm_pejabat' => $this->input->post('nm_pejabat', true),
+            'nip_pejabat' => $this->input->post('nip_pejabat', true),
+            'banyaknya' => $this->input->post('banyaknya', true),
+            'keterangan' => $this->input->post('keterangan', true),
+        ];
+        $this->db->insert('list_perkara', $data);
+        $this->session->set_flashdata('flash', 'berhasil disimpan');
+        redirect('banding/');
     }
-
 
     public function edit_perkara()
     {

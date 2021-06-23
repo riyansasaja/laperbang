@@ -117,8 +117,20 @@
                     <input type="hidden" class="form-control" id="tanggalregister" name="tgl_register" value="<?php echo date('Y-m-d'); ?>">
                     <div class="row mb-3">
                         <label for="nomorPerkara" class="col-sm-2 col-form-label">Nomor Perkara</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nomorPerkara" name="no_perkara" required>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" name="nomor_perkara">
+                        </div>
+                        <div class="col-sm-3">
+                            <select class="form-select" aria-label="Default select example" name="kode_perkara">
+                                <option value="Pdt.P">Pdt.P</option>
+                                <option value="Pdt.G" selected>Pdt.G</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" name="tahun_perkara" value="<?= date('Y'); ?>">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="kode_pa" value="<?= $this->session->userdata('kode_pa'); ?>" readonly>
                         </div>
                     </div>
                     <div class="row mb-3">
