@@ -35,8 +35,8 @@ class Banding extends CI_Controller
 
         $this->form_validation->set_rules('no_perkara', 'Nomor Perkara', 'required');
         $this->form_validation->set_rules('no_surat_pengantar', 'Nomor Surat Pengantar', 'required');
-        $this->form_validation->set_rules('nm_panitera', 'Nama Panitera', 'required');
-        $this->form_validation->set_rules('nip_panitera', 'NIP Panitera', 'required');
+        $this->form_validation->set_rules('nm_pejabat', 'Nama Pejabat', 'required');
+        $this->form_validation->set_rules('nip_pejabat', 'NIP Pejabat', 'required');
         $this->form_validation->set_rules('banyaknya', 'Banyaknya berkas', 'numeric');
 
         if ($this->form_validation->run() == FALSE) {
@@ -46,13 +46,14 @@ class Banding extends CI_Controller
                 'id_perkara' => '',
                 'id_user' => $this->session->userdata('id'),
                 'no_perkara' => $this->input->post('no_perkara', true),
-                'nm_pihak' => $this->input->post('nm_pihak', true),
+                'nm_pihak_penggugat' => $this->input->post('nm_pihak_penggugat', true),
+                'nm_pihak_tergugat' => $this->input->post('nm_pihak_tergugat', true),
                 'jns_perkara' => $this->input->post('jns_perkara', true),
                 'tgl_register' => $this->input->post('tgl_register', true),
-                'status_perkara' => '',
                 'no_surat_pengantar' => $this->input->post('no_surat_pengantar', true),
-                'nm_panitera' => $this->input->post('nm_panitera', true),
-                'nip_panitera' => $this->input->post('nip_panitera', true),
+                'pejabat_berwenang' => $this->input->post('pejabat_berwenang', true),
+                'nm_pejabat' => $this->input->post('nm_pejabat', true),
+                'nip_pejabat' => $this->input->post('nip_pejabat', true),
                 'banyaknya' => $this->input->post('banyaknya', true),
                 'keterangan' => $this->input->post('keterangan', true),
             ];
@@ -67,11 +68,13 @@ class Banding extends CI_Controller
     {
         $id_perkara = $this->input->post('id_perkara');
         $no_perkara = $this->input->post('no_perkara');
-        $nm_pihak = $this->input->post('nm_pihak');
+        $nm_pihak = $this->input->post('nm_pihak_penggugat');
+        $nm_pihak_tergugat = $this->input->post('nm_pihak_tergugat');
         $jns_perkara = $this->input->post('jns_perkara');
         $no_surat_pengantar = $this->input->post('no_surat_pengantar');
-        $nm_panitera = $this->input->post('nm_panitera');
-        $nip_panitera = $this->input->post('nip_panitera');
+        $pejabat_berwenang = $this->input->post('pejabat_berwenang');
+        $nm_pejabat = $this->input->post('nm_pejabat');
+        $nip_pejabat = $this->input->post('nip_pejabat');
         $banyaknya = $this->input->post('banyaknya');
         $keterangan = $this->input->post('keterangan');
 
@@ -87,11 +90,13 @@ class Banding extends CI_Controller
         $data = [
             'id_perkara' => $id_perkara,
             'no_perkara' => $no_perkara,
-            'nm_pihak' => $nm_pihak,
+            'nm_pihak_penggugat' => $nm_pihak,
+            'nm_pihak_tergugat' => $nm_pihak_tergugat,
             'jns_perkara' => $jns_perkara,
             'no_surat_pengantar' => $no_surat_pengantar,
-            'nm_panitera' => $nm_panitera,
-            'nip_panitera' => $nip_panitera,
+            'pejabat_berwenang' => $pejabat_berwenang,
+            'nm_pejabat' => $nm_pejabat,
+            'nip_pejabat' => $nip_pejabat,
             'banyaknya' => $banyaknya,
             'keterangan' => $keterangan,
         ];
