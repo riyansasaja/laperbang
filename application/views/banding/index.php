@@ -321,6 +321,24 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                         <div class="row mb-3">
                             <label for="no_surat_pengantar" class="col-sm-2 col-form-label">Nomor Surat Pengantar</label>
                             <!-- ambil nomor untuk di explode -->
+                            <?php
+                            $nomor_surat_pengantar = $lhs['no_surat_pengantar'];
+                            $nomor_surat_pengantar_explode = explode('/', $nomor_surat_pengantar);
+                            $bulan = $nomor_surat_pengantar_explode[3];
+                            $tahun = $nomor_surat_pengantar_explode[4];
+                            ?>
+                            <!-- taruh di inputan hasil explode -->
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <input type="text" name="kode_surat_pa" value="<?= $nomor_surat_pengantar_explode[0]; ?>" hidden>
+                                    <span class="input-group-text"><?= $nomor_surat_pengantar_explode[0]; ?>/</span>
+                                    <input type="text" class="form-control" name="nomor_surat_pengantar" value="<?= $nomor_surat_pengantar_explode[1]; ?>">
+                                    <span class="input-group-text">/HK.05/</span>
+                                    <input type="text" class="form-control" name="bulan_surat_pengantar" value="<?php echo $bulan ?>">
+                                    <span class="input-group-text">/</span>
+                                    <input type="text" class="form-control" name="tahun_surat_pengantar" value="<?= $tahun ?>">
+                                </div>
+                            </div>
 
                             <!-- <div class="col-sm-10">
                                 <input type="text" class="form-control" name="no_surat_pengantar" value="<?php echo $lhs['no_surat_pengantar']; ?>">
