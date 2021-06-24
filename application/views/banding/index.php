@@ -200,7 +200,7 @@
                         <label for="nomorPerkara" class="col-sm-2">Nomor Surat Pengantar</label>
                         <div class="col-sm-10">
                             <div class="input-group">
-                                <input type="text" value="<?= $kode_surat_pa ?>" hidden>
+                                <input type="text" name="kode_surat_pa" value="<?= $kode_surat_pa ?>" hidden>
                                 <span class="input-group-text"><?= $kode_surat_pa ?>/</span>
                                 <input type="text" class="form-control" name="nomor_surat_pengantar">
                                 <span class="input-group-text">/HK.05/</span>
