@@ -218,8 +218,8 @@
 
                                 <option value="Panitera"> Panitera</option>
                                 <option value="Panmud Hukum"> Panmud Hukum</option>
-                                <option value="Panmud Hukum"> Panmud Gugatan</option>
-                                <option value="Panmud Hukum"> Panmud Permohonan</option>
+                                <option value="Panmud Gugatan"> Panmud Gugatan</option>
+                                <option value="Panmud Permohonan"> Panmud Permohonan</option>
 
                             </select>
                         </div>
@@ -313,9 +313,15 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak</label>
+                            <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak Penggungat</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nm_pihak" value="<?php echo $lhs['nm_pihak_penggugat']; ?>">
+                                <input type="text" class="form-control" name="nm_pihak_penggugat" value="<?php echo $lhs['nm_pihak_penggugat']; ?>">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak Tergugat</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="nm_pihak_tergugat" value="<?php echo $lhs['nm_pihak_tergugat']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -339,21 +345,34 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                                     <input type="text" class="form-control" name="tahun_surat_pengantar" value="<?= $tahun ?>">
                                 </div>
                             </div>
-
-                            <!-- <div class="col-sm-10">
-                                <input type="text" class="form-control" name="no_surat_pengantar" value="<?php echo $lhs['no_surat_pengantar']; ?>">
-                            </div> -->
                         </div>
+
+                        <div class="row mb-3">
+                            <label for="jenisPerkara" class="col-sm-2 col-form-label">Pejabat Berwenang</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" name="pejabat_berwenang">
+                                    <option value="">-- Pilih --</option>
+
+                                    <option value="Panitera" <?= $lhs['pejabat_berwenang'] == 'Panitera' ? 'selected' : ''; ?>> Panitera</option>
+                                    <option value="Panmud Hukum" <?= $lhs['pejabat_berwenang'] == 'Panmud Hukum' ? 'selected' : ''; ?>> Panmud Hukum</option>
+                                    <option value="Panmud Gugatan" <?= $lhs['pejabat_berwenang'] == 'Panmud Gugatan' ? 'selected' : ''; ?>> Panmud Gugatan</option>
+                                    <option value="Panmud Permohonan" <?= $lhs['pejabat_berwenang'] == 'Panmud Permohonan' ? 'selected' : ''; ?>> Panmud Permohonan</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+
                         <div class="row mb-3">
                             <label for="namaPanitera" class="col-sm-2 col-form-label">Nama Panitera</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nm_panitera" value="<?php echo $lhs['nm_pejabat']; ?>">
+                                <input type="text" class="form-control" name="nm_pejabat" value="<?php echo $lhs['nm_pejabat']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="nipPanitera" class="col-sm-2 col-form-label">NIP Panitera</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nip_panitera" value="<?php echo $lhs['nip_pejabat']; ?>">
+                                <input type="text" class="form-control" name="nip_pejabat" value="<?php echo $lhs['nip_pejabat']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
