@@ -200,12 +200,13 @@
                         <label for="nomorPerkara" class="col-sm-2">Nomor Surat Pengantar</label>
                         <div class="col-sm-10">
                             <div class="input-group">
+                                <input type="text" value="<?= $kode_surat_pa ?>" hidden>
                                 <span class="input-group-text"><?= $kode_surat_pa ?>/</span>
                                 <input type="text" class="form-control" name="nomor_surat_pengantar">
                                 <span class="input-group-text">/HK.05/</span>
-                                <input type="text" class="form-control" name="tahun_perkara" value="<?= date('m'); ?>">
+                                <input type="text" class="form-control" name="bulan_surat_pengantar" value="<?= date('m'); ?>">
                                 <span class="input-group-text">/</span>
-                                <input type="text" class="form-control" name="tahun_perkara" value="<?= date('Y'); ?>">
+                                <input type="text" class="form-control" name="tahun_surat_pengantar" value="<?= date('Y'); ?>">
                             </div>
                         </div>
                     </div>
