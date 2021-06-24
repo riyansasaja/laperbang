@@ -544,6 +544,20 @@
                                         </a>
                                     </div>
                                 </div>
+                                <div class="row mb-3">
+                                    <div class="col-1" style="width: 1rem;">14.</div>
+                                    <label for="formFileSm" class="col-4 form-label">Surat Lainnya (Bila ada) --pdf</label>
+                                    <div class="col-4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file15">
+                                    </div>
+                                    <div class="col-3 my-auto <?php //$perkara['0']['surat_lainnya'] ? '' : 'd-none' 
+                                                                ?> ">
+                                        <!-- <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['surat_lainnya'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['0']['surat_lainnya'] ?>
+                                        </a> -->
+                                    </div>
+                                </div>
 
                                 <button type="submit" class="btn btn-block btn-primary">Kirim</button>
                             </form>
