@@ -267,7 +267,7 @@
 <?php $no = 0;
 foreach ($perkara_banding as $lhs) : $no++; ?>
     <div class="modal fade" id="modalupdateperkara<?= $lhs['id_perkara'] ?>" tabindex="-1" aria-labelledby="modalupdateperkara" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Edit Data Perkara</h5>
@@ -280,8 +280,25 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                         <input type="hidden" class="form-control" id="id_perkara<?= $no ?>" value="<?php echo $lhs['id_perkara']; ?>" name="id_perkara">
                         <div class="row mb-3">
                             <label for="nomorPerkara" class="col-sm-2 col-form-label">Nomor Perkara</label>
+                            <!-- explode dulu -->
+                            <?php
+                            $nomor_perkara = $lhs['no_perkara'];
+                            $nomor_perkara_explode = explode('/', $nomor_perkara);
+                            ?>
+                            <!-- letakkan hasil explode di isian -->
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nomorPerkara<?= $no ?>" name="no_perkara" value="<?php echo $lhs['no_perkara']; ?>">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="nomor_perkara" value="<?= $nomor_perkara_explode[0] ?>">
+                                    <span class="input-group-text">/</span>
+                                    <select class="form-select" aria-label="Default select example" name="kode_perkara">
+                                        <option value="Pdt.P" <?= $nomor_perkara_explode[1] == 'Pdt.P' ? 'selected' : ''; ?>>Pdt.P</option>
+                                        <option value="Pdt.G" <?= $nomor_perkara_explode[1] == 'Pdt.G' ? 'selected' : ''; ?>>Pdt.G</option>
+                                    </select>
+                                    <span class="input-group-text">/</span>
+                                    <input type="text" class="form-control" name="tahun_perkara" value="<?= $nomor_perkara_explode[2] ?>">
+                                    <span class="input-group-text">/</span>
+                                    <input type="text" class="form-control" name="kode_pa" value="<?= $this->session->userdata('kode_pa'); ?>" readonly>
+                                </div>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -303,9 +320,11 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                         </div>
                         <div class="row mb-3">
                             <label for="no_surat_pengantar" class="col-sm-2 col-form-label">Nomor Surat Pengantar</label>
-                            <div class="col-sm-10">
+                            <!-- ambil nomor untuk di explode -->
+
+                            <!-- <div class="col-sm-10">
                                 <input type="text" class="form-control" name="no_surat_pengantar" value="<?php echo $lhs['no_surat_pengantar']; ?>">
-                            </div>
+                            </div> -->
                         </div>
                         <div class="row mb-3">
                             <label for="namaPanitera" class="col-sm-2 col-form-label">Nama Panitera</label>
