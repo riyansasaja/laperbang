@@ -313,11 +313,6 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                             </div>
                         </div>
                         <div class="row mb-3">
-<<<<<<< HEAD
-                            <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak Penggugat</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nm_pihak_penggugat" value="<?php echo $lhs['nm_pihak_penggugat']; ?>">
-=======
                             <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak Penggungat</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="nm_pihak_penggugat" value="<?php echo $lhs['nm_pihak_penggugat']; ?>">
@@ -327,7 +322,6 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                             <label for="namaPihak" class="col-sm-2 col-form-label">Nama Pihak Tergugat</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="nm_pihak_tergugat" value="<?php echo $lhs['nm_pihak_tergugat']; ?>">
->>>>>>> ae2cec1e8d07ce5291527149bafeec1acb359fc6
                             </div>
                         </div>
                         <div class="row mb-3">
