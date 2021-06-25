@@ -19,6 +19,34 @@ class m_banding extends CI_model
         }
     }
 
+    public function countLapHarianHakim()
+    {
+
+        $query = $this->db->query(
+            "SELECT COUNT(no_perkara) as list_perkara
+                               FROM list_perkara"
+        );
+        if ($query->num_rows() > 0) {
+            return $query->row()->list_perkara;
+        } else {
+            return 0;
+        }
+    }
+
+    public function countRegis()
+    {
+
+        $query = $this->db->query(
+            "SELECT COUNT(is_nomor) as list_perkara
+                               FROM list_perkara"
+        );
+        if ($query->num_rows() > 0) {
+            return $query->row()->list_perkara;
+        } else {
+            return 0;
+        }
+    }
+
     public function countPerkaraPutus()
     {
         $id_user =  $this->session->userdata('id');
@@ -61,6 +89,8 @@ class m_banding extends CI_model
         $query = $this->db->get()->result_array();
         return $query;
     }
+
+
 
     public function UpdatePerkara($tabelName, $data, $where)
     {

@@ -5,10 +5,13 @@ class ViewHakim extends CI_Controller
 {
     public function index()
     {
+
         //konten
         $data['judul'] = 'Dashboard';
         $data['js'] = 'dashboard_hakim.js';
         $data['css'] = 'dashboard_hakim.css';
+        $data['perkara_harian'] = $this->m_banding->countLapHarianHakim();
+        $data['regis_harian'] = $this->m_banding->countRegis();
 
         $this->load->view('hakim/header', $data);
         $this->load->view('hakim/index');
@@ -19,6 +22,7 @@ class ViewHakim extends CI_Controller
     public function banding()
     {
         //konten
+        $data['perkara_banding'] = $this->m_banding->get_list_perkara();
         $data['judul'] = 'Banding';
         $data['js'] = 'view_hakim_banding.js';
         $data['css'] = 'dashboard_hakim.css';
