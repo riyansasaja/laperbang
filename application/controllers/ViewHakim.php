@@ -27,4 +27,29 @@ class ViewHakim extends CI_Controller
         $this->load->view('hakim/banding');
         $this->load->view('hakim/footer', $data);
     }
+
+    public function view_berkas_banding($id)
+    {
+        $data['judul'] = 'Banding';
+        $data['js'] = 'view_hakim_banding.js';
+        $data['css'] = 'dashboard_hakim.css';
+
+        $data['detail_berkas'] = $this->db->get_where('v_all_perkara', ['id_perkara' => $id])->result_object();
+
+        $this->load->view('hakim/header', $data);
+        $this->load->view('hakim/view_berkas_banding', $data);
+        $this->load->view('hakim/footer', $data);
+    }
+
+    public function get_data_banding()
+    {
+        $data = $this->db->get('v_all_perkara')->result();
+        $result =  [
+            'response' => 'success',
+            'code' => 600,
+            'data' => $data
+
+        ];
+        echo json_encode($result);
+    }
 }

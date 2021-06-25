@@ -31,12 +31,20 @@ class Banding extends CI_Controller
 
     public function tambah_perkara()
     {
+        //ambil inputan nomor perkara
         $nomor_perkara = $this->input->post('nomor_perkara', true);
         $kode_perkara = $this->input->post('kode_perkara', true);
         $tahun_perkara = $this->input->post('tahun_perkara', true);
         $kode_pa = $this->input->post('kode_pa');
+        //ambil inputan nomor surat pengantar
+        $kode_surat_pa = $this->input->post('kode_surat_pa');
+        $nomor_surat_pengantar = $this->input->post('nomor_surat_pengantar');
+        $bulan_surat_pengantar = $this->input->post('bulan_surat_pengantar');
+        $tahun_surat_pengantar = $this->input->post('tahun_surat_pengantar');
+
 
         $no_perkara_input = $nomor_perkara . '/' . $kode_perkara . '/' . $tahun_perkara . '/' . $kode_pa;
+        $no_surat_pengantar_input = $kode_surat_pa . '/' . $nomor_surat_pengantar . '/' . 'HK.05/' . $bulan_surat_pengantar . '/' . $tahun_surat_pengantar;
         $data = [
             'id_perkara' => '',
             'id_user' => $this->session->userdata('id'),
@@ -45,7 +53,7 @@ class Banding extends CI_Controller
             'nm_pihak_tergugat' => $this->input->post('nm_pihak_tergugat', true),
             'jns_perkara' => $this->input->post('jns_perkara', true),
             'tgl_register' => $this->input->post('tgl_register', true),
-            'no_surat_pengantar' => $this->input->post('no_surat_pengantar', true),
+            'no_surat_pengantar' => $no_surat_pengantar_input,
             'pejabat_berwenang' => $this->input->post('pejabat_berwenang', true),
             'nm_pejabat' => $this->input->post('nm_pejabat', true),
             'nip_pejabat' => $this->input->post('nip_pejabat', true),
@@ -59,9 +67,23 @@ class Banding extends CI_Controller
 
     public function edit_perkara()
     {
+        //ambil inputan nomor perkara
+        $nomor_perkara = $this->input->post('nomor_perkara', true);
+        $kode_perkara = $this->input->post('kode_perkara', true);
+        $tahun_perkara = $this->input->post('tahun_perkara', true);
+        $kode_pa = $this->input->post('kode_pa');
+        //ambil inputan nomor surat pengantar
+        $kode_surat_pa = $this->input->post('kode_surat_pa');
+        $nomor_surat_pengantar = $this->input->post('nomor_surat_pengantar');
+        $bulan_surat_pengantar = $this->input->post('bulan_surat_pengantar');
+        $tahun_surat_pengantar = $this->input->post('tahun_surat_pengantar');
+
+
+        $no_perkara_input = $nomor_perkara . '/' . $kode_perkara . '/' . $tahun_perkara . '/' . $kode_pa;
+        $no_surat_pengantar_input = $kode_surat_pa . '/' . $nomor_surat_pengantar . '/' . 'HK.05/' . $bulan_surat_pengantar . '/' . $tahun_surat_pengantar;
+
         $id_perkara = $this->input->post('id_perkara');
-        $no_perkara = $this->input->post('no_perkara');
-        $nm_pihak = $this->input->post('nm_pihak_penggugat');
+        $nm_pihak_penggugat = $this->input->post('nm_pihak_penggugat');
         $nm_pihak_tergugat = $this->input->post('nm_pihak_tergugat');
         $jns_perkara = $this->input->post('jns_perkara');
         $no_surat_pengantar = $this->input->post('no_surat_pengantar');
@@ -82,11 +104,11 @@ class Banding extends CI_Controller
 
         $data = [
             'id_perkara' => $id_perkara,
-            'no_perkara' => $no_perkara,
-            'nm_pihak_penggugat' => $nm_pihak,
+            'no_perkara' => $no_perkara_input,
+            'nm_pihak_penggugat' => $nm_pihak_penggugat,
             'nm_pihak_tergugat' => $nm_pihak_tergugat,
             'jns_perkara' => $jns_perkara,
-            'no_surat_pengantar' => $no_surat_pengantar,
+            'no_surat_pengantar' => $no_surat_pengantar_input,
             'pejabat_berwenang' => $pejabat_berwenang,
             'nm_pejabat' => $nm_pejabat,
             'nip_pejabat' => $nip_pejabat,
