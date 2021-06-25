@@ -90,19 +90,6 @@ class m_banding extends CI_model
         return $query;
     }
 
-    public function get_list_perkara_hakim()
-    {
-        $this->db->select('*');
-        $this->db->from('list_perkara');
-        $this->db->join('users', 'users.id = list_perkara.id_user');
-        $this->db->order_by('id_perkara', 'DESC');
-        // $this->db->limit(10);
-        $query = $this->db->get()->result_array();
-        return $query;
-    }
-
-
-
     public function UpdatePerkara($tabelName, $data, $where)
     {
         $res = $this->db->update($tabelName, $data, $where);

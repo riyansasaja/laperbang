@@ -9,6 +9,11 @@ class Banding extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->model('m_banding');
         $this->load->library('form_validation');
+
+        //usir user yang ga punya session
+        if (!$this->session->userdata('id')) {
+            redirect('auth');
+        }
     }
     public function index()
     {
@@ -639,9 +644,14 @@ class Banding extends CI_Controller
         //ambil data
         $data['perkara'] = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
 
-        $this->load->view('banding/header', $data);
-        $this->load->view('banding/uploadbundle', $data);
-        $this->load->view('banding/footer', $data);
+        //usir id tidak sesuai
+        if ($this->session->userdata('id') != $data['perkara'][0]['id_user']) {
+            redirect('banding');
+        } else {
+            $this->load->view('banding/header', $data);
+            $this->load->view('banding/uploadbundle', $data);
+            $this->load->view('banding/footer', $data);
+        }
     }
     public function userProfile()
     {
