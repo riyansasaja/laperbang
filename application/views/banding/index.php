@@ -79,7 +79,6 @@
                                 <td><?php echo $lhs['tgl_register']; ?></td>
                                 <td><?php echo $lhs['status_perkara']; ?></td>
                                 <td>
-
                                     <a class="text-decoration-none mx-1 col-12 col-lg-4" href="<?= base_url('banding/uploadbundle/') . $lhs['id_perkara'] ?>">
                                         <i class="fas fa-fw fa-upload" style="color: #206A5D ;" title="Unggah Berkas"></i>
                                     </a>

@@ -10,10 +10,10 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex align-items-center justify-content-between">
-                            <small>Perkara Masuk</small> 18
+                            <small>Perkara Masuk</small> <?php echo $perkara_harian;  ?>
                         </div>
                         <div class="d-flex align-items-center justify-content-between">
-                            <small>Teregistrasi</small> 16
+                            <small>Teregistrasi</small> <?php echo $regis_harian;  ?>
                         </div>
                     </div>
                 </div>
