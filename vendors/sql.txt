@@ -1,0 +1,4 @@
+//untuk create view perkara yang dilihat hakim
+CREATE VIEW v_all_perkara_hakim AS
+SELECT list_perkara.*, users.nama FROM list_perkara JOIN users ON list_perkara.id_user = users.id
+WHERE list_perkara.is_nomor = 1;
