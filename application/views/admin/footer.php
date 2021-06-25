@@ -32,6 +32,8 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- chart js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<!-- js sidebar -->
+<script src="<?= base_url('assets/js/') ?>sidebar.js"></script>
 <!-- jspribadi -->
 <script src="<?= base_url('assets/js/') . $js ?>"></script>
 
