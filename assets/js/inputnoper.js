@@ -40,7 +40,9 @@ $(document).ready(function () {
         $('#modal_input_perkara').modal('show');
         $('#simpan').on('click', function () {
             console.log('tombol simpan di klik');
-
+            //ambil data
+            let nomor_surat = $('#nomor_surat').val();
+            let tahun_surat_pengantar = $('#tahun_surat_pengantar').val();
             //swal notification
 
             Swal.fire({
@@ -54,6 +56,23 @@ $(document).ready(function () {
                 if (result.isConfirmed) {
 
                     //kalo jadi simpan baru kase ba jalang ajax
+                    $.ajax({
+                        type: "POST",
+                        url: `${path}/admin/updatenoper`,
+                        data: {
+                            id_perkara: id_perkara,
+                            nomor_surat: nomor_surat,
+                            tahun_surat_pengantar: tahun_surat_pengantar
+                        },
+                        dataType: "json",
+                        success: function (response) {
+                            console.log(response);
+                            list_perkara.ajax.reload();
+
+                        }
+                    });
+
+
 
                     Swal.fire('Nomor Perkara berhasil diinput!', '', 'success')
                     $('#modal_input_perkara').modal('hide');

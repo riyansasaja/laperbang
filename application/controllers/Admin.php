@@ -65,4 +65,21 @@ class Admin extends CI_Controller
 
         echo json_encode($data);
     }
+
+
+    public function updatenoper()
+    {
+        $no_surat_banding = $this->input->post('nomor_surat');
+        $tahun_surat_pengantar = $this->input->post('tahun_surat_pengantar');
+        $nomor_surat = $no_surat_banding . '/' . 'Pdt.G/' . $tahun_surat_pengantar . '/PTA.Mdo';
+        $id_perkara = $this->input->post('id_perkara');
+        $data = [
+            'id_perkara' => $id_perkara,
+            'no_perkara_banding' => $nomor_surat
+        ];
+
+        $this->db->where('id_perkara', $id_perkara);
+        $data =  $this->db->update('list_perkara', $data);
+        json_encode($data);
+    }
 }
