@@ -87,15 +87,7 @@
                             <div class="sb-sidenav-menu-heading">Kelola Perkara</div>
                             <a class="nav-link <?= $judul == 'Input Nomor Perkara' ? 'active' : '' ?>" href="<?= base_url('admin/inputnoper/') ?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-fw fa-keyboard"></i></div>
-                                Input Nomor Perkara
-                            </a>
-                            <a class="nav-link <?= $judul == 'Input Status Perkara' ? 'active' : '' ?>" href="<?= base_url('admin/inputstaper/') ?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-fw fa-calendar-week"></i></div>
-                                Input Status Perkara
-                            </a>
-                            <a class="nav-link" href="<?= base_url('admin/uploadputusan/') ?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-fw fa-cloud-upload-alt"></i></div>
-                                Upload Putusan
+                                Manajemen Perkara
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Manajemen User</div>
