@@ -37,7 +37,11 @@ $(document).ready(function () {
     $('#listperkara').on('click', '.item_input', function () {
         let data = list_perkara.row($(this).parents('tr')).data();
         let id_perkara = data['id_perkara'];
+        let noperband = data['no_perkara_banding'];
+        let explode = noperband.split('/');
+        let cuma_nomor = explode[0];
         $('#modal_input_perkara').modal('show');
+        $('#nomor_perkara_banding').val(cuma_nomor);
         $('#simpan').on('click', function () {
             //ambil data
             let nomor_perkara_banding = $('#nomor_perkara_banding').val();
