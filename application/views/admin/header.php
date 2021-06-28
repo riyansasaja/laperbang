@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/') . $css ?>">
     <!-- css sidebar -->
     <link rel="stylesheet" href="<?= base_url('assets/css/') ?>styles.css">
-    <!-- dropzone -->
-    <link rel="stylesheet" href="<?= base_url('assets/dropzone/dropzone.css') ?>">
+
+    <!-- AnimateCss -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- sidebar -->
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
 
@@ -45,7 +46,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-envelope-open fa-fw"></i>
-                        <span class="position-absolute top-6 translate-middle badge rounded-pill bg-danger">
+                        <span class="position-absolute top-6 translate-middle badge rounded-pill bg-danger animate__animated animate__flash animate__infinite">
                             2
                             <span class="visually-hidden">unread messages</span>
                         </span>
