@@ -5,7 +5,7 @@
             <li class="breadcrumb-item active animate__animated animate__backInLeft">Dashboard</li>
         </ol>
         <div class="row">
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-3 col-md-6 animate__animated animate__backInLeft animate__delay-1s">
                 <div class="card bg-satu text-white mb-4">
                     <div class="card-body">Primary Card</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
-                <div class="card bg-dua text-white mb-4">
+                <div class="card bg-dua text-white mb-4 animate__animated animate__backInLeft animate__delay-2s">
                     <div class="card-body">Warning Card</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
-                <div class="card bg-tiga text-white mb-4">
+                <div class="card bg-tiga text-white mb-4 animate__animated animate__backInLeft animate__delay-3s">
                     <div class="card-body">Success Card</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-3 col-md-6 animate__animated animate__backInLeft animate__delay-4s">
                 <div class="card bg-empat text-white mb-4">
                     <div class="card-body">Danger Card</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
