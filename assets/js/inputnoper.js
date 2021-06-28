@@ -39,12 +39,10 @@ $(document).ready(function () {
         let id_perkara = data['id_perkara'];
         $('#modal_input_perkara').modal('show');
         $('#simpan').on('click', function () {
-            console.log('tombol simpan di klik');
             //ambil data
-            let nomor_surat = $('#nomor_surat').val();
-            let tahun_surat_pengantar = $('#tahun_surat_pengantar').val();
+            let nomor_perkara_banding = $('#nomor_perkara_banding').val();
+            let tahun_perkara_banding = $('#tahun_perkara_banding').val();
             //swal notification
-
             Swal.fire({
                 title: 'Yakin sudah benar?',
                 showDenyButton: true,
@@ -61,8 +59,8 @@ $(document).ready(function () {
                         url: `${path}/admin/updatenoper`,
                         data: {
                             id_perkara: id_perkara,
-                            nomor_surat: nomor_surat,
-                            tahun_surat_pengantar: tahun_surat_pengantar
+                            nomor_perkara_banding: nomor_perkara_banding,
+                            tahun_perkara_banding: tahun_perkara_banding
                         },
                         dataType: "json",
                         success: function (e) {
@@ -71,7 +69,7 @@ $(document).ready(function () {
                     });
 
                     Swal.fire('Nomor Perkara berhasil diinput!', '', 'success')
-                    $('#nomor_surat').val('');
+                    $('#nomor_perkara_banding').val('');
                     $('#modal_input_perkara').modal('hide');
                     list_perkara.ajax.reload();
                 } else if (result.isDenied) {
