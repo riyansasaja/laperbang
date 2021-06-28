@@ -34,7 +34,7 @@ class ViewHakim extends CI_Controller
     public function view_berkas_banding($id)
     {
         $data['judul'] = 'Banding';
-        $data['js'] = 'view_hakim_banding.js';
+        $data['js'] = 'view_berkas_banding.js';
         $data['css'] = 'dashboard_hakim.css';
 
         $data['detail_berkas'] = $this->db->get_where('v_all_perkara', ['id_perkara' => $id])->result_object();

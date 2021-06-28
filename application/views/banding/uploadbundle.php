@@ -110,7 +110,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_gugatan'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['surat_gugatan'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_a/<?= $perkara['0']['surat_gugatan'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['surat_gugatan'] ?>
                                         </a>
                                     </div>
