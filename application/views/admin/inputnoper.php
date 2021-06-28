@@ -43,9 +43,9 @@
             </div>
             <div class="modal-body">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="nomor_surat">
+                    <input type="text" class="form-control" name="nomor_surat" id="nomor_surat">
                     <span class="input-group-text">/Pdt.G/</span>
-                    <input type="text" class="form-control" name="tahun_surat_pengantar" value="<?= date('Y'); ?>">
+                    <input type="text" class="form-control" name="tahun_surat_pengantar" id="tahun_surat_pengantar" value="<?= date('Y'); ?>">
                     <span class="input-group-text">/PTA.Mdo</span>
                 </div>
                 <small class="text-danger fw-lighter">Pastikan nomor yang diinput sama dengan nomor perkara SIPP Banding !!!</p>
