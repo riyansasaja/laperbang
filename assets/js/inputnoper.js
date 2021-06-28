@@ -2,11 +2,11 @@ $(document).ready(function () {
 
     //data table
     const prapath = window.location.origin;
-    const path = `${prapath}/laperbang/viewhakim/`;
+    const path = `${prapath}/laperbang/`;
     console.log(path);
     //---Tampil data table kegiatan
     let list_perkara = $('#listperkara').DataTable({
-        "ajax": `${path}get_data_banding/`,
+        "ajax": `${path}viewhakim/get_data_banding/`,
         "columns": [
             {
                 "data": null, "sortable": false,
@@ -75,7 +75,7 @@ $(document).ready(function () {
         let id_perkara = data['id_perkara'];
 
         //tampilkan pilihan jenis perkara lewat SWAL2
-        const { value: fruit } = Swal.fire({
+        const { value: staper } = Swal.fire({
             title: 'Pilih status perkara',
             input: 'select',
             inputOptions: {
@@ -100,12 +100,13 @@ $(document).ready(function () {
             inputPlaceholder: 'Pilih Status Terbaru',
             showCancelButton: true,
             inputValidator: (value) => {
-                if (value === 'pengirimansalinanputusan') {
-                    uploadSalinanPutusan();
-                } else {
-                    Swal.fire('Status Perkara Dirubah!', '', 'success')
-                    console.log('ok');
-                }
+                return new Promise((resolve) => {
+                    if (value === 'pengirimansalinanputusan') {
+                        uploadSalinanPutusan()
+                    } else {
+                        Swal.fire('Status Perkara berhasil dirubah!', '', 'success')
+                    }
+                })
             }
         });
 
@@ -115,25 +116,43 @@ $(document).ready(function () {
     });
     //=====
 
-
     function uploadSalinanPutusan() {
+        (async () => {
 
-        Swal.fire({
-            title: 'Select image',
-            input: 'file',
-            inputAttributes: {
-                'accept': 'image/*',
-                'aria-label': 'Upload your profile picture'
+            const { value: file } = await Swal.fire({
+                title: 'Select image',
+                input: 'file',
+                inputAttributes: {
+                    'accept': 'image/*',
+                    'aria-label': 'Upload your profile picture'
+                }
+            })
+
+            if (file) {
+                const reader = new FileReader()
+                reader.onload = (e) => {
+                    Swal.fire({
+                        title: 'Your uploaded picture',
+                        imageUrl: e.target.result,
+                        imageAlt: 'The uploaded picture'
+                    })
+                }
+                reader.readAsDataURL(file)
             }
-        })
-
-        if (file) {
-            console.log('kirim file');
-        }
+        })()
 
     }
 
 
+
+
+    //tombol view di klik,
+    $('#listperkara').on('click', '.item_view', function () {
+        let data = list_perkara.row($(this).parents('tr')).data();
+        let id_perkara = data['id_perkara'];
+        window.location.href = `${path}admin/view_berkas_admin/${id_perkara}/`;
+
+    });
 
 
 });

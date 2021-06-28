@@ -12,29 +12,29 @@ body{
     user-select: none;
   }
 
-.bg-satu{
-    background-color: #206A5D;
+.bg-satu{ 
+    background-color: #206A5D !important;
 }
 .bg-satu-dark{
-    background-color: #1d5f53;
+    background-color: #1d5f53 !important ;
 }
 .bg-dua{
-    background-color: #81B214;
+    background-color: #81B214 !important;
 }
 .bg-dua-dark{
-    background-color: #719e0f;
+    background-color: #719e0f !important;
 }
 .bg-tiga{
-    background-color: #FFCC29;
+    background-color: #FFCC29 !important;
 }
 .bg-tiga-dark{
-    background-color: #be9a21;
+    background-color: #be9a21 !important;
 }
 .bg-empat{
-    background-color: #F58634;
+    background-color: #F58634 !important;
 }
 .bg-empat-dark{
-    background-color: #e07c35;
+    background-color: #e07c35 !important;
 }
 
 .garis-bawah{

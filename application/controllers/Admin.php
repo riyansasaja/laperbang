@@ -28,15 +28,15 @@ class Admin extends CI_Controller
         $this->load->view('admin/footer', $data);
     }
 
-
-    public function inputStaper()
+    public function view_berkas_admin($id)
     {
-        $data['judul'] = 'Input Status Perkara';
+        //konten
+        $data['judul'] = 'View berkas';
         $data['css'] = 'dashboard_admin.css';
-        $data['js'] = 'inputstaper.js';
+        $data['js'] = 'view_berkas_admin.js';
 
         $this->load->view('admin/header', $data);
-        $this->load->view('admin/inputstaper', $data);
+        $this->load->view('admin/view_berkas_admin', $data);
         $this->load->view('admin/footer', $data);
     }
 }
