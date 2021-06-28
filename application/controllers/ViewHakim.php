@@ -22,7 +22,6 @@ class ViewHakim extends CI_Controller
     public function banding()
     {
         //konten
-        $data['perkara_banding'] = $this->m_banding->get_list_perkara_hakim();
         $data['judul'] = 'Banding';
         $data['js'] = 'view_hakim_banding.js';
         $data['css'] = 'dashboard_hakim.css';
