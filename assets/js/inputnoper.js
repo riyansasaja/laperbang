@@ -65,17 +65,15 @@ $(document).ready(function () {
                             tahun_surat_pengantar: tahun_surat_pengantar
                         },
                         dataType: "json",
-                        success: function (response) {
-                            console.log(response);
-                            list_perkara.ajax.reload();
-
+                        success: function (e) {
+                            console.log(e);
                         }
                     });
 
-
-
                     Swal.fire('Nomor Perkara berhasil diinput!', '', 'success')
+                    $('#nomor_surat').val('');
                     $('#modal_input_perkara').modal('hide');
+                    list_perkara.ajax.reload();
                 } else if (result.isDenied) {
                     Swal.fire('Nomor Perkara tidak diinput!!', '', 'info')
                 }
