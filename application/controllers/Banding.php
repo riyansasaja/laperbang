@@ -9,9 +9,16 @@ class Banding extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->model('m_banding');
         $this->load->library('form_validation');
+
+        //usir user yang ga punya session
+        if (!$this->session->userdata('id')) {
+            redirect('auth');
+        }
     }
     public function index()
     {
+        $masuk = $this->m_banding->countLapHarian();
+        $putus = $this->m_banding->countPerkaraPutus();
         //konten
         $data['js'] = 'indexbanding.js';
         $data['css'] = 'dashboard_banding.css';
@@ -19,9 +26,9 @@ class Banding extends CI_Controller
         //data in database
         $data['perkara'] = $this->db->get('kategori_perkara')->result_array();
         $data['perkara_banding'] = $this->m_banding->get_list_perkara();
-        $data['data_harian'] = $this->m_banding->countLapHarian();
-        $data['putus_harian'] = $this->m_banding->countPerkaraPutus();
-        $data['sisa_harian'] = $this->m_banding->countSisaPerkara();
+        $data['data_harian'] = $masuk;
+        $data['putus_harian'] = $putus;
+        $data['sisa_harian'] = $masuk - $putus;
 
         $this->load->view('banding/header', $data);
         $this->load->view('banding/index', $data);
@@ -175,7 +182,7 @@ class Banding extends CI_Controller
     function multiple_upload()
     {
         $config['upload_path']          = './assets/files/bundle_a';
-        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['allowed_types']        = 'doc|docx|pdf|rtf|jpg|jpeg|png';
         $config['max_size']             = 5000;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -410,7 +417,7 @@ class Banding extends CI_Controller
     function multiple_uploadB()
     {
         $config['upload_path']          = './assets/files/bundle_b';
-        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['allowed_types']        = 'doc|docx|pdf|rtf|jpg|jpeg|png';
         $config['max_size']             = 5000;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -555,6 +562,45 @@ class Banding extends CI_Controller
                 redirect('banding/');
             }
         }
+        if (($_FILES['file15']['name'])) {
+            if ($this->upload->do_upload('file15')) {
+                $surat_lainnya_b = $this->upload->data("file_name");
+                $this->db->set('surat_lainnya_b', $surat_lainnya_b);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload surat lainnya gagal');
+                redirect('banding/');
+            }
+        }
+
+        if (($_FILES['file16']['name'])) {
+            if ($this->upload->do_upload('file16')) {
+                $salinan_putusan_pa_rtf = $this->upload->data("file_name");
+                $this->db->set('salinan_putusan_pa_rtf', $salinan_putusan_pa_rtf);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload salinan putusan.rtf gagal');
+                redirect('banding/');
+            }
+        }
+
+        if (($_FILES['file17']['name'])) {
+            if ($this->upload->do_upload('file17')) {
+                $memori_banding_rtf = $this->upload->data("file_name");
+                $this->db->set('memori_banding_rtf', $memori_banding_rtf);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload memori banding.rtf gagal');
+                redirect('banding/');
+            }
+        }
+
+        if (($_FILES['file18']['name'])) {
+            if ($this->upload->do_upload('file18')) {
+                $kontra_mb_rtf = $this->upload->data("file_name");
+                $this->db->set('kontra_mb_rtf', $kontra_mb_rtf);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload kontra memori banding.rtf gagal');
+                redirect('banding/');
+            }
+        }
 
         $id_perkara = $this->input->post('id_perkara');
         $this->db->where('id_perkara', $id_perkara);
@@ -598,9 +644,14 @@ class Banding extends CI_Controller
         //ambil data
         $data['perkara'] = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
 
-        $this->load->view('banding/header', $data);
-        $this->load->view('banding/uploadbundle', $data);
-        $this->load->view('banding/footer', $data);
+        //usir id tidak sesuai
+        if ($this->session->userdata('id') != $data['perkara'][0]['id_user']) {
+            redirect('banding');
+        } else {
+            $this->load->view('banding/header', $data);
+            $this->load->view('banding/uploadbundle', $data);
+            $this->load->view('banding/footer', $data);
+        }
     }
     public function userProfile()
     {

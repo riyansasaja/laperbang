@@ -12,7 +12,7 @@ class template_word extends CI_Controller
         // $template = new \PhpOffice\PhpWord\TemplateProcessor(FCPATH.'resources/template/surat_template.docx');
         switch ($this->session->userdata('id')) {
             case '2':
-                $templateProcessor = new TemplateProcessor(FCPATH . 'resources/template/surat_template_manado.docx');
+                $templateProcessor = new TemplateProcessor('resources/template/surat_template_manado.docx');
                 break;
             case '3':
                 $templateProcessor = new TemplateProcessor('resources/template/surat_template_tty.docx');
@@ -50,8 +50,8 @@ class template_word extends CI_Controller
             $templateProcessor->setValue('no_perkara', $lihat['no_perkara']);
             $templateProcessor->setValue('banyaknya', $lihat['banyaknya']);
             $templateProcessor->setValue('keterangan', $lihat['keterangan']);
-            $templateProcessor->setValue('nm_panitera', $lihat['nm_panitera']);
-            $templateProcessor->setValue('nip_panitera', $lihat['nip_panitera']);
+            $templateProcessor->setValue('nm_pejabat', $lihat['nm_pejabat']);
+            $templateProcessor->setValue('nip_pejabat', $lihat['nip_pejabat']);
 
         endforeach;
 

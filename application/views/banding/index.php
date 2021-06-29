@@ -79,7 +79,6 @@
                                 <td><?php echo $lhs['tgl_register']; ?></td>
                                 <td><?php echo $lhs['status_perkara']; ?></td>
                                 <td>
-
                                     <a class="text-decoration-none mx-1 col-12 col-lg-4" href="<?= base_url('banding/uploadbundle/') . $lhs['id_perkara'] ?>">
                                         <i class="fas fa-fw fa-upload" style="color: #206A5D ;" title="Unggah Berkas"></i>
                                     </a>
@@ -364,13 +363,13 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
 
 
                         <div class="row mb-3">
-                            <label for="namaPanitera" class="col-sm-2 col-form-label">Nama Panitera</label>
+                            <label for="namaPanitera" class="col-sm-2 col-form-label">Nama Pejabat</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="nm_pejabat" value="<?php echo $lhs['nm_pejabat']; ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="nipPanitera" class="col-sm-2 col-form-label">NIP Panitera</label>
+                            <label for="nipPanitera" class="col-sm-2 col-form-label">NIP Pejabat</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="nip_pejabat" value="<?php echo $lhs['nip_pejabat']; ?>">
                             </div>

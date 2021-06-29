@@ -110,7 +110,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_gugatan'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['surat_gugatan'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_a/<?= $perkara['0']['surat_gugatan'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['surat_gugatan'] ?>
                                         </a>
                                     </div>
@@ -395,12 +395,12 @@
                                     <div class="col-1" style="width: 1rem;"></div>
                                     <label for="formFileSm" class="col-4 form-label"></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file16">
                                         <small class="text-satu fw-lighter">*File RTF</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['salinan_putusan_pa'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['salinan_putusan_pa'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['salinan_putusan_pa_rtf'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['salinan_putusan_pa'] ?>
                                         </a>
                                     </div>
@@ -472,12 +472,12 @@
                                     <div class="col-1" style="width: 1rem;"></div>
                                     <label for="formFileSm" class="col-4 form-label"></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file17">
                                         <small class="text-satu fw-lighter">*File RTF</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['memori_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['memori_banding'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['memori_banding_rtf'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['memori_banding'] ?>
                                         </a>
                                     </div>
@@ -547,12 +547,12 @@
                                     <div class="col-1" style="width: 1rem;"></div>
                                     <label for="formFileSm" class="col-4 form-label"></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file18">
                                         <small class="text-satu fw-lighter">*File RTF</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['kontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['kontra_mb'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['kontra_mb_rtf'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['kontra_mb'] ?>
                                         </a>
                                     </div>
@@ -630,7 +630,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">14.</div>
+                                    <div class="col-1" style="width: 1rem;">15.</div>
                                     <label for="formFileSm" class="col-4 form-label">Surat Lainnya (Bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file15">
@@ -639,8 +639,8 @@
                                     <div class="col-3 my-auto <?php //$perkara['0']['surat_lainnya'] ? '' : 'd-none' 
                                                                 ?> ">
                                         <!-- <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['surat_lainnya'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['surat_lainnya'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['surat_lainnya_b'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['0']['surat_lainnya_b'] ?>
                                         </a> -->
                                     </div>
                                 </div>

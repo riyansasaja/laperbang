@@ -12,6 +12,21 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        //validasi user yang sudah login tidak dapat mengakses halaman login
+        switch ($this->session->userdata('role_id')) {
+            case 'null':
+                redirect('Auth');
+                break;
+            case '1':
+                redirect('');
+                break;
+            case '2':
+                redirect('Home');
+                break;
+            case '3':
+                redirect('ViewHakim');
+                break;
+        }
 
         $this->form_validation->set_rules('username', 'User Name', 'required|trim');
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[6]');
@@ -36,9 +51,11 @@ class Auth extends CI_Controller
                         ];
                         $this->session->set_userdata($data);
                         if ($user['role_id'] == 1) {
+                            redirect('');
+                        } elseif ($user['role_id'] == 2) {
                             redirect('home');
                         } else {
-                            redirect('home');
+                            redirect('ViewHakim');
                         }
                     } else {
                         $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">Password salah</div>');
