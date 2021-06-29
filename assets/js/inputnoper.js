@@ -124,12 +124,26 @@ $(document).ready(function () {
 
             },
             inputPlaceholder: 'Pilih Status Terbaru',
+
             showCancelButton: true,
             inputValidator: (value) => {
                 return new Promise((resolve) => {
                     if (value === 'pengirimansalinanputusan') {
                         uploadSalinanPutusan()
                     } else {
+                        $.ajax({
+                            type: "POST",
+                            url: `${path}/admin/updateStatus`,
+                            data: {
+                                id_perkara: id_perkara,
+                                status_perkara: staper,
+                            },
+                            dataType: "json",
+                            success: function (e) {
+                                $('#staper').val('');
+                                console.log(e);
+                            }
+                        });
                         Swal.fire('Status Perkara berhasil dirubah!', '', 'success')
                     }
                 })

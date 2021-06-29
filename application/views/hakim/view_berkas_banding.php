@@ -21,7 +21,7 @@
                                             <td>Surat Gugatan</td>
 
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_a/<?= $db->surat_gugatan; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_a/<?= $db->surat_gugatan; ?>" data-judul="c_surat_gugatan" class="text-decoration-none text-reset">
                                                     <?= $db->surat_gugatan; ?>
                                                 </a>
                                             </td>
@@ -29,7 +29,11 @@
                                         </tr>
                                         <tr>
                                             <td>Surat Kuasa dari Kedua Belah Pihak</td>
-                                            <td><?= $db->sk_bundelA; ?></td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_a/<?= $db->sk_bundelA; ?>" data-judul="c_sk_bundelA" class="text-decoration-none text-reset">
+                                                    <?= $db->sk_bundelA; ?>
+                                                </a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Bukti Pembayaran Panjar Biaya Perkara (SKUM)</td>
@@ -200,25 +204,14 @@
 
                 </div>
                 <div class="col-4" style="height: 100%;">
-                    <div class="card overflow-auto mb-2 p-2" id="tampil" style="height: 80%;">
-                        <p>
-                            <span class="fw-bolder ps-3">Abdul Hakim</span> <small class="text-muted">20/06/2021 07.00</small> <br>
-                            <small class="ps-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi beatae pariatur iste modi esse illum placeat libero obcaecati dolor sint, quam tempore delectus magni blanditiis quo temporibus perspiciatis autem reprehenderit?</small>
-                        </p>
-                        <p>
-                            <span class="fw-bolder ps-3">Hasanuddin</span> <small class="text-muted">20/06/2021 08.00</small> <br>
-                            <small class="ps-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi beatae pariatur iste modi esse illum placeat libero obcaecati dolor sint, quam tempore delectus magni blanditiis quo temporibus perspiciatis autem reprehenderit?</small>
-                        </p>
-                        <p>
-                            <span class="fw-bolder ps-3">Rozaq</span> <small class="text-muted">20/06/2021 10.00</small> <br>
-                            <small class="ps-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum modi obcaecati vitae ad itaque harum amet animi, sint fuga doloribus porro! Modi repellendus numquam perferendis cupiditate mollitia magni unde eos veniam impedit voluptatum quae suscipit, est rerum dignissimos voluptate reiciendis maiores voluptas vel nulla sapiente vitae sunt! Inventore modi amet non eligendi quo maiores nisi beatae voluptate, dolores assumenda tempora asperiores quisquam illum vitae vel, cum possimus suscipit officia consequuntur natus dignissimos autem illo quidem. Incidunt cumque atque fugit doloribus alias odio recusandae ratione aperiam dolor amet praesentium dolores rerum esse pariatur labore repellendus quis voluptates consequatur suscipit tenetur iusto, magni expedita. Laudantium atque consequatur corporis quam? Et sunt molestiae numquam amet non. Minus temporibus sequi blanditiis repellat consectetur! Temporibus consequuntur dolor rerum, ullam quasi a. Eligendi at, in nisi, ullam quasi dolorum quae doloremque laborum facilis, iusto sunt eius et earum provident cumque? Ad asperiores dolor ipsa voluptates exercitationem reiciendis, quos qui veniam obcaecati repellat minus est.</small>
-                        </p>
+                    <div class="card overflow-auto mb-2 p-2" id="komentar" style="height: 80%;">
+
 
                     </div>
                     <div class="card border-light" id="tampil" style="height: 20%;">
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Tulis catatan di sini</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" id="catatan" rows="3" name="catatan"></textarea>
                         </div>
                     </div>
                 </div>
@@ -227,7 +220,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mx-auto" data-bs-dismiss="modal">Tutup</button>
-                <button type="button" class="btn bg-dua text-white mx-auto" data-bs-dismiss="modal">Kirim Catatan</button>
+                <button type="button" class="btn bg-dua text-white mx-auto" id="kirim">Kirim Catatan</button>
             </div>
         </div>
     </div>
