@@ -71,7 +71,8 @@
                                     </label>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary" id="save_user">Simpan</button>
+                            <button type="button" class="btn btn-primary" id="save_user">Tambah</button>
+                            <button type="button" class="btn btn-primary" id="save_user">Edit</button>
                             <button type="button" class="btn btn-primary" id="delete_user">Hapus</button>
                             <button type="button" class="btn btn-primary" id="reset_user">Reset</button>
                         </form>
