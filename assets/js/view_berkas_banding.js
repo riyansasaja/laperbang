@@ -18,17 +18,20 @@ $(document).ready(function () {
         //panggil fungsi tampil baru
         let isi = '';
         tampil_baru(getjudul, id_perkara);
+        setInterval(function () {
+            isi = '';
+            tampil_baru(getjudul, id_perkara)
+        }, 4000);
 
         //tombol kirim ditekan
         $('#kirim').on('click', function () {
             isi = '';
             tambah_komentar(getjudul, id_perkara);
-            tampil_baru(getjudul, id_perkara);
             $('#catatan').val('');
 
         }); //end tombol kirim ditekan
 
-        //tombol ututp ditekan
+        //tombol tutup ditekan
         $('#tutup').on('click', function () {
             console.log('tombol tutup');
             location.reload()
@@ -81,6 +84,7 @@ $(document).ready(function () {
                             timer: 1500
                         })
                         $(".textarea[name='catatan']").val("");
+                        tampil_baru(getjudul, id_perkara);
                         return
                     }
                 }
