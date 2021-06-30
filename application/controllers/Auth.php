@@ -18,7 +18,7 @@ class Auth extends CI_Controller
                 redirect('Auth');
                 break;
             case '1':
-                redirect('');
+                redirect('Admin');
                 break;
             case '2':
                 redirect('Home');
@@ -51,7 +51,7 @@ class Auth extends CI_Controller
                         ];
                         $this->session->set_userdata($data);
                         if ($user['role_id'] == 1) {
-                            redirect('');
+                            redirect('Admin');
                         } elseif ($user['role_id'] == 2) {
                             redirect('home');
                         } else {

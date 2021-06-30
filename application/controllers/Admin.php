@@ -4,13 +4,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Admin extends CI_Controller
 {
 
+    public function __construct()
+    {
+        parent::__construct();
+        //usir user yang ga punya session
+        if (!$this->session->userdata('id')) {
+            redirect('auth');
+        }
+    }
+
     public function index()
     {
 
         //konten
         $data['judul'] = 'Dashboard';
         $data['css'] = 'dashboard_admin.css';
-        $data['js'] = 'dashboard_admin.js';
+        $data['js'] = 'dashboard_adm
+        in.js';
 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/dashboard', $data);
@@ -116,6 +126,52 @@ class Admin extends CI_Controller
             $array = $this->db->update('users', $data);
         }
 
+
+        echo json_encode($array);
+    }
+
+    public function addUser()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('username', 'username', 'required');
+        $this->form_validation->set_rules('password', 'password', 'required');
+        $this->form_validation->set_rules('password_r', 'confirm password', 'matches[password]|required');
+
+        if ($this->form_validation->run() == false) {
+            $array = array(
+                'error'   => true,
+                'username_error' => form_error('username'),
+                'password_error' => form_error('password'),
+                'password_r_error' => form_error('password_r'),
+            );
+        } else {
+            $id = $this->input->post('id');
+            $nama = $this->input->post('nama');
+            $email = $this->input->post('email');
+            $username = $this->input->post('username');
+            $password = password_hash($this->input->post('password_r'), PASSWORD_DEFAULT);
+            $role_id = $this->input->post('role_id');
+            $is_active = $this->input->post('is_active');
+
+            $data = [
+                'id' => $id,
+                'nama' => $nama,
+                'email' => $email,
+                'username' => $username,
+                'password' => $password,
+                'role_id' => $role_id,
+                'is_active' => $is_active
+            ];
+            $array = $this->db->insert('users', $data);
+        }
+        echo json_encode($array);
+    }
+
+    public function del_user()
+    {
+        $id = $this->input->post('id');
+        $array = $this->db->delete('users', array('id' => $id));
 
         echo json_encode($array);
     }

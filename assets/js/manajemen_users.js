@@ -35,6 +35,9 @@ $(document).ready(function () {
 
 
     $('#delete_user').on('click', function () {
+
+        var id = $('input[name="id"]').val();
+
         Swal.fire({
             title: 'Yakin Mau Menghapus?',
             showDenyButton: true,
@@ -45,10 +48,30 @@ $(document).ready(function () {
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                Swal.fire('Saved!', '', 'success')
+                $.ajax({
+                    type: "POST",
+                    url: `${path}/admin/del_user`,
+                    data: {
+                        id: id
+                    },
+                    dataType: "json",
+                    success: function (response) {
+
+                        $('#nama').val('');
+                        $('#email').val('');
+                        $('#username').val('');
+                        $('#password').val('');
+                        $('#password_r').val('');
+                        $('#role_id').val('');
+                        $('#is_active').val('');
+                    }
+                });
+                Swal.fire('Delete!', '', 'success')
+
             } else if (result.isDenied) {
-                Swal.fire('Changes are not saved', '', 'info')
+                Swal.fire('Tidak ada yang di Delete', '', 'info')
             }
+            window.location.reload();
         })
     });
 
@@ -60,7 +83,7 @@ $(document).ready(function () {
         $('#username').val('');
     });
 
-    $('#save_user').on('click', function () {
+    $('#edit_user').on('click', function () {
         //ambil data
         // let id = $(this).data('id');
         // let nama = $('#nama').val();
@@ -115,6 +138,64 @@ $(document).ready(function () {
 
 
     });
+
+    $('#save_user').on('click', function () {
+
+        var nama = $('input[name="nama"]').val();
+        var email = $('input[name="email"]').val();
+        var username = $('input[name="username"]').val();
+        var password = $('input[name="password"]').val();
+        var password_r = $('input[name="password_r"]').val();
+        var role_id = $('select[name="role_id"]').val();
+        var is_active = $('select[name="is_active"]').val();
+        var id = $('input[name="id"]').val();
+
+        $.ajax({
+            type: "POST",
+            url: `${path}/admin/addUser`,
+            data: {
+                id: id,
+                nama: nama,
+                email: email,
+                username: username,
+                password: password,
+                password_r: password_r,
+                role_id: role_id,
+                is_active: is_active
+            },
+            dataType: "json",
+            success: function (e) {
+                console.log(e);
+                tampil_user(e);
+
+            }
+        });
+        $('#password_r_error').html('');
+        history.go(0);
+    });
+
+    function tampil_user(e) {
+        $('#username_error').html(e.username_error);
+        $('#password_error').html(e.password_error);
+        $('#password_r_error').html(e.password_r_error);
+        $('#nama').val('');
+        $('#email').val('');
+        $('#username').val('');
+        $('#password').val('');
+        $('#password_r').val('');
+        $('#role_id').val('');
+        $('#is_active').val('');
+        if (!e.password_error && !e.password_r_error) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Data Tersimpan',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+
+    }
 
 
 
