@@ -219,7 +219,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary mx-auto" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-secondary mx-auto" id="tutup">Tutup</button>
                 <button type="button" class="btn bg-dua text-white mx-auto" id="kirim">Kirim Catatan</button>
             </div>
         </div>

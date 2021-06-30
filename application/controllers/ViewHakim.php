@@ -71,19 +71,13 @@ class ViewHakim extends CI_Controller
 
     public function set_catatan()
     {
-        $id_perkara = $this->input->post('id_perkara');
-        $id_user = $this->session->userdata('id');
-        $nm_berkas = $this->input->post('nm_berkas');
-        $catatan = $this->input->post('catatan');
-        $time = date('d-m-Y H:i:s');
-
         $data = [
             'id_catatan' => '',
-            'id_perkara' => $id_perkara,
-            'id_user' => $id_user,
-            'nm_berkas' => $nm_berkas,
-            'catatan' => $catatan,
-            'time' => $time
+            'id_perkara' => $this->input->post('id_perkara'),
+            'id_user' => $this->session->userdata('id'),
+            'nm_berkas' => $this->input->post('nm_berkas'),
+            'catatan' => $this->input->post('catatan'),
+            'time' => date('d-m-Y H:i:s')
         ];
 
         $res = $this->db->insert('catatan_hakim_baru', $data);

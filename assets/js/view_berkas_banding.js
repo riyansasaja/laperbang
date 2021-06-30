@@ -4,69 +4,91 @@ $(document).ready(function () {
 
     let url = window.location.href;
     let pecah = url.split('/');
-    let id_perkara = pecah[6];
     $('#modalPdfHakim').on('show.bs.modal', function (e) {
 
         //jalankan modal
         //ambil data-id dan data-judul
         let getdata = $(e.relatedTarget).data('id');
         let getjudul = $(e.relatedTarget).data('judul');
+        let id_perkara = pecah[6];
         //embed ke tampilan sebelah kanan
         let tampil = `<embed src="http://localhost/laperbang/assets/files/${getdata}" type="application/pdf" width="100%" height="100%">`;
         $('#tampil').html(tampil);
 
+        //panggil fungsi tampil baru
+        let isi = '';
+        tampil_baru(getjudul, id_perkara);
+
+        //tombol kirim ditekan
+        $('#kirim').on('click', function () {
+            isi = '';
+            tambah_komentar(getjudul, id_perkara);
+            tampil_baru(getjudul, id_perkara);
+            $('#catatan').val('');
+
+        }); //end tombol kirim ditekan
+
+        //tombol ututp ditekan
+        $('#tutup').on('click', function () {
+            console.log('tombol tutup');
+            location.reload()
+            $('#modalPdfHakim').on('hide.bs.modal', function (e) {
+            })
+        })
+
         //fungsi tampil baru
-        function tampil_baru() {
+        function tampil_baru(xxx, yyy) {
+
             $.ajax({
                 type: "POST",
                 url: `${path}ViewHakim/get_catatan`,
                 data: {
-                    id_perkara: id_perkara,
-                    nm_berkas: getjudul
+                    id_perkara: yyy,
+                    nm_berkas: xxx
                 },
                 dataType: "json",
                 success: function (e) {
-                    let isi = '';
+
                     $.each(e, function (index, value) {
                         isi += `<p><span class="fw-bolder ps-3">${value.nama}</span> <small class="text-muted">${value.time}</small> <br><small class="ps-3">${value.catatan}</small></p>`;
-                        return
                     });
-                    console.log(isi);
                     $('#komentar').html(isi);
+                    return
                 }
-            });//tutup ajax
-            $('#komentar').html('');
-            $('#catatan').val('');
-            return;
+            });//tutup ajax 
 
         }//end fungsi tampil baru
 
-        //kosongkan komentar
-        $('#komentar').html('');
-        // panggil fungsi tampil baru
-        tampil_baru();
-
-
-
-
-        //tombol kirim ditekan
-        $('#kirim').on('click', function () {
-            var catatan = $('textarea[name="catatan"]').val();
+        //function tambah komentar
+        function tambah_komentar(aaa, bbb) {
+            let catatan = $('#catatan').val();
             $.ajax({
                 type: "POST",
                 url: `${path}ViewHakim/set_catatan`,
                 data: {
-                    id_perkara: id_perkara,
-                    nm_berkas: getjudul,
+                    id_perkara: bbb,
+                    nm_berkas: aaa,
                     catatan: catatan
                 },
                 dataType: "json",
                 success: function (response) {
-                    tampil_baru();
-
+                    if (response) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        $(".textarea[name='catatan']").val("");
+                        return
+                    }
                 }
             });//end ajax
-        }); //end tombol kirim ditekan
+
+        }//end function
+
+
 
 
 
