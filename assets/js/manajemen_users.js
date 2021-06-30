@@ -66,12 +66,20 @@ $(document).ready(function () {
                         $('#is_active').val('');
                     }
                 });
-                Swal.fire('Delete!', '', 'success')
-
+                //jika delete berhasil
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Data Tersimpan',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then((result) => {
+                    location.reload();
+                })
             } else if (result.isDenied) {
                 Swal.fire('Tidak ada yang di Delete', '', 'info')
             }
-            window.location.reload();
+
         })
     });
 
@@ -171,7 +179,7 @@ $(document).ready(function () {
             }
         });
         $('#password_r_error').html('');
-        history.go(0);
+        // history.go(0);
     });
 
     function tampil_user(e) {
@@ -192,6 +200,8 @@ $(document).ready(function () {
                 title: 'Data Tersimpan',
                 showConfirmButton: false,
                 timer: 1500
+            }).then((result) => {
+                location.reload();
             })
         }
 
