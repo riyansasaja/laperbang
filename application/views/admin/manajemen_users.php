@@ -23,33 +23,36 @@
                 <div class="card">
                     <div class="card-body">
                         <form>
+                            <input type="hidden" id="id" name="id">
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" id="nama">
+                                <input type="text" class="form-control" id="nama" name="nama">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">email</label>
-                                <input type="email" class="form-control" id="email">
+                                <input type="email" class="form-control" id="email" name="email">
                             </div>
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username">
+                                <input type="text" class="form-control" id="username" name="username">
                             </div>
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="Password" class="form-control" id="password">
+                                    <input type="Password" class="form-control" id="password" name="password">
                                     <div class="form-text">Kosongkan jika tidak merubah password</div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="password_r" class="form-label">Repeat Password</label>
-                                    <input type="password" class="form-control" id="password_r">
+                                    <input type="password" class="form-control" id="password_r" name="password_r">
                                     <div class="form-text">Kosongkan jika tidak merubah password</div>
+                                    <small id="password_error" class="text-danger"></small>
+
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="role" class="form-label">Role</label>
-                                <select class="form-select" aria-label="Default select example" id="role">
+                                <select class="form-select" aria-label="Default select example" id="role_id" name="role_id">
                                     <option selected>Open this select menu</option>
                                     <option value="1">Admin</option>
                                     <option value="2">User</option>
@@ -57,19 +60,12 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Status</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" checked type="checkbox" value="" id="aktif">
-                                    <label class="aktif" for="flexCheckDefault">
-                                        Aktif
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="tidak_aktif">
-                                    <label class="tidak_aktif" for="flexCheckDefault">
-                                        Tidak Aktif
-                                    </label>
-                                </div>
+                                <label for="is_active" class="form-label">Status User</label>
+                                <select class="form-select" id="is_active" name="is_active">
+                                    <option selected>Open this select menu</option>
+                                    <option value="null">Tidak Aktif</option>
+                                    <option value="1">Aktif</option>
+                                </select>
                             </div>
                             <button type="button" class="btn btn-primary" id="save_user">Tambah</button>
                             <button type="button" class="btn btn-primary" id="save_user">Edit</button>

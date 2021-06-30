@@ -27,10 +27,10 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex align-items-center justify-content-between">
-                        <small>Berkas Masuk</small> 7
+                        <small>Berkas Masuk</small> 0
                     </div>
                     <div class="d-flex align-items-center justify-content-between">
-                        <small>Direview</small> 6
+                        <small>Direview</small> 0
                     </div>
                 </div>
             </div>
@@ -43,10 +43,10 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex align-items-center justify-content-between">
-                        <small>Perkara Masuk</small> 8
+                        <small>Perkara Masuk</small> 0
                     </div>
                     <div class="d-flex align-items-center justify-content-between">
-                        <small>Ditanggapi</small>8
+                        <small>Ditanggapi</small> 0
                     </div>
                 </div>
             </div>

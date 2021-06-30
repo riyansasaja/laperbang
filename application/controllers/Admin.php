@@ -62,10 +62,63 @@ class Admin extends CI_Controller
     {
         $id = $this->input->post('id');
         $data = $this->db->get_where('users', ['id' => $id])->result();
-
         echo json_encode($data);
     }
 
+    public function updateUser()
+    {
+        $this->load->library('form_validation');
+        $check_password = $this->input->post('password');
+
+        if ($check_password != '') {
+            $this->form_validation->set_rules('password', 'password', 'required');
+            $this->form_validation->set_rules('password_r', 'confirm password', 'matches[password]');
+        } else {
+            $this->form_validation->set_rules('nama', 'nama', 'required');
+        }
+        if ($this->form_validation->run() == false) {
+
+            $array = array(
+                'error'   => true,
+                'password_error' => form_error('password_r'),
+            );
+        } else {
+            $id = $this->input->post('id');
+            $nama = $this->input->post('nama');
+            $email = $this->input->post('email');
+            $username = $this->input->post('username');
+            $password = password_hash($this->input->post('password_r'), PASSWORD_DEFAULT);
+            $role_id = $this->input->post('role_id');
+            $is_active = $this->input->post('is_active');
+            if ($check_password != '') {
+                $data = [
+                    'id' => $id,
+                    'nama' => $nama,
+                    'email' => $email,
+                    'username' => $username,
+                    'password' => $password,
+                    'role_id' => $role_id,
+                    'is_active' => $is_active
+                ];
+            } else {
+                $data = [
+                    'id' => $id,
+                    'nama' => $nama,
+                    'email' => $email,
+                    'username' => $username,
+                    'role_id' => $role_id,
+                    'is_active' => $is_active
+                ];
+            }
+
+
+            $this->db->where('id', $id);
+            $array = $this->db->update('users', $data);
+        }
+
+
+        echo json_encode($array);
+    }
 
     public function updatenoper()
     {
@@ -80,6 +133,21 @@ class Admin extends CI_Controller
 
         $this->db->where('id_perkara', $id_perkara);
         $data =  $this->db->update('list_perkara', $data);
+        json_encode($data);
+    }
+
+    public function updateStatus()
+    {
+        $staper = $this->input->post('status_perkara');
+        $id_perkara = $this->input->post('id_perkara');
+
+        $data = [
+            'id_perkara' => $id_perkara,
+            'status_perkara' => $staper
+        ];
+
+        $this->db->where('id_perkara', $id_perkara);
+        $data = $this->db->update('list_perkara', $data);
         json_encode($data);
     }
 }

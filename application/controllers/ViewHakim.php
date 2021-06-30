@@ -39,6 +39,7 @@ class ViewHakim extends CI_Controller
 
         $data['detail_berkas'] = $this->db->get_where('v_all_perkara', ['id_perkara' => $id])->result_object();
 
+
         $this->load->view('hakim/header', $data);
         $this->load->view('hakim/view_berkas_banding', $data);
         $this->load->view('hakim/footer', $data);
@@ -54,5 +55,32 @@ class ViewHakim extends CI_Controller
 
         ];
         echo json_encode($result);
+    }
+
+    public function get_catatan()
+    {
+
+        $id = $this->input->post('id_perkara');
+        $nm_berkas = $this->input->post('nm_berkas');
+
+
+
+        $data = $this->db->get_where('v_c_hakim', ['id_perkara' => $id, 'nm_berkas' => $nm_berkas])->result();
+        echo json_encode($data);
+    }
+
+    public function set_catatan()
+    {
+        $data = [
+            'id_catatan' => '',
+            'id_perkara' => $this->input->post('id_perkara'),
+            'id_user' => $this->session->userdata('id'),
+            'nm_berkas' => $this->input->post('nm_berkas'),
+            'catatan' => $this->input->post('catatan'),
+            'time' => date('d-m-Y H:i:s')
+        ];
+
+        $res = $this->db->insert('catatan_hakim_baru', $data);
+        echo json_encode($res);
     }
 }
