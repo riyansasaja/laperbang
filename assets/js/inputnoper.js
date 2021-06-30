@@ -99,27 +99,28 @@ $(document).ready(function () {
     $('#listperkara').on('click', '.item_staper', function () {
         let data = list_perkara.row($(this).parents('tr')).data();
         let id_perkara = data['id_perkara'];
+        // let status_perkara = $('select[name="status_perkara"]').val();
 
         //tampilkan pilihan jenis perkara lewat SWAL2
         const { value: staper } = Swal.fire({
             title: 'Pilih status perkara',
             input: 'select',
             inputOptions: {
-                pendaftaranPerkara: 'Pendaftaran Perkara',
-                penunjukanMajelisHakim: 'Penunjukan Majelis Hakim',
-                penunjukkanPaniteraPengganti: 'Penunjukkan Panitera Pengganti',
-                pembuatanPHS1: 'Pembuatan PHS 1',
-                pembuatanPHSLanjutan: 'Pembuatan PHS Lanjutan',
-                sidangPertama: 'Sidang Pertama',
-                sidangLanjutan: 'Sidang Lanjutan',
-                sidangLanjutan1: 'Sidang Lanjutan 1',
-                sidangLanjutan2: 'Sidang Lanjutan 2',
-                sidangLanjutan3: 'Sidang Lanjutan 3',
-                sidangLanjutan4: 'Sidang Lanjutan 4',
-                sidangLanjutan5: 'Sidang Lanjutan 5',
-                penetapanPutusan: 'Penetapan Putusan',
-                pembacaanPutusan: 'Pembacaan Putusan',
-                minutasi: 'Minutasi',
+                'Pendaftaran Perkara': 'Pendaftaran Perkara',
+                'Penunjukan Majelis Hakim': 'Penunjukan Majelis Hakim',
+                'Penunjukkan Panitera Pengganti': 'Penunjukkan Panitera Pengganti',
+                'Pembuatan PHS1': 'Pembuatan PHS 1',
+                'Pembuatan PHS Lanjutan': 'Pembuatan PHS Lanjutan',
+                'Sidang Pertama': 'Sidang Pertama',
+                'Sidang Lanjutan': 'Sidang Lanjutan',
+                'Sidang Lanjutan 1': 'Sidang Lanjutan 1',
+                'Sidang Lanjutan 2': 'Sidang Lanjutan 2',
+                'Sidang Lanjutan 3': 'Sidang Lanjutan 3',
+                'Sidang Lanjutan 4': 'Sidang Lanjutan 4',
+                'Sidang Lanjutan 5': 'Sidang Lanjutan 5',
+                'Penetapan Putusan': 'Penetapan Putusan',
+                'Pembacaan Putusan': 'Pembacaan Putusan',
+                'Minutasi': 'Minutasi',
                 pengirimansalinanputusan: 'Pengiriman Salinan Putusan',
 
             },
@@ -136,15 +137,14 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
-                                status_perkara: staper,
+                                status_perkara: value,
                             },
                             dataType: "json",
                             success: function (e) {
-                                $('#staper').val('');
-                                console.log(e);
+
                             }
                         });
-                        Swal.fire('Status Perkara berhasil dirubah!', '', 'success')
+                        Swal.fire('Status Perkara Berhasil Dirubah', '', 'success')
                     }
                 })
             }
@@ -160,22 +160,41 @@ $(document).ready(function () {
         (async () => {
 
             const { value: file } = await Swal.fire({
-                title: 'Select image',
+                title: 'Select File',
                 input: 'file',
                 inputAttributes: {
-                    'accept': 'image/*',
+                    'accept': 'pdf/*',
                     'aria-label': 'Upload your profile picture'
                 }
             })
 
             if (file) {
                 const reader = new FileReader()
+
                 reader.onload = (e) => {
-                    Swal.fire({
-                        title: 'Your uploaded picture',
-                        imageUrl: e.target.result,
-                        imageAlt: 'The uploaded picture'
-                    })
+                    const fileupload = file;
+                    let nama_file = file.name;
+                    if (nama_file != "" && fileupload != "") {
+                        let formData = new FormData();
+                        formData.append('fileupload', fileupload);
+                        formData.append('nama_file', nama_file);
+
+                        $.ajax({
+                            type: 'POST',
+                            url: `${path}/admin/uploadPutusan`,
+                            data: formData,
+                            cache: false,
+                            processData: false,
+                            contentType: false,
+                            success: function (msg) {
+                                console.log(msg);
+                                Swal.fire('Salinan putusan berhasil di upload', '', 'success')
+                            },
+                            error: function () {
+                                alert("Data Gagal Diupload");
+                            }
+                        });
+                    }
                 }
                 reader.readAsDataURL(file)
             }

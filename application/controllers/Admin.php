@@ -194,16 +194,43 @@ class Admin extends CI_Controller
 
     public function updateStatus()
     {
-        $staper = $this->input->post('status_perkara');
+        $status_perkara = $this->input->post('status_perkara');
         $id_perkara = $this->input->post('id_perkara');
 
         $data = [
             'id_perkara' => $id_perkara,
-            'status_perkara' => $staper
+            'status_perkara' => $status_perkara
         ];
 
         $this->db->where('id_perkara', $id_perkara);
-        $data = $this->db->update('list_perkara', $data);
-        json_encode($data);
+        $array = $this->db->update('list_perkara', $data);
+        json_encode($array);
+    }
+
+    public function uploadPutusan()
+    {
+        $config['upload_path']          = './assets/files/putusan';
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5000;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file1']['name'] != null)) {
+            if ($this->upload->do_upload('file1')) {
+                $status_perkara = $this->upload->data("file_name");
+                $this->db->set('putusan_banding', $status_perkara);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal, ekstensi file harus pdf dan ukuran tidak boleh lebih dari 5 mb');
+                // redirect('banding/');
+            }
+        } else {
+            $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
+            // redirect('banding/');
+        }
+
+        $id_perkara = $this->input->post('id_perkara');
+        $where = $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('list_perkara', $where);
+        // json_encode($array);
     }
 }
