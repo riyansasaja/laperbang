@@ -57,3 +57,27 @@
         </div>
     </div>
 </div>
+
+
+<!-- //modal upload file -->
+<div class="modal fade" id="uploadFileModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form action="">
+
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Silahkan Upload File Putusan Perkara</label>
+                        <input class="form-control" type="file" id="formFile">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

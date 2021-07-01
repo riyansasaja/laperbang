@@ -99,7 +99,6 @@ $(document).ready(function () {
     $('#listperkara').on('click', '.item_staper', function () {
         let data = list_perkara.row($(this).parents('tr')).data();
         let id_perkara = data['id_perkara'];
-        // let status_perkara = $('select[name="status_perkara"]').val();
 
         //tampilkan pilihan jenis perkara lewat SWAL2
         const { value: staper } = Swal.fire({
@@ -131,6 +130,8 @@ $(document).ready(function () {
                 return new Promise((resolve) => {
                     if (value === 'pengirimansalinanputusan') {
                         uploadSalinanPutusan()
+                        Swal.fire('Silahkan Upload Berkas', '', 'warning')
+                        return false;
                     } else {
                         $.ajax({
                             type: "POST",
@@ -148,59 +149,97 @@ $(document).ready(function () {
                     }
                 })
             }
-        });
-
-        //end swal2
+        });//end swal2
 
 
-    });
-    //=====
+    });//=====
 
+    //strart function upload putusan
+    // function uploadSalinanPutusan() {
+    //     (async () => {
+
+    //         const { value: file } = await Swal.fire({
+    //             title: 'Select File',
+    //             input: 'file',
+    //             inputAttributes: {
+    //                 'accept': 'pdf/*',
+    //                 'aria-label': 'Upload Status Perkara'
+    //             }
+    //         })
+
+    //         try {
+
+    //             if (file) {
+    //                 const reader = new FileReader()
+    //                 console.log(file);
+    //                 let nama_file = file.name;
+    //                 let file_upload = file;
+    //                 let data = new FormData();
+    //                 data.append = ('title', nama_file);
+    //                 data.append = ('file_upload', file_upload);
+
+    //                 let response = await fetch(`${path}/admin/uploadPutusan`, {
+    //                     method: 'POST',
+    //                     credentials: 'same-origin',
+    //                     body: data
+    //                 });
+
+    //                 if (response.status != 200)
+    //                     throw new Error('HTTP response code != 200');
+
+    //                 let json_response = await response.json();
+    //                 if (json_response.error == 1)
+    //                     throw new Error(json_response.message);
+
+
+
+    //                 // reader.onload = (e) => {
+
+
+    //                 //jalankan proses upload
+    //                 // const fileupload = file;
+    //                 // let nama_file = file.name;
+    //                 // if (nama_file != "" && fileupload != "") {
+    //                 //     let formData = new FormData();
+    //                 //     formData.append('fileupload', fileupload);
+    //                 //     formData.append('nama_file', nama_file);
+
+    //                 //     $.ajax({
+    //                 //         type: 'POST',
+    //                 //         url: `${path}/admin/uploadPutusan`,
+    //                 //         data: formData,
+    //                 //         cache: false,
+    //                 //         processData: false,
+    //                 //         contentType: false,
+    //                 //         success: function (msg) {
+    //                 //             console.log(msg);
+    //                 //             Swal.fire('Salinan putusan berhasil di upload', '', 'success')
+    //                 //         },
+    //                 //         error: function () {
+    //                 //             alert("Data Gagal Diupload");
+    //                 //         }
+    //                 //     });
+    //                 // }
+    //                 // }
+    //                 // reader.readAsDataURL(file)
+    //             }
+
+    //         } catch (error) {
+    //             return_data = { error: 1, message: e.message };
+    //         }
+    //         return return_data;
+
+    //     })()
+
+    // }//end function upload putusan
+
+
+
+    //function upload salinan putusan
     function uploadSalinanPutusan() {
-        (async () => {
+        $('#uploadFileModal').modal('show')
 
-            const { value: file } = await Swal.fire({
-                title: 'Select File',
-                input: 'file',
-                inputAttributes: {
-                    'accept': 'pdf/*',
-                    'aria-label': 'Upload your profile picture'
-                }
-            })
-
-            if (file) {
-                const reader = new FileReader()
-
-                reader.onload = (e) => {
-                    const fileupload = file;
-                    let nama_file = file.name;
-                    if (nama_file != "" && fileupload != "") {
-                        let formData = new FormData();
-                        formData.append('fileupload', fileupload);
-                        formData.append('nama_file', nama_file);
-
-                        $.ajax({
-                            type: 'POST',
-                            url: `${path}/admin/uploadPutusan`,
-                            data: formData,
-                            cache: false,
-                            processData: false,
-                            contentType: false,
-                            success: function (msg) {
-                                console.log(msg);
-                                Swal.fire('Salinan putusan berhasil di upload', '', 'success')
-                            },
-                            error: function () {
-                                alert("Data Gagal Diupload");
-                            }
-                        });
-                    }
-                }
-                reader.readAsDataURL(file)
-            }
-        })()
-
-    }
+    }//end function upload salinan putusan
 
 
 
