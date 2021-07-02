@@ -44,7 +44,7 @@
                             <i class="fas fa-user"></i> User
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#"> Profile</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('banding/userProfile'); ?>"> Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

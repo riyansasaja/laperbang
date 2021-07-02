@@ -38,6 +38,18 @@ class Admin extends CI_Controller
         $this->load->view('admin/footer', $data);
     }
 
+    public function get_data_banding()
+    {
+        $data = $this->db->get('v_all_perkara')->result();
+        $result =  [
+            'response' => 'success',
+            'code' => 600,
+            'data' => $data
+
+        ];
+        echo json_encode($result);
+    }
+
     public function view_berkas_admin($id)
     {
         //konten
@@ -215,10 +227,20 @@ class Admin extends CI_Controller
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
 
-        if (($_FILES['file1']['name'] != null)) {
-            if ($this->upload->do_upload('file1')) {
-                $status_perkara = $this->upload->data("file_name");
-                $this->db->set('putusan_banding', $status_perkara);
+        if (($_FILES['file_putusan']['name'] != null)) {
+            if ($this->upload->do_upload('file_putusan')) {
+                $putusan_banding = $this->upload->data("file_name");
+                $id_perkara = $this->input->post('id_perkara');
+                $data = [
+                    'id_perkara' => $id_perkara,
+                    'putusan_banding' => $putusan_banding
+                ];
+                $this->db->where('id_perkara', $id_perkara);
+                $this->db->update('list_perkara', $data);
+
+                $this->session->set_flashdata('flash', 'Upload berhasil');
+                redirect('admin/inputNoper');
+                // $this->db->set('putusan_banding', $putusan_banding);
             } else {
                 $this->session->set_flashdata('msg', 'Upload file gagal, ekstensi file harus pdf dan ukuran tidak boleh lebih dari 5 mb');
                 // redirect('banding/');
@@ -227,10 +249,5 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
             // redirect('banding/');
         }
-
-        $id_perkara = $this->input->post('id_perkara');
-        $where = $this->db->where('id_perkara', $id_perkara);
-        $this->db->update('list_perkara', $where);
-        // json_encode($array);
     }
 }

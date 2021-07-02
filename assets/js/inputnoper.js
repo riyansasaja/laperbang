@@ -6,7 +6,7 @@ $(document).ready(function () {
     console.log(path);
     //---Tampil data table kegiatan
     let list_perkara = $('#listperkara').DataTable({
-        "ajax": `${path}viewhakim/get_data_banding/`,
+        "ajax": `${path}admin/get_data_banding/`,
         "columns": [
             {
                 "data": null, "sortable": false,
@@ -120,7 +120,7 @@ $(document).ready(function () {
                 'Penetapan Putusan': 'Penetapan Putusan',
                 'Pembacaan Putusan': 'Pembacaan Putusan',
                 'Minutasi': 'Minutasi',
-                pengirimansalinanputusan: 'Pengiriman Salinan Putusan',
+                'Pengiriman Salinan Putusan': 'Pengiriman Salinan Putusan',
 
             },
             inputPlaceholder: 'Pilih Status Terbaru',
@@ -128,9 +128,21 @@ $(document).ready(function () {
             showCancelButton: true,
             inputValidator: (value) => {
                 return new Promise((resolve) => {
-                    if (value === 'pengirimansalinanputusan') {
-                        uploadSalinanPutusan()
+                    if (value === 'Pengiriman Salinan Putusan') {
+                        $.ajax({
+                            type: "POST",
+                            url: `${path}/admin/updateStatus`,
+                            data: {
+                                id_perkara: id_perkara,
+                                status_perkara: value,
+                            },
+                            dataType: "json",
+                            success: function (e) {
+
+                            }
+                        });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
+                        uploadSalinanPutusan(id_perkara)
                         return false;
                     } else {
                         $.ajax({
@@ -154,90 +166,12 @@ $(document).ready(function () {
 
     });//=====
 
-    //strart function upload putusan
-    // function uploadSalinanPutusan() {
-    //     (async () => {
-
-    //         const { value: file } = await Swal.fire({
-    //             title: 'Select File',
-    //             input: 'file',
-    //             inputAttributes: {
-    //                 'accept': 'pdf/*',
-    //                 'aria-label': 'Upload Status Perkara'
-    //             }
-    //         })
-
-    //         try {
-
-    //             if (file) {
-    //                 const reader = new FileReader()
-    //                 console.log(file);
-    //                 let nama_file = file.name;
-    //                 let file_upload = file;
-    //                 let data = new FormData();
-    //                 data.append = ('title', nama_file);
-    //                 data.append = ('file_upload', file_upload);
-
-    //                 let response = await fetch(`${path}/admin/uploadPutusan`, {
-    //                     method: 'POST',
-    //                     credentials: 'same-origin',
-    //                     body: data
-    //                 });
-
-    //                 if (response.status != 200)
-    //                     throw new Error('HTTP response code != 200');
-
-    //                 let json_response = await response.json();
-    //                 if (json_response.error == 1)
-    //                     throw new Error(json_response.message);
-
-
-
-    //                 // reader.onload = (e) => {
-
-
-    //                 //jalankan proses upload
-    //                 // const fileupload = file;
-    //                 // let nama_file = file.name;
-    //                 // if (nama_file != "" && fileupload != "") {
-    //                 //     let formData = new FormData();
-    //                 //     formData.append('fileupload', fileupload);
-    //                 //     formData.append('nama_file', nama_file);
-
-    //                 //     $.ajax({
-    //                 //         type: 'POST',
-    //                 //         url: `${path}/admin/uploadPutusan`,
-    //                 //         data: formData,
-    //                 //         cache: false,
-    //                 //         processData: false,
-    //                 //         contentType: false,
-    //                 //         success: function (msg) {
-    //                 //             console.log(msg);
-    //                 //             Swal.fire('Salinan putusan berhasil di upload', '', 'success')
-    //                 //         },
-    //                 //         error: function () {
-    //                 //             alert("Data Gagal Diupload");
-    //                 //         }
-    //                 //     });
-    //                 // }
-    //                 // }
-    //                 // reader.readAsDataURL(file)
-    //             }
-
-    //         } catch (error) {
-    //             return_data = { error: 1, message: e.message };
-    //         }
-    //         return return_data;
-
-    //     })()
-
-    // }//end function upload putusan
-
 
 
     //function upload salinan putusan
-    function uploadSalinanPutusan() {
-        $('#uploadFileModal').modal('show')
+    function uploadSalinanPutusan(id_perkara) {
+        $('#uploadFileModal').modal('show');
+        $('#id_perkara').val(id_perkara);
 
     }//end function upload salinan putusan
 
@@ -251,6 +185,25 @@ $(document).ready(function () {
         window.location.href = `${path}admin/view_berkas_admin/${id_perkara}/`;
 
     });
+
+    const flashData = $('.flash-data').data('flashdata');
+    if (flashData) {
+        Swal.fire(
+
+            'Success',
+            'data ' + flashData,
+            'success'
+        );
+    }
+
+    const flashMsg = $('.flash-data2').data('flashdata');
+    if (flashMsg) {
+        Swal.fire(
+            'Error',
+            flashMsg,
+            'error'
+        );
+    }
 
 
 });

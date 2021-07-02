@@ -1,4 +1,8 @@
 <main class="mt-5">
+
+    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+    <div class="flash-data2" data-flashdata="<?= $this->session->flashdata('msg'); ?>"></div>
+
     <div class="container-fluid px-4 ">
         <div class="row">
             <div class="col">
@@ -65,19 +69,20 @@
         <div class="modal-content">
 
             <div class="modal-body">
-                <form action="">
-
+                <form method="post" action="<?php echo base_url('admin/uploadPutusan'); ?>" enctype="multipart/form-data">
+                    <input type="text" id="id_perkara" name="id_perkara" hidden>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Silahkan Upload File Putusan Perkara</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <input class="form-control" type="file" id="formFile" name="file_putusan">
                     </div>
 
-                </form>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
+            </form>
         </div>
     </div>
 </div>

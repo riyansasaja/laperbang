@@ -118,7 +118,7 @@
                         <label for="nomorPerkara" class="col-sm-2 col-form-label">Nomor Perkara</label>
                         <div class="col-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="nomor_perkara">
+                                <input type="text" class="form-control" name="nomor_perkara" required>
                                 <span class="input-group-text">/</span>
                                 <select class="form-select" aria-label="Default select example" name="kode_perkara">
                                     <option value="Pdt.P">Pdt.P</option>

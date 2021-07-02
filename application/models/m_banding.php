@@ -37,7 +37,7 @@ class m_banding extends CI_model
     {
 
         $query = $this->db->query(
-            "SELECT COUNT(is_nomor) as list_perkara
+            "SELECT COUNT(no_perkara_banding) as list_perkara
                                FROM list_perkara"
         );
         if ($query->num_rows() > 0) {

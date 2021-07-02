@@ -47,7 +47,7 @@ class ViewHakim extends CI_Controller
 
     public function get_data_banding()
     {
-        $data = $this->db->get('v_all_perkara')->result();
+        $data = $this->db->get('v_berkas_hakim')->result();
         $result =  [
             'response' => 'success',
             'code' => 600,
