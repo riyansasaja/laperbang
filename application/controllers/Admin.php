@@ -89,6 +89,9 @@ class Admin extends CI_Controller
 
     public function updateUser()
     {
+
+        $pengedit = $this->session->userdata('nama');
+
         $this->load->library('form_validation');
         $check_password = $this->input->post('password');
 
@@ -136,6 +139,15 @@ class Admin extends CI_Controller
 
             $this->db->where('id', $id);
             $array = $this->db->update('users', $data);
+
+            $audittrail = array(
+                'log_id' => '',
+                'isi_log' => "User <b>" . $pengedit . "</b> telah update data user pada id <b>" . $id . "</b>",
+                'nama_log' => $pengedit
+            );
+
+            $this->db->set('rekam_log', 'NOW()', FALSE);
+            $this->db->insert('log_audittrail', $audittrail);
         }
 
 
@@ -144,6 +156,9 @@ class Admin extends CI_Controller
 
     public function addUser()
     {
+
+        $pengedit = $this->session->userdata('nama');
+
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('username', 'username', 'required');
@@ -176,20 +191,44 @@ class Admin extends CI_Controller
                 'is_active' => $is_active
             ];
             $array = $this->db->insert('users', $data);
+
+            $audittrail = array(
+                'log_id' => '',
+                'isi_log' => "User <b>" . $pengedit . "</b> telah menambahkan user <b>",
+                'nama_log' => $pengedit
+            );
+
+            $this->db->set('rekam_log', 'NOW()', FALSE);
+            $this->db->insert('log_audittrail', $audittrail);
         }
         echo json_encode($array);
     }
 
     public function del_user()
     {
+
+        $pengedit = $this->session->userdata('nama');
+
         $id = $this->input->post('id');
         $array = $this->db->delete('users', array('id' => $id));
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah menghapus user <b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
 
         echo json_encode($array);
     }
 
     public function updatenoper()
     {
+
+        $pengedit = $this->session->userdata('nama');
+
         $no_perkara_banding = $this->input->post('nomor_perkara_banding');
         $tahun_perkara_banding = $this->input->post('tahun_perkara_banding');
         $nomor_perkara_fix = $no_perkara_banding . '/' . 'Pdt.G/' . $tahun_perkara_banding . '/PTA.Mdo';
@@ -201,11 +240,24 @@ class Admin extends CI_Controller
 
         $this->db->where('id_perkara', $id_perkara);
         $data =  $this->db->update('list_perkara', $data);
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah input nomor perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
         json_encode($data);
     }
 
     public function updateStatus()
     {
+
+        $pengedit = $this->session->userdata('nama');
+
         $status_perkara = $this->input->post('status_perkara');
         $id_perkara = $this->input->post('id_perkara');
 
@@ -216,11 +268,24 @@ class Admin extends CI_Controller
 
         $this->db->where('id_perkara', $id_perkara);
         $array = $this->db->update('list_perkara', $data);
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah input status perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
         json_encode($array);
     }
 
     public function uploadPutusan()
     {
+
+        $pengedit = $this->session->userdata('nama');
+
         $config['upload_path']          = './assets/files/putusan';
         $config['allowed_types']        = 'doc|docx|pdf';
         $config['max_size']             = 5000;
@@ -239,6 +304,16 @@ class Admin extends CI_Controller
                 $this->db->update('list_perkara', $data);
 
                 $this->session->set_flashdata('flash', 'Upload berhasil');
+
+                $audittrail = array(
+                    'log_id' => '',
+                    'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+                    'nama_log' => $pengedit
+                );
+
+                $this->db->set('rekam_log', 'NOW()', FALSE);
+                $this->db->insert('log_audittrail', $audittrail);
+
                 redirect('admin/inputNoper');
                 // $this->db->set('putusan_banding', $putusan_banding);
             } else {
@@ -249,5 +324,28 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
             // redirect('banding/');
         }
+    }
+
+    public function audittrail()
+    {
+        $data['judul'] = 'Audit Trail';
+        $data['css'] = 'dashboard_admin.css';
+        $data['js'] = 'log_audit.js';
+
+        $this->load->view('admin/header', $data);
+        $this->load->view('log/register_log', $data);
+        $this->load->view('admin/footer', $data);
+    }
+
+    public function get_data_audittrail()
+    {
+        $data = $this->db->get('log_audittrail')->result();
+        $result =  [
+            'response' => 'success',
+            'code' => 600,
+            'data' => $data
+
+        ];
+        echo json_encode($result);
     }
 }

@@ -71,6 +71,9 @@ class ViewHakim extends CI_Controller
 
     public function set_catatan()
     {
+
+        $pengedit = $this->session->userdata('nama');
+
         $data = [
             'id_catatan' => '',
             'id_perkara' => $this->input->post('id_perkara'),
@@ -81,6 +84,16 @@ class ViewHakim extends CI_Controller
         ];
 
         $res = $this->db->insert('catatan_hakim_baru', $data);
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah memberikan catatan",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
         echo json_encode($res);
     }
 }

@@ -48,6 +48,8 @@ class Banding extends CI_Controller
         $nomor_surat_pengantar = $this->input->post('nomor_surat_pengantar');
         $bulan_surat_pengantar = $this->input->post('bulan_surat_pengantar');
         $tahun_surat_pengantar = $this->input->post('tahun_surat_pengantar');
+        //ambil  nama user
+        $pengedit = $this->session->userdata('nama');
 
 
         $no_perkara_input = $nomor_perkara . '/' . $kode_perkara . '/' . $tahun_perkara . '/' . $kode_pa;
@@ -69,6 +71,16 @@ class Banding extends CI_Controller
         ];
         $this->db->insert('list_perkara', $data);
         $this->session->set_flashdata('flash', 'berhasil disimpan');
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah menambah data perkara",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
         redirect('banding/');
     }
 
@@ -84,6 +96,8 @@ class Banding extends CI_Controller
         $nomor_surat_pengantar = $this->input->post('nomor_surat_pengantar');
         $bulan_surat_pengantar = $this->input->post('bulan_surat_pengantar');
         $tahun_surat_pengantar = $this->input->post('tahun_surat_pengantar');
+        //ambil nama user
+        $pengedit = $this->session->userdata('nama');
 
 
         $no_perkara_input = $nomor_perkara . '/' . $kode_perkara . '/' . $tahun_perkara . '/' . $kode_pa;
@@ -123,14 +137,19 @@ class Banding extends CI_Controller
             'keterangan' => $keterangan,
         ];
         $where = array('id_perkara' => $id_perkara);
-        $res = $this->m_banding->UpdatePerkara('list_perkara', $data, $where);
-        if ($res >= 1) {
-            $this->session->set_flashdata('flash', 'Berhasil di update');
-            redirect('banding/');
-        } else {
-            $this->session->set_flashdata('msg', 'update data gagal');
-            redirect('banding/');
-        }
+        $this->m_banding->UpdatePerkara('list_perkara', $data, $where);
+        $this->session->set_flashdata('flash', 'Berhasil di update');
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah update data perkara",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
+        redirect('banding/');
     }
 
     // private function _uploadFile($path)
@@ -152,8 +171,12 @@ class Banding extends CI_Controller
 
     function pengantar_upload()
     {
+        //ambil nama user
+        $pengedit = $this->session->userdata('nama');
+
+
         $config['upload_path']          = './assets/files/SuratPengantar';
-        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['allowed_types']        = 'pdf';
         $config['max_size']             = 5000;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -175,14 +198,27 @@ class Banding extends CI_Controller
         $this->db->where('id_perkara', $id_perkara);
         $this->db->update('list_perkara');
 
-        $this->session->set_flashdata('flash', 'berhasil diubah');
+        $this->session->set_flashdata('flash', 'berhasil upload surat pengantar');
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload surat pengantar pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
         redirect('banding/');
     }
 
     function multiple_upload()
     {
+
+        $pengedit = $this->session->userdata('nama');
+
         $config['upload_path']          = './assets/files/bundle_a';
-        $config['allowed_types']        = 'doc|docx|pdf|rtf|jpg|jpeg|png';
+        $config['allowed_types']        = 'pdf';
         $config['max_size']             = 5000;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -385,7 +421,17 @@ class Banding extends CI_Controller
         $id_perkara = $this->input->post('id_perkara');
         $this->db->where('id_perkara', $id_perkara);
         $this->db->update('list_perkara');
-        $this->session->set_flashdata('flash', 'berhasil diubah');
+        $this->session->set_flashdata('flash', 'berhasil upload bundel A');
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload berkas bundel A pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
         redirect('banding/');
 
         // $where = array('id_perkara' => $id_perkara);
@@ -428,8 +474,11 @@ class Banding extends CI_Controller
 
     function multiple_uploadB()
     {
+
+        $pengedit = $this->session->userdata('nama');
+
         $config['upload_path']          = './assets/files/bundle_b';
-        $config['allowed_types']        = 'doc|docx|pdf|rtf|jpg|jpeg|png';
+        $config['allowed_types']        = 'pdf|rtf';
         $config['max_size']             = 5000;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -666,7 +715,17 @@ class Banding extends CI_Controller
         $this->db->where('id_perkara', $id_perkara);
         $this->db->update('list_perkara');
 
-        $this->session->set_flashdata('flash', 'berhasil diubah');
+        $this->session->set_flashdata('flash', 'berhasil upload bundel B');
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload berkas bundel B pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
         redirect('banding/');
 
         // 

@@ -21,7 +21,7 @@ if (flashData) {
     Swal.fire(
 
         'Success',
-        'data ' + flashData,
+        flashData,
         'success'
     );
 }

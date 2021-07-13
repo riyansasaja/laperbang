@@ -75,6 +75,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Surat Pengantar --pdf</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['sp_perkara'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -106,11 +107,11 @@
                                     <label for="formFileSm" class="col-4 form-label">Surat Gugatan</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_gugatan'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_a/<?= $perkara['0']['surat_gugatan'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['surat_gugatan'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['surat_gugatan'] ?>
                                         </a>
                                     </div>
@@ -120,7 +121,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Surat Kuasa dari Kedua Belah Pihak (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file2">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['sk_bundelA'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -135,7 +136,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Bukti Pembayaran Panjar Biaya Perkara (SKUM)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file3">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['bukti_pemb_panjar'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -150,7 +151,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Penetapan Majelis Hakim</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file4">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['majelis_hakim'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -165,7 +166,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Penunjukan Panitera Pengganti</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file5">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['penunjukan_pp'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -180,7 +181,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Penunjukan Jurusita/Jurusita Pengganti</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file6">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['penunjukan_js'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -195,7 +196,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Penetapan Hari Sidang</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file7">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['penetapan_hari_sidang'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -209,7 +210,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Relaas-relaas Panggilan</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file8">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['relaas_panggilan'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -223,7 +224,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Berita Acara Sidang</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file9">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['ba_sidang'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -237,7 +238,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Penetapan Sita Conservatoir/Revindicatoir (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file10">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['penetapan_sita'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -251,7 +252,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Berita Acara Sita Conservatoir/Revindicatoir (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file11">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['ba_sita'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -265,7 +266,7 @@
                                     <label for="formFileSm" class=" col-4 col-label form-label">Lampiran-lampiran surat yang diajukan oleh kedua belah pihak (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file12">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['lampiran_surat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -279,7 +280,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Surat-surat bukti penggugat (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file13">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_bukti_penggugat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -293,7 +294,7 @@
                                     <label for="formFileSm" class="col-4 form-label">surat-surat bukti tergugat (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file14">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_bukti_tergugat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -307,7 +308,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Tanggapan bukti-bukti tergugat dari penggugat (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file15">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['tanggapan_bukti_tergugat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -321,7 +322,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Tanggapan bukti-bukti penggugat dari tergugat (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file16">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['tanggapan_bukti_penggugat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -335,7 +336,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Gambar situasi (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file17">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['gambar_situasi'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -349,7 +350,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Surat-surat lain (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file18">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_lain'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -381,7 +382,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Salinan Putusan Pengadilan Agama /Mahkamah Syari'yah</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['salinan_putusan_pa'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -396,7 +397,7 @@
                                     <label for="formFileSm" class="col-4 form-label"></label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file16">
-                                        <small class="text-satu fw-lighter">*File RTF</small>
+                                        <small class="text-satu fw-lighter">*File RTF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['salinan_putusan_pa'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -412,7 +413,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Surat Kuasa dari Kedua Belah Pihak (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file2">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['sk_bundelb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -427,7 +428,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Akta Banding</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file3">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['akta_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -442,7 +443,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Akta Penerimaan Memori Banding</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file4">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['akta_penerimaan_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -457,7 +458,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Memori Banding (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file5">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['memori_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -473,7 +474,7 @@
                                     <label for="formFileSm" class="col-4 form-label"></label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file17">
-                                        <small class="text-satu fw-lighter">*File RTF</small>
+                                        <small class="text-satu fw-lighter">*File RTF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['memori_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -489,7 +490,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Akta Pemberitahuan Banding</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file6">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['akta_pemberitahuan_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -503,7 +504,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Pemberitahuan Penyerahan Memori Banding</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file7">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['pemberitahuan_penyerahan_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -517,7 +518,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Akta Penerimaan Kontra Memori Banding (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file8">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['akta_penerimaankontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -531,7 +532,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Kontra Memori Banding (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file9">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['kontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -548,7 +549,7 @@
                                     <label for="formFileSm" class="col-4 form-label"></label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file18">
-                                        <small class="text-satu fw-lighter">*File RTF</small>
+                                        <small class="text-satu fw-lighter">*File RTF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['kontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -564,7 +565,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Pemberitahuan Penyerahan Kotra Memori Banding (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file10">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['pemberitahuan_penyerahankontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -578,7 +579,7 @@
                                     <label for="formFileSm" class=" col-4 col-label form-label">Relaas Pemberitahuan untuk memeriksa (Inzage) Berkas Perkara Banding</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file11">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['relaas_periksa_berkas_pb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -592,7 +593,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Surat Kuasa Khusus (bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file12">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['sk_khusus'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -606,7 +607,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Bukti Penerimaan Biaya Perkara Banding</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file13">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['bukt_pengiriman_bpb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -620,7 +621,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Bukti Setor Biaya Pendaftaran Ke Kas Negara</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file14">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['bukti_setor_bp_kasnegara'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -634,7 +635,7 @@
                                     <label for="formFileSm" class="col-4 form-label">Surat Lainnya (Bila ada)</label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file15">
-                                        <small class="text-satu fw-lighter">*File PDF</small>
+                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?php //$perkara['0']['surat_lainnya'] ? '' : 'd-none' 
                                                                 ?> ">

@@ -94,7 +94,7 @@
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Log</div>
-                            <a class="nav-link" href="<?= base_url('admin/audittrail/') ?>">
+                            <a class="nav-link <?= $judul == 'Audit Trail' ? 'active' : '' ?>" href="<?= base_url('admin/audittrail/') ?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Audit Trail
                             </a>
