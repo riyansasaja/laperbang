@@ -6,6 +6,16 @@ WHERE list_perkara.is_nomor = 1;
 //-- end untuk create view perkara yang dilihat hakim
 
 
+//untuk audit trail
+CREATE TABLE `log_audittrail` (
+  `log_id` int(5) NOT NULL,
+  `isi_log` text CHARACTER SET latin1 DEFAULT NULL,
+  `rekam_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `nama_log` varchar(50) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+//--end audit trail
+
+
 //untuk notifikasi inbox
 //jalankan pertama
 CREATE TABLE `log_inbox` (
