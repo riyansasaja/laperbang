@@ -19,8 +19,7 @@ class Admin extends CI_Controller
         //konten
         $data['judul'] = 'Dashboard';
         $data['css'] = 'dashboard_admin.css';
-        $data['js'] = 'dashboard_adm
-        in.js';
+        $data['js'] = 'dashboard_admin.js';
 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/dashboard', $data);
@@ -348,4 +347,42 @@ class Admin extends CI_Controller
         ];
         echo json_encode($result);
     }
+
+
+
+    #########
+    #to Riz and all Dev
+    #di bawah ini untuk menjalankan fungsi pemberitahuan inbox
+    # sebelumnya, silahkan copykan script di //vendor/sql.txt/ pada sql
+    #########
+    //ambil data di table log_inbox
+    public function get_log_inbox()
+    {
+
+        $this->db->count_all_results('log_inbox');
+        $data = $this->db->get_where('log_inbox', ['is_read' => 1])->result();
+        $total = $this->db->count_all_results();
+        $result =  [
+            'response' => 'success',
+            'code' => 600,
+            'data' => $data,
+            'total' => $total
+
+        ];
+        echo json_encode($result);
+    }
+    //--end
+
+    //function saat klik log inbox
+    public function click_log_inbox()
+    {
+        $id = $this->input->post('id');
+        $update = [
+            'is_read' => 2
+        ];
+        $this->db->where('id_log_inbox', $id);
+        $data = $this->db->update('log_inbox', $update);
+        echo json_encode($data);
+    }
+    //--end
 }

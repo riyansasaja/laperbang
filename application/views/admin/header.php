@@ -43,15 +43,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle animate__animated animate__heartBeat animate__infinite" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-envelope-open fa-fw"></i>
-                        <span class="position-absolute top-6 translate-middle badge rounded-pill bg-danger animate__animated animate__flash animate__infinite">
-                            2
-                            <span class="visually-hidden">unread messages</span>
+                        <span class="position-absolute top-6 translate-middle badge rounded-pill bg-danger animate__animated animate__flash animate__infinite" id="inbox-count">
+
                         </span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Perkara Baru PA-Manado</a></li>
-                        <li><a class="dropdown-item" href="#!">Perkara Baru PA-Tutuyan</a></li>
-                        <li><a class="dropdown-item" href="#!">Perkara Baru PA-Manado</a></li>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" id="inbox-isi">
                     </ul>
                 </li>
             </ul>

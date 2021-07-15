@@ -38,6 +38,54 @@
 <script src="<?= base_url('assets/js/') . $js ?>"></script>
 
 
+<script>
+    $(document).ready(function() {
+
+        //ambil data get_log_inbox
+        $.ajax({
+            type: "get",
+            url: "http://localhost/laperbang/admin/get_log_inbox",
+            dataType: "JSON",
+            success: function(response) {
+                //hitung jumlah data yang masuk
+                let jumlah = response.data.length;
+                //tampilkan jumlah di badge
+                $('#inbox-count').text(jumlah);
+                let text = ''
+                //pengulangan response.data
+                $.each(response.data, function(index, val) {
+                    console.log(val);
+                    //tampilkan pemberitahuan
+                    text = `<li><a class="dropdown-item isi" href="#!" data-id="${val.id_log_inbox}">Perkara Baru nomor ${val.no_perkara}</a></li>`
+                    $('#inbox-isi').append(text);
+
+                });
+            }
+        });
+
+        $('#inbox-isi').on('click', '.isi', function(d) {
+            d.preventDefault();
+            let id = $(this).attr('data-id');
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/laperbang/admin/click_log_inbox",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function(response) {
+                    console.log(window.location.origin);
+                    window.location.href = window.location.origin + '/laperbang/admin/inputnoper/';
+                }
+            });
+        });
+
+
+    });
+</script>
+
+
 
 </body>
 
