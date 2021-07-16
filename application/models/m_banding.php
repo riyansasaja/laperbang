@@ -12,11 +12,17 @@ class m_banding extends CI_model
                 "SELECT COUNT(no_perkara) as list_perkara 
                 from list_perkara WHERE MONTH(tgl_register)='$i'"
             );
+
             // $row = $query->result_array();
             // $jumlah_perkara = $row[0]['no_perkara'] + 1;
             if ($query->num_rows() > 0) {
                 $row = $query->result_array();
+
                 foreach ($row as $ls) {
+
+                    //ini yang salah riz.
+                    //$ls['no_perkara so nda ada ] karena so ganti dengan as list perkara
+                    //harusnya $ls['list_perkara']
                     echo $ls['no_perkara'];
                 }
             }
