@@ -63,21 +63,24 @@
                                             <label for="old-password" class="form-label">Password Lama</label>
                                         </small>
                                         <input type="password" class="form-control" name="oldPassword" id="old-password">
+                                        <div id="old-passwordHelp" class="form-text text-danger"></div>
                                     </div>
                                     <div class="mb-1">
                                         <small class="text-success">
                                             <label for="new-password" class="form-label">Password Baru</label>
                                         </small>
                                         <input type="password" class="form-control" name="newPassword" id="new-password">
+                                        <div id="new-passwordHelp" class="form-text text-danger"></div>
                                     </div>
                                     <div class="mb-1">
                                         <small class="text-success">
                                             <label for="repeat-password" class="form-label">Ulangi Password Baru</label>
                                         </small>
                                         <input type="password" class="form-control" id="repeat-password" name="repeatPassword">
+                                        <div id="repeat-passwordHelp" class="form-text text-danger"></div>
                                     </div>
 
-                                    <div class="d-grid gap-2 col-5 mx-auto">
+                                    <div class="d-grid gap-2 col-8 mx-auto">
                                         <button class="btn btn-success mt-3" type="button" id="change-password">Ubah Password</button>
                                     </div>
                                 </form>
