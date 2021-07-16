@@ -4,9 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class m_banding extends CI_model
 {
 
-
-
-
     public function countLapHarian()
     {
         $id_user =  $this->session->userdata('id');
