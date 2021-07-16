@@ -173,7 +173,9 @@ class Banding extends CI_Controller
     {
         //ambil nama user
         $pengedit = $this->session->userdata('nama');
-
+        // $kode_pa = $this->session->userdata('kode_pa');
+        // $tanggal = date("Ymd");
+        // $nama_file = $tanggal . '_' . $kode_pa . '_';
 
         $config['upload_path']          = './assets/files/SuratPengantar';
         $config['allowed_types']        = 'pdf';
