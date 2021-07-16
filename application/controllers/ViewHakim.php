@@ -17,8 +17,12 @@ class ViewHakim extends CI_Controller
         $this->load->view('hakim/index');
         $this->load->view('hakim/footer', $data);
     }
-
-
+    public function getData()
+    {
+        $data = $this->m_banding->countBanding();
+        var_dump($data);
+        die;
+    }
 
     public function banding()
     {
