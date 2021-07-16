@@ -1,40 +1,91 @@
-<div class="container-fluid px4">
+<div class="container-fluid bg-vektor">
+    <div class="container">
+
+        <div class="row mt-3">
+            <div class="">
+                <!-- <div class="card border-light"> -->
+                <div class="row d-flex justify-content-center py-4">
+                    <div class="col-5 mx-1 px-3">
+                        <div class="card shadow rounded animate__animated animate__fadeIn animate__fast">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <img src="<?= base_url('assets/img/') ?>user.svg" alt="" class="img-fluid" style="width: 30%;">
+                                    <h5>My Profile</h5>
+                                </div>
+
+                                <form>
+                                    <div class="mb-1">
+                                        <small>
+                                            <label for="exampleInputEmail1" class="form-label">Nama</label>
+                                        </small>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="mb-1">
+                                        <small>
+                                            <label for="exampleInputEmail1" class="form-label">email</label>
+                                        </small>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="mb-1">
+                                        <small>
+                                            <label for="exampleInputEmail1" class="form-label">Username</label>
+                                        </small>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled>
+                                    </div>
+                                    <div class="mb-1">
+                                        <small>
+                                            <label for="exampleInputEmail1" class="form-label">Aktif Sejak</label>
+                                        </small>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled>
+                                    </div>
 
 
-    <div class="row">
-        <div class="col">
-            <div class="text-center">
-                <img src="<?= base_url('assets/') ?>img/user_logo.png" alt="">
-                <p>Pengadilan Agama Amurang</p>
-            </div>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-6 align-self-center">
-            <div class="card">
-                <div class="card-body">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td style="width: 6rem;">Username</td>
-                                <td>Pengadilan Agama Amurang</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>paamurang@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <a class="btn btn-warning" href="" data-bs-toggle="modal" data-bs-target="#Modal_update_user">Ubah Data</a>
-                                    <a class="btn btn-warning" href="" data-bs-toggle="modal" data-bs-target="#Modal_update_password">Ubah Password</a>
-                                </td>
-                            </tr>
-                        </tbody>
+                                    <div class="d-grid gap-2 col-3 mx-auto">
+                                        <button class="btn btn-success mt-3" type="button">Simpan</button>
+                                    </div>
+
+                                </form>
 
 
-                    </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 mx-1 px-3">
+                        <div class="card shadow rounded animate__animated animate__fadeIn animate__slower">
+                            <div class="card-body">
+                                <u>
+                                    <h5>Update Password</h5>
+                                </u>
+                                <form>
+                                    <div class="mb-1">
+                                        <small>
+                                            <label for="exampleInputEmail1" class="form-label">Password Lama</label>
+                                        </small>
+                                        <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="mb-1">
+                                        <small>
+                                            <label for="exampleInputEmail1" class="form-label">Password Baru</label>
+                                        </small>
+                                        <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="mb-1">
+                                        <small>
+                                            <label for="exampleInputEmail1" class="form-label">Ulangi Password Baru</label>
+                                        </small>
+                                        <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+
+                                    <div class="d-grid gap-2 col-5 mx-auto">
+                                        <button class="btn btn-success mt-3" type="button">Ubah Password</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+                <!-- </div> -->
             </div>
         </div>
     </div>

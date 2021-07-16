@@ -53,6 +53,20 @@ body{
 
 }
 
+.bg-gradient-dua {
+    background: rgb(32,106,93);
+    background: linear-gradient(277deg, rgba(32,106,93,1) 32%, rgba(255,204,41,1) 100%);
+}
+
+
+.bg-transparant-abu {
+    background-color: rgba(179, 216, 185, 0.247);
+}
+.bg-vektor {
+    background-image:url('https://i1.wp.com/backgroundcheckall.com/wp-content/uploads/2017/12/green-background-abstract.png');
+    background-size: cover;
+}
+
 .drop-shadow {
     filter: drop-shadow(1px 1px 1px rgb(0, 0, 0));
 }
