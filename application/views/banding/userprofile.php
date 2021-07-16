@@ -14,34 +14,35 @@
                                 </div>
 
                                 <form>
+                                    <input type="text" id="profile-id" hidden>
                                     <div class="mb-1">
-                                        <small>
-                                            <label for="exampleInputEmail1" class="form-label">Nama</label>
+                                        <small class="text-success">
+                                            <label for="profile-name" class="form-label">Nama</label>
                                         </small>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        <input type="text" class="form-control" id="profile-name">
                                     </div>
                                     <div class="mb-1">
-                                        <small>
-                                            <label for="exampleInputEmail1" class="form-label">email</label>
+                                        <small class="text-success">
+                                            <label for="profile-email" class="form-label">email</label>
                                         </small>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        <input type="email" class="form-control" id="profile-email">
                                     </div>
                                     <div class="mb-1">
-                                        <small>
-                                            <label for="exampleInputEmail1" class="form-label">Username</label>
+                                        <small class="text-success">
+                                            <label for="profile-username" class="form-label">Username</label>
                                         </small>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled>
+                                        <input type="text" class="form-control text-secondary" id="profile-username" disabled>
                                     </div>
                                     <div class="mb-1">
-                                        <small>
-                                            <label for="exampleInputEmail1" class="form-label">Aktif Sejak</label>
+                                        <small class="text-success">
+                                            <label for="profile-since" class="form-label">Aktif Sejak</label>
                                         </small>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled>
+                                        <input type="text" class="form-control text-secondary" id="profile-since" disabled>
                                     </div>
 
 
                                     <div class="d-grid gap-2 col-3 mx-auto">
-                                        <button class="btn btn-success mt-3" type="button">Simpan</button>
+                                        <button class="btn btn-success mt-3" type="button" id="profile-save">Simpan</button>
                                     </div>
 
                                 </form>
@@ -58,26 +59,26 @@
                                 </u>
                                 <form>
                                     <div class="mb-1">
-                                        <small>
-                                            <label for="exampleInputEmail1" class="form-label">Password Lama</label>
+                                        <small class="text-success">
+                                            <label for="old-password" class="form-label">Password Lama</label>
                                         </small>
-                                        <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        <input type="password" class="form-control" name="oldPassword" id="old-password">
                                     </div>
                                     <div class="mb-1">
-                                        <small>
-                                            <label for="exampleInputEmail1" class="form-label">Password Baru</label>
+                                        <small class="text-success">
+                                            <label for="new-password" class="form-label">Password Baru</label>
                                         </small>
-                                        <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        <input type="password" class="form-control" name="newPassword" id="new-password">
                                     </div>
                                     <div class="mb-1">
-                                        <small>
-                                            <label for="exampleInputEmail1" class="form-label">Ulangi Password Baru</label>
+                                        <small class="text-success">
+                                            <label for="repeat-password" class="form-label">Ulangi Password Baru</label>
                                         </small>
-                                        <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        <input type="password" class="form-control" id="repeat-password" name="repeatPassword">
                                     </div>
 
                                     <div class="d-grid gap-2 col-5 mx-auto">
-                                        <button class="btn btn-success mt-3" type="button">Ubah Password</button>
+                                        <button class="btn btn-success mt-3" type="button" id="change-password">Ubah Password</button>
                                     </div>
                                 </form>
                             </div>
