@@ -774,10 +774,13 @@ class Banding extends CI_Controller
     }
     public function userProfile()
     {
-        $this->load->view('templates/sbadmin/header');
-        $this->load->view('templates/sbadmin/topbar');
-        $this->load->view('templates/sbadmin/sidebar');
-        $this->load->view('banding/userprofile');
-        $this->load->view('templates/sbadmin/footer');
+
+        $data['js'] = 'banding_userprofile.js';
+        $data['css'] = 'dashboard_banding.css';
+        $data['judul'] = 'User Profile';
+
+        $this->load->view('banding/header', $data);
+        $this->load->view('banding/userprofile', $data);
+        $this->load->view('banding/footer', $data);
     }
 }
