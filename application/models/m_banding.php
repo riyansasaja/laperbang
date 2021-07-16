@@ -5,26 +5,7 @@ class m_banding extends CI_model
 {
 
 
-    public function countBanding()
-    {
-        for ($i = 1; $i < 13; $i++) {
-            $query = $this->db->query(
-                "SELECT COUNT(no_perkara) as list_perkara 
-                from list_perkara WHERE MONTH(tgl_register)='$i'"
-            );
-            // $row = $query->result_array();
-            // $jumlah_perkara = $row[0]['no_perkara'] + 1;
-            if ($query->num_rows() > 0) {
-                $row = $query->result_array();
-                foreach ($row as $ls) {
-                    echo $ls['no_perkara'];
-                }
-            }
-            // else {
-            //     return 0;
-            // }
-        }
-    }
+
 
     public function countLapHarian()
     {
