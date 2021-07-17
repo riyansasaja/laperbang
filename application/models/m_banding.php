@@ -3,6 +3,56 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class m_banding extends CI_model
 {
+
+    public function perkara_januari()
+    {
+        return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=1)AND (YEAR(tgl_register)=" . date('Y') . "))");
+    }
+    public function perkara_februari()
+    {
+        return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=2)AND (YEAR(tgl_register)=" . date('Y') . "))");
+    }
+    public function perkara_maret()
+    {
+        return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=3)AND (YEAR(tgl_register)=" . date('Y') . "))");
+    }
+    public function perkara_april()
+    {
+        return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=4)AND (YEAR(tgl_register)=" . date('Y') . "))");
+    }
+    public function perkara_may()
+    {
+        return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=5)AND (YEAR(tgl_register)=" . date('Y') . "))");
+    }
+    public function perkara_juni()
+    {
+        return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=6)AND (YEAR(tgl_register)=" . date('Y') . "))");
+    }
+    public function perkara_juli()
+    {
+        return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=7)AND (YEAR(tgl_register)=" . date('Y') . "))");
+    }
+    public function perkara_agustus()
+    {
+        return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=8)AND (YEAR(tgl_register)=" . date('Y') . "))");
+    }
+    public function perkara_september()
+    {
+        return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=9)AND (YEAR(tgl_register)=" . date('Y') . "))");
+    }
+    public function perkara_oktober()
+    {
+        return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=10)AND (YEAR(tgl_register)=" . date('Y') . "))");
+    }
+    public function perkara_november()
+    {
+        return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=11)AND (YEAR(tgl_register)=" . date('Y') . "))");
+    }
+    public function perkara_desember()
+    {
+        return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=12)AND (YEAR(tgl_register)=" . date('Y') . "))");
+    }
+
     public function countLapHarian()
     {
         $id_user =  $this->session->userdata('id');

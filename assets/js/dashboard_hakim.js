@@ -4,10 +4,13 @@ $(document).ready(function () {
 
     Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#292b2c';
-
+    const prapath = window.location.origin;
+    const path = `${prapath}/laperbang/`;
     let ctx = document.getElementById("myAreaChart");
 
+
     let dataBanding = {
+        "ajax": `${path}ViewHakim/getData/`,
         label: "Banding",
         lineTension: 0.3,
         borderColor: "#1d5f53",
@@ -16,7 +19,7 @@ $(document).ready(function () {
         pointHoverBackgroundColor: "#1d5f53",
         pointHitRadius: 50,
         pointBorderWidth: 2,
-        data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984]
+        data: [$perkara_januari, "perkara_februari", "perkara_maret", "perkara_maret", "perkara_april", "perkara_may", "perkara_juni", "perkara_juli"]
     };
 
     let dataExaminasi = {
@@ -28,7 +31,7 @@ $(document).ready(function () {
         pointHoverBackgroundColor: "#719e0f",
         pointHitRadius: 50,
         pointBorderWidth: 2,
-        data: [10000, 10162, 46263, 10394, 10287, 38682, 11274, 13259, 15049, 31159, 31651, 21984, 28451]
+        data: []
     };
 
     let dataLaporanPerkara = {
@@ -40,7 +43,7 @@ $(document).ready(function () {
         pointHoverBackgroundColor: "#be9a21",
         pointHitRadius: 50,
         pointBorderWidth: 2,
-        data: [30000, 20162, 26263, 20394, 20287, 28682, 21274, 23259, 25049]
+        data: []
     };
 
     let tampungData = {

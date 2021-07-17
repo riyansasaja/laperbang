@@ -45,7 +45,8 @@ class template_word extends CI_Controller
 
         $data = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
         foreach ($data as $lihat) :
-            // $templateProcessor->setValue('tgl_register', indonesian_date_tanggal($lihat->tgl_register));
+
+            // $templateProcessor->setValue('tgl_register', indonesian_date_tanggal($lihat['tgl_register']));
             $templateProcessor->setValue('no_surat', $lihat['no_surat_pengantar']);
             $templateProcessor->setValue('no_perkara', $lihat['no_perkara']);
             $templateProcessor->setValue('banyaknya', $lihat['banyaknya']);

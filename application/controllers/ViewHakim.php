@@ -8,21 +8,46 @@ class ViewHakim extends CI_Controller
 
         //konten
         $data['judul'] = 'Dashboard';
-        $data['js'] = 'dashboard_hakim.js';
+        // $data['js'] = 'dashboard_hakim.js';
         $data['css'] = 'dashboard_hakim.css';
         $data['perkara_harian'] = $this->m_banding->countLapHarianHakim();
         $data['regis_harian'] = $this->m_banding->countRegis();
+        $data['perkara_januari']    = $this->m_banding->perkara_januari()->num_rows();
+        $data['perkara_februari']    = $this->m_banding->perkara_februari()->num_rows();
+        $data['perkara_maret']    = $this->m_banding->perkara_maret()->num_rows();
+        $data['perkara_april']    = $this->m_banding->perkara_april()->num_rows();
+        $data['perkara_may']    = $this->m_banding->perkara_may()->num_rows();
+        $data['perkara_juni']    = $this->m_banding->perkara_juni()->num_rows();
+        $data['perkara_juli']    = $this->m_banding->perkara_juli()->num_rows();
+        $data['perkara_agustus']    = $this->m_banding->perkara_agustus()->num_rows();
+        $data['perkara_september']    = $this->m_banding->perkara_september()->num_rows();
+        $data['perkara_oktober']    = $this->m_banding->perkara_oktober()->num_rows();
+        $data['perkara_november']    = $this->m_banding->perkara_november()->num_rows();
+        $data['perkara_desember']    = $this->m_banding->perkara_desember()->num_rows();
 
         $this->load->view('hakim/header', $data);
         $this->load->view('hakim/index');
         $this->load->view('hakim/footer', $data);
     }
-    public function getData()
-    {
-        $data = $this->m_banding->countBanding();
-        var_dump($data);
-        die;
-    }
+
+    // public function getData()
+    // {
+    //     // $data = $this->m_banding->countBanding();
+    //     $data['perkara_januari']    = $this->m_banding->perkara_januari()->num_rows();
+    //     $data['perkara_februari']    = $this->m_banding->perkara_februari()->num_rows();
+    //     $data['perkara_maret']    = $this->m_banding->perkara_maret()->num_rows();
+    //     $data['perkara_april']    = $this->m_banding->perkara_april()->num_rows();
+    //     $data['perkara_may']    = $this->m_banding->perkara_may()->num_rows();
+    //     $data['perkara_juni']    = $this->m_banding->perkara_juni()->num_rows();
+    //     $data['perkara_juli']    = $this->m_banding->perkara_juli()->num_rows();
+    //     $data['perkara_agustus']    = $this->m_banding->perkara_agustus()->num_rows();
+    //     $data['perkara_september']    = $this->m_banding->perkara_september()->num_rows();
+    //     $data['perkara_oktober']    = $this->m_banding->perkara_oktober()->num_rows();
+    //     $data['perkara_november']    = $this->m_banding->perkara_november()->num_rows();
+    //     $data['perkara_desember']    = $this->m_banding->perkara_desember()->num_rows();
+
+    //     echo json_encode($data);
+    // }
 
     public function banding()
     {
