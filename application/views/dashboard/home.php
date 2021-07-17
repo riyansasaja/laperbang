@@ -13,7 +13,8 @@
                             <h5 class="mt-4">EKSAMINASI <br> </h5>
                             <img class="mt-1" src="<?= base_url('assets/img/') ?>exa_logo.png" alt="" style="width: 8rem;">
                             <p>Pengunggahan perkara yang akan dieksaminasi oleh HATIWASDA</p>
-                            <a href="" class="btn btn-block text-white bg-dua">MASUK</a>
+                            <a href="" class="btn btn-block text-white bg-dua disabled" role="button" aria-disabled="true">MASUK</a>
+
                         </div>
                     </div>
                 </div>
@@ -34,7 +35,7 @@
                             <h5>PELAPORAN <br>PERKARA</h5>
                             <img src="<?= base_url('assets/img/') ?>perkara_logo.png" alt="" style="width: 8rem;">
                             <p>Pengunggahan dokumen keadaan <br>perkara</p>
-                            <a href="" class="btn btn-block text-white bg-dua">MASUK</a>
+                            <a href="" class="btn btn-block text-white bg-dua disabled" role="button" aria-disabled="true">MASUK</a>
                         </div>
                     </div>
                 </div>

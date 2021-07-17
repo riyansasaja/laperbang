@@ -12,7 +12,7 @@ class template_word extends CI_Controller
         // $template = new \PhpOffice\PhpWord\TemplateProcessor(FCPATH.'resources/template/surat_template.docx');
         switch ($this->session->userdata('id')) {
             case '2':
-                $templateProcessor = new TemplateProcessor('resources/template/surat_template_manado.docx');
+                $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('resources/template/surat_template_manado.docx');
                 break;
             case '3':
                 $templateProcessor = new TemplateProcessor('resources/template/surat_template_tty.docx');
@@ -45,11 +45,13 @@ class template_word extends CI_Controller
 
         $data = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
         foreach ($data as $lihat) :
-            // $templateProcessor->setValue('tgl_register', indonesian_date_tanggal($lihat->tgl_register));
+
+            $templateProcessor->setValue('tgl_register', indonesian_date_tanggal($lihat['tgl_register']));
             $templateProcessor->setValue('no_surat', $lihat['no_surat_pengantar']);
             $templateProcessor->setValue('no_perkara', $lihat['no_perkara']);
             $templateProcessor->setValue('banyaknya', $lihat['banyaknya']);
             $templateProcessor->setValue('keterangan', $lihat['keterangan']);
+            $templateProcessor->setValue('pejabat_berwenang', $lihat['pejabat_berwenang']);
             $templateProcessor->setValue('nm_pejabat', $lihat['nm_pejabat']);
             $templateProcessor->setValue('nip_pejabat', $lihat['nip_pejabat']);
 
@@ -61,7 +63,7 @@ class template_word extends CI_Controller
         // foreach ($data as $lihat) :
         //     $template->setValue('no_surat', $lihat['no_surat_pengantar']);
 
-        $temp_filename = "surat_pengantar.docx";
+        $temp_filename = "_" . date('dmY') . ".docx";
         // $template->save($temp_filename);
         $templateProcessor->saveAs('dokumen/surat_pengantar/' . $temp_filename);
         $path = 'dokumen/surat_pengantar/' . $temp_filename;
