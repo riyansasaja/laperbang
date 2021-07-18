@@ -55,8 +55,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle animate__animated animate__heartBeat" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item disabled" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item disabled" href="#!">Activity Log</a></li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
@@ -71,7 +71,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link <?= $judul == 'Dashboard' ? 'active' : '' ?>" href="<?= base_url('admin/') ?>">
+                            <a class="nav-link disabled <?= $judul == 'Dashboard' ? 'active' : '' ?>" href="<?= base_url('admin/') ?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>

@@ -637,12 +637,12 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file15">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?php //$perkara['0']['surat_lainnya'] ? '' : 'd-none' 
+                                    <div class="col-3 my-auto <?= $perkara['0']['surat_lainnya_b'] ? '' : 'd-none'
                                                                 ?> ">
-                                        <!-- <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
+                                        <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
                                         <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['surat_lainnya_b'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['surat_lainnya_b'] ?>
-                                        </a> -->
+                                        </a>
                                     </div>
                                 </div>
 
