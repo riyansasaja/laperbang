@@ -637,12 +637,12 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file15">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?php //$perkara['0']['surat_lainnya'] ? '' : 'd-none' 
+                                    <div class="col-3 my-auto <?= $perkara['0']['surat_lainnya_b'] ? '' : 'd-none'
                                                                 ?> ">
-                                        <!-- <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
+                                        <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
                                         <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['surat_lainnya_b'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['surat_lainnya_b'] ?>
-                                        </a> -->
+                                        </a>
                                     </div>
                                 </div>
 
@@ -653,7 +653,7 @@
                 </div>
 
                 <!-- upload putusan -->
-                <!-- <div class="accordion-item">
+                <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed bg-primary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#putusan" aria-expanded="false" aria-controls="collapseTwo">
                             Putusan
@@ -661,10 +661,10 @@
                     </h2>
                     <div id="putusan" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <a class="btn btn-primary" href="">Download Putusan</a>
+                            <a class="btn btn-primary" href="<?php echo base_url() ?>index.php/banding/download_putusan/<?= $perkara[0]['id_perkara'] ?>">Download Putusan</a>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- </ div> -->
                 <!-- end accordion -->
             </div>

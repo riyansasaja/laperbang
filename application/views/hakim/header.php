@@ -43,17 +43,17 @@
                         <a class="nav-link <?= $judul == 'Banding' ? 'active' : '' ?>" href="<?= base_url('viewhakim/banding/') ?>">Banding</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $judul == 'Ekasaminasi' ? 'active' : '' ?>" href="<?= base_url('viewhakim/eksaminasi/') ?>">Eksaminasi</a>
+                        <a class="nav-link disabled <?= $judul == 'Ekasaminasi' ? 'active' : '' ?>" href="<?= base_url('viewhakim/eksaminasi/') ?>">Eksaminasi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $judul == 'laper' ? 'active' : '' ?>" href="<?= base_url('viewhakim/laper/') ?>">Laporan Perkara</a>
+                        <a class="nav-link  disabled<?= $judul == 'laper' ? 'active' : '' ?>" href="<?= base_url('viewhakim/laper/') ?>">Laporan Perkara</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-fw fa-user-tie"></i> User
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item disabled" href="#">Profile</a></li>
                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
                         </ul>
                     </li>
