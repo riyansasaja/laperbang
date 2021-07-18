@@ -774,6 +774,20 @@ class Banding extends CI_Controller
             $this->load->view('banding/footer', $data);
         }
     }
+
+    public function download_putusan($id)
+    {
+        $data['perkara'] = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
+        force_download('assets/files/putusan/' . $data['perkara'][0]['putusan_banding'], NULL);
+
+        if ($data['perkara'][0]['putusan_banding'] != null) {
+            force_download('assets/files/putusan/' . $data['perkara'][0]['putusan_banding'], NULL);
+        } else {
+            $this->session->set_flashdata('msg', 'Belum ada file putusan');
+            redirect('banding/');
+        }
+    }
+
     public function userProfile()
     {
 

@@ -653,7 +653,7 @@
                 </div>
 
                 <!-- upload putusan -->
-                <!-- <div class="accordion-item">
+                <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed bg-primary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#putusan" aria-expanded="false" aria-controls="collapseTwo">
                             Putusan
@@ -661,10 +661,10 @@
                     </h2>
                     <div id="putusan" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <a class="btn btn-primary" href="">Download Putusan</a>
+                            <a class="btn btn-primary" href="<?php echo base_url() ?>index.php/banding/download_putusan/<?= $perkara[0]['id_perkara'] ?>">Download Putusan</a>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- </ div> -->
                 <!-- end accordion -->
             </div>
