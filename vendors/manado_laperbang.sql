@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2021 at 03:34 AM
+-- Generation Time: Jul 18, 2021 at 12:25 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.1.32
 
@@ -121,15 +121,6 @@ CREATE TABLE `catatan_hakim` (
   `c_surat_lainnya_b` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `catatan_hakim`
---
-
-INSERT INTO `catatan_hakim` (`id_catatan`, `id_user`, `id_perkara`, `c_surat_gugatan`, `c_sk_bundelA`, `c_bukti_pemb_panjar`, `c_majelis_hakim`, `c_penunjukan_pp`, `c_penunjukan_js`, `c_penetapan_hari_sidang`, `c_relaas_panggilan`, `c_ba_sidang`, `c_penetapan_sita`, `c_ba_sita`, `c_lampiran_surat`, `c_surat_bukti_penggugat`, `c_surat_bukti_tergugat`, `c_tanggapan_bukti_tergugat`, `c_tanggapan_bukti_penggugat`, `c_gambar_situasi`, `c_surat_lain`, `c_salinan_putusan_pa`, `c_sk_bundelb`, `c_akta_banding`, `c_akta_penerimaan_mb`, `c_memori_banding`, `c_akta_pemberitahuan_banding`, `c_pemberitahuan_penyerahan_mb`, `c_kontra_mb`, `c_pemberitahuan_penyerahankontra_mb`, `c_relaas_periksa_berkas_pb`, `c_sk_khusus`, `c_bukt_pengiriman_bpb`, `c_bukti_setor_bp_kasnegara`, `c_surat_lainnya_b`) VALUES
-(1, 12, 40, 'test komentar hakim 1', 'test komentar hakim 1 sk bundel A', 'test bukti pemb panjar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 13, 40, 'tes komentar hakim 2', 'tes komentar hakim 2 di sk bundel a', 'tes komentar hakim 2 bukt pemb panjar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 13, 40, 'test ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -144,32 +135,6 @@ CREATE TABLE `catatan_hakim_baru` (
   `catatan` text DEFAULT NULL,
   `time` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `catatan_hakim_baru`
---
-
-INSERT INTO `catatan_hakim_baru` (`id_catatan`, `id_perkara`, `id_user`, `nm_berkas`, `catatan`, `time`) VALUES
-(12, 40, 12, 'c_surat_gugatan', 'test surat gugatan', '29-06-2021 11:18:22'),
-(13, 40, 12, 'c_sk_bundelA', 'tes ehac', '29-06-2021 11:18:40'),
-(14, 40, 12, 'c_surat_gugatan', 'tes ehac', '29-06-2021 11:18:40'),
-(15, 40, 12, 'c_surat_gugatan', 'surat pertama', '29-06-2021 11:24:35'),
-(16, 40, 12, 'c_surat_gugatan', 'surat kedua', '29-06-2021 11:25:03'),
-(17, 40, 12, 'c_sk_bundelA', 'surat kedua', '29-06-2021 11:25:03'),
-(18, 40, 12, 'c_sk_bundelA', 'tes lagi', '29-06-2021 11:28:15'),
-(19, 40, 12, 'c_sk_bundelA', 'coba lagi', '29-06-2021 11:29:16'),
-(20, 40, 12, 'c_surat_gugatan', 'yuk bisa\n', '29-06-2021 11:56:30'),
-(21, 40, 12, 'c_sk_bundelA', 'tes', '29-06-2021 11:59:50'),
-(22, 40, 12, 'c_sk_bundelA', 'tes234', '29-06-2021 12:02:46'),
-(23, 40, 12, 'c_sk_bundelA', 'coba', '29-06-2021 12:04:41'),
-(24, 40, 12, 'c_sk_bundelA', 'nah', '29-06-2021 12:04:56'),
-(25, 40, 12, 'c_sk_bundelA', 'nah', '29-06-2021 12:04:56'),
-(26, 40, 12, 'c_surat_gugatan', 'nah', '29-06-2021 12:04:56'),
-(27, 40, 12, 'c_surat_gugatan', 'coba', '29-06-2021 12:05:51'),
-(28, 40, 12, 'c_sk_bundelA', 'sekali lagi', '29-06-2021 12:06:19'),
-(29, 40, 12, 'c_sk_bundelA', 'lagi 123', '29-06-2021 12:06:41'),
-(30, 40, 12, 'c_surat_gugatan', 'lagi 123', '29-06-2021 12:06:41'),
-(31, 41, 22, 'c_surat_gugatan', 'Mohon untuk ditindak lanjuti', '10-07-2021 11:44:41');
 
 -- --------------------------------------------------------
 
@@ -260,17 +225,15 @@ CREATE TABLE `list_perkara` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `list_perkara`
+-- Triggers `list_perkara`
 --
-
-INSERT INTO `list_perkara` (`id_perkara`, `id_user`, `no_perkara`, `nm_pihak_penggugat`, `nm_pihak_tergugat`, `jns_perkara`, `tgl_register`, `no_surat_pengantar`, `pejabat_berwenang`, `nm_pejabat`, `nip_pejabat`, `banyaknya`, `keterangan`, `status_perkara`, `sp_perkara`, `no_perkara_banding`, `putusan_banding`, `is_nomor`, `surat_gugatan`, `sk_bundelA`, `bukti_pemb_panjar`, `majelis_hakim`, `penunjukan_pp`, `penunjukan_js`, `penetapan_hari_sidang`, `relaas_panggilan`, `ba_sidang`, `penetapan_sita`, `ba_sita`, `lampiran_surat`, `surat_bukti_penggugat`, `surat_bukti_tergugat`, `tanggapan_bukti_tergugat`, `tanggapan_bukti_penggugat`, `gambar_situasi`, `surat_lain`, `salinan_putusan_pa`, `salinan_putusan_pa_rtf`, `sk_bundelb`, `akta_banding`, `akta_penerimaan_mb`, `memori_banding`, `memori_banding_rtf`, `akta_pemberitahuan_banding`, `pemberitahuan_penyerahan_mb`, `akta_penerimaankontra_mb`, `kontra_mb`, `kontra_mb_rtf`, `pemberitahuan_penyerahankontra_mb`, `relaas_periksa_berkas_pb`, `sk_khusus`, `bukt_pengiriman_bpb`, `bukti_setor_bp_kasnegara`, `surat_lainnya_b`) VALUES
-(40, 3, '1/Pdt.G/2021/PA.Tty', 'ani', 'dani', 'Kewarisan', '2021-06-25', 'W18.A10/2/HK.05/06/2021', 'Panitera', 'rian', '123423453454564567', 1, '', 'Pengiriman Salinan Putusan', 'e-hac6.pdf', '3456/Pdt.G/2021/PTA.Mdo', 'Putusan_48_PDT_G_2019_PA_BLU2.pdf', NULL, 'CamScanner_06-03-2021_08_409.pdf', 'e-hac12.pdf', 'Kel_4_Riz_Afdian_Tugas_Aneka_Mind_Mapping8.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'The_Importance_of_IT_in_Goverment_Sector_(1)3.pdf', 'Surat_Pengantar_-_pa_thn4.rtf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(41, 2, '1234/Pdt.G/2021/PA.Mdo', 'wewe', 'wewe', 'Cerai Gugat', '2021-07-01', 'W18.A1/233/HK.05/07/2021', 'Panitera', 'wedf', '324534566556757576', 1, 'tes', 'Pengiriman Salinan Putusan', NULL, '2344444/Pdt.G/2021/PTA.Mdo', 'Putusan_48_PDT_G_2019_PA_BLU1.pdf', NULL, '1__Surat_Permohonan_Pemohon.pdf', NULL, '2__Kwitansi-SKUM.pdf', '3__PMH.pdf', '4__Surat_Penunjukan_Panitera.pdf', '5__Surat_Penunjukan_Jurusita.pdf', '6__PHS.pdf', '7__Relas_Panggilan.pdf', '8__BAS_PERTAMA_25_JUNI_2019.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(42, 2, '24324/Pdt.G/2021/PA.Mdo', 'sadi', 'sasa', 'Harta Bersama', '2021-07-01', 'W18.A1/6777/HK.05/07/2021', 'Panmud Hukum', 'rara', '123445465767867867', 1, 'tes', NULL, NULL, NULL, NULL, NULL, 'CamScanner_06-03-2021_08_40.pdf', '11__BAS_LANJUTAN_02_JULI_2019.pdf', '2__Kwitansi-SKUM.pdf', '3__PMH.pdf', '4__Surat_Penunjukan_Panitera.pdf', '5__Surat_Penunjukan_Jurusita.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(43, 3, '12/Pdt.G/2021/PA.Tty', 'wew', 'wewee', 'Cerai Talak', '2021-07-01', 'W18.A10/12/HK.05/07/2021', 'Panitera', 'aaaa', '123124124123121212', 1, 'wew', NULL, NULL, NULL, NULL, NULL, '1__Surat_Permohonan_Pemohon1.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(44, 2, '547567/Pdt.G/2021/PA.Mdo', 'adit', 'ka poy', 'Hibah', '2021-07-01', 'W18.A1/3444444/HK.05/07/2021', 'Panitera', 'jay', '123242534543645645', 1, 'tes', NULL, NULL, NULL, NULL, NULL, '1__Surat_Permohonan_Pemohon2.pdf', NULL, '2__Kwitansi-SKUM1.pdf', '3__PMH2.pdf', '4__Surat_Penunjukan_Panitera1.pdf', '5__Surat_Penunjukan_Jurusita1.pdf', '6__PHS1.pdf', '7__Relas_Panggilan1.pdf', '8__BAS_PERTAMA_25_JUNI_20191.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(45, 2, '123444/Pdt.G/2021/PA.Mdo', 'runa', 'rika', 'Cerai Talak', '2021-07-02', 'W18.A1/122222/HK.05/07/2021', 'Panmud Gugatan', 'nana', '121323434345345465', 1, 'tes', NULL, 'CamScanner_06-03-2021_08_40.pdf', NULL, NULL, NULL, '1__Surat_Permohonan_Pemohon1.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(46, 3, '1278990/Pdt.G/2021/PA.Tty', 'raka', 'rika', 'Harta Bersama', '2021-07-13', 'W18.A10/3440/HK.05/07/2021', 'Panitera', 'Tika', '024923423434354545', 1, '', NULL, NULL, '11124/Pdt.G/2021/PTA.Mdo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+DELIMITER $$
+CREATE TRIGGER `insert_log_inbox` AFTER INSERT ON `list_perkara` FOR EACH ROW BEGIN
+    INSERT INTO log_inbox (id_log_inbox, id_perkara, no_perkara, is_read, change_date)
+    VALUES ("", new.id_perkara, new.no_perkara, 1, now());
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -285,21 +248,26 @@ CREATE TABLE `log_audittrail` (
   `nama_log` varchar(50) CHARACTER SET latin1 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `log_audittrail`
+-- Table structure for table `log_inbox`
 --
 
-INSERT INTO `log_audittrail` (`log_id`, `isi_log`, `rekam_log`, `nama_log`) VALUES
-(1, 'User <b>Pengadilan Agama Tutuyan</b> telah menambah data perkara', '2021-07-13 14:34:50', 'Pengadilan Agama Tutuyan'),
-(2, 'User <b>Pengadilan Agama Tutuyan</b> telah upload surat pengantar pada nomor perkara <b></b>', '2021-07-13 14:54:29', 'Pengadilan Agama Tutuyan'),
-(3, 'User <b>Pengadilan Agama Tutuyan</b> telah upload surat pengantar pada nomor perkara <b>46</b>', '2021-07-13 14:56:45', 'Pengadilan Agama Tutuyan'),
-(4, 'User <b>Pengadilan Agama Tutuyan</b> telah upload surat pengantar pada id perkara <b>46</b>', '2021-07-13 14:58:17', 'Pengadilan Agama Tutuyan'),
-(5, 'User <b>Pengadilan Agama Tutuyan</b> telah upload surat pengantar pada id perkara <b>46</b>', '2021-07-13 14:58:51', 'Pengadilan Agama Tutuyan'),
-(6, 'User <b>Pengadilan Agama Tutuyan</b> telah upload surat pengantar pada id perkara <b>46</b>', '2021-07-13 15:00:04', 'Pengadilan Agama Tutuyan'),
-(7, 'User <b>Pengadilan Tinggi Agama Manado</b> telah input nomor perkara banding pada id perkara <b>46</b>', '2021-07-13 15:18:06', 'Pengadilan Tinggi Agama Manado'),
-(8, 'User <b>Pengadilan Agama Tutuyan</b> telah upload surat pengantar pada id perkara <b>46</b>', '2021-07-14 03:14:22', 'Pengadilan Agama Tutuyan'),
-(9, 'User <b>Pengadilan Agama Tutuyan</b> telah upload surat pengantar pada id perkara <b>46</b>', '2021-07-14 03:17:17', 'Pengadilan Agama Tutuyan'),
-(10, 'User <b>Pengadilan Agama Tutuyan</b> telah upload surat pengantar pada id perkara <b>46</b>', '2021-07-14 03:19:15', 'Pengadilan Agama Tutuyan');
+CREATE TABLE `log_inbox` (
+  `id_log_inbox` int(11) NOT NULL,
+  `id_perkara` int(11) NOT NULL,
+  `no_perkara` varchar(50) NOT NULL,
+  `is_read` int(11) NOT NULL,
+  `change_date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `log_inbox`
+--
+
+INSERT INTO `log_inbox` (`id_log_inbox`, `id_perkara`, `no_perkara`, `is_read`, `change_date`) VALUES
+(0, 47, '23455/Pdt.G/2021/PA.Mdo', 2, 2147483647);
 
 -- --------------------------------------------------------
 
@@ -325,7 +293,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nama`, `email`, `username`, `password`, `role_id`, `kode_pa`, `is_active`, `data_created`) VALUES
 (1, 'Pengadilan Tinggi Agama Manado', '', 'pta-manado', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 1, 'PTA.Mdo', 1, '2021-05-27'),
-(2, 'Pengadilan Agama Manado', '', 'pa-manado', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Mdo', 1, '2021-05-27'),
+(2, 'Pengadilan Agama Manado', 'pa.manado@gmail.com', 'pa-manado', '$2y$10$nUhOtaJvtPlJHGNTimmmhec68zQsKetA6Vdx2x1gq63cvFlueQUdC', 2, 'PA.Mdo', 1, '2021-05-27'),
 (3, 'Pengadilan Agama Tutuyan', '', 'pa-tutuyan', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Tty', 1, '2021-05-27'),
 (4, 'Pengadilan Agama Bolaang Uki', '', 'pa-blu', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Blu', 1, '2021-05-27'),
 (5, 'Pengadilan Agama Tondano', '', 'pa-tondano', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Tdo', 1, '2021-05-27'),
@@ -335,10 +303,7 @@ INSERT INTO `users` (`id`, `nama`, `email`, `username`, `password`, `role_id`, `
 (9, 'Pengadilan Agama Kotamobagu', '', 'pa-kotamobagu', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Ktg', 1, '2021-05-27'),
 (10, 'Pengadilan Agama Tahuna', '', 'pa-tahuna', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Thn', 1, '2021-05-27'),
 (11, 'Pengadilan Agama Bitung', '', 'pa-bitung', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 2, 'PA.Btg', 1, '2021-05-27'),
-(12, 'rizafdi', 'rizaf@gmail.com', 'rizaf', '$2y$10$xOcfOniDzDbK6hwYJLfTB.rP9FaZwukTLzvo.RDcUbV7rg9dXhsiK', 3, '', 1, '2021-06-25'),
-(13, 'rian', 'rian@gmail.com', 'rian', '$2y$10$zKNxC63heZCgpGadi9mWVO9.zBp5FcUE/mjdJjMrDBj/z/6IctVue', 3, 'PTA.Mdo', 1, '2021-06-29'),
-(20, 'Ramla A', 'ramla@gm.com', 'ramlaaa', '$2y$10$UReJvi8Zz4LOHTY4INqnLemEHKdycpNMDT.tZ3Vq7FnnTWcQimIt.', 3, '', 1, NULL),
-(22, 'Drs. H. Abdul Hakim, M.HI.', 'afdianriz@gmail.com', 'Abdul Hakim', '$2y$10$9n4va8VaJGjcHZE5haMAru5fAWbDQNveUn8Yoa7mYUavFfd/4Rp/O', 3, '', 1, NULL);
+(22, 'Drs. H. Abdul Hakim, M.HI.', '', 'abdul_hakim', '$2y$10$9n4va8VaJGjcHZE5haMAru5fAWbDQNveUn8Yoa7mYUavFfd/4Rp/O', 3, '', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -651,7 +616,7 @@ ALTER TABLE `catatan_hakim`
 -- AUTO_INCREMENT for table `catatan_hakim_baru`
 --
 ALTER TABLE `catatan_hakim_baru`
-  MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `kategori_perkara`
@@ -663,19 +628,19 @@ ALTER TABLE `kategori_perkara`
 -- AUTO_INCREMENT for table `list_perkara`
 --
 ALTER TABLE `list_perkara`
-  MODIFY `id_perkara` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_perkara` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `log_audittrail`
 --
 ALTER TABLE `log_audittrail`
-  MODIFY `log_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `log_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
