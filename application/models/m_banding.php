@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class m_banding extends CI_model
+class M_banding extends CI_model
 {
 
     public function perkara_januari()

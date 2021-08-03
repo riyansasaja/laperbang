@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2021 at 12:25 PM
+-- Generation Time: Aug 02, 2021 at 10:11 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.1.32
 
@@ -267,7 +267,11 @@ CREATE TABLE `log_inbox` (
 --
 
 INSERT INTO `log_inbox` (`id_log_inbox`, `id_perkara`, `no_perkara`, `is_read`, `change_date`) VALUES
-(0, 47, '23455/Pdt.G/2021/PA.Mdo', 2, 2147483647);
+(0, 47, '23455/Pdt.G/2021/PA.Mdo', 2, 2147483647),
+(0, 48, '12345/Pdt.G/2021/PA.Blu', 2, 2147483647),
+(0, 49, '123456/Pdt.G/2021/PA.Blu', 2, 2147483647),
+(0, 50, '12345/Pdt.G/2021/PA.Blu', 2, 2147483647),
+(0, 51, '123456/Pdt.G/2021/PA.Blu', 2, 2147483647);
 
 -- --------------------------------------------------------
 
@@ -616,7 +620,7 @@ ALTER TABLE `catatan_hakim`
 -- AUTO_INCREMENT for table `catatan_hakim_baru`
 --
 ALTER TABLE `catatan_hakim_baru`
-  MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `kategori_perkara`
@@ -628,13 +632,13 @@ ALTER TABLE `kategori_perkara`
 -- AUTO_INCREMENT for table `list_perkara`
 --
 ALTER TABLE `list_perkara`
-  MODIFY `id_perkara` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_perkara` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `log_audittrail`
 --
 ALTER TABLE `log_audittrail`
-  MODIFY `log_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `log_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `users`
