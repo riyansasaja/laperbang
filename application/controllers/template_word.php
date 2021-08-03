@@ -4,7 +4,7 @@ use PhpOffice\PhpWord\TemplateProcessor;
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class template_word extends CI_Controller
+class Template_word extends CI_Controller
 {
     public function surat_pengantar($id)
     {
