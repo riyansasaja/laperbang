@@ -25,7 +25,7 @@ body {
 @media (min-width: 992px) {
 	.jumbotron {
 		height: 100vh;
-		background-image: url("../assets/img/wallpaper.png");
+		background-image: url("/assets/img/wallpaper.png");
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 	}
