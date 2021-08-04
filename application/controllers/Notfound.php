@@ -7,6 +7,6 @@ class Notfound extends CI_Controller
     {
 
         $this->output->set_status_header('404');
-        $this->template->render('notfoundview', array());
+        $this->load->view('notfoundview');
     }
 }
