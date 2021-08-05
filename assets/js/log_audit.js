@@ -1,12 +1,12 @@
 $(document).ready(function () {
 
     //data table
-    const prapath = window.location.origin;
-    const path = `${prapath}/laperbang/`;
+    const path = window.location.origin;
+    // const path = `${prapath}/laperbang/`;
     console.log(path);
     //---Tampil data table kegiatan
     let list_perkara = $('#listperkara').DataTable({
-        "ajax": `${path}admin/get_data_audittrail/`,
+        "ajax": `${path}/Admin/get_data_audittrail/`,
         "columns": [
             {
                 "data": null, "sortable": false,
