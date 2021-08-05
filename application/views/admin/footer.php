@@ -43,7 +43,7 @@
         const path = windows.location.origin;
         //ambil data get_log_inbox
         $.ajax({
-            type: "get",
+            type: "GET",
             url: `${path}/admin/get_log_inbox`,
             dataType: "JSON",
             success: function(response) {
