@@ -43,8 +43,8 @@
         const path = windows.location.origin;
         //ambil data get_log_inbox
         $.ajax({
-            type: "GET",
-            url: `${path}/admin/get_log_inbox`,
+            type: "get",
+            url: "http://laperbang.pta-manado.go.id/Admin/get_log_inbox",
             dataType: "JSON",
             success: function(response) {
                 //hitung jumlah data yang masuk
@@ -69,7 +69,7 @@
 
             $.ajax({
                 type: "POST",
-                url: `${path}/admin/click_log_inbox`,
+                url: "http://laperbang.pta-manado.go.id/Admin/click_log_inbox",
                 data: {
                     id: id
                 },
