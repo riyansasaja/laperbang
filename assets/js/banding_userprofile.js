@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    console.log('tes');
     const pathdasar = window.origin
     const path = `${pathdasar}/laperbang/profiles/`
 
