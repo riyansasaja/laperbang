@@ -35,6 +35,9 @@
 <!-- dropzone -->
 <script src="<?= base_url('assets/dropzone/dropzone.js') ?>"></script>
 
+<?php
+var_dump($js);
+?>
 
 </body>
 
