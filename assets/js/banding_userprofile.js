@@ -1,8 +1,9 @@
 $(document).ready(function () {
 
     console.log('tes');
-    const pathdasar = window.origin
-    const path = `${pathdasar}/laperbang/profiles/`
+    const pathdasar = window.origin;
+    const path = `${pathdasar}/laperbang/profiles/`;
+    console.log(pathdasar);
 
     //panggil function tampil data
     tampil_data();
