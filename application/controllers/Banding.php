@@ -690,6 +690,13 @@ class Banding extends CI_Controller
         }
     }
 
+    public function get_profile()
+    {
+        $id = $this->session->userdata('id');
+        $data = $this->db->get_where('users', ['id' => $id])->result();
+        echo json_encode($data);
+    }
+
     public function userProfile()
     {
 

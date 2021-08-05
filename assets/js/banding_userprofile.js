@@ -1,8 +1,8 @@
 console.log('ini banding user_profile.js');
 $(document).ready(function () {
 
-    const pathdasar = window.origin;
-    const path = `${pathdasar}/laperbang/profiles/`;
+    const pathdasar = window.location.href;
+    // const path = `${pathdasar}/laperbang/profiles/`;
     console.log(pathdasar);
 
     //panggil function tampil data
