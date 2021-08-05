@@ -35,9 +35,10 @@
 <!-- dropzone -->
 <script src="<?= base_url('assets/dropzone/dropzone.js') ?>"></script>
 
-<?php
-var_dump($js);
-?>
+<script>
+    const pathdasar = window.origin;
+    console.log(pathdasar);
+</script>
 
 </body>
 
