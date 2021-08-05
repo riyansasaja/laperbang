@@ -14,7 +14,7 @@
                                 </div>
 
                                 <form>
-                                    <input type="text" id="profile-id" hidden>
+                                    <input type="text" id="profile-id" hidden='true'>
                                     <div class="mb-1">
                                         <small class="text-success">
                                             <label for="profile-name" class="form-label">Nama</label>
