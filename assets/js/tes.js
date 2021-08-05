@@ -16,6 +16,7 @@ $(document).ready(function () {
             dataType: "json",
             success: function (response) {
                 $.each(response, function (index, value) {
+                    console.log(value);
                     //Tampilkan di tampilan user profile
                     $('#profile-id').val(value.id)
                     $('#profile-name').val(value.nama)
