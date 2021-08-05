@@ -5,7 +5,7 @@ const pathdasar = window.origin;
 const path = `${pathdasar}/laperbang/profiles/`;
 console.log(pathdasar);
 
-
+$('#profile-name').val('tes');
 
 //function tampil data
 function tampil_data() {
