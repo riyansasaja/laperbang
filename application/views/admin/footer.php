@@ -40,7 +40,7 @@
 
 <script>
     $(document).ready(function() {
-        const path = windows.location.origin;
+        // const path = windows.location.origin;
         //ambil data get_log_inbox
         $.ajax({
             type: "get",
