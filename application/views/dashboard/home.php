@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-10 bg-dua border-satu">
-            <p class="text-satu text-center mt-3" style="margin-left: 30%;">LAYANAN ADMINISTRASI PERKARA BANDING <br>PENGADILAN TINGGI AGAMA MANADO</p>
+            <p class="text-satu text-center mt-3" style="margin-left: 30%;">LAYANAN ADMINISTRASI PERKARA BANDING <br>PENGADILAN TINGGI AGAMA MANADO satu</p>
         </div>
         <div class="col-2 bg-dua border-satu">
 
