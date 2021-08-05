@@ -4,5 +4,6 @@ $(document).ready(function () {
         console.log(getdata);
         let tampil = `<embed src="http://laperbang.pta-manado.go.id/assets/files/${getdata}" type="application/pdf" width="100%" height="100%">`
         $('#tampil').html(tampil);
+        console.log(getdata);
     })
 });
