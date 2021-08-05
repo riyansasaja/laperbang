@@ -1,5 +1,6 @@
 $(document).ready(function () {
     const path = window.location.origin;
+    console.log(path);
     $('#modalPdfAdmin').on('show.bs.modal', function (e) {
         let getdata = $(e.relatedTarget).data('id');
         console.log(getdata);
