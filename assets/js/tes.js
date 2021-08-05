@@ -1,4 +1,4 @@
-console.log('ini banding user_profile.js');
+console.log('ini TES.js');
 $(document).ready(function () {
 
     const pathdasar = window.origin;
