@@ -693,7 +693,7 @@ class Banding extends CI_Controller
     public function userProfile()
     {
 
-        $data['js'] = 'banding_userprofile.js';
+        $data['js'] = 'tes.js';
         $data['css'] = 'dashboard_banding.css';
         $data['judul'] = 'User Profile';
 

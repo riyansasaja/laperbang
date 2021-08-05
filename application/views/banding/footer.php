@@ -35,11 +35,6 @@
 <!-- dropzone -->
 <script src="<?= base_url('assets/dropzone/dropzone.js') ?>"></script>
 
-<script>
-    const pathdasar = window.origin;
-    console.log(pathdasar);
-</script>
-
 </body>
 
 </html>
