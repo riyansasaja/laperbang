@@ -10,6 +10,7 @@ $.ajax({
     url: `${path}get_profile`,
     dataType: "json",
     success: function (response) {
+        console.log(response);
         $.each(response, function (index, value) {
             console.log(value);
             //Tampilkan di tampilan user profile
