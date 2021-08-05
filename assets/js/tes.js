@@ -1,12 +1,15 @@
 console.log('ini TES.js');
+
+//panggil function tampil data
+tampil_data();
+
 $(document).ready(function () {
 
     const pathdasar = window.origin;
     const path = `${pathdasar}/laperbang/profiles/`;
     console.log(pathdasar);
 
-    //panggil function tampil data
-    tampil_data();
+
 
     //function tampil data
     function tampil_data() {
