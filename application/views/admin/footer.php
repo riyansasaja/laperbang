@@ -40,11 +40,11 @@
 
 <script>
     $(document).ready(function() {
-
+        const path = windows.location.origin;
         //ambil data get_log_inbox
         $.ajax({
             type: "get",
-            url: "http://localhost/laperbang/admin/get_log_inbox",
+            url: `${path}/admin/get_log_inbox`,
             dataType: "JSON",
             success: function(response) {
                 //hitung jumlah data yang masuk
@@ -69,7 +69,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "http://localhost/laperbang/admin/click_log_inbox",
+                url: `${path}/admin/click_log_inbox`,
                 data: {
                     id: id
                 },
