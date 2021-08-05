@@ -5,28 +5,44 @@ const pathdasar = window.origin;
 const path = `${pathdasar}/laperbang/profiles/`;
 console.log(pathdasar);
 
-tampil_data();
+$.ajax({
+    type: "GET",
+    url: `${path}get_profile`,
+    dataType: "json",
+    success: function (response) {
+        $.each(response, function (index, value) {
+            console.log(value);
+            //Tampilkan di tampilan user profile
+            $('#profile-id').val(value.id)
+            $('#profile-name').val(value.nama)
+            $('#profile-email').val(value.email)
+            $('#profile-username').val(value.username)
+            $('#profile-since').val(value.data_created)
+
+        });
+    }
+});
 
 //function tampil data
-function tampil_data() {
-    $.ajax({
-        type: "GET",
-        url: `${path}get_profile`,
-        dataType: "json",
-        success: function (response) {
-            $.each(response, function (index, value) {
-                console.log(value);
-                //Tampilkan di tampilan user profile
-                $('#profile-id').val(value.id)
-                $('#profile-name').val(value.nama)
-                $('#profile-email').val(value.email)
-                $('#profile-username').val(value.username)
-                $('#profile-since').val(value.data_created)
+// function tampil_data() {
+//     $.ajax({
+//         type: "GET",
+//         url: `${path}get_profile`,
+//         dataType: "json",
+//         success: function (response) {
+//             $.each(response, function (index, value) {
+//                 console.log(value);
+//                 //Tampilkan di tampilan user profile
+//                 $('#profile-id').val(value.id)
+//                 $('#profile-name').val(value.nama)
+//                 $('#profile-email').val(value.email)
+//                 $('#profile-username').val(value.username)
+//                 $('#profile-since').val(value.data_created)
 
-            });
-        }
-    });
-}
+//             });
+//         }
+//     });
+// }
 //--- end function tampil data
 
 
