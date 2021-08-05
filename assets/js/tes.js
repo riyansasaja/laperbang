@@ -6,7 +6,7 @@ const path = `${pathdasar}/laperbang/profiles/`;
 console.log(pathdasar);
 
 $.ajax({
-    type: "GET",
+    type: "POST",
     url: `${path}get_profile`,
     dataType: "json",
     success: function (response) {
