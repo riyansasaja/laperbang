@@ -9,6 +9,7 @@ $.ajax({
     type: "POST",
     url: `${path}get_profile`,
     dataType: "JSON",
+    async: true,
     success: function (response) {
         console.log(response);
     }
