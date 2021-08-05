@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    const prapath = window.location.origin;
-    const path = `${prapath}/laperbang/`;
+    const path = window.location.origin;
+    // const path = `${prapath}/laperbang/`;
     console.log(path);
 
 
