@@ -8,19 +8,9 @@ console.log(pathdasar);
 $.ajax({
     type: "POST",
     url: `${path}get_profile`,
-    dataType: "json",
+    dataType: "JSON",
     success: function (response) {
         console.log(response);
-        $.each(response, function (index, value) {
-            console.log(value);
-            //Tampilkan di tampilan user profile
-            $('#profile-id').val(value.id)
-            $('#profile-name').val(value.nama)
-            $('#profile-email').val(value.email)
-            $('#profile-username').val(value.username)
-            $('#profile-since').val(value.data_created)
-
-        });
     }
 });
 
