@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    const path = window.location.origin + '/';
+    const prapath = window.location.origin;
+    const path = `${prapath}/`;
 
     let url = window.location.href;
     let pecah = url.split('/');
@@ -11,7 +12,7 @@ $(document).ready(function () {
         let getjudul = $(e.relatedTarget).data('judul');
         let id_perkara = pecah[6];
         //embed ke tampilan sebelah kanan
-        let tampil = `<embed src="${path}/assets/files/${getdata}" type="application/pdf" width="100%" height="100%">`;
+        let tampil = `<embed src="${path}assets/files/${getdata}" type="application/pdf" width="100%" height="100%">`;
         $('#tampil').html(tampil);
 
         //panggil fungsi tampil baru
