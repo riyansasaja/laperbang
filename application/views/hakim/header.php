@@ -40,7 +40,7 @@
                         <a class="nav-link <?= $judul == 'Dashboard' ? 'active' : '' ?>" aria-current="page" href="<?= base_url('viewhakim/') ?>">Dasbor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $judul == 'Banding' ? 'active' : '' ?>" href="<?= base_url('viewhakim/banding/') ?>">Banding</a>
+                        <a class="nav-link <?= $judul == 'Banding' ? 'active' : '' ?>" href="<?= base_url('ViewHakim/banding/') ?>">Banding</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled <?= $judul == 'Ekasaminasi' ? 'active' : '' ?>" href="<?= base_url('viewhakim/eksaminasi/') ?>">Eksaminasi</a>
