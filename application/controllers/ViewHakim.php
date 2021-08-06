@@ -3,6 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class ViewHakim extends CI_Controller
 {
+
+    function __construct()
+    {
+        parent::__construct();
+        is_login();
+    }
+
     public function index()
     {
 
