@@ -3,7 +3,7 @@ $(document).ready(function () {
     //data table
     // $('#tablePerkaraHakim').DataTable();
     const prapath = window.location.origin;
-    const path = `${prapath}/viewhakim/`;
+    const path = `${prapath}/ViewHakim/`;
     console.log(path);
     //---Tampil data table kegiatan
     let tablePerkaraHakim = $('#tablePerkaraHakim').DataTable({
