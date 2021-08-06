@@ -44,7 +44,7 @@
         //ambil data get_log_inbox
         $.ajax({
             type: "get",
-            url: "http://laperbang.pta-manado.go.id/Admin/get_log_inbox",
+            url: "https://laperbang.pta-manado.go.id/Admin/get_log_inbox",
             dataType: "JSON",
             success: function(response) {
                 //hitung jumlah data yang masuk
@@ -69,14 +69,14 @@
 
             $.ajax({
                 type: "POST",
-                url: "http://laperbang.pta-manado.go.id/Admin/click_log_inbox",
+                url: "https://laperbang.pta-manado.go.id/Admin/click_log_inbox",
                 data: {
                     id: id
                 },
                 dataType: "json",
                 success: function(response) {
                     console.log(window.location.origin);
-                    window.location.href = window.location.origin + '/laperbang/admin/inputnoper/';
+                    window.location.href = window.location.origin + '/admin/inputnoper/';
                 }
             });
         });
