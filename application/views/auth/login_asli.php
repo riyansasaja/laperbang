@@ -115,10 +115,10 @@
                         const {
                             value: email
                         } = await Swal.fire({
-                            title: 'Input email address',
+                            title: 'Masukkan email untuk mereset Password',
                             input: 'email',
-                            inputLabel: 'Your email address',
-                            inputPlaceholder: 'Enter your email address'
+                            inputLabel: 'Alamat email',
+                            inputPlaceholder: 'Masukkan alamat email'
                         })
 
                         if (email) {
