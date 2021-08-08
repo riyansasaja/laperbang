@@ -108,9 +108,22 @@
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    Swal.fire('Saved!', '', 'success')
+                    // Swal.fire('Saved!', '', 'success')
+                    // minta masukkan email
+                    const {
+                        value: email
+                    } = await Swal.fire({
+                        title: 'Input email address',
+                        input: 'email',
+                        inputLabel: 'Your email address',
+                        inputPlaceholder: 'Enter your email address'
+                    })
+
+                    if (email) {
+                        Swal.fire(`Entered email: ${email}`)
+                    }
                 } else if (result.isDenied) {
-                    Swal.fire('Changes are not saved', '', 'info')
+                    Swal.fire('Silahkan Hubungi Admin untuk Reset Password', '', 'info')
                 }
             })
         });
