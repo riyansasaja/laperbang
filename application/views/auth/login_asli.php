@@ -56,7 +56,7 @@
 
                                 <button type="submit" class="mt-5 btn btn-block btn-warning">MASUK</button>
                                 <p class="mt-3">
-                                    <a href=""> <small>Lupa kata sandi?</small></a>
+                                    <a href="" id="lupaSandi"> <small>Lupa kata sandi?</small></a>
                                 </p>
                                 <small class="text-muted shadow">Copyright © PTA Manado 2021</small>
                             </form>
@@ -93,6 +93,30 @@
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <!-- sweet alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- script lupa sandi -->
+    <script>
+        $(lupaSandi).on('click', function() {
+            Swal.fire({
+                title: 'Do you want to save the changes?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Save`,
+                denyButtonText: `Don't save`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Saved!', '', 'success')
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
+                }
+            })
+        });
+    </script>
+
+
 </body>
 
 </html>
