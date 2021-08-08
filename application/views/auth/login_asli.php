@@ -112,7 +112,8 @@
                     // minta masukkan email
                     const {
                         value: email
-                    } = await Swal.fire({
+                    } =
+                    Swal.fire({
                         title: 'Input email address',
                         input: 'email',
                         inputLabel: 'Your email address',
