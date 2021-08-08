@@ -100,11 +100,11 @@
     <script>
         $('#lupaSandi').on('click', function() {
             Swal.fire({
-                title: 'Do you want to save the changes?',
+                title: 'Pastikan email anda terdaftar di sistem!!',
                 showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Save`,
-                denyButtonText: `Don't save`,
+                showCancelButton: false,
+                confirmButtonText: `Ya Terdaftar`,
+                denyButtonText: `Tidak Terdaftar!!`,
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
