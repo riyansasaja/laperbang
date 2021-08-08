@@ -56,7 +56,7 @@
 
                                 <button type="submit" class="mt-5 btn btn-block btn-warning">MASUK</button>
                                 <p class="mt-3">
-                                    <a href="" id="lupaSandi"> <small>Lupa kata sandi?</small></a>
+                                    <a href="#" id="lupaSandi"> <small>Lupa kata sandi?</small></a>
                                 </p>
                                 <small class="text-muted shadow">Copyright © PTA Manado 2021</small>
                             </form>
@@ -98,7 +98,7 @@
 
     <!-- script lupa sandi -->
     <script>
-        $(lupaSandi).on('click', function() {
+        $('#lupaSandi').on('click', function() {
             Swal.fire({
                 title: 'Do you want to save the changes?',
                 showDenyButton: true,
