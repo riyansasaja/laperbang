@@ -72,9 +72,9 @@
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Surat Pengantar --pdf</label>
+                                    <label for="formFileSm" class="col-4 form-label">Surat Pengantar --pdf<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['sp_perkara'] ? '' : 'd-none' ?> ">
@@ -104,9 +104,9 @@
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Surat Gugatan</label>
+                                    <label for="formFileSm" class="col-4 form-label">Surat Gugatan<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_gugatan'] ? '' : 'd-none' ?> ">
@@ -133,9 +133,9 @@
 
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">3.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Bukti Pembayaran Panjar Biaya Perkara (SKUM)</label>
+                                    <label for="formFileSm" class="col-4 form-label">Bukti Pembayaran Panjar Biaya Perkara (SKUM)<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file3">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file3" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['bukti_pemb_panjar'] ? '' : 'd-none' ?> ">
@@ -148,9 +148,9 @@
 
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">4.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Penetapan Majelis Hakim</label>
+                                    <label for="formFileSm" class="col-4 form-label">Penetapan Majelis Hakim<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file4" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['majelis_hakim'] ? '' : 'd-none' ?> ">
@@ -163,9 +163,9 @@
 
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">5.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Penunjukan Panitera Pengganti</label>
+                                    <label for="formFileSm" class="col-4 form-label">Penunjukan Panitera Pengganti<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file5">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file5" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['penunjukan_pp'] ? '' : 'd-none' ?> ">
@@ -178,9 +178,9 @@
 
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">6.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Penunjukan Jurusita/Jurusita Pengganti</label>
+                                    <label for="formFileSm" class="col-4 form-label">Penunjukan Jurusita/Jurusita Pengganti<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file6">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file6" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['penunjukan_js'] ? '' : 'd-none' ?> ">
@@ -193,9 +193,9 @@
 
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">7.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Penetapan Hari Sidang</label>
+                                    <label for="formFileSm" class="col-4 form-label">Penetapan Hari Sidang<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file7">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file7" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['penetapan_hari_sidang'] ? '' : 'd-none' ?> ">
@@ -207,9 +207,9 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">8.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Relaas-relaas Panggilan</label>
+                                    <label for="formFileSm" class="col-4 form-label">Relaas-relaas Panggilan<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file8">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file8" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['relaas_panggilan'] ? '' : 'd-none' ?> ">
@@ -221,9 +221,9 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">9.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Berita Acara Sidang</label>
+                                    <label for="formFileSm" class="col-4 form-label">Berita Acara Sidang<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file9">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file9" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['ba_sidang'] ? '' : 'd-none' ?> ">
@@ -379,9 +379,9 @@
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Salinan Putusan Pengadilan Agama /Mahkamah Syari'yah</label>
+                                    <label for="formFileSm" class="col-4 form-label">Salinan Putusan Pengadilan Agama /Mahkamah Syari'yah<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['salinan_putusan_pa'] ? '' : 'd-none' ?> ">
@@ -396,7 +396,7 @@
                                     <div class="col-1" style="width: 1rem;"></div>
                                     <label for="formFileSm" class="col-4 form-label"></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file16">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file16" required>
                                         <small class="text-satu fw-lighter">*File RTF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['salinan_putusan_pa'] ? '' : 'd-none' ?> ">
@@ -425,9 +425,9 @@
 
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">3.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Akta Banding</label>
+                                    <label for="formFileSm" class="col-4 form-label">Akta Banding<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file3">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file3" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['akta_banding'] ? '' : 'd-none' ?> ">
@@ -440,9 +440,9 @@
 
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">4.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Akta Penerimaan Memori Banding</label>
+                                    <label for="formFileSm" class="col-4 form-label">Akta Penerimaan Memori Banding<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file4">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file4" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['akta_penerimaan_mb'] ? '' : 'd-none' ?> ">
@@ -487,9 +487,9 @@
 
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">6.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Akta Pemberitahuan Banding</label>
+                                    <label for="formFileSm" class="col-4 form-label">Akta Pemberitahuan Banding<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file6">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file6" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['akta_pemberitahuan_banding'] ? '' : 'd-none' ?> ">
@@ -501,9 +501,9 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">7.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Pemberitahuan Penyerahan Memori Banding</label>
+                                    <label for="formFileSm" class="col-4 form-label">Pemberitahuan Penyerahan Memori Banding<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file7">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file7" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['pemberitahuan_penyerahan_mb'] ? '' : 'd-none' ?> ">
@@ -576,9 +576,9 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">11.</div>
-                                    <label for="formFileSm" class=" col-4 col-label form-label">Relaas Pemberitahuan untuk memeriksa (Inzage) Berkas Perkara Banding</label>
+                                    <label for="formFileSm" class=" col-4 col-label form-label">Relaas Pemberitahuan untuk memeriksa (Inzage) Berkas Perkara Banding<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file11">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file11" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['relaas_periksa_berkas_pb'] ? '' : 'd-none' ?> ">
@@ -604,9 +604,9 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">13.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Bukti Penerimaan Biaya Perkara Banding</label>
+                                    <label for="formFileSm" class="col-4 form-label">Bukti Penerimaan Biaya Perkara Banding<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file13">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file13" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['bukt_pengiriman_bpb'] ? '' : 'd-none' ?> ">
@@ -618,9 +618,9 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-1" style="width: 1rem;">14.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Bukti Setor Biaya Pendaftaran Ke Kas Negara</label>
+                                    <label for="formFileSm" class="col-4 form-label">Bukti Setor Biaya Pendaftaran Ke Kas Negara<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file14">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file14" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['bukti_setor_bp_kasnegara'] ? '' : 'd-none' ?> ">
@@ -681,7 +681,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title">Berkas Perkara</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="tampil">
