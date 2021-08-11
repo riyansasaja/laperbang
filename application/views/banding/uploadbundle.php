@@ -72,9 +72,9 @@
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Surat Pengantar --pdf</label>
+                                    <label for="formFileSm" class="col-4 form-label">Surat Pengantar --pdf<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['sp_perkara'] ? '' : 'd-none' ?> ">
@@ -104,9 +104,9 @@
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Surat Gugatan</label>
+                                    <label for="formFileSm" class="col-4 form-label">Surat Gugatan<h4 class="text-danger">*</h4></label>
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_gugatan'] ? '' : 'd-none' ?> ">

@@ -161,8 +161,8 @@ class Admin extends CI_Controller
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('username', 'username', 'required');
-        $this->form_validation->set_rules('password', 'password', 'required');
-        $this->form_validation->set_rules('password_r', 'confirm password', 'matches[password]|required');
+        $this->form_validation->set_rules('password', 'password', 'required|min_length[6]');
+        $this->form_validation->set_rules('password_r', 'confirm password', 'matches[password]|required|min_length[6]');
 
         if ($this->form_validation->run() == false) {
             $array = array(
