@@ -59,7 +59,7 @@
                                     <a href="#" id="lupaSandi"> <small>Lupa kata sandi?</small></a>
                                 </p>
                                 <p class="mt-3">
-                                    <a href="<?= base_url('assets/assets/manualbook.pdf ') ?>" id="manualbook" target="blank"> <small>Download Petunjuk PDF</small></a>
+                                    <a href="<?= base_url('assets/assets/manualbook.pdf ') ?>" id="manualbook" target="blank" class="text-warning"> <small>Download Petunjuk PDF</small></a>
                                 </p>
                                 <small class="text-muted shadow">Copyright © PTA Manado 2021</small>
                             </form>
