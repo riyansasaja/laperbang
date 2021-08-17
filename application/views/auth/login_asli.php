@@ -124,7 +124,7 @@
                         })
 
                         if (email) {
-                            return fetch(`//laperbang.pta-manado.go.id/auth/forgotpassword/${email}`)
+                            return fetch(`https://laperbang.pta-manado.go.id/auth/forgotpassword/${email}`)
                                 .then(response => {
                                     if (!response.ok) {
                                         throw new Error(response.statusText)
