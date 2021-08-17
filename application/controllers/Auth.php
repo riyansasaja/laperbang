@@ -80,4 +80,136 @@ class Auth extends CI_Controller
         $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Logout sukses..</div>');
         redirect('auth/');
     }
+
+    #forgot password=========
+    public function forgotPassword($email)
+    {
+
+
+        $user = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        if ($user) {
+            $token = base64_encode(random_bytes(32));
+            $user_token = [
+                'id' => '',
+                'email' => $email,
+                'token' => $token,
+                'date_created' => time()
+            ];
+
+            //insert di tb user_token
+            $this->db->insert('user_token', $user_token);
+            //kirim email ke user
+            $resultmail = $this->_sendEmail($email, $token);
+
+            if (!$resultmail) {
+                # code...
+                $json = [
+                    'status' => 'Error',
+                    'message' => 'Kesalahan mengirim email.'
+                ];
+                echo json_encode($json);
+            }
+
+            $json = [
+                'status' => 'Success',
+                'message' => 'Link untuk reset password sudah dikirimkan di email anda; Silahkan Cek email anda, periksa folder SPAM jika tidak ada di INBOX'
+            ];
+            echo json_encode($json);
+        } else {
+
+            $json = [
+                'status' => 'Error',
+                'message' => 'Email anda tidak terdaftar atau tidak aktif'
+            ];
+            echo json_encode($json);
+        }
+    }
+    #========================
+
+    #function send email
+    private  function _sendEmail($email, $token)
+    {
+        $config = [
+            'protocol'  => 'smtp',
+            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_user' => 'laperbang.ptamanado@gmail.com',
+            'smtp_pass' => 'laperbang1234',
+            'smtp_port' => 465,
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'newline'   => "\r\n"
+        ];
+
+        $this->email->initialize($config);
+
+        $this->email->from($config['smtp_user'], 'laperbang pta.manado');
+        $this->email->to($email);
+        $this->email->subject('Reset Password');
+        $this->email->message('Click this link to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $email . '&token=' . urlencode($token) . '">Reset Password</a>');
+
+        if ($this->email->send()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    #===================
+
+    #reset password
+    public function resetPassword()
+    {
+        $email = $this->input->get('email');
+        $token = $this->input->get('token');
+
+        $user = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        if ($user) {
+            $user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
+
+            if ($user_token) {
+                $this->session->set_userdata('reset_email', $email);
+                $this->changePassword();
+            } else {
+                $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">Reset password Gagal! Token Salah/Expired.</div>');
+                redirect('auth');
+            }
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">Reset password Gagal! email salah.</div>');
+            redirect('auth');
+        }
+    }
+    #==============
+
+    #change password
+    public function changePassword()
+    {
+        if (!$this->session->userdata('reset_email')) {
+            redirect('auth');
+        }
+
+        $this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[3]|matches[password2]');
+        $this->form_validation->set_rules('password2', 'Repeat Password', 'trim|required|min_length[3]|matches[password1]');
+
+        if ($this->form_validation->run() == false) {;
+            $this->load->view('auth/change-password');
+        } else {
+            $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
+            $email = $this->session->userdata('reset_email');
+
+            $this->db->set('password', $password);
+            $this->db->where('email', $email);
+            $this->db->update('users');
+
+            $this->session->unset_userdata('reset_email');
+
+            $this->db->delete('user_token', ['email' => $email]);
+
+            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Password berhasil direset! Silahkan login.</div>');
+            redirect('auth');
+        }
+    }
+    #===============
+
 }

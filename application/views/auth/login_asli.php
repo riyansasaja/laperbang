@@ -111,21 +111,40 @@
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    // Swal.fire('Saved!', '', 'success')
                     //minta inputan email
                     (async () => {
 
                         const {
                             value: email
                         } = await Swal.fire({
-                            title: 'Masukkan email untuk mereset Password',
+                            title: 'Input email address',
                             input: 'email',
-                            inputLabel: 'Alamat email',
-                            inputPlaceholder: 'Masukkan alamat email'
+                            inputLabel: 'Your email address',
+                            inputPlaceholder: 'Enter your email address'
                         })
 
                         if (email) {
-                            Swal.fire(`Entered email: ${email}`)
+                            return fetch(`//localhost/local/laperbang/auth/forgotpassword/${email}`)
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error(response.statusText)
+                                    }
+                                    return response.json()
+                                })
+                                .catch(error => {
+                                    Swal.showValidationMessage(
+                                        `Request failed: ${error}`
+                                    )
+                                })
+                                .then((result) => {
+                                    console.log(result)
+                                    swal.fire({
+                                        icon: result.status.toLowerCase(),
+                                        title: result.status,
+                                        text: result.message
+                                    })
+
+                                })
                         }
 
                     })()
