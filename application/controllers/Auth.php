@@ -136,6 +136,7 @@ class Auth extends CI_Controller
             'smtp_user' => 'ujicoba@simako.site',
             'smtp_pass' => 'Alohomor4',
             'smtp_port' => 465,
+            'smtp_crypto' => 'tls',
             'mailtype'  => 'html',
             'charset'   => 'utf-8',
             'newline'   => "\r\n"
