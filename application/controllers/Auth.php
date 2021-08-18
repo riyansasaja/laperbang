@@ -217,9 +217,9 @@ class Auth extends CI_Controller
     {
         $config = [
             'protocol'  => 'smtp',
-            'smtp_host' => 'ssl://smtp.gmail.com',
-            'smtp_user' => 'laperbang.ptamanado@gmail.com',
-            'smtp_pass' => 'laperbang1234',
+            'smtp_host' => 'laperbang.pta-manado.go.id',
+            'smtp_user' => 'info@laperbang.pta-manado.go.id',
+            'smtp_pass' => 'Laperbang1234',
             'smtp_port' => 465,
             'mailtype'  => 'html',
             'charset'   => 'utf-8',
