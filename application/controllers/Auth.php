@@ -137,7 +137,7 @@ class Auth extends CI_Controller
             'smtp_pass' => 'laperbang1234',
             'smtp_port' => 465,
             'mailtype'  => 'html',
-            // 'smtp_crypto'  => 'ttl',
+            'smtp_crypto'  => 'tls',
             'charset'   => 'utf-8',
             'newline'   => "\r\n",
             'crlf'   => "\r\n"
