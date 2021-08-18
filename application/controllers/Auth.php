@@ -144,6 +144,7 @@ class Auth extends CI_Controller
         ];
 
         $this->email->initialize($config);
+        $this->email->set_newline("\r\n");
 
         $this->email->from($config['smtp_user'], 'laperbang pta.manado');
         $this->email->to($email);
