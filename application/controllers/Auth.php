@@ -132,7 +132,7 @@ class Auth extends CI_Controller
     {
         $config = [
             'protocol'  => 'smtp',
-            'smtp_host' => 'ssl://smtp.hostinger.com',
+            'smtp_host' => 'smtp.hostinger.com',
             'smtp_user' => 'ujicoba@simako.site',
             'smtp_pass' => 'Alohomor4',
             'smtp_port' => 465,
