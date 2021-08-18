@@ -131,10 +131,10 @@ class Auth extends CI_Controller
     private  function _sendEmail($email, $token)
     {
         $config = [
-            'protocol'  => 'ssmtp',
-            'smtp_host' => 'ssl://ssmtp.googlemail.com',
-            'smtp_user' => 'laperbang.ptamanado@gmail.com',
-            'smtp_pass' => 'laperbang1234',
+            'protocol'  => 'smtp',
+            'smtp_host' => 'ssl://laperbang.pta-manado.go.id',
+            'smtp_user' => 'info@laperbang.pta-manado.go.id',
+            'smtp_pass' => 'Laperbang1234',
             'smtp_port' => 465,
             'mailtype'  => 'html',
             'charset'   => 'utf-8',
