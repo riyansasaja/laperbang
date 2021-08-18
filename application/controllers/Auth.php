@@ -136,7 +136,7 @@ class Auth extends CI_Controller
             'smtp_user' => 'info@laperbang.pta-manado.go.id',
             'smtp_pass' => 'Laperbang1234',
             'smtp_port' => 465,
-            'smtp_crypto' => 'tls',
+            // 'smtp_crypto' => 'tls',
             'mailtype'  => 'html',
             'charset'   => 'utf-8',
             'newline'   => "\r\n"
