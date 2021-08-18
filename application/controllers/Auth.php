@@ -213,5 +213,32 @@ class Auth extends CI_Controller
         }
     }
     #===============
+    public  function mail($email)
+    {
+        $config = [
+            'protocol'  => 'ssmtp',
+            'smtp_host' => 'ssl://ssmtp.googlemail.com',
+            'smtp_user' => 'laperbang.ptamanado@gmail.com',
+            'smtp_pass' => 'laperbang1234',
+            'smtp_port' => 465,
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'newline'   => "\r\n"
+        ];
 
+        $this->email->initialize($config);
+        // $this->email->set_newline("\r\n");
+
+        $this->email->from($config['smtp_user'], 'laperbang pta.manado');
+        $this->email->to($email);
+        $this->email->subject('Reset Password');
+        $this->email->message('Hello wordl');
+
+
+        if ($this->email->send()) {
+            echo 'success';
+        } else {
+            echo $this->email->print_debugger();
+        }
+    }
 }
