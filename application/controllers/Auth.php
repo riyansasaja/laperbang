@@ -132,11 +132,10 @@ class Auth extends CI_Controller
     {
         $config = [
             'protocol'  => 'smtp',
-            'smtp_host' => 'smtp.gmail.com',
+            'smtp_host' => 'ssl://smtp.gmail.com',
             'smtp_user' => 'laperbang.ptamanado@gmail.com',
             'smtp_pass' => 'laperbang1234',
-            'smtp_port' => 587,
-            'smtp_crypto' => 'tls',
+            'smtp_port' => 465,
             'mailtype'  => 'html',
             'charset'   => 'utf-8',
             'newline'   => "\r\n"
@@ -148,6 +147,7 @@ class Auth extends CI_Controller
         $this->email->to($email);
         $this->email->subject('Reset Password');
         $this->email->message('Click this link to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $email . '&token=' . urlencode($token) . '">Reset Password</a>');
+
 
         if ($this->email->send()) {
             return true;
