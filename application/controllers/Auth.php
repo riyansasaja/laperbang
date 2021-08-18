@@ -131,7 +131,7 @@ class Auth extends CI_Controller
     private  function _sendEmail($email, $token)
     {
         $config = [
-            'protocol'  => 'sendmail',
+            'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.gmail.com',
             'smtp_user' => 'laperbang.ptamanado@gmail.com',
             'smtp_pass' => 'laperbang1234',
