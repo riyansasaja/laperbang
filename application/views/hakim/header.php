@@ -28,7 +28,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-satu">
         <div class="container">
-            <a class="navbar-brand" href="<?= base_url('viewhakim/') ?>">
+            <a class="navbar-brand" href="">
                 <img src="<?= base_url('assets/img/') ?>logoapp.png" alt="" width="80" class="drop-shadow">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,7 @@
                             <i class="fas fa-fw fa-user-tie"></i> User
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item disabled" href="#">Profile</a></li>
+                            <li><a class="dropdown-item disabled" href="">Profile</a></li>
                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
                         </ul>
                     </li>

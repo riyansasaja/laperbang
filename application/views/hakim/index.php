@@ -3,7 +3,7 @@
     <div class="row mt-5">
         <!-- //card dashboard -->
         <div class="col-xl-4 col-md-6">
-            <a class="text-reset text-decoration-none" href="<?= base_url('viewhakim/banding') ?>">
+            <a class="text-reset text-decoration-none" href="<?= base_url('ViewHakim/banding') ?>">
                 <div class="card bg-satu text-white mb-4">
                     <div class="card-body">
                         <h3>Perkara Banding</h3>
