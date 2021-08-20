@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link <?= $judul == 'Dashboard' ? 'active' : '' ?>" aria-current="page" href="<?= base_url('viewhakim/') ?>">Dasbor</a>
+                        <a class="nav-link <?= $judul == 'Dashboard' ? 'active' : '' ?>" aria-current="page" href="<?= base_url('ViewHakim/') ?>">Dasbor</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= $judul == 'Banding' ? 'active' : '' ?>" href="<?= base_url('ViewHakim/banding/') ?>">Banding</a>
