@@ -397,7 +397,7 @@
                                     <label for="formFileSm" class="col-4 form-label"></label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file16" required>
-                                        <small class="text-satu fw-lighter">*File RTF Size Maksimal 10 mb</small>
+                                        <small class="text-satu fw-lighter">*File RTF Size Maksimal 80 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['salinan_putusan_pa'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -474,7 +474,7 @@
                                     <label for="formFileSm" class="col-4 form-label"></label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file17">
-                                        <small class="text-satu fw-lighter">*File RTF Size Maksimal 10 mb</small>
+                                        <small class="text-satu fw-lighter">*File RTF Size Maksimal 80 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['memori_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
@@ -549,7 +549,7 @@
                                     <label for="formFileSm" class="col-4 form-label"></label>
                                     <div class="col-4">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file18">
-                                        <small class="text-satu fw-lighter">*File RTF Size Maksimal 10 mb</small>
+                                        <small class="text-satu fw-lighter">*File RTF Size Maksimal 80 mb</small>
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['kontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
