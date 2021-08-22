@@ -444,7 +444,7 @@ class Banding extends CI_Controller
 
         $config['upload_path']          = './assets/files/bundle_b';
         $config['allowed_types']        = 'pdf|rtf';
-        $config['max_size']             = 10000;
+        $config['max_size']             = 80024;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
 
@@ -464,7 +464,7 @@ class Banding extends CI_Controller
                     $salinan_putusan_pa = $this->upload->data("file_name");
                     $this->db->set('salinan_putusan_pa', $salinan_putusan_pa);
                 } else {
-                    $this->session->set_flashdata('msg', 'Upload data Salinan putusan Pengandilan Agama atau Mahkamah gagal');
+                    $this->session->set_flashdata('msg', 'Upload data Surat kuasa dari kedua belah pihak gagal');
                     redirect('banding/');
                 }
             }
