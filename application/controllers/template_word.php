@@ -14,7 +14,7 @@ class Template_word extends CI_Controller
 
         $params['data'] = base_url() . 'viewdata/viewqr/' . $id;
         $params['level'] = 'H';
-        $params['size'] = 1;
+        $params['size'] = 10;
         $params['savename'] = FCPATH . 'qrcodeimg/qr_' . $id . '.png';
         $check = $this->ciqrcode->generate($params);
 
