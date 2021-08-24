@@ -215,6 +215,14 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>Salinan Putusan Pengadilan Agama (RTF)</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->salinan_putusan_pa_rtf; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->salinan_putusan_pa_rtf; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>Surat Kuasa dari Kedua Belah Pihak</td>
                                             <td>
                                                 <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->sk_bundelb; ?>" class="text-decoration-none text-reset">
