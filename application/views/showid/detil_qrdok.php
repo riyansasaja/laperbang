@@ -36,7 +36,7 @@
           <div style="text-align: center; margin-bottom: 17px">
             <span class="chart" data-percent="86">
               <span>
-                <img width="80px" src="<?php echo base_url('resources/qrcode/' . $dok_id . '.jpg') ?>">
+                <img width="80px" src="<?php echo base_url('qrcodeimg/qr_' . $dok_id . '.png') ?>">
               </span>
             </span>
           </div>

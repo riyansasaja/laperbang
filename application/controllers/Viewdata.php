@@ -7,7 +7,7 @@ class Viewdata extends CI_Controller
 	function index($qrid)
 	{
 		//$detil_dok = $this->db->query("SELECT a.diinput_tanggal as tglinput, a.*, b.*, c.*, e.*, f.nama, f.nip, f.jabatan, f.pangkat_gol_ruang, f.tmt_cpns, e.jabatan_id as jabatan_kode FROM simpel_all_list as a, simpel_jenis_izin_cuti as b, ref_persetujuan as c, simpel_ref_jabatan as e, simpel_register_pegawai as f WHERE a.jenis_id=b.jenis_id AND a.status_id=c.persetujuan_id AND a.nip=f.nip AND f.jabatan=e.jabatan_id AND qrcode='" . $qrid . "'")->row();
-		$detil_dok = $this->db->query("SELECT * v_all_perkara WHERE qrcode='" . $qrid . "'")->row();
+		$detil_dok = $this->db->query("SELECT * v_all_perkara WHERE id=$qrid")->row();
 		$data['dok_id'] 			= $qrid;
 		$data['nama']		        = $detil_dok->nama;
 		$data['no_perkara']	    = $detil_dok->no_perkara;
