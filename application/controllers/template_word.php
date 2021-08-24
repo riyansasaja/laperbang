@@ -80,7 +80,7 @@ class Template_word extends CI_Controller
                 $templateProcessor->setImageValue('qrcode', '');
             }
 
-            $templateProcessor->setImageValue('qrcode', ['path' => FCPATH . 'resources/qrcode/' . $qrname, 'width' => '55pt', 'height' => '']);
+            // $templateProcessor->setImageValue('qrcode', ['path' => FCPATH . 'resources/qrcode/' . $qrname, 'width' => '55pt', 'height' => '']);
             $templateProcessor->setValue('tgl_register', indonesian_date_tanggal($lihat['tgl_register']));
             $templateProcessor->setValue('no_surat', $lihat['no_surat_pengantar']);
             $templateProcessor->setValue('no_perkara', $lihat['no_perkara']);
