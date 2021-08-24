@@ -7,30 +7,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Template_word extends CI_Controller
 {
 
-    function getqrcode()
+    //fungsi getqrcode
+    function getqrcode($id)
     {
-        $url = base_url() . 'index.php/Viewdata/';
-        $this->load->library('ciqrcode');
-        $config['cacheable']    = true;
-        $config['cachedir']     = './qrcodeimg/';
-        $config['errorlog']     = './qrcodeimg/';
-        $config['imagedir']     = './resources/qrcode/';
-        $config['quality']      = true;
-        $config['size']         = '55';
-        $config['black']        = array(224, 255, 255);
-        $config['white']        = array(70, 130, 180);
-        $this->ciqrcode->initialize($config);
 
-
-        $uniqid = uniqid();
-        $qrname = $uniqid . '.jpg';
-        $params['data'] = $url . $uniqid; //data yang akan di jadikan QR CODE
-        $params['level'] = 'H'; //H=High
+        $params['data'] = base_url() . 'viewdata/' . $id;
+        $params['level'] = 'H';
         $params['size'] = 1;
-        $params['savename'] = FCPATH . $config['imagedir'] . $qrname; //simpan image QR CODE ke folder assets/images/
-        $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
-        return array('qrname' => $qrname, 'qrid' => $uniqid);
+        $params['savename'] = FCPATH . 'qrcodeimg/qr_' . $id . '.png';
+        $this->ciqrcode->generate($params);
+
+        return true;
     }
+    //end fungsi
 
     public function surat_pengantar($id)
     {
@@ -72,15 +61,23 @@ class Template_word extends CI_Controller
         $data = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
         foreach ($data as $lihat) :
 
-            $qrcode = $lihat['qrcode'];
-            if ($qrcode == '') {
-                $qr = $this->getqrcode();
-                $qrid  = $qr['qrid'];
-                $qrname = $qr['qrname'];
-                $this->db->query("UPDATE list_perkara set qrcode='" . $qrid . "' where id_perkara=" . $lihat['id_perkara']);
+            // $qrcode = $lihat['qrcode'];
+            // if ($qrcode == '') {
+            //     $qr = $this->getqrcode();
+            //     $qrid  = $qr['qrid'];
+            //     $qrname = $qr['qrname'];
+            //     $this->db->query("UPDATE list_perkara set qrcode='" . $qrid . "' where id_perkara=" . $lihat['id_perkara']);
+            // } else {
+            //     $qrid  = $lihat['qrcode'];
+            //     $qrname = $lihat['qrcode'] . ".jpg";
+            // }
+
+            //buat qr code
+            $qrcode = $this->getqrcode($id);
+            if ($qrcode == true) {
+                $templateProcessor->setImageValue('qrcode', ['path' => FCPATH . 'qrcodeimg/qr_'  . $id . '.png', 'width' => '55pt', 'height' => '']);
             } else {
-                $qrid  = $lihat['qrcode'];
-                $qrname = $lihat['qrcode'] . ".jpg";
+                $templateProcessor->setImageValue('qrcode', '');
             }
 
             $templateProcessor->setImageValue('qrcode', ['path' => FCPATH . 'resources/qrcode/' . $qrname, 'width' => '55pt', 'height' => '']);
