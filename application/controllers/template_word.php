@@ -21,8 +21,8 @@ class Template_word extends CI_Controller
         $params['savename'] = FCPATH . 'qrcodeimg/qr_' . $id . '.png';
         $check = $this->ciqrcode->generate($params);
 
-        var_dump($check);
-        die;
+        // var_dump($check);
+        // die;
 
 
         return true;
@@ -31,7 +31,7 @@ class Template_word extends CI_Controller
 
     public function surat_pengantar($id)
     {
-        $qrcode = $this->getqrcode($id);
+
         require_once APPPATH . 'libraries/vendor/autoload.php';
         // $template = new \PhpOffice\PhpWord\TemplateProcessor(FCPATH.'resources/template/surat_template.docx');
         switch ($this->session->userdata('id')) {
@@ -82,7 +82,7 @@ class Template_word extends CI_Controller
             // }
 
             //buat qr code
-            // $qrcode = $this->getqrcode($id);
+            $qrcode = $this->getqrcode($id);
             if ($qrcode == true) {
                 $templateProcessor->setImageValue('qrcode', ['path' => FCPATH . 'qrcodeimg/qr_'  . $id . '.png', 'width' => '55pt', 'height' => '']);
             } else {
