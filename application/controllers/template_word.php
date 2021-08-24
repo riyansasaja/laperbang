@@ -8,7 +8,7 @@ class Template_word extends CI_Controller
 {
 
 
-    //fungsi getqrcode
+    //fungsi getqrcode harusnya jalan
     function getqrcode($id)
     {
 
