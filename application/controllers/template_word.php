@@ -6,6 +6,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Template_word extends CI_Controller
 {
+    public function index()
+    {
+        echo "tes uji coba";
+    }
 
     //fungsi getqrcode
     function getqrcode($id)
