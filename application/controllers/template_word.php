@@ -6,16 +6,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Template_word extends CI_Controller
 {
-    public function index()
-    {
-        echo "tes uji coba";
-    }
+
 
     //fungsi getqrcode
     function getqrcode($id)
     {
 
-        $params['data'] = base_url() . 'viewdata/' . $id;
+        $params['data'] = base_url() . 'viewdata/viewqr/' . $id;
         $params['level'] = 'H';
         $params['size'] = 1;
         $params['savename'] = FCPATH . 'qrcodeimg/qr_' . $id . '.png';
