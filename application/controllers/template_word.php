@@ -15,7 +15,11 @@ class Template_word extends CI_Controller
         $params['level'] = 'H';
         $params['size'] = 1;
         $params['savename'] = FCPATH . 'qrcodeimg/qr_' . $id . '.png';
-        $this->ciqrcode->generate($params);
+        $check = $this->ciqrcode->generate($params);
+
+        var_dump($check);
+        die;
+
 
         return true;
     }
