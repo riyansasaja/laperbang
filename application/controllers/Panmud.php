@@ -49,4 +49,34 @@ class Panmud extends CI_Controller
         $this->load->view('panmud/view_berkas_admin', $data);
         $this->load->view('panmud/footer', $data);
     }
+
+    public function get_log_inbox()
+    {
+
+        $this->db->count_all_results('log_inbox');
+        $data = $this->db->get_where('log_inbox', ['is_read' => 1])->result();
+        $total = $this->db->count_all_results();
+        $result =  [
+            'response' => 'success',
+            'code' => 600,
+            'data' => $data,
+            'total' => $total
+
+        ];
+        echo json_encode($result);
+    }
+    //--end
+
+    //function saat klik log inbox
+    public function click_log_inbox()
+    {
+        $id = $this->input->post('id');
+        $update = [
+            'is_read' => 2
+        ];
+        $this->db->where('id_log_inbox', $id);
+        $data = $this->db->update('log_inbox', $update);
+        echo json_encode($data);
+    }
+    //--end
 }
