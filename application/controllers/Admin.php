@@ -37,6 +37,17 @@ class Admin extends CI_Controller
         $this->load->view('admin/footer', $data);
     }
 
+    public function viewPanmud()
+    {
+        $data['judul'] = 'Input Nomor Perkara';
+        $data['css'] = 'dashboard_admin.css';
+        $data['js'] = 'view_panmud.js';
+
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/inputnoper', $data);
+        $this->load->view('admin/footer', $data);
+    }
+
     public function get_data_banding()
     {
         $data = $this->db->get('v_all_perkara')->result();

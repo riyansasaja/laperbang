@@ -59,6 +59,7 @@
                                     <option value="1">Admin</option>
                                     <option value="2">User</option>
                                     <option value="3">Hakim</option>
+                                    <option value="4">Panmud</option>
                                 </select>
                             </div>
                             <div class="mb-3">
