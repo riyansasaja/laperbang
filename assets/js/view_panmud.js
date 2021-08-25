@@ -181,7 +181,7 @@ $(document).ready(function () {
     $('#listperkara').on('click', '.item_view', function () {
         let data = list_perkara.row($(this).parents('tr')).data();
         let id_perkara = data['id_perkara'];
-        window.location.href = `${path}admin/view_berkas_admin/${id_perkara}/`;
+        window.location.href = `${path}panmud/view_berkas_admin/${id_perkara}/`;
 
     });
 

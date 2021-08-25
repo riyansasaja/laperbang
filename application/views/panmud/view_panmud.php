@@ -14,7 +14,7 @@
                                 <th>#</th>
                                 <th>Satker</th>
                                 <th>Tanggal Upload</th>
-                                <th>Pihak Penggungat</th>
+                                <th>Pihak Penggugat</th>
                                 <th>Pihak Tergugat</th>
                                 <th>Nomor Perkara</th>
                                 <th>Jenis Perkara</th>
