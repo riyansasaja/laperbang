@@ -1,12 +1,12 @@
 $(document).ready(function () {
 
     //data table
-    const path = window.location.origin + '/';
-    // const path = `${prapath}/laperbang/`;
+    const prapath = window.location.origin;
+    const path = `${prapath}/laperbang/`;
     console.log(path);
     //---Tampil data table kegiatan
     let list_perkara = $('#listperkara').DataTable({
-        "ajax": `${path}admin/get_data_banding/`,
+        "ajax": `${path}/admin/get_data_banding/`,
         "columns": [
             {
                 "data": null, "sortable": false,
@@ -15,12 +15,14 @@ $(document).ready(function () {
                 }
             },
             { "data": "nama" },
-            { "data": "no_perkara" },
-            { "data": "jns_perkara" },
-            { "data": "no_perkara_banding" },
             { "data": "tgl_register" },
             { "data": "nm_pihak_penggugat" },
             { "data": "nm_pihak_tergugat" },
+            { "data": "no_perkara" },
+            { "data": "jns_perkara" },
+            { "data": "no_perkara_banding" },
+            { "data": "tgl_reg_banding" },
+            { "data": "status_perkara" },
             {
                 "data": null,
                 "defaultContent": `<a href="javascript:;" id='view_doc' class="text-satu item_view"'><i class="fas fa-fw fa-eye" title= 'Lihat Berkas'></i> <br>
@@ -53,6 +55,7 @@ $(document).ready(function () {
             //ambil data
             let nomor_perkara_banding = $('#nomor_perkara_banding').val();
             let tahun_perkara_banding = $('#tahun_perkara_banding').val();
+            let tgl_reg_banding = $('#tgl_reg_banding').val();
             //swal notification
             Swal.fire({
                 title: 'Yakin sudah benar?',
@@ -67,9 +70,10 @@ $(document).ready(function () {
                     //kalo jadi simpan baru kase ba jalang ajax
                     $.ajax({
                         type: "POST",
-                        url: `${path}/admin/updatenoper`,
+                        url: `${path}admin/updatenoper`,
                         data: {
                             id_perkara: id_perkara,
+                            tgl_reg_banding: tgl_reg_banding,
                             nomor_perkara_banding: nomor_perkara_banding,
                             tahun_perkara_banding: tahun_perkara_banding
                         },

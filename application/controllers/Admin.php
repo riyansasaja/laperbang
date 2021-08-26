@@ -243,8 +243,10 @@ class Admin extends CI_Controller
         $tahun_perkara_banding = $this->input->post('tahun_perkara_banding');
         $nomor_perkara_fix = $no_perkara_banding . '/' . 'Pdt.G/' . $tahun_perkara_banding . '/PTA.Mdo';
         $id_perkara = $this->input->post('id_perkara');
+        $tgl_reg_banding = $this->input->post('tgl_reg_banding');
         $data = [
             'id_perkara' => $id_perkara,
+            'tgl_reg_banding' => $tgl_reg_banding,
             'no_perkara_banding' => $nomor_perkara_fix
         ];
 

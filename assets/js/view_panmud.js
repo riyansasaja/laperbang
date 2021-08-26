@@ -21,7 +21,8 @@ $(document).ready(function () {
             { "data": "no_perkara" },
             { "data": "jns_perkara" },
             { "data": "no_perkara_banding" },
-
+            { "data": "tgl_reg_banding" },
+            { "data": "status_perkara" },
             {
                 "data": null,
                 "defaultContent": `<a href="javascript:;" id='view_doc' class="text-satu item_view"'><i class="fas fa-fw fa-eye" title= 'Lihat Berkas'></i>

@@ -63,7 +63,7 @@
                             <th>Nomor Perkara</th>
                             <th>Jenis Perkara</th>
                             <th>Nomor Perkara Banding</th>
-                            <th>Tanggal Register</th>
+                            <th>Tanggal Upload</th>
                             <th>Status</th>
                             <th style="width: 10%;">Action</th>
                         </tr>

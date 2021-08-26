@@ -12,7 +12,7 @@
                                 Surat Pengantar
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <!-- isi di disini bundel A -->
                                 <table class="table">
@@ -33,12 +33,12 @@
                     </div>
 
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
                                 Bundel A
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <!-- isi di disini bundel A -->
                                 <table class="table">
@@ -195,12 +195,12 @@
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
                                 Bundel B
                             </button>
                         </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <!-- isi di sini bundel B -->
                                 <table class="table">
@@ -211,6 +211,14 @@
                                             <td>
                                                 <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->salinan_putusan_pa; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->salinan_putusan_pa; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Salinan Putusan Pengadilan Agama (RTF)</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->salinan_putusan_pa_rtf; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->salinan_putusan_pa_rtf; ?>
                                                 </a>
                                             </td>
                                         </tr>
@@ -247,6 +255,14 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>Memori Banding (RTF)</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->memori_banding_rtf; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->memori_banding_rtf; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>Akta Pemberitahuan Banding</td>
                                             <td>
                                                 <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->akta_pemberitahuan_banding; ?>" class="text-decoration-none text-reset">
@@ -275,6 +291,14 @@
                                             <td>
                                                 <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->kontra_mb; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->kontra_mb; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kontra Memori Banding (RTF)</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->kontra_mb_rtf; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->kontra_mb_rtf; ?>
                                                 </a>
                                             </td>
                                         </tr>

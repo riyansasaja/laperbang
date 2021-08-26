@@ -60,6 +60,7 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
+
                         <li><a class="dropdown-item" href="<?php echo base_url('auth/logout') ?>">Logout</a></li>
                     </ul>
                 </li>
@@ -72,7 +73,7 @@
                         <div class="nav">
 
                             <div class="sb-sidenav-menu-heading">Kelola Perkara</div>
-                            <a class="nav-link <?= $judul == 'Input Nomor Perkara' ? 'active' : '' ?>" href="<?= base_url('admin/inputnoper/') ?>">
+                            <a class="nav-link <?= $judul == 'Input Nomor Perkara' ? 'active' : '' ?>" href="<?= base_url('panmud/') ?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-fw fa-keyboard"></i></div>
                                 Manajemen Perkara
                             </a>

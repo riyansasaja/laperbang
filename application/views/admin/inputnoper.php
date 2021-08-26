@@ -19,6 +19,8 @@
                                 <th>Nomor Perkara</th>
                                 <th>Jenis Perkara</th>
                                 <th>Nomor Perkara Banding</th>
+                                <th>Tanggal Register Banding</th>
+                                <th>Status</th>
                                 <th style="width: 5%;">Lihat</th>
                             </tr>
                         </thead>
@@ -47,6 +49,7 @@
             </div>
             <div class="modal-body">
                 <div class="input-group">
+                    <input type="hidden" class="form-control" id="tgl_reg_banding" name="tgl_reg_banding" value="<?php echo date('Y-m-d'); ?>">
                     <input type="text" class="form-control" name="nomor_perkara_banding" id="nomor_perkara_banding">
                     <span class="input-group-text">/Pdt.G/</span>
                     <input type="text" class="form-control" name="tahun_perkara_banding" id="tahun_perkara_banding" value="<?= date('Y'); ?>">
