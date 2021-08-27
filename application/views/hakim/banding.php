@@ -8,13 +8,13 @@
                             <tr>
                                 <th>#</th>
                                 <th>Satker</th>
-                                <th>Nomor Perkara</th>
-                                <th>Jenis Perkara</th>
-                                <th>Nomor Perkara Banding</th>
-                                <th>Tanggal Register</th>
+                                <th>Nomor Perkara Tk.I</th>
                                 <th>Pihak Penggungat</th>
                                 <th>Pihak Tergugat</th>
-                                <th>Status</th>
+                                <th>Jenis Perkara</th>
+                                <th>Tanggal Register banding</th>
+                                <th>Nomor Perkara Banding</th>
+                                <th>Tahapan Perkara</th>
                                 <th style="width: 5%;">Lihat</th>
                             </tr>
                         </thead>

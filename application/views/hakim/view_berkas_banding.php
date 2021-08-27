@@ -195,6 +195,11 @@
                                                     <?= $db->salinan_putusan_pa; ?>
                                                 </a>
                                             </td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_b/<?= $db->salinan_putusan_pa_rtf; ?>" data-judul="c_salinan_putusan_pa" class="text-decoration-none text-reset">
+                                                    <?= $db->salinan_putusan_pa_rtf; ?>
+                                                </a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Surat Kuasa dari Kedua Belah Pihak</td>
@@ -228,6 +233,11 @@
                                                     <?= $db->memori_banding; ?>
                                                 </a>
                                             </td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_b/<?= $db->memori_banding_rtf; ?>" data-judul="c_memori_banding" class="text-decoration-none text-reset">
+                                                    <?= $db->memori_banding_rtf; ?>
+                                                </a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Akta Pemberitahuan Banding</td>
@@ -258,6 +268,11 @@
                                             <td>
                                                 <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_b/<?= $db->kontra_mb; ?>" data-judul="c_kontra_mb" class="text-decoration-none text-reset">
                                                     <?= $db->kontra_mb; ?>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_b/<?= $db->kontra_mb_rtf; ?>" data-judul="c_kontra_mb" class="text-decoration-none text-reset">
+                                                    <?= $db->kontra_mb_rtf; ?>
                                                 </a>
                                             </td>
                                         </tr>
