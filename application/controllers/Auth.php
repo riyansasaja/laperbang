@@ -54,8 +54,10 @@ class Auth extends CI_Controller
                             redirect('Admin/inputNoper');
                         } elseif ($user['role_id'] == 2) {
                             redirect('home');
-                        } else {
+                        } elseif ($user['role_id'] == 3) {
                             redirect('ViewHakim');
+                        } else {
+                            redirect('Panmud');
                         }
                     } else {
                         $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">Password salah</div>');

@@ -6,7 +6,7 @@ $(document).ready(function () {
     console.log(path);
     //---Tampil data table kegiatan
     let list_perkara = $('#listperkara').DataTable({
-        "ajax": `${path}/admin/get_data_banding/`,
+        "ajax": `${path}panmud/get_data_banding/`,
         "columns": [
             {
                 "data": null, "sortable": false,
@@ -25,9 +25,7 @@ $(document).ready(function () {
             { "data": "status_perkara" },
             {
                 "data": null,
-                "defaultContent": `<a href="javascript:;" id='view_doc' class="text-satu item_view"'><i class="fas fa-fw fa-eye" title= 'Lihat Berkas'></i> <br>
-                <a href="javascript:;" id='view_doc' class="text-satu item_input"'><i class="fas fa-fw fa-pen-alt" title='Input Nomor Banding'></i> <br>
-                <a href="javascript:;" id='view_doc' class="text-satu item_staper"'><i class="fas fa-fw fa-tasks" title='Input Status Perkara'></i>
+                "defaultContent": `<a href="javascript:;" id='view_doc' class="text-satu item_view"'><i class="fas fa-fw fa-eye" title= 'Lihat Berkas'></i>
                 `
             }
         ]
@@ -55,7 +53,6 @@ $(document).ready(function () {
             //ambil data
             let nomor_perkara_banding = $('#nomor_perkara_banding').val();
             let tahun_perkara_banding = $('#tahun_perkara_banding').val();
-            let tgl_reg_banding = $('#tgl_reg_banding').val();
             //swal notification
             Swal.fire({
                 title: 'Yakin sudah benar?',
@@ -70,10 +67,9 @@ $(document).ready(function () {
                     //kalo jadi simpan baru kase ba jalang ajax
                     $.ajax({
                         type: "POST",
-                        url: `${path}admin/updatenoper`,
+                        url: `${path}/admin/updatenoper`,
                         data: {
                             id_perkara: id_perkara,
-                            tgl_reg_banding: tgl_reg_banding,
                             nomor_perkara_banding: nomor_perkara_banding,
                             tahun_perkara_banding: tahun_perkara_banding
                         },
@@ -186,7 +182,7 @@ $(document).ready(function () {
     $('#listperkara').on('click', '.item_view', function () {
         let data = list_perkara.row($(this).parents('tr')).data();
         let id_perkara = data['id_perkara'];
-        window.location.href = `${path}admin/view_berkas_admin/${id_perkara}/`;
+        window.location.href = `${path}panmud/view_berkas_admin/${id_perkara}/`;
 
     });
 

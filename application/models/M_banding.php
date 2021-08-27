@@ -144,4 +144,22 @@ class M_banding extends CI_model
         $res = $this->db->update($tabelName, $data, $where);
         return $res;
     }
+
+    public function DataBanding()
+    {
+        $this->db->select('*');
+        $this->db->from('v_all_perkara');
+        $this->db->order_by('tgl_register', 'DESC');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function DataBandingHakim()
+    {
+        $this->db->select('*');
+        $this->db->from('v_berkas_hakim');
+        $this->db->order_by('no_perkara_banding', 'DESC');
+        $query = $this->db->get()->result();
+        return $query;
+    }
 }
