@@ -71,7 +71,7 @@
         <div class="modal-content">
 
             <div class="modal-body">
-                <form method="post" action="<?php echo base_url('admin/uploadPutusan'); ?>" enctype="multipart/form-data">
+                <form method="post" action="<?php echo base_url('panmud/uploadPutusan'); ?>" enctype="multipart/form-data">
                     <input type="text" id="id_perkara" name="id_perkara" hidden>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Silahkan Upload File Putusan Perkara</label>

@@ -26,6 +26,8 @@ $(document).ready(function () {
             {
                 "data": null,
                 "defaultContent": `<a href="javascript:;" id='view_doc' class="text-satu item_view"'><i class="fas fa-fw fa-eye" title= 'Lihat Berkas'></i>
+                <a href="javascript:;" id='view_doc' class="text-satu item_input"'><i class="fas fa-fw fa-pen-alt" title='Input Nomor Banding'></i> <br>
+                <a href="javascript:;" id='view_doc' class="text-satu item_staper"'><i class="fas fa-fw fa-tasks" title='Input Status Perkara'></i>
                 `
             }
         ]
@@ -53,6 +55,7 @@ $(document).ready(function () {
             //ambil data
             let nomor_perkara_banding = $('#nomor_perkara_banding').val();
             let tahun_perkara_banding = $('#tahun_perkara_banding').val();
+            let tgl_reg_banding = $('#tgl_reg_banding').val();
             //swal notification
             Swal.fire({
                 title: 'Yakin sudah benar?',
@@ -67,9 +70,10 @@ $(document).ready(function () {
                     //kalo jadi simpan baru kase ba jalang ajax
                     $.ajax({
                         type: "POST",
-                        url: `${path}/admin/updatenoper`,
+                        url: `${path}/panmud/updatenoper`,
                         data: {
                             id_perkara: id_perkara,
+                            tgl_reg_banding: tgl_reg_banding,
                             nomor_perkara_banding: nomor_perkara_banding,
                             tahun_perkara_banding: tahun_perkara_banding
                         },
@@ -131,7 +135,7 @@ $(document).ready(function () {
                     if (value === 'Pengiriman Salinan Putusan') {
                         $.ajax({
                             type: "POST",
-                            url: `${path}/admin/updateStatus`,
+                            url: `${path}/panmud/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
                                 status_perkara: value,
@@ -147,7 +151,7 @@ $(document).ready(function () {
                     } else {
                         $.ajax({
                             type: "POST",
-                            url: `${path}/admin/updateStatus`,
+                            url: `${path}/panmud/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
                                 status_perkara: value,
