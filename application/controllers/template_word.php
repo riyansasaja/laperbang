@@ -62,6 +62,9 @@ class Template_word extends CI_Controller
             case '11':
                 $templateProcessor = new TemplateProcessor('resources/template/surat_template_btng.docx');
                 break;
+            case '36':
+                $templateProcessor = new TemplateProcessor('resources/template/surat_template_per.docx');
+                break;
         }
 
         $data = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
