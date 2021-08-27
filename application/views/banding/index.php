@@ -190,6 +190,9 @@
                         case 'PA.Tty':
                             $kode_surat_pa = 'W18.A10';
                             break;
+                        case 'PA.Per':
+                            $kode_surat_pa = 'W18.A11';
+                            break;
                     }
 
                     ?>
