@@ -195,6 +195,11 @@
                                                     <?= $db->salinan_putusan_pa; ?>
                                                 </a>
                                             </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Salinan Putusan Pengadilan Agama (RTF)</td>
+
                                             <td>
                                                 <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_b/<?= $db->salinan_putusan_pa_rtf; ?>" data-judul="c_salinan_putusan_pa" class="text-decoration-none text-reset">
                                                     <?= $db->salinan_putusan_pa_rtf; ?>
@@ -233,6 +238,11 @@
                                                     <?= $db->memori_banding; ?>
                                                 </a>
                                             </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Memori Banding (RTF)</td>
+
                                             <td>
                                                 <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_b/<?= $db->memori_banding_rtf; ?>" data-judul="c_memori_banding" class="text-decoration-none text-reset">
                                                     <?= $db->memori_banding_rtf; ?>
@@ -270,6 +280,11 @@
                                                     <?= $db->kontra_mb; ?>
                                                 </a>
                                             </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Kontra Memori Banding (RTF)</td>
+
                                             <td>
                                                 <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_b/<?= $db->kontra_mb_rtf; ?>" data-judul="c_kontra_mb" class="text-decoration-none text-reset">
                                                     <?= $db->kontra_mb_rtf; ?>

@@ -214,13 +214,17 @@
                                                 </a>
 
                                             </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Salinan Putusan Pengadilan Agama (RTF)</td>
+
                                             <td>
                                                 <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->salinan_putusan_pa_rtf; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->salinan_putusan_pa_rtf; ?>
                                                 </a>
                                             </td>
                                         </tr>
-
                                         <tr>
                                             <td>Surat Kuasa dari Kedua Belah Pihak</td>
                                             <td>
@@ -252,13 +256,17 @@
                                                     <?= $db->memori_banding; ?>
                                                 </a>
                                             </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Memori Banding (RTF)</td>
+
                                             <td>
                                                 <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->memori_banding_rtf; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->memori_banding_rtf; ?>
                                                 </a>
                                             </td>
                                         </tr>
-
                                         <tr>
                                             <td>Akta Pemberitahuan Banding</td>
                                             <td>
@@ -290,13 +298,17 @@
                                                     <?= $db->kontra_mb; ?>
                                                 </a>
                                             </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Kontra Memori Banding (RTF)</td>
+
                                             <td>
                                                 <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->kontra_mb_rtf; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->kontra_mb_rtf; ?>
                                                 </a>
                                             </td>
                                         </tr>
-
                                         <tr>
                                             <td>Pemberitahuan Penyerahan Kotra Memori Banding</td>
                                             <td>
