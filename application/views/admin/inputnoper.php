@@ -16,7 +16,7 @@
                                 <th>Tanggal Upload</th>
                                 <th>Pihak Penggugat</th>
                                 <th>Pihak Tergugat</th>
-                                <th>Nomor Perkara</th>
+                                <th>Nomor Perkara Tk.I</th>
                                 <th>Jenis Perkara</th>
                                 <th>Tanggal Register Banding</th>
                                 <th>Nomor Perkara Banding</th>

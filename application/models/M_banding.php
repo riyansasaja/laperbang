@@ -158,7 +158,7 @@ class M_banding extends CI_model
     {
         $this->db->select('*');
         $this->db->from('v_berkas_hakim');
-        $this->db->order_by('no_perkara_banding', 'DESC');
+        $this->db->order_by('tgl_reg_banding', 'DESC');
         $query = $this->db->get()->result();
         return $query;
     }
