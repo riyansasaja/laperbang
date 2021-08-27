@@ -20,8 +20,8 @@ $(document).ready(function () {
             { "data": "nm_pihak_tergugat" },
             { "data": "no_perkara" },
             { "data": "jns_perkara" },
-            { "data": "no_perkara_banding" },
             { "data": "tgl_reg_banding" },
+            { "data": "no_perkara_banding" },
             { "data": "status_perkara" },
             {
                 "data": null,
