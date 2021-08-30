@@ -11,6 +11,8 @@ $(document).ready(function () {
         let getdata = $(e.relatedTarget).data('id');
         let getjudul = $(e.relatedTarget).data('judul');
         let id_perkara = pecah[3];
+        console.log(getdata);
+        console.log(getjudul);
         console.log(id_perkara);
         //embed ke tampilan sebelah kanan
         let tampil = `<embed src="${path}assets/files/${getdata}" type="application/pdf" width="100%" height="100%">`;
