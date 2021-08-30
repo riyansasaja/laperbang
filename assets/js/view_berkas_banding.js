@@ -10,7 +10,7 @@ $(document).ready(function () {
         //ambil data-id dan data-judul
         let getdata = $(e.relatedTarget).data('id');
         let getjudul = $(e.relatedTarget).data('judul');
-        let id_perkara = pecah[6];
+        let id_perkara = pecah[4];
         //embed ke tampilan sebelah kanan
         let tampil = `<embed src="${path}assets/files/${getdata}" type="application/pdf" width="100%" height="100%">`;
         $('#tampil').html(tampil);
