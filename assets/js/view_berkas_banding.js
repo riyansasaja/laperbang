@@ -10,7 +10,7 @@ $(document).ready(function () {
         //ambil data-id dan data-judul
         let getdata = $(e.relatedTarget).data('id');
         let getjudul = $(e.relatedTarget).data('judul');
-        let id_perkara = $(e.relatedTarget).data('id_perkara');
+        let id_perkara = pecah[3];
         console.log(getdata);
         console.log(getjudul);
         console.log(id_perkara);
