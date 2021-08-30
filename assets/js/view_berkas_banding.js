@@ -1,6 +1,6 @@
 $(document).ready(function () {
     const prapath = window.location.origin;
-    const path = `${prapath}/`;
+    const path = `${prapath}/laperbang/`;
 
     let url = window.location.href;
     let pecah = url.split('/');
