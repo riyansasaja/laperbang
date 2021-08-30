@@ -63,13 +63,13 @@ $(document).ready(function () {
         }//end fungsi tampil baru
 
         //function tambah komentar
-        function tambah_komentar(aaa, bbb) {
+        function tambah_komentar(aaa) {
             let catatan = $('#catatan').val();
             $.ajax({
                 type: "POST",
                 url: `${path}ViewHakim/set_catatan`,
                 data: {
-                    id_perkara: bbb,
+                    id_perkara: id_perkara,
                     nm_berkas: aaa,
                     catatan: catatan
                 },
