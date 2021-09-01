@@ -70,19 +70,28 @@ class Banding extends CI_Controller
             'keterangan' => $this->input->post('keterangan', true),
         ];
         $this->db->insert('list_perkara', $data);
-        $this->session->set_flashdata('flash', 'berhasil disimpan');
 
+        #buat folder sesuai dengan nomor perkara
+        $folder = strtr($no_perkara_input, '/', '-');
+        mkdir("./fileuploads/$folder");
+        mkdir("./fileuploads/$folder/bundel-a");
+        mkdir("./fileuploads/$folder/bundel-b");
+        #buat flashdata
+        $this->session->set_flashdata('flash', 'berhasil disimpan');
+        #buat audittrail
         $audittrail = array(
             'log_id' => '',
             'isi_log' => "User <b>" . $pengedit . "</b> telah menambah data perkara",
             'nama_log' => $pengedit
         );
-
+        #simpan data auditrail di database
         $this->db->set('rekam_log', 'NOW()', FALSE);
         $this->db->insert('log_audittrail', $audittrail);
-
+        #redirect to banding with flashdata
         redirect('banding/');
     }
+
+    //End Method Tambah Perkara ======================
 
     public function edit_perkara()
     {
