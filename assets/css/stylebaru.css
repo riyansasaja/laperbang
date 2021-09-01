@@ -25,9 +25,9 @@ body {
 @media (min-width: 992px) {
 	.jumbotron {
 		height: 100vh;
-		background-image: url("/assets/img/wallpaper.png");
+		background-image: url("../img/wallpaper_kantor.svg");
 		background-repeat: no-repeat;
-		background-size: 100% 100%;
+		background-size: cover;
 	}
 	.card-login {
 		width: 20rem;
