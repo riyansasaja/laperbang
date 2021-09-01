@@ -1,5 +1,5 @@
 <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
-<div class="flash-data2" data-flashdata="<?= $this->session->flashdata('msg'); ?>"></div>
+<div class="flash-data2" data-flashdata="<?= $this->session->flashdata('info'); ?>"></div>
 
 
 
