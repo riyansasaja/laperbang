@@ -9,6 +9,7 @@ class Banding extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->model('m_banding');
         $this->load->library('form_validation');
+        $this->load->library('upload');
 
         //usir user yang ga punya session
         if (!$this->session->userdata('id')) {
@@ -123,15 +124,6 @@ class Banding extends CI_Controller
         $banyaknya = $this->input->post('banyaknya');
         $keterangan = $this->input->post('keterangan');
 
-        // $this->db->set('no_perkara', $no_perkara);
-        // $this->db->set('nm_pihak', $nm_pihak);
-        // $this->db->set('jns_perkara', $jns_perkara);
-        // $this->db->where('id_perkara', $id_perkara);
-        // $this->db->update('list_perkara');
-
-        // $this->session->set_flashdata('flash', 'berhasil diubah');
-        // redirect('banding/');
-
         $data = [
             'id_perkara' => $id_perkara,
             'no_perkara' => $no_perkara_input,
@@ -161,47 +153,55 @@ class Banding extends CI_Controller
         redirect('banding/');
     }
 
-    // private function _uploadFile($path)
-    // {
-    //     $config['upload_path']          = './assets/files/' . $path;
-    //     $config['allowed_types']        = 'doc|docx|pdf';
-    //     $config['max_size']             = 5000;
+    //End Method edit perkara ============================
 
+    public function uploadbundle($id)
+    {
+        //konten
+        $data['js'] = 'uploadbanding.js';
+        $data['css'] = 'dashboard_banding.css';
+        $data['judul'] = 'Upload Banding';
 
-    //     $this->load->library('upload', $config);
-    //     $this->upload->initialize($config);
-    //     if ($this->upload->do_upload('file_upload')) {
-    //         return $this->upload->data("file_name");
-    //     } else {
-    //         $this->session->set_flashdata('msg', 'Upload data gagal');
-    //         redirect('banding/');
-    //     }
-    // }
+        //ambil data
+        $data['perkara'] = $this->db->get_where('list_perkara', ['id_perkara' => $id])->row_array();
+
+        //usir id tidak sesuai
+        if ($this->session->userdata('id') != $data['perkara']['id_user']) {
+            redirect('banding');
+        } else {
+            $this->load->view('banding/header', $data);
+            $this->load->view('banding/uploadbundle', $data);
+            $this->load->view('banding/footer', $data);
+        }
+    }
+    //End Method tampilan upload bundel ============================
 
     function pengantar_upload()
     {
         //ambil nama user
         $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('folder');
         // $kode_pa = $this->session->userdata('kode_pa');
         // $tanggal = date("Ymd");
         // $nama_file = $tanggal . '_' . $kode_pa . '_';
 
-        $config['upload_path']          = './assets/files/SuratPengantar';
+        $config['upload_path']          = "./fileuploads/$folder/";
         $config['allowed_types']        = 'pdf';
-        $config['max_size']             = 5000;
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
+        $config['max_size']             = 0;
+        // $this->upload->initialize($config);
 
-        if (($_FILES['file1']['name'] != null)) {
-            if ($this->upload->do_upload('file1')) {
+        if (($_FILES['surat_pengantar']['name'] != null)) {
+            $config['file_name'] = 'Surat Pengantar';
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('surat_pengantar')) {
                 $sp_perkara = $this->upload->data("file_name");
                 $this->db->set('sp_perkara', $sp_perkara);
             } else {
-                $this->session->set_flashdata('msg', 'Upload file gagal, ekstensi file harus pdf dan ukuran tidak boleh lebih dari 5 mb');
+                $this->session->set_flashdata('info', 'Upload file gagal, ekstensi file harus pdf dan ukuran tidak boleh lebih dari 2 mb');
                 redirect('banding/');
             }
         } else {
-            $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
+            $this->session->set_flashdata('info', 'Tidak ada file yang di upload');
             redirect('banding/');
         }
 
@@ -666,25 +666,7 @@ class Banding extends CI_Controller
         redirect('banding/');
     }
 
-    public function uploadbundle($id)
-    {
-        //konten
-        $data['js'] = 'uploadbanding.js';
-        $data['css'] = 'dashboard_banding.css';
-        $data['judul'] = 'Upload Banding';
 
-        //ambil data
-        $data['perkara'] = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
-
-        //usir id tidak sesuai
-        if ($this->session->userdata('id') != $data['perkara'][0]['id_user']) {
-            redirect('banding');
-        } else {
-            $this->load->view('banding/header', $data);
-            $this->load->view('banding/uploadbundle', $data);
-            $this->load->view('banding/footer', $data);
-        }
-    }
 
     public function download_putusan($id)
     {

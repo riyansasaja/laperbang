@@ -4,9 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Siap untuk keluar?</h5>
-                <button class="close" type="button" data-bs-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">Klik tombol "Keluar" jika ingin keluar.</div>
             <div class="modal-footer">

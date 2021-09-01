@@ -1,3 +1,8 @@
+<!-- #ambil data untuk di simpan dalam variabel $folder -->
+<?php
+$folder = strtr($perkara['no_perkara'], '/', '-');
+?>
+
 <div class="container">
     <div class="row">
         <div class="col-12 col-lg-5 mt-3">
@@ -9,48 +14,33 @@
                     <!-- dataPerkara  -->
                     <table class="table table-hover">
                         <tbody>
-                            <?php foreach ($perkara as $lhs) : ?>
-                                <tr>
-                                    <th>Nomor Perkara</th>
-                                    <td><?php echo $lhs['no_perkara']; ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Jenis Perkara</th>
-                                    <td><?php echo $lhs['jns_perkara']; ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Tanggal Pengajuan Banding</th>
-                                    <td><?php echo $lhs['tgl_register']; ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Nomor Perkara Banding</th>
-                                    <td><?php echo $lhs['no_perkara_banding']; ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Status Terakhir</th>
-                                    <td><?php echo $lhs['status_perkara']; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
+                            <tr>
+                                <th>Nomor Perkara</th>
+                                <td><?php echo $perkara['no_perkara']; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Jenis Perkara</th>
+                                <td><?php echo $perkara['jns_perkara']; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Pengajuan Banding</th>
+                                <td><?php echo $perkara['tgl_register']; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Nomor Perkara Banding</th>
+                                <td><?php echo $perkara['no_perkara_banding']; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Status Terakhir</th>
+                                <td><?php echo $perkara['status_perkara']; ?></td>
+                            </tr>
                         </tbody>
                     </table>
                     <!-- end dataPerkara -->
                 </div>
             </div>
         </div>
-        <!-- <div class="col-12 col-lg-7 mt-3">
-            <div class="card h-100">
-                <div class="card-header">
-                    <h6>Upload File</h6>
-                </div>
-                <div class="card-body">
-                    <form action="/file-upload" class="dropzone">
-                        <div class="fallback">
-                            <input name="file" type="file" multiple />
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> -->
+
     </div>
 
 
@@ -68,24 +58,31 @@
                     </h2>
                     <div id="suratPengantar" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
+                            <!-- start form -->
                             <form method="post" action="<?php echo base_url('banding/pengantar_upload'); ?>" enctype="multipart/form-data">
-                                <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
+                                <!-- input hidden -->
+                                <input type="text" value="<?= $perkara['id_perkara'] ?>" hidden name="id_perkara"></input>
+                                <input type="text" value="<?= $folder ?>" hidden name="folder"></input>
+                                <!-- === -->
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Surat Pengantar --pdf<h4 class="text-danger">*</h4></label>
+                                    <label for="formFileSm" class="col-6 form-label">Surat Pengantar --pdf</label>
+                                    <!-- input file -->
                                     <div class="col-4">
-                                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1" required>
-                                        <small class="text-satu fw-lighter">*File PDF Size Maksimal 5 mb</small>
+                                        <input class="form-control form-control-sm max2" id="formFileSm" type="file" accept="application/pdf" name="surat_pengantar" required>
+                                        <small class="text-satu fw-lighter">File PDF | Maximal 2MB | <i class="text-danger">Wajib Upload</i></small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['sp_perkara'] ? '' : 'd-none' ?> ">
-                                        <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="SuratPengantar/<?= $perkara['0']['sp_perkara'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['sp_perkara'] ?>
+                                    <!-- ====== -->
+                                    <div class="col-1 <?= $perkara['sp_perkara'] ? '' : 'd-none' ?> ">
+
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/' . $perkara['sp_perkara'] ?>" class="text-decoration-none text-reset">
+                                            <span class="text-satu"> <i class="fas fa-fw fa-2x fa-binoculars"></i></span>
                                         </a>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn text-white bg-satu" value="upload">Kirim</button>
                             </form>
+                            <!-- end Form -->
                         </div>
                     </div>
                 </div>
@@ -101,7 +98,7 @@
                     <div id="bundleA" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/multiple_upload'); ?>" enctype="multipart/form-data">
-                                <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
+                                <input type="text" value="<?= $perkara['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
                                     <label for="formFileSm" class="col-4 form-label">Surat Gugatan<h4 class="text-danger">*</h4></label>
@@ -109,10 +106,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['surat_gugatan'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['surat_gugatan'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['surat_gugatan'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['surat_gugatan'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['surat_gugatan'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['surat_gugatan'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -123,10 +120,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file2">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['sk_bundelA'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['sk_bundelA'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['sk_bundelA'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['sk_bundelA'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['sk_bundelA'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['sk_bundelA'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -138,10 +135,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file3" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['bukti_pemb_panjar'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['bukti_pemb_panjar'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['bukti_pemb_panjar'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['bukti_pemb_panjar'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['bukti_pemb_panjar'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['bukti_pemb_panjar'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -153,10 +150,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file4" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['majelis_hakim'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['majelis_hakim'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['majelis_hakim'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['majelis_hakim'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['majelis_hakim'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['majelis_hakim'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -168,10 +165,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file5" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['penunjukan_pp'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['penunjukan_pp'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['penunjukan_pp'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['penunjukan_pp'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['penunjukan_pp'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['penunjukan_pp'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -183,10 +180,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file6" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['penunjukan_js'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['penunjukan_js'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['penunjukan_js'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['penunjukan_js'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['penunjukan_js'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['penunjukan_js'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -198,10 +195,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file7" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['penetapan_hari_sidang'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['penetapan_hari_sidang'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['penetapan_hari_sidang'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['penetapan_hari_sidang'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['penetapan_hari_sidang'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['penetapan_hari_sidang'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -212,10 +209,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file8" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['relaas_panggilan'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['relaas_panggilan'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['relaas_panggilan'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['relaas_panggilan'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['relaas_panggilan'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['relaas_panggilan'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -226,10 +223,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file9" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 80 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['ba_sidang'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['ba_sidang'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['ba_sidang'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['ba_sidang'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['ba_sidang'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['ba_sidang'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -240,10 +237,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file10">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['penetapan_sita'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['penetapan_sita'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['penetapan_sita'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['penetapan_sita'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['penetapan_sita'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['penetapan_sita'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -254,10 +251,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file11">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['ba_sita'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['ba_sita'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['ba_sita'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['ba_sita'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['ba_sita'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['ba_sita'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -268,10 +265,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file12">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['lampiran_surat'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['lampiran_surat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['lampiran_surat'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['lampiran_surat'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['lampiran_surat'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['lampiran_surat'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -282,10 +279,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file13">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['surat_bukti_penggugat'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['surat_bukti_penggugat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['surat_bukti_penggugat'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['surat_bukti_penggugat'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['surat_bukti_penggugat'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['surat_bukti_penggugat'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -296,10 +293,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file14">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['surat_bukti_tergugat'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['surat_bukti_tergugat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['surat_bukti_tergugat'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['surat_bukti_tergugat'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['surat_bukti_tergugat'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['surat_bukti_tergugat'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -310,10 +307,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file15">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['tanggapan_bukti_tergugat'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['tanggapan_bukti_tergugat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['tanggapan_bukti_tergugat'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['tanggapan_bukti_tergugat'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['tanggapan_bukti_tergugat'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['tanggapan_bukti_tergugat'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -324,10 +321,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file16">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['tanggapan_bukti_penggugat'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['tanggapan_bukti_penggugat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['tanggapan_bukti_penggugat'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['tanggapan_bukti_penggugat'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['tanggapan_bukti_penggugat'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['tanggapan_bukti_penggugat'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -338,10 +335,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file17">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['gambar_situasi'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['gambar_situasi'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['gambar_situasi'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['gambar_situasi'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['gambar_situasi'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['gambar_situasi'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -352,10 +349,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file18">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 20 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['surat_lain'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['surat_lain'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['surat_lain'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['surat_lain'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['surat_lain'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['surat_lain'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -376,7 +373,7 @@
                     <div id="bundleB" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/multiple_uploadB'); ?>" enctype="multipart/form-data">
-                                <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
+                                <input type="text" value="<?= $perkara['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
                                     <label for="formFileSm" class="col-4 form-label">Salinan Putusan Pengadilan Agama /Mahkamah Syari'yah<h4 class="text-danger">*</h4></label>
@@ -384,10 +381,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file1" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['salinan_putusan_pa'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['salinan_putusan_pa'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['salinan_putusan_pa'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['salinan_putusan_pa'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['salinan_putusan_pa'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['salinan_putusan_pa'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -399,10 +396,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file16" required>
                                         <small class="text-satu fw-lighter">*File RTF Size Maksimal 80 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['salinan_putusan_pa'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['salinan_putusan_pa'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['salinan_putusan_pa_rtf'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['salinan_putusan_pa'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['salinan_putusan_pa_rtf'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['salinan_putusan_pa'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -415,10 +412,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file2">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['sk_bundelb'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['sk_bundelb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['sk_bundelb'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['sk_bundelb'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['sk_bundelb'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['sk_bundelb'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -430,10 +427,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file3" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['akta_banding'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['akta_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['akta_banding'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['akta_banding'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['akta_banding'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['akta_banding'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -445,10 +442,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file4" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['akta_penerimaan_mb'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['akta_penerimaan_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['akta_penerimaan_mb'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['akta_penerimaan_mb'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['akta_penerimaan_mb'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['akta_penerimaan_mb'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -460,10 +457,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file5">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['memori_banding'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['memori_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['memori_banding'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['memori_banding'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['memori_banding'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['memori_banding'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -476,10 +473,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file17">
                                         <small class="text-satu fw-lighter">*File RTF Size Maksimal 80 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['memori_banding'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['memori_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['memori_banding_rtf'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['memori_banding'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['memori_banding_rtf'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['memori_banding'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -492,10 +489,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file6" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['akta_pemberitahuan_banding'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['akta_pemberitahuan_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['akta_pemberitahuan_banding'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['akta_pemberitahuan_banding'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['akta_pemberitahuan_banding'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['akta_pemberitahuan_banding'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -506,10 +503,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file7" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['pemberitahuan_penyerahan_mb'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['pemberitahuan_penyerahan_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['pemberitahuan_penyerahan_mb'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['pemberitahuan_penyerahan_mb'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['pemberitahuan_penyerahan_mb'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['pemberitahuan_penyerahan_mb'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -520,10 +517,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file8">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['akta_penerimaankontra_mb'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['akta_penerimaankontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['akta_penerimaankontra_mb'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['akta_penerimaankontra_mb'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['akta_penerimaankontra_mb'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['akta_penerimaankontra_mb'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -534,10 +531,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file9">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['kontra_mb'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['kontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['kontra_mb'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['kontra_mb'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['kontra_mb'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['kontra_mb'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -551,10 +548,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/rtf" name="file18">
                                         <small class="text-satu fw-lighter">*File RTF Size Maksimal 80 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['kontra_mb'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['kontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['kontra_mb_rtf'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['kontra_mb'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['kontra_mb_rtf'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['kontra_mb'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -567,10 +564,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file10">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['pemberitahuan_penyerahankontra_mb'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['pemberitahuan_penyerahankontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['pemberitahuan_penyerahankontra_mb'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['pemberitahuan_penyerahankontra_mb'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['pemberitahuan_penyerahankontra_mb'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['pemberitahuan_penyerahankontra_mb'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -581,10 +578,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file11" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['relaas_periksa_berkas_pb'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['relaas_periksa_berkas_pb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['relaas_periksa_berkas_pb'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['relaas_periksa_berkas_pb'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['relaas_periksa_berkas_pb'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['relaas_periksa_berkas_pb'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -595,10 +592,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file12">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['sk_khusus'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['sk_khusus'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['sk_khusus'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['sk_khusus'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['sk_khusus'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['sk_khusus'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -609,10 +606,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file13" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['bukt_pengiriman_bpb'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['bukt_pengiriman_bpb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['bukt_pengiriman_bpb'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['bukt_pengiriman_bpb'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['bukt_pengiriman_bpb'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['bukt_pengiriman_bpb'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -623,10 +620,10 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file14" required>
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['bukti_setor_bp_kasnegara'] ? '' : 'd-none' ?> ">
+                                    <div class="col-3 my-auto <?= $perkara['bukti_setor_bp_kasnegara'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['bukti_setor_bp_kasnegara'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['bukti_setor_bp_kasnegara'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['bukti_setor_bp_kasnegara'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['bukti_setor_bp_kasnegara'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -637,11 +634,11 @@
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" accept="application/pdf" name="file15">
                                         <small class="text-satu fw-lighter">*File PDF Size Maksimal 10 mb</small>
                                     </div>
-                                    <div class="col-3 my-auto <?= $perkara['0']['surat_lainnya_b'] ? '' : 'd-none'
+                                    <div class="col-3 my-auto <?= $perkara['surat_lainnya_b'] ? '' : 'd-none'
                                                                 ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['surat_lainnya_b'] ?>" class="text-decoration-none text-reset">
-                                            <?= $perkara['0']['surat_lainnya_b'] ?>
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['surat_lainnya_b'] ?>" class="text-decoration-none text-reset">
+                                            <?= $perkara['surat_lainnya_b'] ?>
                                         </a>
                                     </div>
                                 </div>
@@ -661,7 +658,7 @@
                     </h2>
                     <div id="putusan" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <a class="btn btn-primary" href="<?php echo base_url() ?>index.php/banding/download_putusan/<?= $perkara[0]['id_perkara'] ?>">Download Putusan</a>
+                            <a class="btn btn-primary" href="<?php echo base_url() ?>index.php/banding/download_putusan/<?= $perkara['id_perkara'] ?>">Download Putusan</a>
                         </div>
                     </div>
                 </div>
