@@ -1,3 +1,16 @@
+//create table penunjukan_pp
+
+
+//-- end
+
+
+//create v_user_pp
+create views v_user_pp AS
+select users.*, from users where role_id = 5
+
+//-- end
+
+
 //untuk create view perkara
 CREATE VIEW v_all_perkara AS
 SELECT list_perkara.*, users.nama FROM list_perkara JOIN users ON list_perkara.id_user = users.id

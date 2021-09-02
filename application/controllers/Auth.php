@@ -26,6 +26,12 @@ class Auth extends CI_Controller
             case '3':
                 redirect('ViewHakim');
                 break;
+            case '4':
+                redirect('Panmud');
+                break;
+            case '5':
+                redirect('Panitera_pengganti');
+                break;
         }
 
         $this->form_validation->set_rules('username', 'User Name', 'required|trim');
@@ -56,8 +62,10 @@ class Auth extends CI_Controller
                             redirect('home');
                         } elseif ($user['role_id'] == 3) {
                             redirect('ViewHakim');
-                        } else {
+                        } elseif ($user['role_id'] == 4) {
                             redirect('Panmud');
+                        } else {
+                            redirect('Panitera_pengganti');
                         }
                     } else {
                         $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">Password salah</div>');
@@ -79,6 +87,8 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('id');
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('role_id');
+        $this->session->unset_userdata('nama');
+        $this->session->unset_userdata('kode_pa');
         $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Logout sukses..</div>');
         redirect('auth/');
     }

@@ -8,6 +8,9 @@ class ViewHakim extends CI_Controller
     {
         parent::__construct();
         is_login();
+        if ($this->session->userdata('role_id') != 3) {
+            redirect('auth');
+        }
     }
 
     public function index()

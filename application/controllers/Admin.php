@@ -8,7 +8,7 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         //usir user yang ga punya session
-        if (!$this->session->userdata('id')) {
+        if (!$this->session->userdata('id') || $this->session->userdata('role_id') != 1) {
             redirect('auth');
         }
     }
@@ -180,6 +180,7 @@ class Admin extends CI_Controller
             $role_id = $this->input->post('role_id');
             $is_active = $this->input->post('is_active');
 
+
             $data = [
                 'id' => $id,
                 'nama' => $nama,
@@ -187,7 +188,8 @@ class Admin extends CI_Controller
                 'username' => $username,
                 'password' => $password,
                 'role_id' => $role_id,
-                'is_active' => $is_active
+                'is_active' => $is_active,
+
             ];
             $array = $this->db->insert('users', $data);
 
