@@ -179,7 +179,7 @@ class Banding extends CI_Controller
 
         $config['upload_path']          = './assets/files/SuratPengantar';
         $config['allowed_types']        = 'pdf';
-        $config['max_size']             = 0;
+        $config['max_size']             = 5024;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
 
