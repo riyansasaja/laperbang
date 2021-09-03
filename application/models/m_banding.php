@@ -139,6 +139,18 @@ class M_banding extends CI_model
         return $query;
     }
 
+    public function get_data_perkara()
+    {
+
+        $this->db->select('*');
+        $this->db->from('v_all_perkara');
+
+        $this->db->order_by('id_perkara', 'DESC');
+        $this->db->limit(10);
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+
     public function UpdatePerkara($tabelName, $data, $where)
     {
         $res = $this->db->update($tabelName, $data, $where);

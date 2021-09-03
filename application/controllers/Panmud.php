@@ -19,7 +19,7 @@ class Panmud extends CI_Controller
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'view_panmud.js';
         $data['perkara'] = $this->db->get('v_user_pp')->result_array();
-
+        $data['perkara_banding'] = $this->m_banding->get_data_perkara();
 
         $this->load->view('panmud/header', $data);
         $this->load->view('panmud/view_panmud', $data);
@@ -180,9 +180,9 @@ class Panmud extends CI_Controller
                     'nama_file' => $nama_file,
 
                 ];
-                $this->db->where('id_perkara', $id_perkara);
+                $where = array('id_perkara' => $id_perkara);
 
-                $this->db->insert('penunjukan_pp', $data);
+                $this->db->insert('penunjukan_pp', $data, $where);
 
                 $this->session->set_flashdata('flash', 'Upload berhasil');
 
