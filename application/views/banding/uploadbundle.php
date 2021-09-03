@@ -96,283 +96,283 @@ $folder = strtr($perkara['no_perkara'], '/', '-');
                     </h2>
                     <div id="bundleA" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <form method="post" action="<?php echo base_url('banding/multiple_upload'); ?>" enctype="multipart/form-data">
-                                <!-- hidden input -->
-                                <input type="text" value="<?= $perkara['id_perkara'] ?>" hidden name="id_perkara"></input>
-                                <input type="text" value="<?= $folder ?>" hidden name="folder"></input>
-                                <!-- end hidden input -->
-                                <div class="row justify-content-start mb-3">
-                                    <div class="col-1" style="width: 1rem;">1.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Surat Gugatan</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file1" required>
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['surat_gugatan'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['surat_gugatan'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-
+                            <?= form_open_multipart('banding/uploadbundelA'); ?>
+                            <!-- hidden input -->
+                            <input type="text" value="<?= $perkara['id_perkara'] ?>" hidden name="id_perkara"></input>
+                            <input type="text" value="<?= $folder ?>" hidden name="folder"></input>
+                            <!-- end hidden input -->
+                            <div class="row justify-content-start mb-3">
+                                <div class="col-1" style="width: 1rem;">1.</div>
+                                <label for="formFileSm" class="col-4 form-label">Surat Gugatan</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file1" required>
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
                                 </div>
-                                <hr>
-                                <div class=" row mb-3">
-                                    <div class="col-1" style="width: 1rem;">2.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Surat Kuasa dari Kedua Belah Pihak (bila ada)</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file2">
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB | <i class="text-danger">Wajib</i></small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['sk_bundelA'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['sk_bundelA'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">3.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Bukti Pembayaran Panjar Biaya Perkara (SKUM)</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file3" required>
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['bukti_pemb_panjar'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['bukti_pemb_panjar'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">4.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Penetapan Majelis Hakim</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file4" required>
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['majelis_hakim'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['majelis_hakim'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">5.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Penunjukan Panitera Pengganti</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file5" required>
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['penunjukan_pp'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['penunjukan_pp'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">6.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Penunjukan Jurusita/Jurusita Pengganti</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file6" required>
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['penunjukan_js'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['penunjukan_js'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">7.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Penetapan Hari Sidang</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file7" required>
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['penetapan_hari_sidang'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['penetapan_hari_sidang'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">8.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Relaas-relaas Panggilan</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file8" required>
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['relaas_panggilan'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['relaas_panggilan'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">9.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Berita Acara Sidang</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max80" id="formFileSm" type="file" accept="application/pdf" name="file9" required>
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 80MB|<i class="text-danger">Wajib</i></small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['ba_sidang'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['ba_sidang'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">10.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Penetapan Sita Conservatoir/Revindicatoir (bila ada)</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file10">
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['penetapan_sita'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['penetapan_sita'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">11.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Berita Acara Sita Conservatoir/Revindicatoir (bila ada)</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file11">
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB|</small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['ba_sita'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['ba_sita'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">12.</div>
-                                    <label for="formFileSm" class=" col-4 col-label form-label">Lampiran-lampiran surat yang diajukan oleh kedua belah pihak (bila ada)</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file12">
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['lampiran_surat'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['lampiran_surat'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">13.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Surat-surat bukti penggugat (bila ada)</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file13">
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20 mb</small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['surat_bukti_penggugat'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['surat_bukti_penggugat'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">14.</div>
-                                    <label for="formFileSm" class="col-4 form-label">surat-surat bukti tergugat (bila ada)</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file14">
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['surat_bukti_tergugat'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['surat_bukti_tergugat'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">15.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Tanggapan bukti-bukti tergugat dari penggugat (bila ada)</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file15">
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['tanggapan_bukti_tergugat'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['tanggapan_bukti_tergugat'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">16.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Tanggapan bukti-bukti penggugat dari tergugat (bila ada)</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file16">
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['tanggapan_bukti_penggugat'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['tanggapan_bukti_penggugat'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">17.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Gambar situasi (bila ada)</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file17">
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['gambar_situasi'] ? '' : 'd-none' ?> ">
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['gambar_situasi'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col-1" style="width: 1rem;">18.</div>
-                                    <label for="formFileSm" class="col-4 form-label">Surat-surat lain (bila ada)</label>
-                                    <div class="col-4">
-                                        <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file18">
-                                        <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
-                                    </div>
-                                    <div class="col-3 my-auto <?= $perkara['surat_lain'] ? '' : 'd-none' ?> ">
-                                        <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['surat_lain'] ?>" class="text-decoration-none text-reset">
-                                            <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
-                                        </a>
-                                    </div>
+                                <div class="col-3 my-auto <?= $perkara['surat_gugatan'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['surat_gugatan'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
                                 </div>
 
-                                <button type="submit" class="btn btn-block btn-primary" value="upload">Kirim</button>
-                            </form>
+                            </div>
+                            <hr>
+                            <div class=" row mb-3">
+                                <div class="col-1" style="width: 1rem;">2.</div>
+                                <label for="formFileSm" class="col-4 form-label">Surat Kuasa dari Kedua Belah Pihak (bila ada)</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file2">
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB | <i class="text-danger">Wajib</i></small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['sk_bundelA'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['sk_bundelA'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">3.</div>
+                                <label for="formFileSm" class="col-4 form-label">Bukti Pembayaran Panjar Biaya Perkara (SKUM)</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file3" required>
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['bukti_pemb_panjar'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['bukti_pemb_panjar'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">4.</div>
+                                <label for="formFileSm" class="col-4 form-label">Penetapan Majelis Hakim</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file4" required>
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['majelis_hakim'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['majelis_hakim'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">5.</div>
+                                <label for="formFileSm" class="col-4 form-label">Penunjukan Panitera Pengganti</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file5" required>
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['penunjukan_pp'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['penunjukan_pp'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">6.</div>
+                                <label for="formFileSm" class="col-4 form-label">Penunjukan Jurusita/Jurusita Pengganti</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file6" required>
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['penunjukan_js'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['penunjukan_js'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">7.</div>
+                                <label for="formFileSm" class="col-4 form-label">Penetapan Hari Sidang</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file7" required>
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['penetapan_hari_sidang'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['penetapan_hari_sidang'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">8.</div>
+                                <label for="formFileSm" class="col-4 form-label">Relaas-relaas Panggilan</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file8" required>
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB|<i class="text-danger">Wajib</i></small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['relaas_panggilan'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['relaas_panggilan'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">9.</div>
+                                <label for="formFileSm" class="col-4 form-label">Berita Acara Sidang</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max80" id="formFileSm" type="file" accept="application/pdf" name="file9" required>
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 80MB|<i class="text-danger">Wajib</i></small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['ba_sidang'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['ba_sidang'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">10.</div>
+                                <label for="formFileSm" class="col-4 form-label">Penetapan Sita Conservatoir/Revindicatoir (bila ada)</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file10">
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['penetapan_sita'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['penetapan_sita'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">11.</div>
+                                <label for="formFileSm" class="col-4 form-label">Berita Acara Sita Conservatoir/Revindicatoir (bila ada)</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file11">
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB|</small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['ba_sita'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['ba_sita'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">12.</div>
+                                <label for="formFileSm" class=" col-4 col-label form-label">Lampiran-lampiran surat yang diajukan oleh kedua belah pihak (bila ada)</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file12">
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['lampiran_surat'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['lampiran_surat'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">13.</div>
+                                <label for="formFileSm" class="col-4 form-label">Surat-surat bukti penggugat (bila ada)</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file13">
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20 mb</small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['surat_bukti_penggugat'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['surat_bukti_penggugat'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">14.</div>
+                                <label for="formFileSm" class="col-4 form-label">surat-surat bukti tergugat (bila ada)</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file14">
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['surat_bukti_tergugat'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['surat_bukti_tergugat'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">15.</div>
+                                <label for="formFileSm" class="col-4 form-label">Tanggapan bukti-bukti tergugat dari penggugat (bila ada)</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file15">
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['tanggapan_bukti_tergugat'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['tanggapan_bukti_tergugat'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">16.</div>
+                                <label for="formFileSm" class="col-4 form-label">Tanggapan bukti-bukti penggugat dari tergugat (bila ada)</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file16">
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['tanggapan_bukti_penggugat'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['tanggapan_bukti_penggugat'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">17.</div>
+                                <label for="formFileSm" class="col-4 form-label">Gambar situasi (bila ada)</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file17">
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['gambar_situasi'] ? '' : 'd-none' ?> ">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['gambar_situasi'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row mb-3">
+                                <div class="col-1" style="width: 1rem;">18.</div>
+                                <label for="formFileSm" class="col-4 form-label">Surat-surat lain (bila ada)</label>
+                                <div class="col-4">
+                                    <input class="form-control form-control-sm max20" id="formFileSm" type="file" accept="application/pdf" name="file18">
+                                    <small class="text-satu fw-lighter">PDF|Maksimal 20MB</small>
+                                </div>
+                                <div class="col-3 my-auto <?= $perkara['surat_lain'] ? '' : 'd-none' ?> ">
+                                    <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= $folder . '/bundel-a' . '/' . $perkara['surat_lain'] ?>" class="text-decoration-none text-reset">
+                                        <span class="text-satu"> <i class="fas fa-fw fa-eye"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-block btn-primary" name="submit">Kirim</button>
+                            <?= form_close(); ?>
                         </div>
                     </div>
                 </div>
