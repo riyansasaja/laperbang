@@ -21,6 +21,7 @@ class Admin extends CI_Controller
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'dashboard_admin.js';
 
+
         $this->load->view('admin/header', $data);
         $this->load->view('admin/dashboard', $data);
         $this->load->view('admin/footer', $data);
@@ -31,6 +32,7 @@ class Admin extends CI_Controller
         $data['judul'] = 'Input Nomor Perkara';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'inputnoper.js';
+        $data['perkara'] = $this->db->get('v_user_pp')->result_array();
 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/inputnoper', $data);
@@ -295,9 +297,56 @@ class Admin extends CI_Controller
             if ($this->upload->do_upload('file_putusan')) {
                 $putusan_banding = $this->upload->data("file_name");
                 $id_perkara = $this->input->post('id_perkara');
+                $id_user = $this->input->post('id_user');
                 $data = [
                     'id_perkara' => $id_perkara,
-                    'putusan_banding' => $putusan_banding
+                    'nama_file' => $putusan_banding,
+                    'id_user' => $id_user
+                ];
+                $this->db->where('id_perkara', $id_perkara);
+                $this->db->update('penunjukan_pp', $data);
+
+                $this->session->set_flashdata('flash', 'Upload berhasil');
+
+                $audittrail = array(
+                    'log_id' => '',
+                    'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+                    'nama_log' => $pengedit
+                );
+
+                $this->db->set('rekam_log', 'NOW()', FALSE);
+                $this->db->insert('log_audittrail', $audittrail);
+
+                redirect('admin/inputNoper');
+                // $this->db->set('putusan_banding', $putusan_banding);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal, ekstensi file harus pdf dan ukuran tidak boleh lebih dari 5 mb');
+                // redirect('banding/');
+            }
+        } else {
+            $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
+            // redirect('banding/');
+        }
+    }
+
+    public function uploadPenunjukkan_PP()
+    {
+
+        $pengedit = $this->session->userdata('nama');
+
+        $config['upload_path']          = './assets/files/putusan';
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5000;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file']['name'] != null)) {
+            if ($this->upload->do_upload('file')) {
+                $putusan_banding = $this->upload->data("file_name");
+                $id_perkara = $this->input->post('id_perkara');
+                $data = [
+                    'id_perkara' => $id_perkara,
+                    'file_pp' => $putusan_banding
                 ];
                 $this->db->where('id_perkara', $id_perkara);
                 $this->db->update('list_perkara', $data);

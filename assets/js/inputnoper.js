@@ -128,7 +128,23 @@ $(document).ready(function () {
             showCancelButton: true,
             inputValidator: (value) => {
                 return new Promise((resolve) => {
-                    if (value === 'Pengiriman Salinan Putusan') {
+                    if (value === 'Penunjukkan Panitera Pengganti') {
+                        $.ajax({
+                            type: "POST",
+                            url: `${path}/admin/updateStatus`,
+                            data: {
+                                id_perkara: id_perkara,
+                                status_perkara: value,
+                            },
+                            dataType: "json",
+                            success: function (e) {
+
+                            }
+                        });
+                        Swal.fire('Silahkan Upload Berkas', '', 'warning')
+                        uploadPenunjukkanPP(id_perkara)
+                        return false;
+                    } if (value === 'Pengiriman Salinan Putusan') {
                         $.ajax({
                             type: "POST",
                             url: `${path}/admin/updateStatus`,
@@ -167,6 +183,11 @@ $(document).ready(function () {
     });//=====
 
 
+    function uploadPenunjukkanPP(id_perkara) {
+        $('#uploadFilePP').modal('show');
+        $('#id_perkara').val(id_perkara);
+
+    }//end function upload penunjukkan pp
 
     //function upload salinan putusan
     function uploadSalinanPutusan(id_perkara) {
