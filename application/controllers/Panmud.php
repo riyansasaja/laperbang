@@ -129,7 +129,7 @@ class Panmud extends CI_Controller
                 $id_perkara = $this->input->post('id_perkara');
                 $data = [
                     'id_perkara' => $id_perkara,
-                    'putusan_banding' => $putusan_banding
+                    'file_pp' => $putusan_banding
                 ];
                 $this->db->where('id_perkara', $id_perkara);
                 $this->db->update('list_perkara', $data);
@@ -162,27 +162,22 @@ class Panmud extends CI_Controller
 
         $pengedit = $this->session->userdata('nama');
 
-
-        $config['upload_path']          = './assets/files';
+        $config['upload_path']          = './assets/files/putusan';
         $config['allowed_types']        = 'doc|docx|pdf';
         $config['max_size']             = 5000;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
 
-        if (($_FILES['file_putusan']['name'] != null)) {
-            if ($this->upload->do_upload('file_putusan')) {
-                $nama_file = $this->upload->data("file_name");
+        if (($_FILES['file']['name'] != null)) {
+            if ($this->upload->do_upload('file')) {
+                $putusan_banding = $this->upload->data("file_name");
                 $id_perkara = $this->input->post('id_perkara');
-                $id_user = $this->input->post('id_user');
                 $data = [
                     'id_perkara' => $id_perkara,
-                    'id_user' => $id_user,
-                    'nama_file' => $nama_file,
-
+                    'file_pp' => $putusan_banding
                 ];
-                $where = array('id_perkara' => $id_perkara);
-
-                $this->db->insert('penunjukan_pp', $data, $where);
+                $this->db->where('id_perkara', $id_perkara);
+                $this->db->update('list_perkara', $data);
 
                 $this->session->set_flashdata('flash', 'Upload berhasil');
 
