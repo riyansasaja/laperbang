@@ -243,7 +243,7 @@ class Banding extends CI_Controller
                 $error['file1'] = $this->upload->display_errors();
             }
         }
-        sleep(5);
+        sleep(3);
         if (!empty($_FILES['file2']['name'])) {
             # code...
             $config['file_name'] = '02 Surat Kuasa Kedua Pihak';
@@ -255,7 +255,7 @@ class Banding extends CI_Controller
                 $error['file2'] = $this->upload->display_errors();
             }
         }
-        sleep(5);
+        sleep(3);
         if (!empty($_FILES['file3']['name'])) {
             # code...
             $config['file_name'] = '03 Bukti Panjar Biaya Perkara';
@@ -267,7 +267,7 @@ class Banding extends CI_Controller
                 $error['file3'] = $this->upload->display_errors();
             }
         }
-        sleep(5);
+        sleep(3);
         if (!empty($_FILES['file4'])) {
             # code...
             $config['file_name'] = '04 PMH';
@@ -279,7 +279,7 @@ class Banding extends CI_Controller
                 $error['file4'] = $this->upload->display_errors();
             }
         }
-        sleep(5);
+        sleep(3);
         if (!empty($_FILES['file5'])) {
             # code...
             $config['file_name'] = '05 Penunjukan PP';
@@ -291,7 +291,7 @@ class Banding extends CI_Controller
                 $error['file5'] = $this->upload->display_errors();
             }
         }
-        sleep(5);
+        sleep(3);
         if (!empty($_FILES['file6'])) {
             # code...
             $config['file_name'] = '06 Penunjukan JS';
@@ -303,7 +303,7 @@ class Banding extends CI_Controller
                 $error['file6'] = $this->upload->display_errors();
             }
         }
-        sleep(5);
+        sleep(3);
         if (!empty($_FILES['file7'])) {
             # code...
             $config['file_name'] = '07 PHS';
@@ -315,7 +315,7 @@ class Banding extends CI_Controller
                 $error['file7'] = $this->upload->display_errors();
             }
         }
-        sleep(5);
+        sleep(3);
         if (!empty($_FILES['file8'])) {
             # code...
             $config['file_name'] = '08 Relaas-relaas Panggilan';
@@ -327,7 +327,7 @@ class Banding extends CI_Controller
                 $error['file8'] = $this->upload->display_errors();
             }
         }
-        sleep(5);
+        sleep(3);
         if (!empty($_FILES['file9'])) {
             # code...
             $config['file_name'] = '09 BAS';
@@ -339,7 +339,7 @@ class Banding extends CI_Controller
                 $error['file9'] = $this->upload->display_errors();
             }
         }
-        sleep(5);
+        sleep(10);
         if (!empty($_FILES['file10'])) {
             # code...
             $config['file_name'] = '10 Sita Conservatoir';
@@ -351,7 +351,7 @@ class Banding extends CI_Controller
                 $error['file10'] = $this->upload->display_errors();
             }
         }
-        sleep(5);
+        sleep(3);
         if (!empty($_FILES['file11'])) {
             # code...
             $config['file_name'] = '11 Surat Gugatan';
@@ -363,7 +363,7 @@ class Banding extends CI_Controller
                 $error['file11'] = $this->upload->display_errors();
             }
         }
-        sleep(5);
+        sleep(3);
         if (!empty($_FILES['file12'])) {
             # code...
             $config['file_name'] = '12 surat kedua pihak';
@@ -375,7 +375,7 @@ class Banding extends CI_Controller
                 $error['file12'] = $this->upload->display_errors();
             }
         }
-        sleep(5);
+        sleep(3);
         if (!empty($_FILES['file13'])) {
             # code...
             $config['file_name'] = '13 surat bukti penggugat';
