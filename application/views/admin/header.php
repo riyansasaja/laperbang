@@ -86,7 +86,11 @@
                             <div class="sb-sidenav-menu-heading">Manajemen User</div>
                             <a class="nav-link <?= $judul == 'Manajemen Users' ? 'active' : '' ?>" href="<?= base_url('admin/users/') ?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-fw fa-users-cog"></i></div>
-                                Manajemen user
+                                Manajemen User
+                            </a>
+                            <a class="nav-link <?= $judul == 'Majelis Hakim' ? 'active' : '' ?>" href="<?= base_url('admin/majelis_hakim/') ?>">
+                                <div class="sb-nav-link-icon"><i class="fas fa-fw fa-users-cog"></i></div>
+                                Majelis Hakim
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Log</div>

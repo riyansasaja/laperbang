@@ -148,7 +148,7 @@ $(document).ready(function () {
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
                         uploadPenunjukkanPP(id_perkara)
                         return false;
-                    } if (value === 'Pengiriman Salinan Putusan') {
+                    } else if (value === 'Pengiriman Salinan Putusan') {
                         $.ajax({
                             type: "POST",
                             url: `${path}/panmud/updateStatus`,
@@ -192,7 +192,8 @@ $(document).ready(function () {
     //function upload penunjukkan pp
     function uploadPenunjukkanPP(id_perkara) {
         $('#uploadFilePP').modal('show');
-        $('#id_perkara').val(id_perkara);
+        $('#id_perkarapp').val(id_perkara);
+        console.log(id_perkara);
 
     }//end function upload penunjukkan pp
 

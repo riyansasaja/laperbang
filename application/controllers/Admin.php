@@ -20,6 +20,7 @@ class Admin extends CI_Controller
         $data['judul'] = 'Dashboard';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'dashboard_admin.js';
+        $data['perkara'] = $this->db->get('v_user_pp')->result_array();
 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/dashboard', $data);
@@ -77,6 +78,61 @@ class Admin extends CI_Controller
         $this->load->view('admin/header', $data);
         $this->load->view('admin/manajemen_users', $data);
         $this->load->view('admin/footer', $data);
+    }
+
+    public function majelis_Hakim()
+    {
+        //konten
+        $data['judul'] = 'Majelis Hakim';
+        $data['css'] = 'dashboard_admin.css';
+        $data['js'] = 'majelis_hakim.js';
+        $data['user_mh'] = $this->db->get('v_user_hakim')->result_array();
+
+        // //get data users
+        // $data['users'] = $this->db->get('users')->result_object();
+
+
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/majelis_hakim', $data);
+        $this->load->view('admin/footer', $data);
+    }
+
+    public function add_majelis()
+    {
+        $pengedit = $this->session->userdata('nama');
+
+        $id_mh = $this->input->post('id_mh');
+        $id_user_mh = $this->input->post('id_user_mh');
+        $majelis = $this->input->post('majelis');
+        $data = [
+            'id_mh' => $id_mh,
+            'id_user_mh' => $id_user_mh,
+            'majelis' => $majelis
+        ];
+        $array = $this->db->insert('majelis_hakim');
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah menambahkan user <b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
+        json_encode($array);
+    }
+
+    public function get_user_mh()
+    {
+        $data = $this->m_banding->DataMH();
+        $result =  [
+            'response' => 'success',
+            'code' => 600,
+            'data' => $data
+
+        ];
+        echo json_encode($result);
     }
 
     public function get_data_user()
@@ -328,6 +384,56 @@ class Admin extends CI_Controller
             // redirect('banding/');
         }
     }
+
+    public function upload_pp()
+    {
+
+
+        $pengedit = $this->session->userdata('nama');
+
+        $config['upload_path']          = './assets/files/putusan';
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5000;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file']['name'] != null)) {
+            if ($this->upload->do_upload('file')) {
+                $file_pp = $this->upload->data("file_name");
+                $id_perkara = $this->input->post('id_perkara');
+                $id_user_pp = $this->input->post('id_user_pp');
+
+                $data = [
+                    'id_perkara' => $id_perkara,
+                    'file_pp' => $file_pp,
+                    'id_user_pp' => $id_user_pp
+                ];
+                $this->db->where('id_perkara', $id_perkara);
+                $this->db->update('penunjukan_pp', $data);
+
+                $this->session->set_flashdata('flash', 'Upload berhasil');
+
+                $audittrail = array(
+                    'log_id' => '',
+                    'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+                    'nama_log' => $pengedit
+                );
+
+                $this->db->set('rekam_log', 'NOW()', FALSE);
+                $this->db->insert('log_audittrail', $audittrail);
+
+                redirect('Panmud');
+                // $this->db->set('putusan_banding', $putusan_banding);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal, ekstensi file harus pdf dan ukuran tidak boleh lebih dari 5 mb');
+                // redirect('banding/');
+            }
+        } else {
+            $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
+            // redirect('banding/');
+        }
+    }
+
 
     public function audittrail()
     {

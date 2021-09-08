@@ -1,5 +1,50 @@
-//create table penunjukan_pp
+//create tabel majelis haki
+CREATE TABLE majelis_hakim (
+	id_mh int NOT NULL AUTO_INCREMENT,
+    id_user_mh int,
+    majelis varchar(10),
+    PRIMARY KEY(id_mh),
+    FOREIGN KEY(id_user_mh) REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+// -- 
 
+
+// create user majelis hakim
+CREATE VIEWS v_user_hakim AS
+SELECT users.* from users where role_id = 3
+
+// -- 
+
+
+//create trigger for pp
+DELIMITER $$
+CREATE TRIGGER inser_id_perkara
+    AFTER INSERT 
+    ON list_perkara
+    FOR EACH ROW 
+BEGIN
+    INSERT INTO penunjukan_pp (id_perkara)
+    VALUES(NEW.id_perkara);
+END$$
+DELIMITER ;
+
+// --
+
+//create view perkara pp
+CREATE VIEWS v_perkara_pp AS
+SELECT penunjukan_pp.id_user_pp, penunjukan_pp.file_pp, users.nama,list_perkara.* FROM list_perkara JOIN penunjukan_pp ON list_perkara.id_perkara = penunjukan_pp.id_perkara JOIN users on list_perkara.id_user = users.id
+// end -- 
+
+//create table penunjukan_pp
+create table penunjukan_pp (
+id_pp int  not null auto increment,
+id_perkara int not null,
+id_user_pp int,
+file_pp varchar(255),
+primary key(id_pp),
+foreign key(id_perkara) refferences list_perkara(id_perkara),
+foreign key(id_user_pp) refferences users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 //-- end
 

@@ -70,13 +70,13 @@ class Banding extends CI_Controller
             'keterangan' => $this->input->post('keterangan', true),
         ];
         $this->db->insert('list_perkara', $data);
-        $perkara_id = $this->db->insert_id();
-        // var_dump($perkara_id);
-        // die;
-        $pp = [
-            'id_perkara' => $perkara_id,
-        ];
-        $this->db->insert('penunjukan_pp', $pp);
+        // $perkara_id = $this->db->insert_id();
+        // // var_dump($perkara_id);
+        // // die;
+        // $pp = [
+        //     'id_perkara' => $perkara_id,
+        // ];
+        // $this->db->insert('penunjukan_pp', $pp);
         $this->session->set_flashdata('flash', 'berhasil disimpan');
 
         $audittrail = array(

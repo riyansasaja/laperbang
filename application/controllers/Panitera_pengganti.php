@@ -15,7 +15,7 @@ class Panitera_pengganti extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Halaman Panitera Pengganti';
+        $data['judul'] = 'Panitera Pengganti';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'view_pp.js';
 
@@ -26,7 +26,7 @@ class Panitera_pengganti extends CI_Controller
 
     public function get_data_banding()
     {
-        $data = $this->m_banding->DataBanding();
+        $data = $this->m_banding->get_perkara_pp();
         $result =  [
             'response' => 'success',
             'code' => 600,
@@ -39,11 +39,11 @@ class Panitera_pengganti extends CI_Controller
     public function view_berkas_admin($id)
     {
         //konten
-        $data['judul'] = 'Halaman Panitera Pengganti';
+        $data['judul'] = 'Panitera Pengganti';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'view_berkas_admin.js';
 
-        $data['detail_berkas'] = $this->db->get_where('v_all_perkara', ['id_perkara' => $id])->result_object();
+        $data['detail_berkas'] = $this->db->get_where('v_perkara_pp', ['id_perkara' => $id])->result_object();
 
         $this->load->view('panitera_pengganti/header', $data);
         $this->load->view('panitera_pengganti/view_berkas_admin', $data);

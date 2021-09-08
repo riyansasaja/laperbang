@@ -166,6 +166,18 @@ class M_banding extends CI_model
         return $query;
     }
 
+    public function get_perkara_pp()
+    {
+        $id_user =  $this->session->userdata('id');
+        $this->db->select('*');
+        $this->db->from('v_perkara_pp');
+        $this->db->where('id_user_pp', $id_user);
+        $this->db->order_by('tgl_register', 'DESC');
+        $this->db->limit(10);
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+
     public function DataBandingHakim()
     {
         $this->db->select('*');

@@ -74,6 +74,7 @@
             <div class="modal-body">
                 <form method="post" action="<?php echo base_url('panmud/uploadPutusan'); ?>" enctype="multipart/form-data">
                     <input type="text" id="id_perkara" name="id_perkara" hidden>
+
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Silahkan Upload File Putusan Perkara</label>
                         <input class="form-control" type="file" id="formFile" name="file_putusan">
@@ -95,22 +96,25 @@
 <div class="modal fade" id="uploadFilePP" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pilih Panitera Pengganti</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div class="modal-body">
-                <form method="post" action="<?php echo base_url('panmud/uploadPenunjukkan_PP'); ?>" enctype="multipart/form-data">
+                <form method="post" action="<?php echo base_url('panmud/upload_pp'); ?>" enctype="multipart/form-data">
 
-                    <input type="text" id="id_perkara" name="id_perkara" hidden>
+                    <input type="text" id="id_perkarapp" name="id_perkara" hidden>
 
 
-                    <!-- <div class="row mb-3">
-                        <label for="user_pp" class="form-label">Panitera Pengganti</label>
-                        <select class="form-select" id="user_pp" name="PP">
+                    <div class="row mb-3">
+                        <!-- <label for="user_pp" class="form-label">Panitera Pengganti</label> -->
+                        <select class="form-select" id="user_pp" name="id_user_pp">
                             <option value="" selected>-- Pilih --</option>
                             <?php foreach ($perkara as $perk) : ?>
                                 <option value="<?= $perk['id'] ?>"><?= $perk['nama'] ?></option>
                             <?php endforeach; ?>
                         </select>
-                    </div> -->
+                    </div>
 
                     <div class="row mb-3">
                         <label for="formFile" class="form-label">Silahkan Upload File Penunjukkan PP</label>
