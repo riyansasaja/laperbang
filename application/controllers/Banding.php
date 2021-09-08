@@ -157,7 +157,7 @@ class Banding extends CI_Controller
     public function uploadbundle($id)
     {
         //konten
-        $data['js'] = 'uploadbanding.js';
+        $data['js'] = 'upload_berkas.js';
         $data['css'] = 'dashboard_banding.css';
         $data['judul'] = 'Upload Banding';
 
@@ -168,9 +168,9 @@ class Banding extends CI_Controller
         if ($this->session->userdata('id') != $data['perkara']['id_user']) {
             redirect('banding');
         } else {
-            $this->load->view('banding/header', $data);
-            $this->load->view('banding/uploadbundle', $data);
-            $this->load->view('banding/footer', $data);
+            // $this->load->view('banding/header', $data);
+            $this->load->view('banding/tesdropzone');
+            // $this->load->view('banding/footer', $data);
         }
     }
     //End Method tampilan upload bundel ============================
@@ -223,175 +223,50 @@ class Banding extends CI_Controller
     }
     //End Pengantar Upload===============================
 
-    public function uploadbundelA()
+    public function upload($tes)
     {
-        $pengedit = $this->session->userdata('nama');
-        $folder = $this->input->post('folder');
+        if (!empty($_FILES['file']['name'])) {
 
-        $config['upload_path']          = "./fileuploads/$folder/bundel-a";
-        $config['allowed_types']        = 'pdf';
-        $config['max_size']             = 0;
+            // Set preference
+            $config['upload_path'] = "uploads/";
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            // $config['file_name'] = $_FILES['file']['name'];
 
-        if (!empty($_FILES['file1']['name'])) {
-            # code...
-            $config['file_name'] = '01 Surat Gugatan';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file1')) {
-                $suratgugatan = $this->upload->data("file_name");
-                $data['surat_gugatan'] = $suratgugatan;
-            } else {
-                $error['file1'] = $this->upload->display_errors();
-            }
-        }
-        sleep(3);
-        if (!empty($_FILES['file2']['name'])) {
-            # code...
-            $config['file_name'] = '02 Surat Kuasa Kedua Pihak';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file2')) {
-                $sk_bundelA = $this->upload->data("file_name");
-                $data['sk_bundelA'] = $sk_bundelA . date("h:i:sa");
-            } else {
-                $error['file2'] = $this->upload->display_errors();
-            }
-        }
-        sleep(3);
-        if (!empty($_FILES['file3']['name'])) {
-            # code...
-            $config['file_name'] = '03 Bukti Panjar Biaya Perkara';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file3')) {
-                $bukti_pemb_panjar = $this->upload->data("file_name");
-                $data['bukti_pemb_panjar'] = $bukti_pemb_panjar . date("h:i:sa");
-            } else {
-                $error['file3'] = $this->upload->display_errors();
-            }
-        }
-        sleep(3);
-        if (!empty($_FILES['file4'])) {
-            # code...
-            $config['file_name'] = '04 PMH';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file4')) {
-                $majelis_hakim = $this->upload->data("file_name");
-                $data['majelis_hakim'] = $majelis_hakim . date("h:i:sa");
-            } else {
-                $error['file4'] = $this->upload->display_errors();
-            }
-        }
-        sleep(3);
-        if (!empty($_FILES['file5'])) {
-            # code...
-            $config['file_name'] = '05 Penunjukan PP';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file5')) {
-                $penunjukan_pp = $this->upload->data("file_name");
-                $data['penunjukan_pp'] = $penunjukan_pp . date("h:i:sa");
-            } else {
-                $error['file5'] = $this->upload->display_errors();
-            }
-        }
-        sleep(3);
-        if (!empty($_FILES['file6'])) {
-            # code...
-            $config['file_name'] = '06 Penunjukan JS';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file6')) {
-                $penunjukan_js = $this->upload->data("file_name");
-                $data['penunjukan_js'] = $penunjukan_js . date("h:i:sa");
-            } else {
-                $error['file6'] = $this->upload->display_errors();
-            }
-        }
-        sleep(3);
-        if (!empty($_FILES['file7'])) {
-            # code...
-            $config['file_name'] = '07 PHS';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file7')) {
-                $penetapan_hari_sidang = $this->upload->data("file_name");
-                $data['penetapan_hari_sidang'] = $penetapan_hari_sidang . date("h:i:sa");
-            } else {
-                $error['file7'] = $this->upload->display_errors();
-            }
-        }
-        sleep(3);
-        if (!empty($_FILES['file8'])) {
-            # code...
-            $config['file_name'] = '08 Relaas-relaas Panggilan';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file8')) {
-                $relaas_panggilan = $this->upload->data("file_name");
-                $data['relaas_panggilan'] = $relaas_panggilan . date("h:i:sa");
-            } else {
-                $error['file8'] = $this->upload->display_errors();
-            }
-        }
-        sleep(3);
-        if (!empty($_FILES['file9'])) {
-            # code...
-            $config['file_name'] = '09 BAS';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file9')) {
-                $ba_sidang = $this->upload->data("file_name");
-                $data['ba_sidang'] = $ba_sidang . date("h:i:sa");
-            } else {
-                $error['file9'] = $this->upload->display_errors();
-            }
-        }
-        sleep(10);
-        if (!empty($_FILES['file10'])) {
-            # code...
-            $config['file_name'] = '10 Sita Conservatoir';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file10')) {
-                $penetapan_sita = $this->upload->data("file_name");
-                $data['penetapan_sita'] = $penetapan_sita . date("h:i:sa");
-            } else {
-                $error['file10'] = $this->upload->display_errors();
-            }
-        }
-        sleep(3);
-        if (!empty($_FILES['file11'])) {
-            # code...
-            $config['file_name'] = '11 Surat Gugatan';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file11')) {
-                $ba_sita = $this->upload->data("file_name");
-                $data['ba_sita'] = $ba_sita . date("h:i:sa");
-            } else {
-                $error['file11'] = $this->upload->display_errors();
-            }
-        }
-        sleep(3);
-        if (!empty($_FILES['file12'])) {
-            # code...
-            $config['file_name'] = '12 surat kedua pihak';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file12')) {
-                $lampiran_surat = $this->upload->data("file_name");
-                $data['lampiran_surat'] = $lampiran_surat . date("h:i:sa");
-            } else {
-                $error['file12'] = $this->upload->display_errors();
-            }
-        }
-        sleep(3);
-        if (!empty($_FILES['file13'])) {
-            # code...
-            $config['file_name'] = '13 surat bukti penggugat';
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('file13')) {
-                $surat_bukti_penggugat = $this->upload->data("file_name");
-                $data['surat_bukti_penggugat'] = $surat_bukti_penggugat . date("h:i:sa");
-            } else {
-                $error['file13'] = $this->upload->display_errors();
-            }
-        }
 
-        var_dump($data);
-        echo "<br>";
-        var_dump($error);
-        die;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('file')) {
+                # code...
+                $data = array('error' => $this->upload->display_errors());
+                $this->load->view('banding/hasil', $data);
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+                $this->load->view('banding/hasil', $data);
+            }
+        }
+    }
+
+    //====================================================
+
+    public function uploadbundel_a($folder)
+    {
+        if (!empty($_FILES['file']['name'])) {
+
+            // Set preference
+            $config['upload_path'] = "uploads/";
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            // $config['overwrite'] = true;
+
+
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('file')) {
+                # code...
+                $data = array('error' => $this->upload->display_errors());
+                $this->load->view('banding/uploadbundle', $data);
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+                $this->load->view('banding/uploadbundle', $data);
+            }
+        }
     }
 
 

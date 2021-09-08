@@ -29,9 +29,17 @@
 <!-- sweet alert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- dropzone -->
-<script src="<?= base_url('assets/dropzone/dropzone.js') ?>"></script>
+<script src="<?= base_url('vendors/dropzone/dist/'); ?>dropzone.js"></script>
 <!-- jspribadi -->
 <script src="<?= base_url('assets/js/') . $js ?>"></script>
+
+<script>
+    // Add restrictions
+    Dropzone.options.fileupload = {
+        acceptedFiles: 'image/*',
+        maxFilesize: 5 // MB
+    };
+</script>
 
 </body>
 
