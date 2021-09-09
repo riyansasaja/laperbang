@@ -35,7 +35,7 @@
         Dropzone.options.fileupload = {
             acceptedFiles: 'application/pdf,.rtf',
             maxFilesize: 80, // MB
-            timeout: 180000
+            timeout: 1800000
         };
     </script>
 
