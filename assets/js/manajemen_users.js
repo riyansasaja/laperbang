@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    // const prapath = window.location.origin;
-    const path = `/`;
+    const path = window.location.origin;
+    // const path = `/`;
     console.log(path);
 
 

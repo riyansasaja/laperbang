@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     //data table
-    // const prapath = window.location.origin;
-    const path = `/`;
+    const path = window.location.origin + '/';
+    // const path = `/`;
     console.log(path);
     //---Tampil data table kegiatan
     let list_perkara = $('#listperkara').DataTable({
@@ -45,7 +45,7 @@ $(document).ready(function () {
         Swal.fire(
 
             'Success',
-            'data ' + flashData,
+            flashData,
             'success'
         );
     }

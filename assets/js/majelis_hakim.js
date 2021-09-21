@@ -2,8 +2,8 @@ $(document).ready(function () {
 
     //data table
     // $('#tablePerkaraHakim').DataTable();
-    // const prapath = window.location.origin;
-    const path = `/`;
+    const path = window.location.origin;
+    // const path = `/`;
     console.log(path);
     // ---Tampil data table kegiatan
     let majelis_hakim = $('#majelis_hakim').DataTable({

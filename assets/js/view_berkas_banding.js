@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    // const prapath = window.location.origin;
+    const path = window.location.origin + '/';
     // console.log(prapath);
-    const path = `/`;
+    // const path = `/`;
 
     let url = window.location.href;
     let pecah = url.split('/');
@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: "post",
-        url: `${path}/ViewHakim/getUser`,
+        url: `${path}ViewHakim/getUser`,
         dataType: "json",
         async: false,
         data: {
