@@ -413,51 +413,58 @@ class Admin extends CI_Controller
 
     public function upload_pp()
     {
-
-
         $pengedit = $this->session->userdata('nama');
 
-        $config['upload_path']          = './assets/files/putusan';
-        $config['allowed_types']        = 'doc|docx|pdf';
-        $config['max_size']             = 5000;
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
+        $id_perkara = $this->input->post('id_perkara');
+        $id_user_pp = $this->input->post('id_user_pp');
 
-        if (($_FILES['file']['name'] != null)) {
-            if ($this->upload->do_upload('file')) {
-                $file_pp = $this->upload->data("file_name");
-                $id_perkara = $this->input->post('id_perkara');
-                $id_user_pp = $this->input->post('id_user_pp');
+        $data = [
+            'id_perkara' => $id_perkara,
+            'id_user_pp' => $id_user_pp
+        ];
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('penunjukan_pp', $data);
 
-                $data = [
-                    'id_perkara' => $id_perkara,
-                    'file_pp' => $file_pp,
-                    'id_user_pp' => $id_user_pp
-                ];
-                $this->db->where('id_perkara', $id_perkara);
-                $this->db->update('penunjukan_pp', $data);
+        $this->session->set_flashdata('flash', 'Penunjukan Panitera Pengganti Berhasil');
 
-                $this->session->set_flashdata('flash', 'Upload berhasil');
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah memilih panitera pengganti pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
 
-                $audittrail = array(
-                    'log_id' => '',
-                    'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
-                    'nama_log' => $pengedit
-                );
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
 
-                $this->db->set('rekam_log', 'NOW()', FALSE);
-                $this->db->insert('log_audittrail', $audittrail);
+        redirect('Admin');
+    }
 
-                redirect('Panmud');
-                // $this->db->set('putusan_banding', $putusan_banding);
-            } else {
-                $this->session->set_flashdata('msg', 'Upload file gagal, ekstensi file harus pdf dan ukuran tidak boleh lebih dari 5 mb');
-                // redirect('banding/');
-            }
-        } else {
-            $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
-            // redirect('banding/');
-        }
+    public function pilih_mh()
+    {
+        $pengedit = $this->session->userdata('nama');
+
+        $id_pmh = $this->input->post('id_pmh');
+        $id_perkara = $this->input->post('id_perkara');
+        $majelis_hakim = $this->input->post('majelis_hakim');
+
+        $data = [
+            'id_pmh' => $id_pmh,
+            'id_perkara' => $id_perkara,
+            'majelis_hakim' => $majelis_hakim,
+        ];
+        $this->db->insert('pmh', $data);
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah memilih majelis hakim pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
+        $this->session->set_flashdata('flash', 'Penunjukkan Majelis Hakim Berhasil');
+        redirect('Admin');
     }
 
 
@@ -483,7 +490,6 @@ class Admin extends CI_Controller
         ];
         echo json_encode($result);
     }
-
 
 
     #########
