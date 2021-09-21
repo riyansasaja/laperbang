@@ -1,4 +1,10 @@
-//create tabel majelis haki
+//create view user majelis hakim
+
+
+// --
+
+
+//create tabel majelis hakim
 CREATE TABLE majelis_hakim (
 	id_mh int NOT NULL AUTO_INCREMENT,
     id_user_mh int,
@@ -10,8 +16,8 @@ CREATE TABLE majelis_hakim (
 
 
 // create user majelis hakim
-CREATE VIEWS v_user_hakim AS
-SELECT users.* from users where role_id = 3
+CREATE VIEW v_user_hakim AS
+SELECT users.*, majelis_hakim.* from users JOIN majelis_hakim ON users.id = majelis_hakim.id_user_mh
 
 // -- 
 

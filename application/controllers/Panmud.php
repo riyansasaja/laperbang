@@ -20,6 +20,7 @@ class Panmud extends CI_Controller
         $data['js'] = 'view_panmud.js';
         $data['perkara'] = $this->db->get('v_user_pp')->result_array();
         $data['perkara_banding'] = $this->m_banding->get_data_perkara();
+        $data['majelis_hakim'] = $this->m_banding->user_mh();
 
         $this->load->view('panmud/header', $data);
         $this->load->view('panmud/view_panmud', $data);
@@ -207,6 +208,34 @@ class Panmud extends CI_Controller
             $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
             // redirect('banding/');
         }
+    }
+
+    public function pilih_mh()
+    {
+        $pengedit = $this->session->userdata('nama');
+
+        $id_pmh = $this->input->post('id_pmh');
+        $id_perkara = $this->input->post('id_perkara');
+        $majelis_hakim = $this->input->post('majelis_hakim');
+
+        $data = [
+            'id_pmh' => $id_pmh,
+            'id_perkara' => $id_perkara,
+            'majelis_hakim' => $majelis_hakim,
+        ];
+        $this->db->insert('pmh', $data);
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah input nomor perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
+        $this->session->set_flashdata('flash', 'Penunjukkan Majelis Hakim Berhasil');
+        redirect('Panmud');
     }
 
     public function get_log_inbox()

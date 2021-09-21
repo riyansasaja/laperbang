@@ -8,12 +8,14 @@
                     <h5>Pilih Majelis Hakim</h5>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="<?php echo base_url('Admin/add_majelis'); ?>" enctype="multipart/form-data">
+                    <form>
+
+                        <input type="hidden" id="id_mh" name="id_mh">
                         <div class="row justify-content-between mb-3">
                             <div class="col-lg-5 ">
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Majelis</label>
-                                    <select class="form-control" id="exampleFormControlSelect1">
+                                    <select class="form-control" id="majelis" name="majelis">
                                         <option value="" selected>--Pilih--</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -25,7 +27,7 @@
                             <div class="col-lg-5">
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">User</label>
-                                    <select class="form-select" id="user_mh" name="id_user_mh">
+                                    <select class="form-select" id="id_user_mh" name="id_user_mh">
 
                                         <option value="" selected>--Pilih--</option>
                                         <?php foreach ($user_mh as $mh) : ?>
@@ -37,8 +39,8 @@
                         </div>
                         <div class="row justify-content-end">
                             <div class="col-2">
-                                <button type="button" class="btn btn-primary" id="save_user">Tambah</button>
-                                <button type="button" class="btn btn-primary" id="reset_user">Reset</button>
+                                <button type="button" class="btn btn-primary" id="save">Tambah</button>
+                                <button type="button" class="btn btn-primary" id="reset">Reset</button>
                             </div>
 
                         </div>

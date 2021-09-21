@@ -1,8 +1,8 @@
 console.log('ini TES.js');
 
 
-const pathdasar = window.origin;
-const path = `${pathdasar}/laperbang/profiles/`;
+// const pathdasar = window.origin;
+const path = `/profiles/`;
 console.log(pathdasar);
 
 $.ajax({

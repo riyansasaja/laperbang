@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     //data table
-    const prapath = window.location.origin;
-    const path = `${prapath}/laperbang/`;
+    // const prapath = window.location.origin;
+    const path = `/`;
     console.log(path);
     //---Tampil data table kegiatan
     let list_perkara = $('#listperkara').DataTable({
@@ -132,7 +132,7 @@ $(document).ready(function () {
             showCancelButton: true,
             inputValidator: (value) => {
                 return new Promise((resolve) => {
-                    if (value === 'Penunjukkan Panitera Pengganti') {
+                    if (value === 'Penunjukan Majelis Hakim') {
                         $.ajax({
                             type: "POST",
                             url: `${path}/panmud/updateStatus`,
@@ -145,7 +145,23 @@ $(document).ready(function () {
 
                             }
                         });
-                        Swal.fire('Silahkan Upload Berkas', '', 'warning')
+                        Swal.fire('Silahkan Pilih Majelis Hakim', '', 'warning')
+                        pilihMH(id_perkara)
+                        return false;
+                    } else if (value === 'Penunjukkan Panitera Pengganti') {
+                        $.ajax({
+                            type: "POST",
+                            url: `${path}/panmud/updateStatus`,
+                            data: {
+                                id_perkara: id_perkara,
+                                status_perkara: value,
+                            },
+                            dataType: "json",
+                            success: function (e) {
+
+                            }
+                        });
+                        Swal.fire('Silahkan Pilih Panitera Pengganti', '', 'warning')
                         uploadPenunjukkanPP(id_perkara)
                         return false;
                     } else if (value === 'Pengiriman Salinan Putusan') {
@@ -189,11 +205,19 @@ $(document).ready(function () {
 
 
 
+    //function pilih majelis hakim
+    function pilihMH(id_perkara) {
+        $('#uploadMH').modal('show');
+        $('#id_perkaramh').val(id_perkara);
+
+
+    }//end function pilih majelis hakim
+
     //function upload penunjukkan pp
     function uploadPenunjukkanPP(id_perkara) {
         $('#uploadFilePP').modal('show');
         $('#id_perkarapp').val(id_perkara);
-        console.log(id_perkara);
+
 
     }//end function upload penunjukkan pp
 
@@ -221,7 +245,7 @@ $(document).ready(function () {
         Swal.fire(
 
             'Success',
-            'data ' + flashData,
+            flashData,
             'success'
         );
     }

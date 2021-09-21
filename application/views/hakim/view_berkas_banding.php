@@ -344,13 +344,13 @@
 
             <div class="modal-body row">
 
-                <div class="col-8" style="height: 100%;">
+                <div id="kiri" class="col-8" style="height: 100%;">
                     <div class="card" id="tampil" style="height: 100%;">
 
                     </div>
 
                 </div>
-                <div class="col-4" style="height: 100%;">
+                <div id="kanan" class="col-4" style="height: 100%;">
                     <div class="card overflow-auto mb-2 p-2" id="komentar" style="height: 80%;">
 
 

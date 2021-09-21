@@ -186,4 +186,38 @@ class M_banding extends CI_model
         $query = $this->db->get()->result();
         return $query;
     }
+
+    public function UserHakim($id_user)
+    {
+        $this->db->select('majelis');
+        return $this->db->get_where('v_user_hakim', ['id_user_mh' => $id_user])->row_array();
+    }
+
+    public function DataMH()
+    {
+        $this->db->select('*');
+        $this->db->from('majelis_hakim');
+        $this->db->join('users', 'users.id = majelis_hakim.id_user_mh');
+        $this->db->order_by('majelis', 'ASC');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function tampil_user_hakim()
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('role_id = 3');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+
+    public function user_mh()
+    {
+        $this->db->select('*');
+        $this->db->from('v_user_hakim');
+        $this->db->order_by('majelis', 'ASC');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
 }

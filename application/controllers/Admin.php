@@ -86,7 +86,9 @@ class Admin extends CI_Controller
         $data['judul'] = 'Majelis Hakim';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'majelis_hakim.js';
-        $data['user_mh'] = $this->db->get('v_user_hakim')->result_array();
+
+        //get data user
+        $data['user_mh'] = $this->m_banding->tampil_user_hakim();
 
         // //get data users
         // $data['users'] = $this->db->get('users')->result_object();
@@ -109,11 +111,11 @@ class Admin extends CI_Controller
             'id_user_mh' => $id_user_mh,
             'majelis' => $majelis
         ];
-        $array = $this->db->insert('majelis_hakim');
+        $array = $this->db->insert('majelis_hakim', $data);
 
         $audittrail = array(
             'log_id' => '',
-            'isi_log' => "User <b>" . $pengedit . "</b> telah menambahkan user <b>",
+            'isi_log' => "User <b>" . $pengedit . "</b> telah menambahkan user majelis hakim <b>",
             'nama_log' => $pengedit
         );
 
@@ -134,6 +136,30 @@ class Admin extends CI_Controller
         ];
         echo json_encode($result);
     }
+
+    public function del_user_mh()
+    {
+
+        $pengedit = $this->session->userdata('nama');
+
+        $id_mh = $this->input->post('id_mh');
+        // var_dump($id_mh);
+        // die;
+        $this->db->where('id_mh', $id_mh);
+        $array = $this->db->delete('majelis_hakim');
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah menghapus user majelis hakim <b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
+        echo json_encode($array);
+    }
+
 
     public function get_data_user()
     {

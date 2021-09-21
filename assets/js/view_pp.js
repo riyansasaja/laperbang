@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     //data table
-    const prapath = window.location.origin;
-    const path = `${prapath}/laperbang/`;
+    // const prapath = window.location.origin;
+    const path = `/`;
     console.log(path);
     //---Tampil data table kegiatan
     let list_perkara = $('#listperkara').DataTable({
