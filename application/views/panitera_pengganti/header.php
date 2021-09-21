@@ -31,7 +31,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Halaman Admin</a>
+            <a class="navbar-brand ps-3" href="index.html">Panitera Pengganti</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -55,11 +55,12 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle animate__animated animate__heartBeat" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item disabled" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item disabled" href="#!">Activity Log</a></li>
+                        <!-- <li><a class="dropdown-item disabled" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item disabled" href="#!">Activity Log</a></li> -->
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
+
                         <li><a class="dropdown-item" href="<?php echo base_url('auth/logout') ?>">Logout</a></li>
                     </ul>
                 </li>
@@ -70,33 +71,11 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link disabled <?= $judul == 'Dashboard' ? 'active' : '' ?>" href="<?= base_url('admin/') ?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-
 
                             <div class="sb-sidenav-menu-heading">Kelola Perkara</div>
-                            <a class="nav-link <?= $judul == 'Input Nomor Perkara' ? 'active' : '' ?>" href="<?= base_url('admin/inputnoper/') ?>">
+                            <a class="nav-link <?= $judul == 'Input Nomor Perkara' ? 'active' : '' ?>" href="<?= base_url('Panitera_pengganti/') ?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-fw fa-keyboard"></i></div>
                                 Manajemen Perkara
-                            </a>
-
-                            <div class="sb-sidenav-menu-heading">Manajemen User</div>
-                            <a class="nav-link <?= $judul == 'Manajemen Users' ? 'active' : '' ?>" href="<?= base_url('admin/users/') ?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-fw fa-users-cog"></i></div>
-                                Manajemen User
-                            </a>
-                            <a class="nav-link <?= $judul == 'Majelis Hakim' ? 'active' : '' ?>" href="<?= base_url('admin/majelis_hakim/') ?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-fw fa-users-cog"></i></div>
-                                Majelis Hakim
-                            </a>
-
-                            <div class="sb-sidenav-menu-heading">Log</div>
-                            <a class="nav-link <?= $judul == 'Audit Trail' ? 'active' : '' ?>" href="<?= base_url('admin/audittrail/') ?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Audit Trail
                             </a>
                         </div>
                     </div>

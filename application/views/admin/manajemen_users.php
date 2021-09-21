@@ -23,7 +23,9 @@
                 <div class="card">
                     <div class="card-body">
                         <form>
+
                             <input type="hidden" id="id" name="id">
+
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Nama</label>
                                 <input type="text" class="form-control" id="nama" name="nama">
@@ -60,6 +62,7 @@
                                     <option value="2">User</option>
                                     <option value="3">Hakim</option>
                                     <option value="4">Panmud</option>
+                                    <option value="5">Panitera Pengganti</option>
                                 </select>
                             </div>
                             <div class="mb-3">

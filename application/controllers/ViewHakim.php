@@ -8,6 +8,9 @@ class ViewHakim extends CI_Controller
     {
         parent::__construct();
         is_login();
+        if ($this->session->userdata('role_id') != 3) {
+            redirect('auth');
+        }
     }
 
     public function index()
@@ -94,6 +97,15 @@ class ViewHakim extends CI_Controller
 
         ];
         echo json_encode($result);
+    }
+
+    public function getUser()
+    {
+        $id_perkara = $this->input->post('perkara_id');
+        $id_user = $this->session->userdata('id');
+        $data['user_mh'] = $this->m_banding->UserHakim($id_user);
+        $data['pmh'] = $this->db->get_where('pmh', ['id_perkara' => $id_perkara])->row_array();
+        echo json_encode($data);
     }
 
     public function get_catatan()

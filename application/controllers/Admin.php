@@ -8,7 +8,7 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         //usir user yang ga punya session
-        if (!$this->session->userdata('id')) {
+        if (!$this->session->userdata('id') || $this->session->userdata('role_id') != 1) {
             redirect('auth');
         }
     }
@@ -20,6 +20,7 @@ class Admin extends CI_Controller
         $data['judul'] = 'Dashboard';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'dashboard_admin.js';
+        $data['perkara'] = $this->db->get('v_user_pp')->result_array();
 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/dashboard', $data);
@@ -78,6 +79,87 @@ class Admin extends CI_Controller
         $this->load->view('admin/manajemen_users', $data);
         $this->load->view('admin/footer', $data);
     }
+
+    public function majelis_Hakim()
+    {
+        //konten
+        $data['judul'] = 'Majelis Hakim';
+        $data['css'] = 'dashboard_admin.css';
+        $data['js'] = 'majelis_hakim.js';
+
+        //get data user
+        $data['user_mh'] = $this->m_banding->tampil_user_hakim();
+
+        // //get data users
+        // $data['users'] = $this->db->get('users')->result_object();
+
+
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/majelis_hakim', $data);
+        $this->load->view('admin/footer', $data);
+    }
+
+    public function add_majelis()
+    {
+        $pengedit = $this->session->userdata('nama');
+
+        $id_mh = $this->input->post('id_mh');
+        $id_user_mh = $this->input->post('id_user_mh');
+        $majelis = $this->input->post('majelis');
+        $data = [
+            'id_mh' => $id_mh,
+            'id_user_mh' => $id_user_mh,
+            'majelis' => $majelis
+        ];
+        $array = $this->db->insert('majelis_hakim', $data);
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah menambahkan user majelis hakim <b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
+        json_encode($array);
+    }
+
+    public function get_user_mh()
+    {
+        $data = $this->m_banding->DataMH();
+        $result =  [
+            'response' => 'success',
+            'code' => 600,
+            'data' => $data
+
+        ];
+        echo json_encode($result);
+    }
+
+    public function del_user_mh()
+    {
+
+        $pengedit = $this->session->userdata('nama');
+
+        $id_mh = $this->input->post('id_mh');
+        // var_dump($id_mh);
+        // die;
+        $this->db->where('id_mh', $id_mh);
+        $array = $this->db->delete('majelis_hakim');
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah menghapus user majelis hakim <b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
+        echo json_encode($array);
+    }
+
 
     public function get_data_user()
     {
@@ -180,6 +262,7 @@ class Admin extends CI_Controller
             $role_id = $this->input->post('role_id');
             $is_active = $this->input->post('is_active');
 
+
             $data = [
                 'id' => $id,
                 'nama' => $nama,
@@ -187,7 +270,8 @@ class Admin extends CI_Controller
                 'username' => $username,
                 'password' => $password,
                 'role_id' => $role_id,
-                'is_active' => $is_active
+                'is_active' => $is_active,
+
             ];
             $array = $this->db->insert('users', $data);
 
@@ -327,6 +411,63 @@ class Admin extends CI_Controller
         }
     }
 
+    public function upload_pp()
+    {
+        $pengedit = $this->session->userdata('nama');
+
+        $id_perkara = $this->input->post('id_perkara');
+        $id_user_pp = $this->input->post('id_user_pp');
+
+        $data = [
+            'id_perkara' => $id_perkara,
+            'id_user_pp' => $id_user_pp
+        ];
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('penunjukan_pp', $data);
+
+        $this->session->set_flashdata('flash', 'Penunjukan Panitera Pengganti Berhasil');
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah memilih panitera pengganti pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
+        redirect('Admin');
+    }
+
+    public function pilih_mh()
+    {
+        $pengedit = $this->session->userdata('nama');
+
+        $id_pmh = $this->input->post('id_pmh');
+        $id_perkara = $this->input->post('id_perkara');
+        $majelis_hakim = $this->input->post('majelis_hakim');
+
+        $data = [
+            'id_pmh' => $id_pmh,
+            'id_perkara' => $id_perkara,
+            'majelis_hakim' => $majelis_hakim,
+        ];
+        $this->db->insert('pmh', $data);
+
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah memilih majelis hakim pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+
+        $this->session->set_flashdata('flash', 'Penunjukkan Majelis Hakim Berhasil');
+        redirect('Admin');
+    }
+
+
     public function audittrail()
     {
         $data['judul'] = 'Audit Trail';
@@ -349,7 +490,6 @@ class Admin extends CI_Controller
         ];
         echo json_encode($result);
     }
-
 
 
     #########

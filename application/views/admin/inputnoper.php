@@ -89,3 +89,82 @@
         </div>
     </div>
 </div>
+
+<!-- //modal upload file PP -->
+
+<div class="modal fade" id="uploadFilePP" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pilih Panitera Pengganti</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="<?php echo base_url('admin/upload_pp'); ?>" enctype="multipart/form-data">
+
+                    <input type="text" id="id_perkarapp" name="id_perkara" hidden>
+
+
+                    <div class="row mb-3">
+                        <!-- <label for="user_pp" class="form-label">Panitera Pengganti</label> -->
+                        <select class="form-select" id="user_pp" name="id_user_pp">
+                            <option value="" selected>-- Pilih --</option>
+                            <?php foreach ($perkara as $perk) : ?>
+                                <option value="<?= $perk['id'] ?>"><?= $perk['nama'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- //modal pilih majelis hakim -->
+
+<div class="modal fade" id="uploadMH" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pilih Majelis Hakim</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="<?php echo base_url('admin/pilih_mh'); ?>" enctype="multipart/form-data">
+
+                    <input type="text" id="id_perkaramh" name="id_perkara" hidden>
+
+
+                    <div class="row mb-3">
+                        <!-- <label for="user_pp" class="form-label">Panitera Pengganti</label> -->
+                        <select class="form-select" id="user_pp" name="majelis_hakim">
+                            <option value="" selected>-- Pilih --</option>
+
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+
+                        </select>
+                    </div>
+
+                    <!-- <div class="row mb-3">
+                        <label for="formFile" class="form-label">Silahkan Upload File Penunjukkan PP</label>
+                        <input class="form-control" type="file" id="formFile" name="file">
+                    </div> -->
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

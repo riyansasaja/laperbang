@@ -139,6 +139,18 @@ class M_banding extends CI_model
         return $query;
     }
 
+    public function get_data_perkara()
+    {
+
+        $this->db->select('*');
+        $this->db->from('v_all_perkara');
+
+        $this->db->order_by('id_perkara', 'DESC');
+        $this->db->limit(10);
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+
     public function UpdatePerkara($tabelName, $data, $where)
     {
         $res = $this->db->update($tabelName, $data, $where);
@@ -154,12 +166,58 @@ class M_banding extends CI_model
         return $query;
     }
 
+    public function get_perkara_pp()
+    {
+        $id_user =  $this->session->userdata('id');
+        $this->db->select('*');
+        $this->db->from('v_perkara_pp');
+        $this->db->where('id_user_pp', $id_user);
+        $this->db->order_by('tgl_register', 'DESC');
+        $this->db->limit(10);
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+
     public function DataBandingHakim()
     {
         $this->db->select('*');
         $this->db->from('v_berkas_hakim');
         $this->db->order_by('tgl_reg_banding', 'DESC');
         $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function UserHakim($id_user)
+    {
+        $this->db->select('majelis');
+        return $this->db->get_where('v_user_hakim', ['id_user_mh' => $id_user])->row_array();
+    }
+
+    public function DataMH()
+    {
+        $this->db->select('*');
+        $this->db->from('majelis_hakim');
+        $this->db->join('users', 'users.id = majelis_hakim.id_user_mh');
+        $this->db->order_by('majelis', 'ASC');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function tampil_user_hakim()
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('role_id = 3');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+
+    public function user_mh()
+    {
+        $this->db->select('*');
+        $this->db->from('v_user_hakim');
+        $this->db->order_by('majelis', 'ASC');
+        $query = $this->db->get()->result_array();
         return $query;
     }
 }

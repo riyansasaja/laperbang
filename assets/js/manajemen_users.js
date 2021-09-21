@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     const path = window.location.origin;
-    // const path = `${prapath}/laperbang/`;
+    // const path = `/`;
     console.log(path);
 
 
@@ -156,6 +156,7 @@ $(document).ready(function () {
         var password_r = $('input[name="password_r"]').val();
         var role_id = $('select[name="role_id"]').val();
         var is_active = $('select[name="is_active"]').val();
+
         var id = $('input[name="id"]').val();
 
         $.ajax({
@@ -169,7 +170,8 @@ $(document).ready(function () {
                 password: password,
                 password_r: password_r,
                 role_id: role_id,
-                is_active: is_active
+                is_active: is_active,
+
             },
             dataType: "json",
             success: function (e) {

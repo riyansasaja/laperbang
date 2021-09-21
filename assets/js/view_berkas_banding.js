@@ -1,19 +1,52 @@
 $(document).ready(function () {
-    const prapath = window.location.origin;
-    const path = `${prapath}/`;
+    const path = window.location.origin + '/';
+    // console.log(prapath);
+    // const path = `/`;
 
     let url = window.location.href;
     let pecah = url.split('/');
+
+    // ambil data majelis
+
+    let user_mh;
+    let perkara_mh;
+    let perkara_id = pecah[6];
+
+    $.ajax({
+        type: "post",
+        url: `${path}ViewHakim/getUser`,
+        dataType: "json",
+        async: false,
+        data: {
+            perkara_id: perkara_id
+        },
+        success: function (e) {
+
+            user_mh = e.user_mh.majelis;
+            perkara_mh = e.pmh.majelis_hakim;
+        }
+
+    }).responseText;
+
+    //mematikan kolom komen
+    if (user_mh != perkara_mh) {
+        //rubah tampilan modal jadi full
+        $('#kiri').attr('class', 'col-12');
+        $('#kanan').attr('class', 'none');
+        $('#kirim').remove();
+    }
+
+
+
+
     $('#modalPdfHakim').on('show.bs.modal', function (e) {
 
         //jalankan modal
         //ambil data-id dan data-judul
         let getdata = $(e.relatedTarget).data('id');
         let getjudul = $(e.relatedTarget).data('judul');
-        let id_perkara = pecah[3];
-        console.log(getdata);
-        console.log(getjudul);
-        console.log(id_perkara);
+        let id_perkara = pecah[6];
+
         //embed ke tampilan sebelah kanan
         let tampil = `<embed src="${path}assets/files/${getdata}" type="application/pdf" width="100%" height="100%">`;
         $('#tampil').html(tampil);
