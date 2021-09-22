@@ -36,9 +36,6 @@ $(document).ready(function () {
         $('#kirim').remove();
     }
 
-
-
-
     $('#modalPdfHakim').on('show.bs.modal', function (e) {
 
         //jalankan modal
