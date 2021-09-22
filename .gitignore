@@ -34,5 +34,10 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 application/config/config.php
 application/config/database.php
 
+<<<<<<< HEAD
 .htaccess
+=======
+*.htaccess
+fileuploads/
+>>>>>>> 283b739ddc601d6e7bc5e89d78a8c745ae2ccc50
 

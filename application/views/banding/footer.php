@@ -4,9 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Siap untuk keluar?</h5>
-                <button class="close" type="button" data-bs-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">Klik tombol "Keluar" jika ingin keluar.</div>
             <div class="modal-footer">
@@ -31,9 +29,17 @@
 <!-- sweet alert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- dropzone -->
-<script src="<?= base_url('assets/dropzone/dropzone.js') ?>"></script>
+<script src="<?= base_url('vendors/dropzone/dist/'); ?>dropzone.js"></script>
 <!-- jspribadi -->
 <script src="<?= base_url('assets/js/') . $js ?>"></script>
+
+<script>
+    // Add restrictions
+    Dropzone.options.fileupload = {
+        acceptedFiles: 'image/*',
+        maxFilesize: 5 // MB
+    };
+</script>
 
 </body>
 

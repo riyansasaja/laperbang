@@ -6,9 +6,9 @@ class Banding extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper(array('form', 'url'));
         $this->load->model('m_banding');
-        $this->load->library('form_validation');
+        $this->load->helper('form');
+        $this->load->library('upload');
 
         //usir user yang ga punya session
         if (!$this->session->userdata('id') || $this->session->userdata('role_id') != 2) {
@@ -70,26 +70,28 @@ class Banding extends CI_Controller
             'keterangan' => $this->input->post('keterangan', true),
         ];
         $this->db->insert('list_perkara', $data);
-        // $perkara_id = $this->db->insert_id();
-        // // var_dump($perkara_id);
-        // // die;
-        // $pp = [
-        //     'id_perkara' => $perkara_id,
-        // ];
-        // $this->db->insert('penunjukan_pp', $pp);
-        $this->session->set_flashdata('flash', 'berhasil disimpan');
 
+        #buat folder sesuai dengan nomor perkara
+        $folder = strtr($no_perkara_input, '/', '-');
+        mkdir("./fileuploads/$folder");
+        mkdir("./fileuploads/$folder/bundel-a");
+        mkdir("./fileuploads/$folder/bundel-b");
+        #buat flashdata
+        $this->session->set_flashdata('flash', 'berhasil disimpan');
+        #buat audittrail
         $audittrail = array(
             'log_id' => '',
             'isi_log' => "User <b>" . $pengedit . "</b> telah menambah data perkara",
             'nama_log' => $pengedit
         );
-
+        #simpan data auditrail di database
         $this->db->set('rekam_log', 'NOW()', FALSE);
         $this->db->insert('log_audittrail', $audittrail);
-
+        #redirect to banding with flashdata
         redirect('banding/');
     }
+
+    //End Method Tambah Perkara ======================
 
     public function edit_perkara()
     {
@@ -121,15 +123,6 @@ class Banding extends CI_Controller
         $banyaknya = $this->input->post('banyaknya');
         $keterangan = $this->input->post('keterangan');
 
-        // $this->db->set('no_perkara', $no_perkara);
-        // $this->db->set('nm_pihak', $nm_pihak);
-        // $this->db->set('jns_perkara', $jns_perkara);
-        // $this->db->where('id_perkara', $id_perkara);
-        // $this->db->update('list_perkara');
-
-        // $this->session->set_flashdata('flash', 'berhasil diubah');
-        // redirect('banding/');
-
         $data = [
             'id_perkara' => $id_perkara,
             'no_perkara' => $no_perkara_input,
@@ -159,47 +152,55 @@ class Banding extends CI_Controller
         redirect('banding/');
     }
 
-    // private function _uploadFile($path)
-    // {
-    //     $config['upload_path']          = './assets/files/' . $path;
-    //     $config['allowed_types']        = 'doc|docx|pdf';
-    //     $config['max_size']             = 5000;
+    //End Method edit perkara ============================
 
+    public function uploadbundle($id)
+    {
+        //konten
+        $data['js'] = 'upload_berkas.js';
+        $data['css'] = 'dashboard_banding.css';
+        $data['judul'] = 'Upload Banding';
 
-    //     $this->load->library('upload', $config);
-    //     $this->upload->initialize($config);
-    //     if ($this->upload->do_upload('file_upload')) {
-    //         return $this->upload->data("file_name");
-    //     } else {
-    //         $this->session->set_flashdata('msg', 'Upload data gagal');
-    //         redirect('banding/');
-    //     }
-    // }
+        //ambil data
+        $data['perkara'] = $this->db->get_where('list_perkara', ['id_perkara' => $id])->row_array();
+
+        //usir id tidak sesuai
+        if ($this->session->userdata('id') != $data['perkara']['id_user']) {
+            redirect('banding');
+        } else {
+            // $this->load->view('banding/header', $data);
+            $this->load->view('banding/tesdropzone');
+            // $this->load->view('banding/footer', $data);
+        }
+    }
+    //End Method tampilan upload bundel ============================
 
     function pengantar_upload()
     {
         //ambil nama user
         $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('folder');
         // $kode_pa = $this->session->userdata('kode_pa');
         // $tanggal = date("Ymd");
         // $nama_file = $tanggal . '_' . $kode_pa . '_';
 
-        $config['upload_path']          = './assets/files/SuratPengantar';
+        $config['upload_path']          = "./fileuploads/$folder/";
         $config['allowed_types']        = 'pdf';
-        $config['max_size']             = 5024;
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
+        $config['max_size']             = 0;
+        // $this->upload->initialize($config);
 
-        if (($_FILES['file1']['name'] != null)) {
-            if ($this->upload->do_upload('file1')) {
+        if (($_FILES['surat_pengantar']['name'] != null)) {
+            $config['file_name'] = 'Surat Pengantar';
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('surat_pengantar')) {
                 $sp_perkara = $this->upload->data("file_name");
                 $this->db->set('sp_perkara', $sp_perkara);
             } else {
-                $this->session->set_flashdata('msg', 'Upload file gagal, ekstensi file harus pdf dan ukuran tidak boleh lebih dari 5 mb');
+                $this->session->set_flashdata('info', 'Upload file gagal, ekstensi file harus pdf dan ukuran tidak boleh lebih dari 2 mb');
                 redirect('banding/');
             }
         } else {
-            $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
+            $this->session->set_flashdata('info', 'Tidak ada file yang di upload');
             redirect('banding/');
         }
 
@@ -220,17 +221,66 @@ class Banding extends CI_Controller
 
         redirect('banding/');
     }
+    //End Pengantar Upload===============================
+
+    public function upload($tes)
+    {
+        if (!empty($_FILES['file']['name'])) {
+
+            // Set preference
+            $config['upload_path'] = "uploads/";
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            // $config['file_name'] = $_FILES['file']['name'];
+
+
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('file')) {
+                # code...
+                $data = array('error' => $this->upload->display_errors());
+                $this->load->view('banding/hasil', $data);
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+                $this->load->view('banding/hasil', $data);
+            }
+        }
+    }
+
+    //====================================================
+
+    public function uploadbundel_a($folder)
+    {
+        if (!empty($_FILES['file']['name'])) {
+
+            // Set preference
+            $config['upload_path'] = "uploads/";
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            // $config['overwrite'] = true;
+
+
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('file')) {
+                # code...
+                $data = array('error' => $this->upload->display_errors());
+                $this->load->view('banding/uploadbundle', $data);
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+                $this->load->view('banding/uploadbundle', $data);
+            }
+        }
+    }
+
+
 
     function multiple_upload()
     {
 
         $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('folder');
 
-        $config['upload_path']          = './assets/files/bundle_a';
+        $config['upload_path']          = "./fileuploads/$folder/bundel-a";
         $config['allowed_types']        = 'pdf';
-        $config['max_size']             = 80000;
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
+        $config['max_size']             = 0;
+        // $this->upload->initialize($config);
 
         //untuk upload file 1 dan seterusnya.....
 
@@ -244,6 +294,8 @@ class Banding extends CI_Controller
             redirect('banding/');
         } else {
             if (($_FILES['file1']['name'])) {
+                $config['file_name'] = '01 Surat Gugatan';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file1')) {
                     $suratgugatan = $this->upload->data("file_name");
                     $this->db->set('surat_gugatan', $suratgugatan);
@@ -256,6 +308,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file2']['name'])) {
+                $config['file_name'] = '02 Surat Kuasa Kedua Pihak';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file2')) {
                     $skbundlea = $this->upload->data("file_name");
                     $this->db->set('sk_bundelA', $skbundlea);
@@ -266,6 +320,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file3']['name'])) {
+                $config['file_name'] = '03 Bukti Panjar Biaya Perkara';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file3')) {
                     $bukti_pemb_panjar = $this->upload->data("file_name");
                     $this->db->set('bukti_pemb_panjar', $bukti_pemb_panjar);
@@ -276,6 +332,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file4']['name'])) {
+                $config['file_name'] = '04 PMH';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file4')) {
                     $majelis_hakim = $this->upload->data("file_name");
                     $this->db->set('majelis_hakim', $majelis_hakim);
@@ -286,6 +344,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file5']['name'])) {
+                $config['file_name'] = '05 Penunjukan PP';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file5')) {
                     $penunjukan_pp = $this->upload->data("file_name");
                     $this->db->set('penunjukan_pp', $penunjukan_pp);
@@ -296,6 +356,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file6']['name'])) {
+                $config['file_name'] = '06 Penunjukan JS';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file6')) {
                     $penunjukan_js = $this->upload->data("file_name");
                     $this->db->set('penunjukan_js', $penunjukan_js);
@@ -306,6 +368,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file7']['name'])) {
+                $config['file_name'] = '07 PHS';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file7')) {
                     $penetapan_hari_sidang = $this->upload->data("file_name");
                     $this->db->set('penetapan_hari_sidang', $penetapan_hari_sidang);
@@ -316,6 +380,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file8']['name'])) {
+                $config['file_name'] = '08 Relaas-relaas Panggilan';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file8')) {
                     $relaas_panggilan = $this->upload->data("file_name");
                     $this->db->set('relaas_panggilan', $relaas_panggilan);
@@ -326,6 +392,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file9']['name'])) {
+                $config['file_name'] = '09 BAS';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file9')) {
                     $ba_sidang = $this->upload->data("file_name");
                     $this->db->set('ba_sidang', $ba_sidang);
@@ -336,6 +404,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file10']['name'])) {
+                $config['file_name'] = '10 Sita Conservatoir';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file10')) {
                     $penetapan_sita = $this->upload->data("file_name");
                     $this->db->set('penetapan_sita', $penetapan_sita);
@@ -346,6 +416,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file11']['name'])) {
+                $config['file_name'] = '11 Surat Gugatan';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file11')) {
                     $ba_sita = $this->upload->data("file_name");
                     $this->db->set('ba_sita', $ba_sita);
@@ -356,6 +428,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file12']['name'])) {
+                $config['file_name'] = '12 surat kedua pihak';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file12')) {
                     $lampiran_surat = $this->upload->data("file_name");
                     $this->db->set('lampiran_surat', $lampiran_surat);
@@ -366,6 +440,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file13']['name'])) {
+                $config['file_name'] = '13 surat bukti penggugat';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file13')) {
                     $surat_bukti_penggugat = $this->upload->data("file_name");
                     $this->db->set('surat_bukti_penggugat', $surat_bukti_penggugat);
@@ -376,6 +452,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file14']['name'])) {
+                $config['file_name'] = '14 Surat bukti tergugat';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file14')) {
                     $surat_bukti_tergugat = $this->upload->data("file_name");
                     $this->db->set('surat_bukti_tergugat', $surat_bukti_tergugat);
@@ -386,6 +464,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file15']['name'])) {
+                $config['file_name'] = '15 Tanggapan bukti tergugat dari penggugat';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file15')) {
                     $tanggapan_bukti_tergugat = $this->upload->data("file_name");
                     $this->db->set('tanggapan_bukti_tergugat', $tanggapan_bukti_tergugat);
@@ -396,6 +476,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file16']['name'])) {
+                $config['file_name'] = '16 Tanggapan bukti penggugat dari tergugat';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file16')) {
                     $tanggapan_bukti_penggugat = $this->upload->data("file_name");
                     $this->db->set('tanggapan_bukti_penggugat', $tanggapan_bukti_penggugat);
@@ -406,6 +488,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file17']['name'])) {
+                $config['file_name'] = '17 Gambar situasi';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file17')) {
                     $gambar_situasi = $this->upload->data("file_name");
                     $this->db->set('gambar_situasi', $gambar_situasi);
@@ -416,6 +500,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file18']['name'])) {
+                $config['file_name'] = '18 Surat lainnya';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file18')) {
                     $surat_lain = $this->upload->data("file_name");
                     $this->db->set('surat_lain', $surat_lain);
@@ -443,17 +529,17 @@ class Banding extends CI_Controller
 
         redirect('banding/');
     }
+    // End multiple Upload A ======================================
 
     function multiple_uploadB()
     {
 
         $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('folder');
 
-        $config['upload_path']          = './assets/files/bundle_b';
+        $config['upload_path']          = "./fileuploads/$folder/bundel-b";
         $config['allowed_types']        = 'pdf|rtf';
-        $config['max_size']             = 80024;
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
+        $config['max_size']             = 0;
 
         //untuk upload file 1 dan seterusnya.....
 
@@ -467,6 +553,8 @@ class Banding extends CI_Controller
             redirect('banding/');
         } else {
             if (($_FILES['file1']['name'])) {
+                $config['file_name'] = '1 Salinan Putusan Pengadilan Agama';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file1')) {
                     $salinan_putusan_pa = $this->upload->data("file_name");
                     $this->db->set('salinan_putusan_pa', $salinan_putusan_pa);
@@ -477,6 +565,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file2']['name'])) {
+                $config['file_name'] = '2 Surat Kuasa dari Kedua Belah Pihak';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file2')) {
                     $skbundleb = $this->upload->data("file_name");
                     $this->db->set('sk_bundelb', $skbundleb);
@@ -487,6 +577,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file3']['name'])) {
+                $config['file_name'] = '3 Akta Banding';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file3')) {
                     $akta_banding = $this->upload->data("file_name");
                     $this->db->set('akta_banding', $akta_banding);
@@ -497,6 +589,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file4']['name'])) {
+                $config['file_name'] = '4 Akta penerimaan memori banding';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file4')) {
                     $akta_penerimaan_mb = $this->upload->data("file_name");
                     $this->db->set('akta_penerimaan_mb', $akta_penerimaan_mb);
@@ -507,6 +601,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file5']['name'])) {
+                $config['file_name'] = '5 Memori banding';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file5')) {
                     $memori_banding = $this->upload->data("file_name");
                     $this->db->set('memori_banding', $memori_banding);
@@ -517,6 +613,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file6']['name'])) {
+                $config['file_name'] = '6 Akta Pemberitahuan Banding';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file6')) {
                     $akta_pemberitahuan_banding = $this->upload->data("file_name");
                     $this->db->set('akta_pemberitahuan_banding', $akta_pemberitahuan_banding);
@@ -527,6 +625,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file7']['name'])) {
+                $config['file_name'] = '7 Pemberitahuan Penyerahan Memori Banding';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file7')) {
                     $pemberitahuan_penyerahan_mb = $this->upload->data("file_name");
                     $this->db->set('pemberitahuan_penyerahan_mb', $pemberitahuan_penyerahan_mb);
@@ -538,6 +638,8 @@ class Banding extends CI_Controller
 
             if (($_FILES['file8']['name'])) {
                 if ($this->upload->do_upload('file8')) {
+                    $config['file_name'] = '8 Akta Penerimaan Kontra Memori Banding';
+                    $this->upload->initialize($config);
                     $akta_penerimaankontra_mb = $this->upload->data("file_name");
                     $this->db->set('akta_penerimaankontra_mb', $akta_penerimaankontra_mb);
                 } else {
@@ -547,6 +649,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file9']['name'])) {
+                $config['file_name'] = '9 Kontra Memori Banding';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file9')) {
                     $kontra_mb = $this->upload->data("file_name");
                     $this->db->set('kontra_mb', $kontra_mb);
@@ -557,6 +661,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file10']['name'])) {
+                $config['file_name'] = '10 Pemberitahuan penyerahan kontra memori banding';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file10')) {
                     $pemberitahuan_penyerahankontra_mb = $this->upload->data("file_name");
                     $this->db->set('pemberitahuan_penyerahankontra_mb', $pemberitahuan_penyerahankontra_mb);
@@ -567,6 +673,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file11']['name'])) {
+                $config['file_name'] = '11 Relaas Inzage';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file11')) {
                     $relaas_periksa_berkas_pb = $this->upload->data("file_name");
                     $this->db->set('relaas_periksa_berkas_pb', $relaas_periksa_berkas_pb);
@@ -576,6 +684,8 @@ class Banding extends CI_Controller
                 }
             }
             if (($_FILES['file12']['name'])) {
+                $config['file_name'] = '12 Surat Kuasa Khusus';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file12')) {
                     $sk_khusus = $this->upload->data("file_name");
                     $this->db->set('sk_khusus', $sk_khusus);
@@ -586,6 +696,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file13']['name'])) {
+                $config['file_name'] = '13 Bukti Penerimaan Biaya Perkara';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file13')) {
                     $bukt_pengiriman_bpb = $this->upload->data("file_name");
                     $this->db->set('bukt_pengiriman_bpb', $bukt_pengiriman_bpb);
@@ -596,6 +708,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file14']['name'])) {
+                $config['file_name'] = '14 Bukti Setor Biaya Perkara';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file14')) {
                     $bukti_setor_bp_kasnegara = $this->upload->data("file_name");
                     $this->db->set('bukti_setor_bp_kasnegara', $bukti_setor_bp_kasnegara);
@@ -606,6 +720,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file15']['name'])) {
+                $config['file_name'] = '15 Surat lainnya';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file15')) {
                     $surat_lainnya_b = $this->upload->data("file_name");
                     $this->db->set('surat_lainnya_b', $surat_lainnya_b);
@@ -616,6 +732,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file16']['name'])) {
+                $config['file_name'] = '1 Salinan Putusan Pengadilan Agama';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file16')) {
                     $salinan_putusan_pa_rtf = $this->upload->data("file_name");
                     $this->db->set('salinan_putusan_pa_rtf', $salinan_putusan_pa_rtf);
@@ -626,6 +744,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file17']['name'])) {
+                $config['file_name'] = '5 Memori Banding';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file17')) {
                     $memori_banding_rtf = $this->upload->data("file_name");
                     $this->db->set('memori_banding_rtf', $memori_banding_rtf);
@@ -636,6 +756,8 @@ class Banding extends CI_Controller
             }
 
             if (($_FILES['file18']['name'])) {
+                $config['file_name'] = '9 Kontra Memori Banding';
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('file18')) {
                     $kontra_mb_rtf = $this->upload->data("file_name");
                     $this->db->set('kontra_mb_rtf', $kontra_mb_rtf);
@@ -664,25 +786,7 @@ class Banding extends CI_Controller
         redirect('banding/');
     }
 
-    public function uploadbundle($id)
-    {
-        //konten
-        $data['js'] = 'uploadbanding.js';
-        $data['css'] = 'dashboard_banding.css';
-        $data['judul'] = 'Upload Banding';
 
-        //ambil data
-        $data['perkara'] = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
-
-        //usir id tidak sesuai
-        if ($this->session->userdata('id') != $data['perkara'][0]['id_user']) {
-            redirect('banding');
-        } else {
-            $this->load->view('banding/header', $data);
-            $this->load->view('banding/uploadbundle', $data);
-            $this->load->view('banding/footer', $data);
-        }
-    }
 
     public function download_putusan($id)
     {
