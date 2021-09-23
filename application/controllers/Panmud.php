@@ -18,7 +18,7 @@ class Panmud extends CI_Controller
         $data['judul'] = 'Halaman Panmud';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'view_panmud.js';
-        $data['perkara'] = $this->db->get('v_user_pp')->result_array();
+        $data['perkara'] = $this->db->get_where()('users', 'role_id => 3')->result_array();
         $data['perkara_banding'] = $this->m_banding->get_data_perkara();
         $data['majelis_hakim'] = $this->m_banding->user_mh();
 
