@@ -3,7 +3,7 @@ $(document).ready(function () {
     //data table
     const path = window.location.origin + '/laperbang/';
     // const path = `${prapath}/laperbang/`;
-    console.log(path);
+
     //---Tampil data table kegiatan
     let list_perkara = $('#listperkara').DataTable({
         "ajax": `${path}admin/get_data_banding/`,

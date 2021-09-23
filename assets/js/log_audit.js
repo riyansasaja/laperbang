@@ -6,7 +6,7 @@ $(document).ready(function () {
     console.log(path);
     //---Tampil data table kegiatan
     let list_perkara = $('#listperkara').DataTable({
-        "ajax": `${path}Admin/get_data_audittrail/`,
+        "ajax": `${path}admin/get_data_audittrail/`,
         "columns": [
             {
                 "data": null, "sortable": false,

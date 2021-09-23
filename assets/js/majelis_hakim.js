@@ -7,7 +7,7 @@ $(document).ready(function () {
     console.log(path);
     // ---Tampil data table kegiatan
     let majelis_hakim = $('#majelis_hakim').DataTable({
-        "ajax": `${path}Admin/get_user_mh/`,
+        "ajax": `${path}admin/get_user_mh/`,
         "columns": [
             {
                 "data": null, "sortable": false,
