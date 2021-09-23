@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     //data table
-    const path = window.location.origin + '/';
+    const path = window.location.origin + '/laperbang/';
     // const path = `/`;
     console.log(path);
     //---Tampil data table kegiatan

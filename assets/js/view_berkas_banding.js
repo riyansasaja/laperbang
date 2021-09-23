@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    const path = window.location.origin + '/';
+    const path = window.location.origin + '/laperbang/';
     // console.log(prapath);
     // const path = `/`;
 

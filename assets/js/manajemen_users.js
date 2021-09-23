@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    const path = window.location.origin + '/';
+    const path = window.location.origin + '/laperbang/';
     // const path = `/`;
     console.log(path);
 
