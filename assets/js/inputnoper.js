@@ -6,7 +6,7 @@ $(document).ready(function () {
     console.log(path);
     //---Tampil data table kegiatan
     let list_perkara = $('#listperkara').DataTable({
-        "ajax": `${path}/admin/get_data_banding/`,
+        "ajax": `${path}admin/get_data_banding/`,
         "columns": [
             {
                 "data": null, "sortable": false,
@@ -135,7 +135,7 @@ $(document).ready(function () {
                     if (value === 'Penunjukan Majelis Hakim') {
                         $.ajax({
                             type: "POST",
-                            url: `${path}/panmud/updateStatus`,
+                            url: `${path}panmud/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
                                 status_perkara: value,
@@ -152,7 +152,7 @@ $(document).ready(function () {
                     else if (value === 'Penunjukkan Panitera Pengganti') {
                         $.ajax({
                             type: "POST",
-                            url: `${path}/admin/updateStatus`,
+                            url: `${path}admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
                                 status_perkara: value,
@@ -168,7 +168,7 @@ $(document).ready(function () {
                     } else if (value === 'Pengiriman Salinan Putusan') {
                         $.ajax({
                             type: "POST",
-                            url: `${path}/admin/updateStatus`,
+                            url: `${path}admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
                                 status_perkara: value,
@@ -184,7 +184,7 @@ $(document).ready(function () {
                     } else {
                         $.ajax({
                             type: "POST",
-                            url: `${path}/admin/updateStatus`,
+                            url: `${path}admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
                                 status_perkara: value,

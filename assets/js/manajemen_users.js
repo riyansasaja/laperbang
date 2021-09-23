@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    const path = window.location.origin;
+    const path = window.location.origin + '/';
     // const path = `/`;
     console.log(path);
 
@@ -10,7 +10,7 @@ $(document).ready(function () {
         let id = $(this).data('id')
         $.ajax({
             type: "POST",
-            url: `${path}/admin/get_data_user`,
+            url: `${path}admin/get_data_user`,
             data: {
                 id: id,
                 // email: email,
@@ -50,7 +50,7 @@ $(document).ready(function () {
             if (result.isConfirmed) {
                 $.ajax({
                     type: "POST",
-                    url: `${path}/admin/del_user`,
+                    url: `${path}admin/del_user`,
                     data: {
                         id: id
                     },
@@ -107,7 +107,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: `${path}/admin/updateUser`,
+            url: `${path}admin/updateUser`,
             data: {
                 id: id,
                 nama: nama,
@@ -161,7 +161,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: `${path}/admin/addUser`,
+            url: `${path}admin/addUser`,
             data: {
                 id: id,
                 nama: nama,
