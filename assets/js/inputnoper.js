@@ -132,7 +132,24 @@ $(document).ready(function () {
             showCancelButton: true,
             inputValidator: (value) => {
                 return new Promise((resolve) => {
-                    if (value === 'Penunjukkan Panitera Pengganti') {
+                    if (value === 'Penunjukan Majelis Hakim') {
+                        $.ajax({
+                            type: "POST",
+                            url: `${path}/panmud/updateStatus`,
+                            data: {
+                                id_perkara: id_perkara,
+                                status_perkara: value,
+                            },
+                            dataType: "json",
+                            success: function (e) {
+
+                            }
+                        });
+                        Swal.fire('Silahkan Pilih Majelis Hakim', '', 'warning')
+                        pilihMH(id_perkara)
+                        return false;
+                    }
+                    else if (value === 'Penunjukkan Panitera Pengganti') {
                         $.ajax({
                             type: "POST",
                             url: `${path}/admin/updateStatus`,
@@ -186,6 +203,13 @@ $(document).ready(function () {
 
     });//=====
 
+    //function pilih majelis hakim
+    function pilihMH(id_perkara) {
+        $('#uploadMH').modal('show');
+        $('#id_perkaramh').val(id_perkara);
+
+
+    }//end function pilih majelis hakim
 
     //function upload penunjukkan pp
     function uploadPenunjukkanPP(id_perkara) {

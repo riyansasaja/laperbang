@@ -415,15 +415,17 @@ class Admin extends CI_Controller
     {
         $pengedit = $this->session->userdata('nama');
 
+        $id_pp = $this->input->post('id_pp');
         $id_perkara = $this->input->post('id_perkara');
         $id_user_pp = $this->input->post('id_user_pp');
 
         $data = [
+            'id_pp' => $id_pp,
             'id_perkara' => $id_perkara,
             'id_user_pp' => $id_user_pp
         ];
-        $this->db->where('id_perkara', $id_perkara);
-        $this->db->update('penunjukan_pp', $data);
+
+        $this->db->insert()('penunjukan_pp', $data);
 
         $this->session->set_flashdata('flash', 'Penunjukan Panitera Pengganti Berhasil');
 
