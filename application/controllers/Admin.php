@@ -483,7 +483,7 @@ class Admin extends CI_Controller
 
     public function get_data_audittrail()
     {
-        $data = $this->db->get('log_audittrail')->result();
+        $data = $this->m_banding->get_audittrail();
         $result =  [
             'response' => 'success',
             'code' => 600,

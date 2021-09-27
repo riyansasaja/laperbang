@@ -3,7 +3,6 @@ $(document).ready(function () {
 
     const pathdasar = window.location.origin;
     const path = `../profiles/`;
-    console.log(pathdasar);
 
     //panggil function tampil data
     tampil_data();

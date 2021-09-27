@@ -220,4 +220,11 @@ class M_banding extends CI_model
         $query = $this->db->get()->result_array();
         return $query;
     }
+
+    public function get_audittrail()
+    {
+        $query = $this->db->get('log_audittrail')->result();
+        $this->db->order_by('rekam_log', 'ASC');
+        return $query;
+    }
 }
