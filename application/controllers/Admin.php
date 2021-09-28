@@ -20,7 +20,7 @@ class Admin extends CI_Controller
         $data['judul'] = 'Dashboard';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'dashboard_admin.js';
-        $data['perkara'] = $this->db->get_where()('users', array('role_id' => '3'))->result();
+        $data['perkara'] = $this->db->get_where()('users', array('role_id' => '3'))->result_array();
 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/dashboard', $data);
