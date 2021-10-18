@@ -46,7 +46,10 @@
                                         </tr>
                                         <tr>
                                             <td>Penetapan Majelis Hakim</td>
-                                            <td><?= $db->majelis_hakim; ?></td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfHakim" data-id="bundle_a/<?= $db->majelis_hakim; ?>" data-judul="c_majelis_hakim" class="text-decoration-none text-reset">
+                                                    <?= $db->majelis_hakim; ?>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Penunjukan Panitera Pengganti</td>
