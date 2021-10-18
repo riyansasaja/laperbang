@@ -1,9 +1,9 @@
 console.log('ini banding user_profile.js');
 $(document).ready(function () {
 
-    const pathdasar = window.location.origin;
-    const path = `${pathdasar}/profiles/`;
-    console.log(pathdasar);
+    // const pathdasar = window.location.origin;
+    const path = `../../profiles/`;
+
 
     //panggil function tampil data
     tampil_data();

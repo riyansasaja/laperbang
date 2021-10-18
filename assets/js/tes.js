@@ -2,8 +2,8 @@ console.log('ini TES.js');
 
 
 // const pathdasar = window.origin;
-const path = `/profiles/`;
-console.log(pathdasar);
+const path = `../../profiles/`;
+
 
 $.ajax({
     type: "POST",

@@ -2,12 +2,12 @@ $(document).ready(function () {
 
     //data table
     // $('#tablePerkaraHakim').DataTable();
-    const path = window.location.origin;
-    // const path = `/`;
+    const prapath = window.location.origin;
+    const path = `../../admin/`;
     console.log(path);
     // ---Tampil data table kegiatan
     let majelis_hakim = $('#majelis_hakim').DataTable({
-        "ajax": `${path}/Admin/get_user_mh/`,
+        "ajax": `${path}get_user_mh/`,
         "columns": [
             {
                 "data": null, "sortable": false,

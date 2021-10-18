@@ -74,9 +74,9 @@
             <div class="modal-body">
                 <form method="post" action="<?php echo base_url('admin/uploadPutusan'); ?>" enctype="multipart/form-data">
                     <input type="text" id="id_perkara" name="id_perkara" hidden>
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label">Silahkan Upload File Putusan Perkara</label>
-                        <input class="form-control" type="file" id="formFile" name="file_putusan">
+                    <div class="mb-3" id="box">
+                        <label for="formFile" class="form-label" id="label_text">Silahkan Upload File Putusan Perkara</label>
+                        <input class="form-control" type="file" id="input1" name="file_putusan" required>
                     </div>
 
 
@@ -109,7 +109,7 @@
                         <!-- <label for="user_pp" class="form-label">Panitera Pengganti</label> -->
                         <select class="form-select" id="user_pp" name="id_user_pp">
                             <option value="" selected>-- Pilih --</option>
-                            <?php foreach ($perkara as $perk) : ?>
+                            <?php foreach ($panitera as $perk) : ?>
                                 <option value="<?= $perk['id'] ?>"><?= $perk['nama'] ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -157,6 +157,31 @@
                         <label for="formFile" class="form-label">Silahkan Upload File Penunjukkan PP</label>
                         <input class="form-control" type="file" id="formFile" name="file">
                     </div> -->
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- //modal upload file -->
+<div class="modal fade" id="Modalupload" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form method="post" action="<?php echo base_url('admin/uploadPutusan'); ?>" enctype="multipart/form-data">
+                    <input type="text" id="id_st" name="id_perkara" hidden>
+                    <div class="mb-3" id="box">
+                        <label for="formFile" class="form-label" id="label_text">Silahkan Upload File (Optional)</label>
+                        <input class="form-control" type="file" id="inp" name="file_1">
+
+                    </div>
 
 
             </div>
