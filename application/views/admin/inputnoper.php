@@ -105,7 +105,7 @@
                     <input type="text" id="id_perkarapp" name="id_perkara" hidden>
 
 
-                    <div class="row mb-3">
+                    <div class="mb-3">
                         <!-- <label for="user_pp" class="form-label">Panitera Pengganti</label> -->
                         <select class="form-select" id="user_pp" name="id_user_pp">
                             <option value="" selected>-- Pilih --</option>
@@ -113,6 +113,12 @@
                                 <option value="<?= $perk['id'] ?>"><?= $perk['nama'] ?></option>
                             <?php endforeach; ?>
                         </select>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Upload dokumen Penunjukkan Panitera Pengganti</label>
+                        <input class="form-control" type="file" id="input1" name="file_putusan">
+
                     </div>
 
 
@@ -141,7 +147,7 @@
                     <input type="text" id="id_perkaramh" name="id_perkara" hidden>
 
 
-                    <div class="row mb-3">
+                    <div class="mb-3">
                         <!-- <label for="user_pp" class="form-label">Panitera Pengganti</label> -->
                         <select class="form-select" id="user_pp" name="majelis_hakim">
                             <option value="" selected>-- Pilih --</option>
@@ -151,12 +157,13 @@
                             <option value="C">C</option>
 
                         </select>
+
                     </div>
 
-                    <!-- <div class="row mb-3">
-                        <label for="formFile" class="form-label">Silahkan Upload File Penunjukkan PP</label>
-                        <input class="form-control" type="file" id="formFile" name="file">
-                    </div> -->
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Upload dokumen PMH</label>
+                        <input class="form-control" type="file" id="formFile" name="file_putusan">
+                    </div>
 
 
             </div>

@@ -397,24 +397,81 @@ class Admin extends CI_Controller
                 if ($this->upload->do_upload('file_2')) {
                     $file = $this->upload->data("file_name");
                     $this->db->set('phs_lanj', $file);
+                } else {
+                    $this->session->set_flashdata('msg', 'Upload file gagal');
+                    redirect('admin/inputNoper');
                 }
             }
             if (($_FILES['file_3']['name'])) {
                 if ($this->upload->do_upload('file_3')) {
                     $file = $this->upload->data("file_name");
                     $this->db->set('sidang_pertama', $file);
+                } else {
+                    $this->session->set_flashdata('msg', 'Upload file gagal');
+                    redirect('admin/inputNoper');
                 }
             }
             if (($_FILES['file_4']['name'])) {
                 if ($this->upload->do_upload('file_4')) {
                     $file = $this->upload->data("file_name");
                     $this->db->set('sidang_lanj', $file);
+                } else {
+                    $this->session->set_flashdata('msg', 'Upload file gagal');
+                    redirect('admin/inputNoper');
+                }
+            }
+            if (($_FILES['file_5']['name'])) {
+                if ($this->upload->do_upload('file_5')) {
+                    $file = $this->upload->data("file_name");
+                    $this->db->set('sidang_lanj1', $file);
+                } else {
+                    $this->session->set_flashdata('msg', 'Upload file gagal');
+                    redirect('admin/inputNoper');
+                }
+            }
+            if (($_FILES['file_6']['name'])) {
+                if ($this->upload->do_upload('file_6')) {
+                    $file = $this->upload->data("file_name");
+                    $this->db->set('sidang_lanj2', $file);
+                } else {
+                    $this->session->set_flashdata('msg', 'Upload file gagal');
+                    redirect('admin/inputNoper');
+                }
+            }
+            if (($_FILES['file_7']['name'])) {
+                if ($this->upload->do_upload('file_7')) {
+                    $file = $this->upload->data("file_name");
+                    $this->db->set('sidang_lanj3', $file);
+                } else {
+                    $this->session->set_flashdata('msg', 'Upload file gagal');
+                    redirect('admin/inputNoper');
+                }
+            }
+            if (($_FILES['file_8']['name'])) {
+                if ($this->upload->do_upload('file_8')) {
+                    $file = $this->upload->data("file_name");
+                    $this->db->set('sidang_lanj4', $file);
+                } else {
+                    $this->session->set_flashdata('msg', 'Upload file gagal');
+                    redirect('admin/inputNoper');
+                }
+            }
+            if (($_FILES['file_9']['name'])) {
+                if ($this->upload->do_upload('file_9')) {
+                    $file = $this->upload->data("file_name");
+                    $this->db->set('sidang_lanj5', $file);
+                } else {
+                    $this->session->set_flashdata('msg', 'Upload file gagal');
+                    redirect('admin/inputNoper');
                 }
             }
             if (($_FILES['file_putusan']['name'])) {
                 if ($this->upload->do_upload('file_putusan')) {
                     $file = $this->upload->data("file_name");
                     $this->db->set('putusan_banding', $file);
+                } else {
+                    $this->session->set_flashdata('msg', 'Upload file gagal');
+                    redirect('admin/inputNoper');
                 }
             }
         }
@@ -495,7 +552,7 @@ class Admin extends CI_Controller
         $this->db->where('id_perkara', $id_perkara);
         $this->db->update('penunjukan_pp', $data);
 
-        $this->session->set_flashdata('flash', 'Penunjukan Panitera Pengganti Berhasil');
+        $this->session->set_flashdata('flas h', 'Penunjukan Panitera Pengganti Berhasil');
 
         $audittrail = array(
             'log_id' => '',
@@ -506,7 +563,7 @@ class Admin extends CI_Controller
         $this->db->set('rekam_log', 'NOW()', FALSE);
         $this->db->insert('log_audittrail', $audittrail);
 
-        redirect('Admin');
+        redirect('Admin/inputnoper');
     }
 
     public function pilih_mh()
@@ -536,7 +593,8 @@ class Admin extends CI_Controller
             'majelis_hakim' => $majelis_hakim,
             'file_pmh' => $file,
         ];
-        $this->db->insert('pmh', $data);
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('pmh', $data);
 
         $audittrail = array(
             'log_id' => '',
