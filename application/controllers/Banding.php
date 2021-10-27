@@ -70,15 +70,15 @@ class Banding extends CI_Controller
             'keterangan' => $this->input->post('keterangan', true),
         ];
         $this->db->insert('list_perkara', $data);
-        // $perkara_id = $this->db->insert_id();
-        // // var_dump($perkara_id);
-        // // die;
-        // $pp = [
-        //     'id_perkara' => $perkara_id,
-        // ];
-        // $this->db->insert('penunjukan_pp', $pp);
+        #buat folder sesuai dengan nomor perkara
+        // $folder = strtr($no_perkara_input, '/', '-');
+        mkdir("./fileuploads/$no_perkara_input");
+        mkdir("./fileuploads/$no_perkara_input/bundel-a");
+        mkdir("./fileuploads/$no_perkara_input/bundel-b");
+        mkdir("./fileuploads/$no_perkara_input/bundel-pta");
+        #buat flashdata
         $this->session->set_flashdata('flash', 'berhasil disimpan');
-
+        #buat audittrail
         $audittrail = array(
             'log_id' => '',
             'isi_log' => "User <b>" . $pengedit . "</b> telah menambah data perkara",
@@ -120,15 +120,6 @@ class Banding extends CI_Controller
         $nip_pejabat = $this->input->post('nip_pejabat');
         $banyaknya = $this->input->post('banyaknya');
         $keterangan = $this->input->post('keterangan');
-
-        // $this->db->set('no_perkara', $no_perkara);
-        // $this->db->set('nm_pihak', $nm_pihak);
-        // $this->db->set('jns_perkara', $jns_perkara);
-        // $this->db->where('id_perkara', $id_perkara);
-        // $this->db->update('list_perkara');
-
-        // $this->session->set_flashdata('flash', 'berhasil diubah');
-        // redirect('banding/');
 
         $data = [
             'id_perkara' => $id_perkara,
@@ -180,11 +171,12 @@ class Banding extends CI_Controller
     {
         //ambil nama user
         $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('folder');
         // $kode_pa = $this->session->userdata('kode_pa');
         // $tanggal = date("Ymd");
         // $nama_file = $tanggal . '_' . $kode_pa . '_';
 
-        $config['upload_path']          = './assets/files/SuratPengantar';
+        $config['upload_path']          = "./fileuploads/$folder/";
         $config['allowed_types']        = 'pdf';
         $config['max_size']             = 5000;
         $this->load->library('upload', $config);
