@@ -70,6 +70,13 @@ class Banding extends CI_Controller
             'keterangan' => $this->input->post('keterangan', true),
         ];
         $this->db->insert('list_perkara', $data);
+        #buat folder perkara
+        $folder = strtr($no_perkara_input, '/', '-');
+        mkdir(".assets/files/$folder");
+        mkdir(".assets/files/$folder/bundel-a");
+        mkdir(".assets/files/$folder/bundel-b");
+        mkdir(".assets/files/$folder/bundel-pta");
+        #buat message berhasil
         $this->session->set_flashdata('flash', 'berhasil disimpan');
 
         $audittrail = array(
@@ -114,15 +121,6 @@ class Banding extends CI_Controller
         $banyaknya = $this->input->post('banyaknya');
         $keterangan = $this->input->post('keterangan');
 
-        // $this->db->set('no_perkara', $no_perkara);
-        // $this->db->set('nm_pihak', $nm_pihak);
-        // $this->db->set('jns_perkara', $jns_perkara);
-        // $this->db->where('id_perkara', $id_perkara);
-        // $this->db->update('list_perkara');
-
-        // $this->session->set_flashdata('flash', 'berhasil diubah');
-        // redirect('banding/');
-
         $data = [
             'id_perkara' => $id_perkara,
             'no_perkara' => $no_perkara_input,
@@ -151,23 +149,6 @@ class Banding extends CI_Controller
 
         redirect('banding/');
     }
-
-    // private function _uploadFile($path)
-    // {
-    //     $config['upload_path']          = './assets/files/' . $path;
-    //     $config['allowed_types']        = 'doc|docx|pdf';
-    //     $config['max_size']             = 5000;
-
-
-    //     $this->load->library('upload', $config);
-    //     $this->upload->initialize($config);
-    //     if ($this->upload->do_upload('file_upload')) {
-    //         return $this->upload->data("file_name");
-    //     } else {
-    //         $this->session->set_flashdata('msg', 'Upload data gagal');
-    //         redirect('banding/');
-    //     }
-    // }
 
     function pengantar_upload()
     {
