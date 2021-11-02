@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['sp_perkara'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="SuratPengantar/<?= $perkara['0']['sp_perkara'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace("/", "-", $perkara['0']['no_perkara']) ?>/<?= $perkara['0']['sp_perkara'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['sp_perkara'] ?>
                                         </a>
                                     </div>
@@ -140,7 +140,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['bukti_pemb_panjar'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['bukti_pemb_panjar'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace("/", "-", $perkara['0']['no_perkara']) ?>/bundle_a/<?= $perkara['0']['bukti_pemb_panjar'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['bukti_pemb_panjar'] ?>
                                         </a>
                                     </div>
