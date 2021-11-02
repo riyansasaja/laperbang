@@ -154,11 +154,13 @@ class Banding extends CI_Controller
     {
         //ambil nama user
         $pengedit = $this->session->userdata('nama');
+        $namaFolder = $this->input->post('no_perkara');
+        $folder = str_replace('/', '-', $namaFolder);
         // $kode_pa = $this->session->userdata('kode_pa');
         // $tanggal = date("Ymd");
         // $nama_file = $tanggal . '_' . $kode_pa . '_';
 
-        $config['upload_path']          = './assets/files/SuratPengantar';
+        $config['upload_path']          = "./assets/files/$folder";
         $config['allowed_types']        = 'pdf';
         $config['max_size']             = 5000;
         $this->load->library('upload', $config);
@@ -662,7 +664,7 @@ class Banding extends CI_Controller
     {
         $data['perkara'] = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
         $folder = str_replace("/", "-", $data['perkara']['0']['no_perkara']);
-        force_download('assets/files/putusan/' . $data['perkara'][0]['putusan_banding'], NULL);
+        force_download("assets/files/$folder/putusan/" . $data['perkara'][0]['putusan_banding'], NULL);
 
         if ($data['perkara'][0]['putusan_banding'] != null) {
             force_download("assets/files/$folder/putusan/" . $data['perkara'][0]['putusan_banding'], NULL);
