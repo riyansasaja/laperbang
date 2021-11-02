@@ -287,14 +287,14 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                             <!-- letakkan hasil explode di isian -->
                             <div class="col-sm-10">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="nomor_perkara" value="<?= $nomor_perkara_explode[0] ?>">
+                                    <input type="text" class="form-control" name="nomor_perkara" value="<?= $nomor_perkara_explode[0] ?>" readonly>
                                     <span class="input-group-text">/</span>
-                                    <select class="form-select" aria-label="Default select example" name="kode_perkara">
+                                    <select class="form-select" aria-label="Default select example" name="kode_perkara" disabled>
                                         <option value="Pdt.P" <?= $nomor_perkara_explode[1] == 'Pdt.P' ? 'selected' : ''; ?>>Pdt.P</option>
                                         <option value="Pdt.G" <?= $nomor_perkara_explode[1] == 'Pdt.G' ? 'selected' : ''; ?>>Pdt.G</option>
                                     </select>
                                     <span class="input-group-text">/</span>
-                                    <input type="text" class="form-control" name="tahun_perkara" value="<?= $nomor_perkara_explode[2] ?>">
+                                    <input type="text" class="form-control" name="tahun_perkara" value="<?= $nomor_perkara_explode[2] ?>" readonly>
                                     <span class="input-group-text">/</span>
                                     <input type="text" class="form-control" name="kode_pa" value="<?= $this->session->userdata('kode_pa'); ?>" readonly>
                                 </div>
@@ -371,7 +371,7 @@ foreach ($perkara_banding as $lhs) : $no++; ?>
                         <div class="row mb-3">
                             <label for="nipPanitera" class="col-sm-2 col-form-label">NIP Pejabat</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nip_pejabat" value="<?php echo $lhs['nip_pejabat']; ?>">
+                                <input type="text" class="form-control" name="nip_pejabat" value="<?php echo $lhs['nip_pejabat']; ?>" onkeypress="return hanyaAngka(event)" required maxlength="18" minlength="18">
                             </div>
                         </div>
                         <div class="row mb-3">

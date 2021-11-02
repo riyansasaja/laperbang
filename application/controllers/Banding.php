@@ -72,10 +72,10 @@ class Banding extends CI_Controller
         $this->db->insert('list_perkara', $data);
         #buat folder sesuai dengan nomor perkara
         $folder = strtr($no_perkara_input, '/', '-');
-        mkdir("./fileuploads/$folder");
-        mkdir("./fileuploads/$folder/bundel-a");
-        mkdir("./fileuploads/$folder/bundel-b");
-        mkdir("./fileuploads/$folder/bundel-pta");
+        mkdir("./assets/files/$folder");
+        mkdir("./assets/files/$folder/bundel-a");
+        mkdir("./assets/files/$folder/bundel-b");
+        mkdir("./assets/files/$folder/bundel-pta");
         #buat flashdata
         $this->session->set_flashdata('flash', 'berhasil disimpan');
         #buat audittrail
@@ -161,7 +161,7 @@ class Banding extends CI_Controller
         // $tanggal = date("Ymd");
         // $nama_file = $tanggal . '_' . $kode_pa . '_';
 
-        $config['upload_path']          = "./fileuploads/$folder_asli/";
+        $config['upload_path']          = "./assets/files/$folder_asli/";
         $config['allowed_types']        = 'pdf';
         $config['max_size']             = 5000;
         $this->load->library('upload', $config);
@@ -205,7 +205,7 @@ class Banding extends CI_Controller
         $namaFolder = $this->input->post('no_perkara');
         $folder_asli = str_replace("/", "-", $namaFolder);
 
-        $config['upload_path']          = "./fileuploads/$folder_asli/bundel-a";
+        $config['upload_path']          = "./assets/files/$folder_asli/bundel-a";
         $config['allowed_types']        = 'pdf';
         $config['max_size']             = 80000;
         $this->load->library('upload', $config);
@@ -430,7 +430,7 @@ class Banding extends CI_Controller
         $namaFolder = $this->input->post('no_perkara');
         $folder_asli = str_replace("/", "-", $namaFolder);
 
-        $config['upload_path']          = "./fileuploads/$folder_asli/bundel-b";
+        $config['upload_path']          = "./assets/files/$folder_asli/bundel-b";
         $config['allowed_types']        = 'pdf|rtf';
         $config['max_size']             = 80024;
         $this->load->library('upload', $config);
@@ -668,15 +668,12 @@ class Banding extends CI_Controller
     public function download_putusan($id)
     {
         $data['perkara'] = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
-        // $namaFolder = $data['perkara'][0]['id_perkara'];
+        $folder = str_replace('/', '-', $data['perkara'][0]['no_perkara']);
 
-        // $folder_asli = str_replace("/", "-", $data['perkara'][0]['no_perkara']);
-        // var_dump($folder_asli);
-        // die;
-        force_download('assets/files/putusan' . $data['perkara'][0]['putusan_banding'], NULL);
+        force_download("assets/files/$folder/putusan" . $data['perkara'][0]['putusan_banding'], NULL);
 
         if ($data['perkara'][0]['putusan_banding'] != null) {
-            force_download('assets/files/putusan' . $data['perkara'][0]['putusan_banding'], NULL);
+            force_download("assets/files/$folder/putusan" . $data['perkara'][0]['putusan_banding'], NULL);
         } else {
             $this->session->set_flashdata('msg', 'Belum ada file putusan');
             redirect('banding/');
