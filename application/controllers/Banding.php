@@ -71,11 +71,11 @@ class Banding extends CI_Controller
         ];
         $this->db->insert('list_perkara', $data);
         #buat folder sesuai dengan nomor perkara
-        // $folder = strtr($no_perkara_input, '/', '-');
-        mkdir("./fileuploads/$no_perkara_input");
-        mkdir("./fileuploads/$no_perkara_input/bundel-a");
-        mkdir("./fileuploads/$no_perkara_input/bundel-b");
-        mkdir("./fileuploads/$no_perkara_input/bundel-pta");
+        $folder = strtr($no_perkara_input, '/', '-');
+        mkdir("./fileuploads/$folder");
+        mkdir("./fileuploads/$folder/bundel-a");
+        mkdir("./fileuploads/$folder/bundel-b");
+        mkdir("./fileuploads/$folder/bundel-pta");
         #buat flashdata
         $this->session->set_flashdata('flash', 'berhasil disimpan');
         #buat audittrail
@@ -150,33 +150,18 @@ class Banding extends CI_Controller
         redirect('banding/');
     }
 
-    // private function _uploadFile($path)
-    // {
-    //     $config['upload_path']          = './assets/files/' . $path;
-    //     $config['allowed_types']        = 'doc|docx|pdf';
-    //     $config['max_size']             = 5000;
-
-
-    //     $this->load->library('upload', $config);
-    //     $this->upload->initialize($config);
-    //     if ($this->upload->do_upload('file_upload')) {
-    //         return $this->upload->data("file_name");
-    //     } else {
-    //         $this->session->set_flashdata('msg', 'Upload data gagal');
-    //         redirect('banding/');
-    //     }
-    // }
-
     function pengantar_upload()
     {
         //ambil nama user
         $pengedit = $this->session->userdata('nama');
-        $folder = $this->input->post('folder');
+
+        $namaFolder = $this->input->post('no_perkara');
+        $folder_asli = str_replace("/", "-", $namaFolder);
         // $kode_pa = $this->session->userdata('kode_pa');
         // $tanggal = date("Ymd");
         // $nama_file = $tanggal . '_' . $kode_pa . '_';
 
-        $config['upload_path']          = "./fileuploads/$folder/";
+        $config['upload_path']          = "./fileuploads/$folder_asli/";
         $config['allowed_types']        = 'pdf';
         $config['max_size']             = 5000;
         $this->load->library('upload', $config);
@@ -217,8 +202,10 @@ class Banding extends CI_Controller
     {
 
         $pengedit = $this->session->userdata('nama');
+        $namaFolder = $this->input->post('no_perkara');
+        $folder_asli = str_replace("/", "-", $namaFolder);
 
-        $config['upload_path']          = './assets/files/bundle_a';
+        $config['upload_path']          = "./fileuploads/$folder_asli/bundel-a";
         $config['allowed_types']        = 'pdf';
         $config['max_size']             = 80000;
         $this->load->library('upload', $config);
@@ -440,8 +427,10 @@ class Banding extends CI_Controller
     {
 
         $pengedit = $this->session->userdata('nama');
+        $namaFolder = $this->input->post('no_perkara');
+        $folder_asli = str_replace("/", "-", $namaFolder);
 
-        $config['upload_path']          = './assets/files/bundle_b';
+        $config['upload_path']          = "./fileuploads/$folder_asli/bundel-b";
         $config['allowed_types']        = 'pdf|rtf';
         $config['max_size']             = 80024;
         $this->load->library('upload', $config);
@@ -679,10 +668,15 @@ class Banding extends CI_Controller
     public function download_putusan($id)
     {
         $data['perkara'] = $this->db->get_where('list_perkara', ['id_perkara' => $id])->result_array();
-        force_download('assets/files/putusan/' . $data['perkara'][0]['putusan_banding'], NULL);
+        // $namaFolder = $data['perkara'][0]['id_perkara'];
+
+        // $folder_asli = str_replace("/", "-", $data['perkara'][0]['no_perkara']);
+        // var_dump($folder_asli);
+        // die;
+        force_download('assets/files/putusan' . $data['perkara'][0]['putusan_banding'], NULL);
 
         if ($data['perkara'][0]['putusan_banding'] != null) {
-            force_download('assets/files/putusan/' . $data['perkara'][0]['putusan_banding'], NULL);
+            force_download('assets/files/putusan' . $data['perkara'][0]['putusan_banding'], NULL);
         } else {
             $this->session->set_flashdata('msg', 'Belum ada file putusan');
             redirect('banding/');

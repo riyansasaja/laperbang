@@ -104,6 +104,7 @@ $(document).ready(function () {
         let data = list_perkara.row($(this).parents('tr')).data();
         let id_perkara = data['id_perkara'];
 
+
         //tampilkan pilihan jenis perkara lewat SWAL2
         const { value: staper } = Swal.fire({
             title: 'Pilih status perkara',
@@ -138,6 +139,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
+
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -315,6 +317,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
+                                no_perkara: no_perkara,
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -323,7 +326,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        uploadSalinanPutusan(id_perkara)
+                        uploadSalinanPutusan(no_perkara)
                         return false;
                     } else {
                         $.ajax({
@@ -359,14 +362,18 @@ $(document).ready(function () {
     function uploadPenunjukkanPP(id_perkara) {
         $('#uploadFilePP').modal('show');
         $('#id_perkarapp').val(id_perkara);
-        console.log(id_perkara);
+
 
     }//end function upload penunjukkan pp
 
     //function upload file
     function uploadPHS1(id_perkara) {
+        console.log('ujicoba');
         $('#Modalupload').modal('show');
         $('#id_st').val(id_perkara);
+
+
+
 
     }//end function upload file
 
@@ -374,7 +381,7 @@ $(document).ready(function () {
     function uploadPHS_lanj(id_perkara) {
         $('#Modalupload').modal('show');
         $('#id_st').val(id_perkara);
-        $('#inp').attr('name', 'file_2');
+
 
     }//end function upload file
 
@@ -382,7 +389,7 @@ $(document).ready(function () {
     function uploadSidang_pertama(id_perkara) {
         $('#Modalupload').modal('show');
         $('#id_st').val(id_perkara);
-        $('#inp').attr('name', 'file_3');
+
 
     }//end function upload file
 
@@ -390,7 +397,7 @@ $(document).ready(function () {
     function uploadSidang_lanj(id_perkara) {
         $('#Modalupload').modal('show');
         $('#id_st').val(id_perkara);
-        $('#inp').attr('name', 'file_4');
+
 
     }//end function upload file
 
@@ -398,7 +405,7 @@ $(document).ready(function () {
     function uploadSidang_lanj1(id_perkara) {
         $('#Modalupload').modal('show');
         $('#id_st').val(id_perkara);
-        $('#inp').attr('name', 'file_5');
+
 
     }//end function upload file
 
@@ -406,7 +413,6 @@ $(document).ready(function () {
     function uploadSidang_lanj2(id_perkara) {
         $('#Modalupload').modal('show');
         $('#id_st').val(id_perkara);
-        $('#inp').attr('name', 'file_6');
 
     }//end function upload file
 
@@ -414,7 +420,7 @@ $(document).ready(function () {
     function uploadSidang_lanj3(id_perkara) {
         $('#Modalupload').modal('show');
         $('#id_st').val(id_perkara);
-        $('#inp').attr('name', 'file_7');
+
 
     }//end function upload file
 
@@ -422,7 +428,7 @@ $(document).ready(function () {
     function uploadSidang_lanj4(id_perkara) {
         $('#Modalupload').modal('show');
         $('#id_st').val(id_perkara);
-        $('#inp').attr('name', 'file_8');
+
 
     }//end function upload file
 
@@ -430,7 +436,7 @@ $(document).ready(function () {
     function uploadSidang_lanj5(id_perkara) {
         $('#Modalupload').modal('show');
         $('#id_st').val(id_perkara);
-        $('#inp').attr('name', 'file_9');
+
 
     }//end function upload file
 
@@ -439,6 +445,7 @@ $(document).ready(function () {
     function uploadSalinanPutusan(id_perkara) {
         $('#uploadFileModal').modal('show');
         $('#id_perkara').val(id_perkara);
+        //$('#no_perkara').val(no_perkara);
 
     }//end function upload salinan putusan
 

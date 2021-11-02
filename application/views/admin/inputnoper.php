@@ -50,7 +50,7 @@
             <div class="modal-body">
                 <div class="input-group">
                     <input type="hidden" class="form-control" id="tgl_reg_banding" name="tgl_reg_banding" value="<?php echo date('Y-m-d'); ?>">
-                    <input type="text" class="form-control" name="nomor_perkara_banding" id="nomor_perkara_banding">
+                    <input type="text" class="form -control" name="nomor_perkara_banding" id="nomor_perkara_banding">
                     <span class="input-group-text">/Pdt.G/</span>
                     <input type="text" class="form-control" name="tahun_perkara_banding" id="tahun_perkara_banding" value="<?= date('Y'); ?>">
                     <span class="input-group-text">/PTA.Mdo</span>
@@ -73,7 +73,8 @@
 
             <div class="modal-body">
                 <form method="post" action="<?php echo base_url('admin/uploadPutusan'); ?>" enctype="multipart/form-data">
-                    <input type="text" id="id_perkara" name="id_perkara" hidden>
+                    <input type="text" id="id_perkara" name="id_perkara">
+                    <input type="text" id="no_perkara" name="no_perkara">
                     <div class="mb-3" id="box">
                         <label for="formFile" class="form-label" id="label_text">Silahkan Upload File Putusan Perkara</label>
                         <input class="form-control" type="file" id="input1" name="file_putusan" required>
@@ -103,6 +104,7 @@
                 <form method="post" action="<?php echo base_url('admin/upload_pp'); ?>" enctype="multipart/form-data">
 
                     <input type="text" id="id_perkarapp" name="id_perkara" hidden>
+                    <input type="text" id="id_perkarapp" name="no_perkara" hidden>
 
 
                     <div class="mb-3">
@@ -186,8 +188,7 @@
                     <input type="text" id="id_st" name="id_perkara" hidden>
                     <div class="mb-3" id="box">
                         <label for="formFile" class="form-label" id="label_text">Silahkan Upload File (Optional)</label>
-                        <input class="form-control" type="file" id="inp" name="file_1">
-
+                        <input class="form-control" type="file" id="inp" name="file_1"></input>
                     </div>
 
 

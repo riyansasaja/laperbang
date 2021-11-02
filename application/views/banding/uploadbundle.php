@@ -69,6 +69,8 @@
                     <div id="suratPengantar" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/pengantar_upload'); ?>" enctype="multipart/form-data">
+
+                                <input type="text" value="<?= $perkara[0]['no_perkara'] ?>" hidden name="no_perkara"></input>
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
@@ -101,6 +103,7 @@
                     <div id="bundleA" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/multiple_upload'); ?>" enctype="multipart/form-data">
+                                <input type="text" value="<?= $perkara[0]['no_perkara'] ?>" hidden name="no_perkara"></input>
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
@@ -376,6 +379,7 @@
                     <div id="bundleB" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/multiple_uploadB'); ?>" enctype="multipart/form-data">
+                                <input type="text" value="<?= $perkara[0]['no_perkara'] ?>" hidden name="no_perkara"></input>
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
@@ -653,6 +657,7 @@
                 </div>
 
                 <!-- upload putusan -->
+
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed bg-primary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#putusan" aria-expanded="false" aria-controls="collapseTwo">
@@ -661,10 +666,12 @@
                     </h2>
                     <div id="putusan" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
+                            <!-- <input type="text" value="<?= $per['no_perkara'] ?>" name="no_perkara"></input> -->
                             <a class="btn btn-primary" href="<?php echo base_url() ?>index.php/banding/download_putusan/<?= $perkara[0]['id_perkara'] ?>">Download Putusan</a>
                         </div>
                     </div>
                 </div>
+
                 <!-- </ div> -->
                 <!-- end accordion -->
             </div>

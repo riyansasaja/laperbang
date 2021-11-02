@@ -34,6 +34,8 @@ class Admin extends CI_Controller
         $data['js'] = 'inputnoper.js';
         $data['panitera'] = $this->db->get_where('users', ['role_id' => 5])->result_array();
 
+
+
         $this->load->view('admin/header', $data);
         $this->load->view('admin/inputnoper', $data);
         $this->load->view('admin/footer', $data);
@@ -371,100 +373,20 @@ class Admin extends CI_Controller
     {
 
         $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('no_perkara');
 
-        $config['upload_path']          = './assets/files/putusan';
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./fileuploads/";
         $config['allowed_types']        = 'doc|docx|pdf';
         $config['max_size']             = 5000;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
 
-        if (($_FILES['file_1']['name']) == null && ($_FILES['file_2']['name']) == null && ($_FILES['file_3']['name']) == null &&
-            ($_FILES['file_4']['name']) == null && ($_FILES['file_putusan']['name']) == null
-        ) {
+        if (($_FILES['file_putusan']['name']) == null) {
             $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
             redirect('admin/inputNoper');
         } else {
-            if (($_FILES['file_1']['name'])) {
-                if ($this->upload->do_upload('file_1')) {
-                    $file = $this->upload->data("file_name");
-                    $this->db->set('phs1', $file);
-                } else {
-                    $this->session->set_flashdata('msg', 'Upload file gagal');
-                    redirect('admin/inputNoper');
-                }
-            }
-            if (($_FILES['file_2']['name'])) {
-                if ($this->upload->do_upload('file_2')) {
-                    $file = $this->upload->data("file_name");
-                    $this->db->set('phs_lanj', $file);
-                } else {
-                    $this->session->set_flashdata('msg', 'Upload file gagal');
-                    redirect('admin/inputNoper');
-                }
-            }
-            if (($_FILES['file_3']['name'])) {
-                if ($this->upload->do_upload('file_3')) {
-                    $file = $this->upload->data("file_name");
-                    $this->db->set('sidang_pertama', $file);
-                } else {
-                    $this->session->set_flashdata('msg', 'Upload file gagal');
-                    redirect('admin/inputNoper');
-                }
-            }
-            if (($_FILES['file_4']['name'])) {
-                if ($this->upload->do_upload('file_4')) {
-                    $file = $this->upload->data("file_name");
-                    $this->db->set('sidang_lanj', $file);
-                } else {
-                    $this->session->set_flashdata('msg', 'Upload file gagal');
-                    redirect('admin/inputNoper');
-                }
-            }
-            if (($_FILES['file_5']['name'])) {
-                if ($this->upload->do_upload('file_5')) {
-                    $file = $this->upload->data("file_name");
-                    $this->db->set('sidang_lanj1', $file);
-                } else {
-                    $this->session->set_flashdata('msg', 'Upload file gagal');
-                    redirect('admin/inputNoper');
-                }
-            }
-            if (($_FILES['file_6']['name'])) {
-                if ($this->upload->do_upload('file_6')) {
-                    $file = $this->upload->data("file_name");
-                    $this->db->set('sidang_lanj2', $file);
-                } else {
-                    $this->session->set_flashdata('msg', 'Upload file gagal');
-                    redirect('admin/inputNoper');
-                }
-            }
-            if (($_FILES['file_7']['name'])) {
-                if ($this->upload->do_upload('file_7')) {
-                    $file = $this->upload->data("file_name");
-                    $this->db->set('sidang_lanj3', $file);
-                } else {
-                    $this->session->set_flashdata('msg', 'Upload file gagal');
-                    redirect('admin/inputNoper');
-                }
-            }
-            if (($_FILES['file_8']['name'])) {
-                if ($this->upload->do_upload('file_8')) {
-                    $file = $this->upload->data("file_name");
-                    $this->db->set('sidang_lanj4', $file);
-                } else {
-                    $this->session->set_flashdata('msg', 'Upload file gagal');
-                    redirect('admin/inputNoper');
-                }
-            }
-            if (($_FILES['file_9']['name'])) {
-                if ($this->upload->do_upload('file_9')) {
-                    $file = $this->upload->data("file_name");
-                    $this->db->set('sidang_lanj5', $file);
-                } else {
-                    $this->session->set_flashdata('msg', 'Upload file gagal');
-                    redirect('admin/inputNoper');
-                }
-            }
             if (($_FILES['file_putusan']['name'])) {
                 if ($this->upload->do_upload('file_putusan')) {
                     $file = $this->upload->data("file_name");
@@ -477,6 +399,7 @@ class Admin extends CI_Controller
         }
 
         $id_perkara = $this->input->post('id_perkara');
+
         $this->db->where('id_perkara', $id_perkara);
         $this->db->update('list_perkara');
         $this->session->set_flashdata('flash', 'Status berhasil diubah');
@@ -489,39 +412,6 @@ class Admin extends CI_Controller
         $this->db->set('rekam_log', 'NOW()', FALSE);
         $this->db->insert('log_audittrail', $audittrail);
         redirect('admin/inputNoper');
-
-        // if (($_FILES['file_putusan']['name'] != null)) {
-        //     if ($this->upload->do_upload('file_putusan'))   {
-        //         $putusan_banding = $this->upload->data("file_name");
-        //         $id_perkara = $this->input->post('id_perkara');
-        //         $data = [
-        //             'id_perkara' => $id_perkara,
-        //             'putusan_banding' => $putusan_banding
-        //         ];
-        //         $this->db->where('id_perkara', $id_perkara);
-        //         $this->db->update('list_perkara', $data);
-
-        //         $this->session->set_flashdata('flash', 'Upload berhasil');
-
-        //         $audittrail = array(
-        //             'log_id' => '',
-        //             'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
-        //             'nama_log' => $pengedit
-        //         );
-
-        //         $this->db->set('rekam_log', 'NOW()', FALSE);
-        //         $this->db->insert('log_audittrail', $audittrail);
-
-        //         redirect('admin/inputNoper');
-        //         // $this->db->set('putusan_banding', $putusan_banding);
-        //     } else {
-        //         $this->session->set_flashdata('msg', 'Upload file gagal, ekstensi file harus pdf/docx dan ukuran tidak boleh lebih dari 5 mb');
-        //         redirect('admin/inputNoper');
-        //     }
-        // } else {
-        //     $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
-        //     redirect('admin/inputNoper');
-        // }
     }
 
     public function upload_pp()
