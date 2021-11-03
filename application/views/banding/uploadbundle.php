@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['sp_perkara'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace("/", "-", $perkara['0']['no_perkara']) ?>/<?= $perkara['0']['sp_perkara'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="SuratPengantar/<?= $perkara['0']['sp_perkara'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['sp_perkara'] ?>
                                         </a>
                                     </div>
@@ -102,6 +102,7 @@
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/multiple_upload'); ?>" enctype="multipart/form-data">
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
+                                <input type="text" value="<?= $perkara[0]['no_perkara'] ?>" hidden name="no_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
                                     <label for="formFileSm" class="col-4 form-label">Surat Gugatan<h4 class="text-danger">*</h4></label>
