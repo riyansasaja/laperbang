@@ -3,10 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_banding extends CI_model
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+
     public function perkara_januari()
     {
         return $query = $this->db->query("SELECT * FROM list_perkara WHERE ((Month(tgl_register)=1)AND (YEAR(tgl_register)=" . date('Y') . "))");
