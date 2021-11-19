@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    const path = window.location.origin;
+    const path = window.location.origin + '/laperbang/';
     $('#modalPdf').on('show.bs.modal', function (e) {
         let getdata = $(e.relatedTarget).data('id');
         console.log(getdata);
