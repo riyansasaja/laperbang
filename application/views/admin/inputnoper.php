@@ -50,7 +50,7 @@
             <div class="modal-body">
                 <div class="input-group">
                     <input type="hidden" class="form-control" id="tgl_reg_banding" name="tgl_reg_banding" value="<?php echo date('Y-m-d'); ?>">
-                    <input type="text" class="form-control" name="nomor_perkara_banding" id="nomor_perkara_banding">
+                    <input type="text" class="form -control" name="nomor_perkara_banding" id="nomor_perkara_banding">
                     <span class="input-group-text">/Pdt.G/</span>
                     <input type="text" class="form-control" name="tahun_perkara_banding" id="tahun_perkara_banding" value="<?= date('Y'); ?>">
                     <span class="input-group-text">/PTA.Mdo</span>
@@ -73,10 +73,11 @@
 
             <div class="modal-body">
                 <form method="post" action="<?php echo base_url('admin/uploadPutusan'); ?>" enctype="multipart/form-data">
-                    <input type="text" id="id_perkara" name="id_perkara" hidden>
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label">Silahkan Upload File Putusan Perkara</label>
-                        <input class="form-control" type="file" id="formFile" name="file_putusan">
+                    <input type="text" id="id_perkara" name="id_perkara">
+                    <input type="text" id="no_perkara" name="no_perkara">
+                    <div class="mb-3" id="box">
+                        <label for="formFile" class="form-label" id="label_text">Silahkan Upload File Putusan Perkara</label>
+                        <input class="form-control" type="file" id="input1" name="file_putusan" required>
                     </div>
 
 
@@ -103,16 +104,23 @@
                 <form method="post" action="<?php echo base_url('admin/upload_pp'); ?>" enctype="multipart/form-data">
 
                     <input type="text" id="id_perkarapp" name="id_perkara" hidden>
+                    <input type="text" id="id_perkarapp" name="no_perkara" hidden>
 
 
-                    <div class="row mb-3">
+                    <div class="mb-3">
                         <!-- <label for="user_pp" class="form-label">Panitera Pengganti</label> -->
                         <select class="form-select" id="user_pp" name="id_user_pp">
                             <option value="" selected>-- Pilih --</option>
-                            <?php foreach ($perkara as $perk) : ?>
+                            <?php foreach ($panitera as $perk) : ?>
                                 <option value="<?= $perk['id'] ?>"><?= $perk['nama'] ?></option>
                             <?php endforeach; ?>
                         </select>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Upload dokumen Penunjukkan Panitera Pengganti</label>
+                        <input class="form-control" type="file" id="input1" name="file_putusan">
+
                     </div>
 
 
@@ -141,7 +149,7 @@
                     <input type="text" id="id_perkaramh" name="id_perkara" hidden>
 
 
-                    <div class="row mb-3">
+                    <div class="mb-3">
                         <!-- <label for="user_pp" class="form-label">Panitera Pengganti</label> -->
                         <select class="form-select" id="user_pp" name="majelis_hakim">
                             <option value="" selected>-- Pilih --</option>
@@ -151,12 +159,37 @@
                             <option value="C">C</option>
 
                         </select>
+
                     </div>
 
-                    <!-- <div class="row mb-3">
-                        <label for="formFile" class="form-label">Silahkan Upload File Penunjukkan PP</label>
-                        <input class="form-control" type="file" id="formFile" name="file">
-                    </div> -->
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Upload dokumen PMH</label>
+                        <input class="form-control" type="file" id="formFile" name="file_putusan">
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- //modal upload file -->
+<div class="modal fade" id="Modalupload" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form method="post" action="<?php echo base_url('admin/uploadPutusan'); ?>" enctype="multipart/form-data">
+                    <input type="text" id="id_st" name="id_perkara" hidden>
+                    <div class="mb-3" id="box">
+                        <label for="formFile" class="form-label" id="label_text">Silahkan Upload File (Optional)</label>
+                        <input class="form-control" type="file" id="inp" name="file_1"></input>
+                    </div>
 
 
             </div>

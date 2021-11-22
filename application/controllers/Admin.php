@@ -20,7 +20,7 @@ class Admin extends CI_Controller
         $data['judul'] = 'Dashboard';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'dashboard_admin.js';
-        $data['perkara'] = $this->db->get('v_user_pp')->result_array();
+        // $data['perkara'] = $this->db->get_where('users', ['role_id' => 5])->result_array();
 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/dashboard', $data);
@@ -32,6 +32,9 @@ class Admin extends CI_Controller
         $data['judul'] = 'Input Nomor Perkara';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'inputnoper.js';
+        $data['panitera'] = $this->db->get_where('users', ['role_id' => 5])->result_array();
+
+
 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/inputnoper', $data);
@@ -370,6 +373,50 @@ class Admin extends CI_Controller
     {
 
         $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('no_perkara');
+
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./fileuploads/";
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5000;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file_putusan']['name']) == null) {
+            $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
+            redirect('admin/inputNoper');
+        } else {
+            if (($_FILES['file_putusan']['name'])) {
+                if ($this->upload->do_upload('file_putusan')) {
+                    $file = $this->upload->data("file_name");
+                    $this->db->set('putusan_banding', $file);
+                } else {
+                    $this->session->set_flashdata('msg', 'Upload file gagal');
+                    redirect('admin/inputNoper');
+                }
+            }
+        }
+
+        $id_perkara = $this->input->post('id_perkara');
+
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('list_perkara');
+        $this->session->set_flashdata('flash', 'Status berhasil diubah');
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+        redirect('admin/inputNoper');
+    }
+
+    public function upload_pp()
+    {
+        $pengedit = $this->session->userdata('nama');
 
         $config['upload_path']          = './assets/files/putusan';
         $config['allowed_types']        = 'doc|docx|pdf';
@@ -377,55 +424,25 @@ class Admin extends CI_Controller
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
 
-        if (($_FILES['file_putusan']['name'] != null)) {
+        if (($_FILES['file_putusan']['name'])) {
             if ($this->upload->do_upload('file_putusan')) {
-                $putusan_banding = $this->upload->data("file_name");
-                $id_perkara = $this->input->post('id_perkara');
-                $data = [
-                    'id_perkara' => $id_perkara,
-                    'putusan_banding' => $putusan_banding
-                ];
-                $this->db->where('id_perkara', $id_perkara);
-                $this->db->update('list_perkara', $data);
-
-                $this->session->set_flashdata('flash', 'Upload berhasil');
-
-                $audittrail = array(
-                    'log_id' => '',
-                    'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
-                    'nama_log' => $pengedit
-                );
-
-                $this->db->set('rekam_log', 'NOW()', FALSE);
-                $this->db->insert('log_audittrail', $audittrail);
-
-                redirect('admin/inputNoper');
-                // $this->db->set('putusan_banding', $putusan_banding);
-            } else {
-                $this->session->set_flashdata('msg', 'Upload file gagal, ekstensi file harus pdf dan ukuran tidak boleh lebih dari 5 mb');
-                // redirect('banding/');
+                $file = $this->upload->data("file_name");
+                // $this->db->set('file_pp', $file);
             }
-        } else {
-            $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
-            // redirect('banding/');
         }
-    }
-
-    public function upload_pp()
-    {
-        $pengedit = $this->session->userdata('nama');
 
         $id_perkara = $this->input->post('id_perkara');
         $id_user_pp = $this->input->post('id_user_pp');
 
         $data = [
             'id_perkara' => $id_perkara,
-            'id_user_pp' => $id_user_pp
+            'id_user_pp' => $id_user_pp,
+            'file_pp' => $file
         ];
         $this->db->where('id_perkara', $id_perkara);
         $this->db->update('penunjukan_pp', $data);
 
-        $this->session->set_flashdata('flash', 'Penunjukan Panitera Pengganti Berhasil');
+        $this->session->set_flashdata('flas h', 'Penunjukan Panitera Pengganti Berhasil');
 
         $audittrail = array(
             'log_id' => '',
@@ -436,12 +453,25 @@ class Admin extends CI_Controller
         $this->db->set('rekam_log', 'NOW()', FALSE);
         $this->db->insert('log_audittrail', $audittrail);
 
-        redirect('Admin');
+        redirect('Admin/inputnoper');
     }
 
     public function pilih_mh()
     {
         $pengedit = $this->session->userdata('nama');
+
+        $config['upload_path']          = './assets/files/putusan';
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5000;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file_putusan']['name'])) {
+            if ($this->upload->do_upload('file_putusan')) {
+                $file = $this->upload->data("file_name");
+                // $this->db->set('file_pp', $file);
+            }
+        }
 
         $id_pmh = $this->input->post('id_pmh');
         $id_perkara = $this->input->post('id_perkara');
@@ -451,8 +481,10 @@ class Admin extends CI_Controller
             'id_pmh' => $id_pmh,
             'id_perkara' => $id_perkara,
             'majelis_hakim' => $majelis_hakim,
+            'file_pmh' => $file,
         ];
-        $this->db->insert('pmh', $data);
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('pmh', $data);
 
         $audittrail = array(
             'log_id' => '',
@@ -464,7 +496,7 @@ class Admin extends CI_Controller
         $this->db->insert('log_audittrail', $audittrail);
 
         $this->session->set_flashdata('flash', 'Penunjukkan Majelis Hakim Berhasil');
-        redirect('Admin');
+        redirect('Admin/inputnoper');
     }
 
 

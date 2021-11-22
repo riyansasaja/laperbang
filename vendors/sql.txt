@@ -3,6 +3,19 @@
 
 // --
 
+//create trigger for pmh
+DELIMITER $$
+CREATE TRIGGER insert_id_perkara_pmh
+    AFTER INSERT 
+    ON list_perkara
+    FOR EACH ROW 
+BEGIN
+    INSERT INTO pmh (id_perkara)
+    VALUES(NEW.id_perkara);
+END$$
+DELIMITER ;
+
+// --
 
 //create tabel majelis hakim
 CREATE TABLE majelis_hakim (
@@ -24,7 +37,7 @@ SELECT users.*, majelis_hakim.* from users JOIN majelis_hakim ON users.id = maje
 
 //create trigger for pp
 DELIMITER $$
-CREATE TRIGGER inser_id_perkara
+CREATE TRIGGER insert_id_perkara
     AFTER INSERT 
     ON list_perkara
     FOR EACH ROW 

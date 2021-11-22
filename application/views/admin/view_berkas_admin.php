@@ -362,6 +362,124 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+                                Bundel Tingkat Banding
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <!-- isi di sini bundel B -->
+                                <table class="table">
+                                    <tbody>
+
+                                        <tr>
+                                            <td>Penunjukkan Majelis Hakim</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->file_pmh; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->file_pmh; ?>
+                                                </a>
+
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Penunjukkan Panitera Pengganti</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->file_pp; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->file_pp; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pembuatan PHS 1</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->phs1; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->phs1; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pembuatan PHS Lanjutan</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->phs_lanj; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->phs_lanj; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sidang Pertama</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_pertama; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_pertama; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Sidang Lanjutan</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_lanj; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_lanj; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sidang Lanjutan 1</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_lanj1; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_lanj1; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sidang Lanjutan 2</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_lanj2; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_lanj2; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sidang Lanjutan 3</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_lanj3; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_lanj3; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sidang Lanjutan 4</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_lanj4; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_lanj4; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sidang Lanjutan 5</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_lanj5; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_lanj5; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Putusan Banding</td>
+                                            <td>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->putusan_banding; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->putusan_banding; ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
         </div>
     <?php endforeach; ?>

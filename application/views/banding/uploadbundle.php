@@ -69,6 +69,8 @@
                     <div id="suratPengantar" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/pengantar_upload'); ?>" enctype="multipart/form-data">
+
+                                <input type="text" value="<?= $perkara[0]['no_perkara'] ?>" hidden name="no_perkara"></input>
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
@@ -101,6 +103,7 @@
                     <div id="bundleA" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/multiple_upload'); ?>" enctype="multipart/form-data">
+                                <input type="text" value="<?= $perkara[0]['no_perkara'] ?>" hidden name="no_perkara"></input>
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
@@ -111,7 +114,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_gugatan'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['surat_gugatan'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['surat_gugatan'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['surat_gugatan'] ?>
                                         </a>
                                     </div>
@@ -125,7 +128,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['sk_bundelA'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['sk_bundelA'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['sk_bundelA'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['sk_bundelA'] ?>
                                         </a>
                                     </div>
@@ -140,7 +143,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['bukti_pemb_panjar'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['bukti_pemb_panjar'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['bukti_pemb_panjar'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['bukti_pemb_panjar'] ?>
                                         </a>
                                     </div>
@@ -155,7 +158,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['majelis_hakim'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['majelis_hakim'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['majelis_hakim'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['majelis_hakim'] ?>
                                         </a>
                                     </div>
@@ -170,7 +173,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['penunjukan_pp'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['penunjukan_pp'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['penunjukan_pp'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['penunjukan_pp'] ?>
                                         </a>
                                     </div>
@@ -185,7 +188,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['penunjukan_js'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['penunjukan_js'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['penunjukan_js'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['penunjukan_js'] ?>
                                         </a>
                                     </div>
@@ -200,7 +203,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['penetapan_hari_sidang'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['penetapan_hari_sidang'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['penetapan_hari_sidang'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['penetapan_hari_sidang'] ?>
                                         </a>
                                     </div>
@@ -214,7 +217,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['relaas_panggilan'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['relaas_panggilan'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['relaas_panggilan'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['relaas_panggilan'] ?>
                                         </a>
                                     </div>
@@ -228,7 +231,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['ba_sidang'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['ba_sidang'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['ba_sidang'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['ba_sidang'] ?>
                                         </a>
                                     </div>
@@ -242,7 +245,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['penetapan_sita'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['penetapan_sita'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['penetapan_sita'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['penetapan_sita'] ?>
                                         </a>
                                     </div>
@@ -256,7 +259,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['ba_sita'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['ba_sita'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['ba_sita'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['ba_sita'] ?>
                                         </a>
                                     </div>
@@ -270,7 +273,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['lampiran_surat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['lampiran_surat'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['lampiran_surat'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['lampiran_surat'] ?>
                                         </a>
                                     </div>
@@ -284,7 +287,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_bukti_penggugat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['surat_bukti_penggugat'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['surat_bukti_penggugat'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['surat_bukti_penggugat'] ?>
                                         </a>
                                     </div>
@@ -298,7 +301,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_bukti_tergugat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['surat_bukti_tergugat'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['surat_bukti_tergugat'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['surat_bukti_tergugat'] ?>
                                         </a>
                                     </div>
@@ -312,7 +315,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['tanggapan_bukti_tergugat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['tanggapan_bukti_tergugat'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['tanggapan_bukti_tergugat'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['tanggapan_bukti_tergugat'] ?>
                                         </a>
                                     </div>
@@ -326,7 +329,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['tanggapan_bukti_penggugat'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['tanggapan_bukti_penggugat'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['tanggapan_bukti_penggugat'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['tanggapan_bukti_penggugat'] ?>
                                         </a>
                                     </div>
@@ -340,7 +343,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['gambar_situasi'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['gambar_situasi'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['gambar_situasi'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['gambar_situasi'] ?>
                                         </a>
                                     </div>
@@ -354,7 +357,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_lain'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_a/<?= $perkara['0']['surat_lain'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-a/<?= $perkara['0']['surat_lain'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['surat_lain'] ?>
                                         </a>
                                     </div>
@@ -376,6 +379,7 @@
                     <div id="bundleB" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <form method="post" action="<?php echo base_url('banding/multiple_uploadB'); ?>" enctype="multipart/form-data">
+                                <input type="text" value="<?= $perkara[0]['no_perkara'] ?>" hidden name="no_perkara"></input>
                                 <input type="text" value="<?= $perkara[0]['id_perkara'] ?>" hidden name="id_perkara"></input>
                                 <div class="row justify-content-start mb-3">
                                     <div class="col-1" style="width: 1rem;">1.</div>
@@ -386,7 +390,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['salinan_putusan_pa'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['salinan_putusan_pa'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['salinan_putusan_pa'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['salinan_putusan_pa'] ?>
                                         </a>
                                     </div>
@@ -401,7 +405,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['salinan_putusan_pa'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['salinan_putusan_pa_rtf'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['salinan_putusan_pa_rtf'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['salinan_putusan_pa'] ?>
                                         </a>
                                     </div>
@@ -417,7 +421,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['sk_bundelb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['sk_bundelb'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['sk_bundelb'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['sk_bundelb'] ?>
                                         </a>
                                     </div>
@@ -432,7 +436,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['akta_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['akta_banding'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['akta_banding'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['akta_banding'] ?>
                                         </a>
                                     </div>
@@ -447,7 +451,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['akta_penerimaan_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['akta_penerimaan_mb'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['akta_penerimaan_mb'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['akta_penerimaan_mb'] ?>
                                         </a>
                                     </div>
@@ -462,7 +466,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['memori_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['memori_banding'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['memori_banding'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['memori_banding'] ?>
                                         </a>
                                     </div>
@@ -478,7 +482,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['memori_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['memori_banding_rtf'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['memori_banding_rtf'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['memori_banding'] ?>
                                         </a>
                                     </div>
@@ -494,7 +498,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['akta_pemberitahuan_banding'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['akta_pemberitahuan_banding'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['akta_pemberitahuan_banding'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['akta_pemberitahuan_banding'] ?>
                                         </a>
                                     </div>
@@ -508,7 +512,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['pemberitahuan_penyerahan_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['pemberitahuan_penyerahan_mb'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['pemberitahuan_penyerahan_mb'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['pemberitahuan_penyerahan_mb'] ?>
                                         </a>
                                     </div>
@@ -522,7 +526,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['akta_penerimaankontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['akta_penerimaankontra_mb'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['akta_penerimaankontra_mb'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['akta_penerimaankontra_mb'] ?>
                                         </a>
                                     </div>
@@ -536,7 +540,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['kontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['kontra_mb'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['kontra_mb'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['kontra_mb'] ?>
                                         </a>
                                     </div>
@@ -553,7 +557,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['kontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['kontra_mb_rtf'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['kontra_mb_rtf'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['kontra_mb'] ?>
                                         </a>
                                     </div>
@@ -569,7 +573,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['pemberitahuan_penyerahankontra_mb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['pemberitahuan_penyerahankontra_mb'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['pemberitahuan_penyerahankontra_mb'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['pemberitahuan_penyerahankontra_mb'] ?>
                                         </a>
                                     </div>
@@ -583,7 +587,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['relaas_periksa_berkas_pb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['relaas_periksa_berkas_pb'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['relaas_periksa_berkas_pb'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['relaas_periksa_berkas_pb'] ?>
                                         </a>
                                     </div>
@@ -597,7 +601,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['sk_khusus'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['sk_khusus'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['sk_khusus'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['sk_khusus'] ?>
                                         </a>
                                     </div>
@@ -611,7 +615,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['bukt_pengiriman_bpb'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['bukt_pengiriman_bpb'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['bukt_pengiriman_bpb'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['bukt_pengiriman_bpb'] ?>
                                         </a>
                                     </div>
@@ -625,7 +629,7 @@
                                     </div>
                                     <div class="col-3 my-auto <?= $perkara['0']['bukti_setor_bp_kasnegara'] ? '' : 'd-none' ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['bukti_setor_bp_kasnegara'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['bukti_setor_bp_kasnegara'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['bukti_setor_bp_kasnegara'] ?>
                                         </a>
                                     </div>
@@ -640,7 +644,7 @@
                                     <div class="col-3 my-auto <?= $perkara['0']['surat_lainnya_b'] ? '' : 'd-none'
                                                                 ?> ">
                                         <span class="text-satu"> <i class="fas fa-fw fa-file-contract"></i></span>
-                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="bundle_b/<?= $perkara['0']['surat_lainnya_b'] ?>" class="text-decoration-none text-reset">
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdf" data-id="<?= str_replace('/', '-', $perkara['0']['no_perkara']) ?>/bundel-b/<?= $perkara['0']['surat_lainnya_b'] ?>" class="text-decoration-none text-reset">
                                             <?= $perkara['0']['surat_lainnya_b'] ?>
                                         </a>
                                     </div>
@@ -653,6 +657,7 @@
                 </div>
 
                 <!-- upload putusan -->
+
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed bg-primary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#putusan" aria-expanded="false" aria-controls="collapseTwo">
@@ -661,10 +666,12 @@
                     </h2>
                     <div id="putusan" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
+                            <!-- <input type="text" value="<?= $per['no_perkara'] ?>" name="no_perkara"></input> -->
                             <a class="btn btn-primary" href="<?php echo base_url() ?>index.php/banding/download_putusan/<?= $perkara[0]['id_perkara'] ?>">Download Putusan</a>
                         </div>
                     </div>
                 </div>
+
                 <!-- </ div> -->
                 <!-- end accordion -->
             </div>
