@@ -154,6 +154,8 @@ class Banding extends CI_Controller
     {
         //ambil nama user
         $pengedit = $this->session->userdata('nama');
+        $noper = $this->input->post('no_perkara');
+        $folder = strtr($noper, '/', '-');
 
         // $namaFolder = $this->input->post('no_perkara');
         // $folder_asli = str_replace("/", "-", $namaFolder);
@@ -161,7 +163,7 @@ class Banding extends CI_Controller
         // $tanggal = date("Ymd");
         // $nama_file = $tanggal . '_' . $kode_pa . '_';
 
-        $config['upload_path']          = './assets/files/SuratPengantar/';
+        $config['upload_path']          = "./assets/files/$folder/";
         $config['allowed_types']        = 'pdf';
         $config['max_size']             = 5024;
         $this->load->library('upload', $config);
