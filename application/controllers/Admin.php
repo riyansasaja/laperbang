@@ -20,7 +20,7 @@ class Admin extends CI_Controller
         $data['judul'] = 'Dashboard';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'dashboard_admin.js';
-        // $data['perkara'] = $this->db->get_where('users', ['role_id' => 5])->result_array();
+
 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/dashboard', $data);
@@ -377,9 +377,9 @@ class Admin extends CI_Controller
 
         $namaFolder = str_replace("/", "-", $folder);
 
-        $config['upload_path']          = "./fileuploads/";
+        $config['upload_path']          = "./assets/files/$namaFolder/bundel-pta";
         $config['allowed_types']        = 'doc|docx|pdf';
-        $config['max_size']             = 5000;
+        $config['max_size']             = 5024;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
 
@@ -417,33 +417,47 @@ class Admin extends CI_Controller
     public function upload_pp()
     {
         $pengedit = $this->session->userdata('nama');
+        $id_perkara = $this->input->post('id_perkara');
+        $id_user_pp = $this->input->post('id_user_pp');
+        $folder = $this->input->post('no_perkara');
 
-        $config['upload_path']          = './assets/files/putusan';
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./assets/files/$namaFolder/bundel-pta";
         $config['allowed_types']        = 'doc|docx|pdf';
-        $config['max_size']             = 5000;
+        $config['max_size']             = 5024;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
 
-        if (($_FILES['file_putusan']['name'])) {
-            if ($this->upload->do_upload('file_putusan')) {
-                $file = $this->upload->data("file_name");
-                // $this->db->set('file_pp', $file);
+        if (($_FILES['file_putusan']['name']) == null) {
+            $data = [
+                'id_perkara' => $id_perkara,
+                'id_user_pp' => $id_user_pp,
+            ];
+            $this->db->where('id_perkara', $id_perkara);
+            $this->db->update('penunjukan_pp', $data);
+
+            $this->session->set_flashdata('flash', 'Penunjukan Panitera Pengganti Berhasil');
+            redirect('admin/inputNoper');
+        } else {
+            if (($_FILES['file_putusan']['name'])) {
+                if ($this->upload->do_upload('file_putusan')) {
+                    $file = $this->upload->data("file_name");
+                    $data = [
+                        'id_perkara' => $id_perkara,
+                        'id_user_pp' => $id_user_pp,
+                        'file_pp' => $file
+                    ];
+                    $this->db->where('id_perkara', $id_perkara);
+                    $this->db->update('penunjukan_pp', $data);
+
+                    $this->session->set_flashdata('flash', 'Penunjukan Panitera Pengganti Berhasil');
+                } else {
+                    $this->session->set_flashdata('msg', 'Upload file gagal');
+                    redirect('admin/inputNoper');
+                }
             }
         }
-
-        $id_perkara = $this->input->post('id_perkara');
-        $id_user_pp = $this->input->post('id_user_pp');
-
-        $data = [
-            'id_perkara' => $id_perkara,
-            'id_user_pp' => $id_user_pp,
-            'file_pp' => $file
-        ];
-        $this->db->where('id_perkara', $id_perkara);
-        $this->db->update('penunjukan_pp', $data);
-
-        $this->session->set_flashdata('flas h', 'Penunjukan Panitera Pengganti Berhasil');
-
         $audittrail = array(
             'log_id' => '',
             'isi_log' => "User <b>" . $pengedit . "</b> telah memilih panitera pengganti pada id perkara <b>" . $id_perkara . "</b>",
@@ -459,32 +473,49 @@ class Admin extends CI_Controller
     public function pilih_mh()
     {
         $pengedit = $this->session->userdata('nama');
-
-        $config['upload_path']          = './assets/files/putusan';
-        $config['allowed_types']        = 'doc|docx|pdf';
-        $config['max_size']             = 5000;
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-
-        if (($_FILES['file_putusan']['name'])) {
-            if ($this->upload->do_upload('file_putusan')) {
-                $file = $this->upload->data("file_name");
-                // $this->db->set('file_pp', $file);
-            }
-        }
-
         $id_pmh = $this->input->post('id_pmh');
         $id_perkara = $this->input->post('id_perkara');
         $majelis_hakim = $this->input->post('majelis_hakim');
+        $folder = $this->input->post('no_perkara');
 
-        $data = [
-            'id_pmh' => $id_pmh,
-            'id_perkara' => $id_perkara,
-            'majelis_hakim' => $majelis_hakim,
-            'file_pmh' => $file,
-        ];
-        $this->db->where('id_perkara', $id_perkara);
-        $this->db->update('pmh', $data);
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./assets/files/$namaFolder/bundel-pta";
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5024;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file_putusan']['name']) == null) {
+            $data = [
+                'id_pmh' => $id_pmh,
+                'id_perkara' => $id_perkara,
+                'majelis_hakim' => $majelis_hakim,
+            ];
+            $this->db->where('id_perkara', $id_perkara);
+            $this->db->update('pmh', $data);
+
+            $this->session->set_flashdata('flash', 'Penunjukkan Majelis Hakim Berhasil');
+            redirect('admin/inputNoper');
+        } else {
+            if (($_FILES['file_putusan']['name'])) {
+                if ($this->upload->do_upload('file_putusan')) {
+                    $file = $this->upload->data("file_name");
+                    $data = [
+                        'id_pmh' => $id_pmh,
+                        'id_perkara' => $id_perkara,
+                        'majelis_hakim' => $majelis_hakim,
+                        'file_pmh' => $file
+                    ];
+                    $this->db->where('id_perkara', $id_perkara);
+                    $this->db->update('pmh', $data);
+                    $this->session->set_flashdata('flash', 'Penunjukkan Majelis Hakim Berhasil');
+                } else {
+                    $this->session->set_flashdata('msg', 'Upload file gagal');
+                    redirect('admin/inputNoper');
+                }
+            }
+        }
 
         $audittrail = array(
             'log_id' => '',
@@ -494,11 +525,384 @@ class Admin extends CI_Controller
 
         $this->db->set('rekam_log', 'NOW()', FALSE);
         $this->db->insert('log_audittrail', $audittrail);
-
-        $this->session->set_flashdata('flash', 'Penunjukkan Majelis Hakim Berhasil');
         redirect('Admin/inputnoper');
     }
 
+    public function uploadphs()
+    {
+        $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('no_perkara');
+
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./assets/files/$namaFolder/bundel-pta";
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5024;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file_phs1']['name'])) {
+            if ($this->upload->do_upload('file_phs1')) {
+                $file = $this->upload->data("file_name");
+                $this->db->set('phs1', $file);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal');
+                redirect('admin/inputNoper');
+            }
+        }
+
+        $id_perkara = $this->input->post('id_perkara');
+
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('bundel_pta');
+        $this->session->set_flashdata('flash', 'Status berhasil diubah');
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+        redirect('admin/inputNoper');
+    }
+
+    public function uploadphslanj()
+    {
+        $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('no_perkara');
+
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./assets/files/$namaFolder/bundel-pta";
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5024;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file_phslanj']['name'])) {
+            if ($this->upload->do_upload('file_phslanj')) {
+                $file = $this->upload->data("file_name");
+                $this->db->set('phs_lanj', $file);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal');
+                redirect('admin/inputNoper');
+            }
+        }
+
+        $id_perkara = $this->input->post('id_perkara');
+
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('bundel_pta');
+        $this->session->set_flashdata('flash', 'Status berhasil diubah');
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+        redirect('admin/inputNoper');
+    }
+
+    public function uploadsidper()
+    {
+        $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('no_perkara');
+
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./assets/files/$namaFolder/bundel-pta";
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5024;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file_sidper']['name'])) {
+            if ($this->upload->do_upload('file_sidper')) {
+                $file = $this->upload->data("file_name");
+                $this->db->set('sidang_pertama', $file);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal');
+                redirect('admin/inputNoper');
+            }
+        }
+
+        $id_perkara = $this->input->post('id_perkara');
+
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('bundel_pta');
+        $this->session->set_flashdata('flash', 'Status berhasil diubah');
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+        redirect('admin/inputNoper');
+    }
+
+    public function uploadsidlanj()
+    {
+        $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('no_perkara');
+
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./assets/files/$namaFolder/bundel-pta";
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5024;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file_sidlanj']['name'])) {
+            if ($this->upload->do_upload('file_sidlanj')) {
+                $file = $this->upload->data("file_name");
+                $this->db->set('sidang_lanjutan', $file);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal');
+                redirect('admin/inputNoper');
+            }
+        }
+
+        $id_perkara = $this->input->post('id_perkara');
+
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('bundel_pta');
+        $this->session->set_flashdata('flash', 'Status berhasil diubah');
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+        redirect('admin/inputNoper');
+    }
+
+    public function uploadsidlanj1()
+    {
+        $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('no_perkara');
+
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./assets/files/$namaFolder/bundel-pta";
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5024;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file_sidlanj1']['name'])) {
+            if ($this->upload->do_upload('file_sidlanj1')) {
+                $file = $this->upload->data("file_name");
+                $this->db->set('sidang_lanjutan1', $file);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal');
+                redirect('admin/inputNoper');
+            }
+        }
+
+        $id_perkara = $this->input->post('id_perkara');
+
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('bundel_pta');
+        $this->session->set_flashdata('flash', 'Status berhasil diubah');
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+        redirect('admin/inputNoper');
+    }
+
+    public function uploadsidlanj2()
+    {
+        $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('no_perkara');
+
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./assets/files/$namaFolder/bundel-pta";
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5024;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file_sidlanj2']['name'])) {
+            if ($this->upload->do_upload('file_sidlanj2')) {
+                $file = $this->upload->data("file_name");
+                $this->db->set('sidang_lanjutan2', $file);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal');
+                redirect('admin/inputNoper');
+            }
+        }
+
+        $id_perkara = $this->input->post('id_perkara');
+
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('bundel_pta');
+        $this->session->set_flashdata('flash', 'Status berhasil diubah');
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+        redirect('admin/inputNoper');
+    }
+
+    public function uploadsidlanj3()
+    {
+        $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('no_perkara');
+
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./assets/files/$namaFolder/bundel-pta";
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5024;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file_sidlanj3']['name'])) {
+            if ($this->upload->do_upload('file_sidlanj3')) {
+                $file = $this->upload->data("file_name");
+                $this->db->set('sidang_lanjutan3', $file);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal');
+                redirect('admin/inputNoper');
+            }
+        }
+
+        $id_perkara = $this->input->post('id_perkara');
+
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('bundel_pta');
+        $this->session->set_flashdata('flash', 'Status berhasil diubah');
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+        redirect('admin/inputNoper');
+    }
+
+    public function uploadsidlanj4()
+    {
+        $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('no_perkara');
+
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./assets/files/$namaFolder/bundel-pta";
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5024;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file_sidlanj4']['name'])) {
+            if ($this->upload->do_upload('file_sidlanj4')) {
+                $file = $this->upload->data("file_name");
+                $this->db->set('sidang_lanjutan4', $file);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal');
+                redirect('admin/inputNoper');
+            }
+        }
+
+        $id_perkara = $this->input->post('id_perkara');
+
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('bundel_pta');
+        $this->session->set_flashdata('flash', 'Status berhasil diubah');
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+        redirect('admin/inputNoper');
+    }
+
+    public function uploadsidlanj5()
+    {
+        $pengedit = $this->session->userdata('nama');
+        $folder = $this->input->post('no_perkara');
+
+        $namaFolder = str_replace("/", "-", $folder);
+
+        $config['upload_path']          = "./assets/files/$namaFolder/bundel-pta";
+        $config['allowed_types']        = 'doc|docx|pdf';
+        $config['max_size']             = 5024;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (($_FILES['file_sidlanj5']['name'])) {
+            if ($this->upload->do_upload('file_sidlanj5')) {
+                $file = $this->upload->data("file_name");
+                $this->db->set('sidang_lanjutan5', $file);
+            } else {
+                $this->session->set_flashdata('msg', 'Upload file gagal');
+                redirect('admin/inputNoper');
+            }
+        }
+
+        $id_perkara = $this->input->post('id_perkara');
+
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('bundel_pta');
+        $this->session->set_flashdata('flash', 'Status berhasil diubah');
+        $audittrail = array(
+            'log_id' => '',
+            'isi_log' => "User <b>" . $pengedit . "</b> telah upload putusan perkara banding pada id perkara <b>" . $id_perkara . "</b>",
+            'nama_log' => $pengedit
+        );
+
+        $this->db->set('rekam_log', 'NOW()', FALSE);
+        $this->db->insert('log_audittrail', $audittrail);
+        redirect('admin/inputNoper');
+    }
+
+    public function zip_file()
+    {
+        $this->load->library('zip');
+
+        // $path = 'assets/files/SuratPengantar';
+
+        // $this->zip->read_dir($path);
+
+        // // Download the file to your desktop. Name it "my_backup.zip"
+        // $this->zip->download('my_backup.zip');
+        // $data['detail_berkas'] = $this->db->get_where('v_all_perkara', ['id_perkara' => $id])->result_object();
+        $folder = $this->input->post('no_perkara');
+        var_dump($folder);
+        die;
+        $namaFolder = str_replace("/", "-", $folder);
+
+
+        $path = "/assets/files/$namaFolder/";
+
+        $this->zip->read_dir($path);
+
+        // Download the file to your desktop. Name it "my_backup.zip"
+        $this->zip->download("perkara.zip");
+    }
 
     public function audittrail()
     {

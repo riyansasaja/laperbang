@@ -77,7 +77,7 @@ select users.*, from users where role_id = 5
 
 //untuk create view perkara
 CREATE VIEW v_all_perkara AS
-SELECT list_perkara.*, users.nama FROM list_perkara JOIN users ON list_perkara.id_user = users.id
+SELECT list_perkara.*, users.nama, bundel_pta.phs1, bundel_pta.phs_lanj, bundel_pta.sidang_pertama, bundel_pta.sidang_lanjutan, bundel_pta.sidang_lanjutan1, bundel_pta.sidang_lanjutan2, bundel_pta.sidang_lanjutan3, bundel_pta.sidang_lanjutan4, bundel_pta.sidang_lanjutan5, penunjukan_pp.id_user_pp, penunjukan_pp.file_pp, pmh.file_pmh FROM list_perkara JOIN users ON list_perkara.id_user = users.id JOIN bundel_pta ON list_perkara.id_perkara = bundel_pta.id_perkara JOIN penunjukan_pp ON list_perkara.id_perkara = penunjukan_pp.id_perkara JOIN pmh ON list_perkara.id_perkara = pmh.id_perkara
 //-- end untuk create view perkara
 
 //untuk create view perkara yang dilihat hakim

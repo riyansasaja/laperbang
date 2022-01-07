@@ -103,6 +103,7 @@ $(document).ready(function () {
     $('#listperkara').on('click', '.item_staper', function () {
         let data = list_perkara.row($(this).parents('tr')).data();
         let id_perkara = data['id_perkara'];
+        let no_perkara = data['no_perkara'];
 
 
         //tampilkan pilihan jenis perkara lewat SWAL2
@@ -139,7 +140,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
-
+                                no_perkara: no_perkara,
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -148,7 +149,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        pilihMH(id_perkara)
+                        pilihMH(id_perkara, no_perkara)
                         return false;
                     }
                     else if (value === 'Penunjukkan Panitera Pengganti') {
@@ -157,6 +158,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
+                                no_perkara: no_perkara,
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -165,7 +167,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        uploadPenunjukkanPP(id_perkara)
+                        uploadPenunjukkanPP(id_perkara, no_perkara)
                         return false;
                     } else if (value === 'Pembuatan PHS 1') {
                         $.ajax({
@@ -173,6 +175,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
+                                no_perkara: no_perkara,
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -181,7 +184,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        uploadPHS1(id_perkara)
+                        uploadPHS1(id_perkara, no_perkara)
                         return false;
                     } else if (value === 'Pembuatan PHS Lanjutan') {
                         $.ajax({
@@ -189,6 +192,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
+                                no_perkara: no_perkara,
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -197,7 +201,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        uploadPHS_lanj(id_perkara)
+                        uploadPHS_lanj(id_perkara, no_perkara)
                         return false;
                     } else if (value === 'Sidang Pertama') {
                         $.ajax({
@@ -205,6 +209,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
+                                no_perkara: no_perkara,
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -213,7 +218,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        uploadSidang_pertama(id_perkara)
+                        uploadSidang_pertama(id_perkara, no_perkara)
                         return false;
                     } else if (value === 'Sidang Lanjutan') {
                         $.ajax({
@@ -221,6 +226,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
+                                no_perkara: no_perkara,
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -229,7 +235,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        uploadSidang_lanj(id_perkara)
+                        uploadSidang_lanj(id_perkara, no_perkara)
                         return false;
                     } else if (value === 'Sidang Lanjutan 1') {
                         $.ajax({
@@ -237,6 +243,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
+                                no_perkara: no_perkara,
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -245,7 +252,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        uploadSidang_lanj1(id_perkara)
+                        uploadSidang_lanj1(id_perkara, no_perkara)
                         return false;
                     } else if (value === 'Sidang Lanjutan 2') {
                         $.ajax({
@@ -253,6 +260,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
+                                no_perkara: no_perkara,
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -261,7 +269,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        uploadSidang_lanj2(id_perkara)
+                        uploadSidang_lanj2(id_perkara, no_perkara)
                         return false;
                     } else if (value === 'Sidang Lanjutan 3') {
                         $.ajax({
@@ -269,6 +277,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
+                                no_perkara: no_perkara,
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -277,7 +286,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        uploadSidang_lanj3(id_perkara)
+                        uploadSidang_lanj3(id_perkara, no_perkara)
                         return false;
                     } else if (value === 'Sidang Lanjutan 4') {
                         $.ajax({
@@ -285,6 +294,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
+                                no_perkara: no_perkara,
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -293,7 +303,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        uploadSidang_lanj4(id_perkara)
+                        uploadSidang_lanj4(id_perkara, no_perkara)
                         return false;
                     } else if (value === 'Sidang Lanjutan 5') {
                         $.ajax({
@@ -301,6 +311,7 @@ $(document).ready(function () {
                             url: `${path}/admin/updateStatus`,
                             data: {
                                 id_perkara: id_perkara,
+                                no_perkara: no_perkara,
                                 status_perkara: value,
                             },
                             dataType: "json",
@@ -309,7 +320,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        uploadSidang_lanj5(id_perkara)
+                        uploadSidang_lanj5(id_perkara, no_perkara)
                         return false;
                     } else if (value === 'Pengiriman Salinan Putusan') {
                         $.ajax({
@@ -326,7 +337,7 @@ $(document).ready(function () {
                             }
                         });
                         Swal.fire('Silahkan Upload Berkas', '', 'warning')
-                        uploadSalinanPutusan(no_perkara)
+                        uploadSalinanPutusan(id_perkara, no_perkara)
                         return false;
                     } else {
                         $.ajax({
@@ -351,105 +362,102 @@ $(document).ready(function () {
     });//=====
 
     //function pilih majelis hakim
-    function pilihMH(id_perkara) {
+    function pilihMH(id_perkara, no_perkara) {
         $('#uploadMH').modal('show');
         $('#id_perkaramh').val(id_perkara);
-
+        $('#no_perkaramh').val(no_perkara);
 
     }//end function pilih majelis hakim
 
     //function upload penunjukkan pp
-    function uploadPenunjukkanPP(id_perkara) {
+    function uploadPenunjukkanPP(id_perkara, no_perkara) {
         $('#uploadFilePP').modal('show');
         $('#id_perkarapp').val(id_perkara);
+        $('#no_perkarapp').val(no_perkara);
 
 
     }//end function upload penunjukkan pp
 
     //function upload file
-    function uploadPHS1(id_perkara) {
-        console.log('ujicoba');
+    function uploadPHS1(id_perkara, no_perkara) {
         $('#Modalupload').modal('show');
         $('#id_st').val(id_perkara);
-
-
-
+        $('#no_perkaraphs').val(no_perkara);
 
     }//end function upload file
 
     //function upload file
-    function uploadPHS_lanj(id_perkara) {
-        $('#Modalupload').modal('show');
-        $('#id_st').val(id_perkara);
-
-
-    }//end function upload file
-
-    //function upload file
-    function uploadSidang_pertama(id_perkara) {
-        $('#Modalupload').modal('show');
-        $('#id_st').val(id_perkara);
-
+    function uploadPHS_lanj(id_perkara, no_perkara) {
+        $('#Modaluploadphslanj').modal('show');
+        $('#id_stphslanj').val(id_perkara);
+        $('#no_perkaraphslanj').val(no_perkara);
 
     }//end function upload file
 
     //function upload file
-    function uploadSidang_lanj(id_perkara) {
-        $('#Modalupload').modal('show');
-        $('#id_st').val(id_perkara);
-
-
-    }//end function upload file
-
-    //function upload file
-    function uploadSidang_lanj1(id_perkara) {
-        $('#Modalupload').modal('show');
-        $('#id_st').val(id_perkara);
-
+    function uploadSidang_pertama(id_perkara, no_perkara) {
+        $('#Modaluploadsidper').modal('show');
+        $('#id_stsidper').val(id_perkara);
+        $('#no_perkarasidper').val(no_perkara);
 
     }//end function upload file
 
     //function upload file
-    function uploadSidang_lanj2(id_perkara) {
-        $('#Modalupload').modal('show');
-        $('#id_st').val(id_perkara);
+    function uploadSidang_lanj(id_perkara, no_perkara) {
+        $('#Modaluploadsidlanj').modal('show');
+        $('#id_stsidlanj').val(id_perkara);
+        $('#no_perkarasidlanj').val(no_perkara);
 
     }//end function upload file
 
     //function upload file
-    function uploadSidang_lanj3(id_perkara) {
-        $('#Modalupload').modal('show');
-        $('#id_st').val(id_perkara);
-
-
-    }//end function upload file
-
-    //function upload file
-    function uploadSidang_lanj4(id_perkara) {
-        $('#Modalupload').modal('show');
-        $('#id_st').val(id_perkara);
-
+    function uploadSidang_lanj1(id_perkara, no_perkara) {
+        $('#Modaluploadsidlanj1').modal('show');
+        $('#id_stsidlanj1').val(id_perkara);
+        $('#no_perkarasidlanj1').val(no_perkara);
 
     }//end function upload file
 
     //function upload file
-    function uploadSidang_lanj5(id_perkara) {
-        $('#Modalupload').modal('show');
-        $('#id_st').val(id_perkara);
+    function uploadSidang_lanj2(id_perkara, no_perkara) {
+        $('#Modaluploadsidlanj2').modal('show');
+        $('#id_stsidlanj2').val(id_perkara);
+        $('#no_perkarasidlanj2').val(no_perkara);
 
+    }//end function upload file
+
+    //function upload file
+    function uploadSidang_lanj3(id_perkara, no_perkara) {
+        $('#Modaluploadsidlanj3').modal('show');
+        $('#id_stsidlanj3').val(id_perkara);
+        $('#no_perkarasidlanj3').val(no_perkara);
+
+    }//end function upload file
+
+    //function upload file
+    function uploadSidang_lanj4(id_perkara, no_perkara) {
+        $('#Modaluploadsidlanj4').modal('show');
+        $('#id_stsidlanj4').val(id_perkara);
+        $('#no_perkarasidlanj4').val(no_perkara);
+
+    }//end function upload file
+
+    //function upload file
+    function uploadSidang_lanj5(id_perkara, no_perkara) {
+        $('#Modaluploadsidlanj5').modal('show');
+        $('#id_stsidlanj5').val(id_perkara);
+        $('#no_perkarasidlanj5').val(no_perkara);
 
     }//end function upload file
 
 
-    //function upload salinan putusan
-    function uploadSalinanPutusan(id_perkara) {
+    //function upload salinan putusans
+    function uploadSalinanPutusan(id_perkara, no_perkara) {
         $('#uploadFileModal').modal('show');
         $('#id_perkara').val(id_perkara);
-        //$('#no_perkara').val(no_perkara);
+        $('#no_perkara').val(no_perkara);
 
     }//end function upload salinan putusan
-
-
 
 
     //tombol view di klik,

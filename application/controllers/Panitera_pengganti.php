@@ -41,7 +41,7 @@ class Panitera_pengganti extends CI_Controller
         //konten
         $data['judul'] = 'Panitera Pengganti';
         $data['css'] = 'dashboard_admin.css';
-        $data['js'] = 'view_berkas_admin.js';
+        $data['js'] = 'uploadbanding.js';
 
         $data['detail_berkas'] = $this->db->get_where('v_perkara_pp', ['id_perkara' => $id])->result_object();
 

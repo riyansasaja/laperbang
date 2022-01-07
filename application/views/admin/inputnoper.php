@@ -73,8 +73,8 @@
 
             <div class="modal-body">
                 <form method="post" action="<?php echo base_url('admin/uploadPutusan'); ?>" enctype="multipart/form-data">
-                    <input type="text" id="id_perkara" name="id_perkara">
-                    <input type="text" id="no_perkara" name="no_perkara">
+                    <input type="text" id="id_perkara" name="id_perkara" hidden>
+                    <input type="text" id="no_perkara" name="no_perkara" hidden>
                     <div class="mb-3" id="box">
                         <label for="formFile" class="form-label" id="label_text">Silahkan Upload File Putusan Perkara</label>
                         <input class="form-control" type="file" id="input1" name="file_putusan" required>
@@ -101,10 +101,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+
                 <form method="post" action="<?php echo base_url('admin/upload_pp'); ?>" enctype="multipart/form-data">
 
                     <input type="text" id="id_perkarapp" name="id_perkara" hidden>
-                    <input type="text" id="id_perkarapp" name="no_perkara" hidden>
+                    <input type="text" id="no_perkarapp" name="no_perkara" hidden>
 
 
                     <div class="mb-3">
@@ -120,7 +121,6 @@
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Upload dokumen Penunjukkan Panitera Pengganti</label>
                         <input class="form-control" type="file" id="input1" name="file_putusan">
-
                     </div>
 
 
@@ -147,7 +147,7 @@
                 <form method="post" action="<?php echo base_url('admin/pilih_mh'); ?>" enctype="multipart/form-data">
 
                     <input type="text" id="id_perkaramh" name="id_perkara" hidden>
-
+                    <input type="text" id="no_perkaramh" name="no_perkara" hidden>
 
                     <div class="mb-3">
                         <!-- <label for="user_pp" class="form-label">Panitera Pengganti</label> -->
@@ -184,11 +184,13 @@
         <div class="modal-content">
 
             <div class="modal-body">
-                <form method="post" action="<?php echo base_url('admin/uploadPutusan'); ?>" enctype="multipart/form-data">
+                <form method="post" action="<?php echo base_url('admin/uploadphs'); ?>" enctype="multipart/form-data">
                     <input type="text" id="id_st" name="id_perkara" hidden>
+                    <input type="text" id="no_perkaraphs" name="no_perkara" hidden>
+
                     <div class="mb-3" id="box">
                         <label for="formFile" class="form-label" id="label_text">Silahkan Upload File (Optional)</label>
-                        <input class="form-control" type="file" id="inp" name="file_1"></input>
+                        <input class="form-control" type="file" id="inp" name="file_phs1"></input>
                     </div>
 
 
@@ -201,3 +203,220 @@
         </div>
     </div>
 </div>
+<!-- //end modal upload -->
+
+<!-- //modal upload file -->
+<div class="modal fade" id="Modaluploadphslanj" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form method="post" action="<?php echo base_url('admin/uploadphslanj'); ?>" enctype="multipart/form-data">
+                    <input type="text" id="id_stphslanj" name="id_perkara" hidden>
+                    <input type="text" id="no_perkaraphslanj" name="no_perkara" hidden>
+
+                    <div class="mb-3" id="box">
+                        <label for="formFile" class="form-label" id="label_text">Silahkan Upload File (Optional)</label>
+                        <input class="form-control" type="file" id="inp" name="file_phslanj"></input>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //end modal upload -->
+
+<!-- //modal upload file -->
+<div class="modal fade" id="Modaluploadsidper" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form method="post" action="<?php echo base_url('admin/uploadsidper'); ?>" enctype="multipart/form-data">
+                    <input type="text" id="id_stsidper" name="id_perkara" hidden>
+                    <input type="text" id="no_perkarasidper" name="no_perkara" hidden>
+
+                    <div class="mb-3" id="box">
+                        <label for="formFile" class="form-label" id="label_text">Silahkan Upload File (Optional)</label>
+                        <input class="form-control" type="file" id="inp" name="file_sidper"></input>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //end modal upload -->
+
+<!-- //modal upload file -->
+<div class="modal fade" id="Modaluploadsidlanj" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form method="post" action="<?php echo base_url('admin/uploadsidlanj'); ?>" enctype="multipart/form-data">
+                    <input type="text" id="id_stsidlanj" name="id_perkara" hidden>
+                    <input type="text" id="no_perkarasidlanj" name="no_perkara" hidden>
+
+                    <div class="mb-3" id="box">
+                        <label for="formFile" class="form-label" id="label_text">Silahkan Upload File (Optional)</label>
+                        <input class="form-control" type="file" id="inp" name="file_sidlanj"></input>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //end modal upload -->
+
+<!-- //modal upload file -->
+<div class="modal fade" id="Modaluploadsidlanj1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form method="post" action="<?php echo base_url('admin/uploadsidlanj1'); ?>" enctype="multipart/form-data">
+                    <input type="text" id="id_stsidlanj1" name="id_perkara" hidden>
+                    <input type="text" id="no_perkarasidlanj1" name="no_perkara" hidden>
+
+                    <div class="mb-3" id="box">
+                        <label for="formFile" class="form-label" id="label_text">Silahkan Upload File (Optional)</label>
+                        <input class="form-control" type="file" id="inp" name="file_sidlanj1"></input>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //end modal upload -->
+
+<!-- //modal upload file -->
+<div class="modal fade" id="Modaluploadsidlanj2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form method="post" action="<?php echo base_url('admin/uploadsidlanj2'); ?>" enctype="multipart/form-data">
+                    <input type="text" id="id_stsidlanj2" name="id_perkara" hidden>
+                    <input type="text" id="no_perkarasidlanj2" name="no_perkara" hidden>
+
+                    <div class="mb-3" id="box">
+                        <label for="formFile" class="form-label" id="label_text">Silahkan Upload File (Optional)</label>
+                        <input class="form-control" type="file" id="inp" name="file_sidlanj2"></input>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //end modal upload -->
+
+<!-- //modal upload file -->
+<div class="modal fade" id="Modaluploadsidlanj3" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form method="post" action="<?php echo base_url('admin/uploadsidlanj3'); ?>" enctype="multipart/form-data">
+                    <input type="text" id="id_stsidlanj3" name="id_perkara" hidden>
+                    <input type="text" id="no_perkarasidlanj3" name="no_perkara" hidden>
+
+                    <div class="mb-3" id="box">
+                        <label for="formFile" class="form-label" id="label_text">Silahkan Upload File (Optional)</label>
+                        <input class="form-control" type="file" id="inp" name="file_sidlanj3"></input>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //end modal upload -->
+
+<!-- //modal upload file -->
+<div class="modal fade" id="Modaluploadsidlanj4" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form method="post" action="<?php echo base_url('admin/uploadsidlanj4'); ?>" enctype="multipart/form-data">
+                    <input type="text" id="id_stsidlanj4" name="id_perkara" hidden>
+                    <input type="text" id="no_perkarasidlanj4" name="no_perkara" hidden>
+
+                    <div class="mb-3" id="box">
+                        <label for="formFile" class="form-label" id="label_text">Silahkan Upload File (Optional)</label>
+                        <input class="form-control" type="file" id="inp" name="file_sidlanj4"></input>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //end modal upload -->
+
+<!-- //modal upload file -->
+<div class="modal fade" id="Modaluploadsidlanj5" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form method="post" action="<?php echo base_url('admin/uploadsidlanj5'); ?>" enctype="multipart/form-data">
+                    <input type="text" id="id_stsidlanj5" name="id_perkara" hidden>
+                    <input type="text" id="no_perkarasidlanj5" name="no_perkara" hidden>
+
+                    <div class="mb-3" id="box">
+                        <label for="formFile" class="form-label" id="label_text">Silahkan Upload File (Optional)</label>
+                        <input class="form-control" type="file" id="inp" name="file_sidlanj5"></input>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //end modal upload -->

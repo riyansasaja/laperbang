@@ -1,8 +1,20 @@
 <div class="container">
-    <div class="row mt-5 mb-3">
-        <div class="col">
-            <?php foreach ($detail_berkas as $db) : ?>
+    <?php foreach ($detail_berkas as $db) : ?>
+        <div class="row mt-3 justify-content-end">
+            <div class="col">
+                <form method="post" enctype="multipart/form-data">
 
+                    <input type="text" id="noper" name="id_perkara" value="<?= $db->id_perkara ?>">
+                    <input type="text" id="noper" name="no_perkara" value="<?= $db->no_perkara ?>">
+
+                    <a class="btn btn-outline-success" style="width:7%" href="<?php echo base_url() ?>index.php/Admin/zip_file/"><i class="fa fa-download"></i> Zip</a>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="row mt-2 mb-3">
+            <div class="col">
 
                 <div class="accordion" id="accordionExample">
 
@@ -21,7 +33,7 @@
                                         <tr>
                                             <td>Surat Pengantar</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="SuratPengantar/<?= $db->sp_perkara; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/<?= $db->sp_perkara; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->sp_perkara; ?>
                                                 </a>
                                             </td>
@@ -47,7 +59,7 @@
                                         <tr>
                                             <td>Surat Gugatan</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->surat_gugatan; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->surat_gugatan; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->surat_gugatan; ?>
                                                 </a>
                                             </td>
@@ -55,7 +67,7 @@
                                         <tr>
                                             <td>Surat Kuasa dari Kedua Belah Pihak</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->sk_bundelA; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->sk_bundelA; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->sk_bundelA; ?>
                                                 </a>
                                             </td>
@@ -63,7 +75,7 @@
                                         <tr>
                                             <td>Bukti Pembayaran Panjar Biaya Perkara (SKUM)</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->bukti_pemb_panjar; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->bukti_pemb_panjar; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->bukti_pemb_panjar; ?>
                                                 </a>
                                             </td>
@@ -71,7 +83,7 @@
                                         <tr>
                                             <td>Penetapan Majelis Hakim</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->majelis_hakim; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->majelis_hakim; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->majelis_hakim; ?>
                                                 </a>
                                             </td>
@@ -79,7 +91,7 @@
                                         <tr>
                                             <td>Penunjukan Panitera Pengganti</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->penunjukan_pp; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->penunjukan_pp; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->penunjukan_pp; ?>
                                                 </a>
                                             </td>
@@ -87,7 +99,7 @@
                                         <tr>
                                             <td>Penunjukan Jurusita/Jurusita Pengganti</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->penunjukan_js; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->penunjukan_js; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->penunjukan_js; ?>
                                                 </a>
                                             </td>
@@ -95,7 +107,7 @@
                                         <tr>
                                             <td>Penetapan Hari Sidang</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->penetapan_hari_sidang; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->penetapan_hari_sidang; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->penetapan_hari_sidang; ?>
                                                 </a>
                                             </td>
@@ -103,7 +115,7 @@
                                         <tr>
                                             <td>Relaas-relaas Panggilan</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->relaas_panggilan; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->relaas_panggilan; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->relaas_panggilan; ?>
                                                 </a>
                                             </td>
@@ -111,7 +123,7 @@
                                         <tr>
                                             <td>Berita Acara Sidang</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->ba_sidang; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->ba_sidang; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->ba_sidang; ?>
                                                 </a>
                                             </td>
@@ -119,7 +131,7 @@
                                         <tr>
                                             <td>Penetapan Sita Conservatoir/Revindicatoir</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->penetapan_sita; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->penetapan_sita; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->penetapan_sita; ?>
                                                 </a>
                                             </td>
@@ -127,7 +139,7 @@
                                         <tr>
                                             <td>Berita Acara Sita Conservatoir/Revindicatoir</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->ba_sita; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->ba_sita; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->ba_sita; ?>
                                                 </a>
                                             </td>
@@ -135,7 +147,7 @@
                                         <tr>
                                             <td>Lampiran-lampiran surat yang diajukan oleh kedua belah pihak</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->lampiran_surat; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->lampiran_surat; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->lampiran_surat; ?>
                                                 </a>
                                             </td>
@@ -143,7 +155,7 @@
                                         <tr>
                                             <td>Surat-surat bukti penggugat</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->surat_bukti_penggugat; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->surat_bukti_penggugat; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->surat_bukti_penggugat; ?>
                                                 </a>
                                             </td>
@@ -151,7 +163,7 @@
                                         <tr>
                                             <td>surat-surat bukti tergugat</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->surat_bukti_tergugat; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->surat_bukti_tergugat; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->surat_bukti_tergugat; ?>
                                                 </a>
                                             </td>
@@ -159,7 +171,7 @@
                                         <tr>
                                             <td>Tanggapan bukti-bukti tergugat dari penggugat</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->tanggapan_bukti_tergugat; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->tanggapan_bukti_tergugat; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->tanggapan_bukti_tergugat; ?>
                                                 </a>
                                             </td>
@@ -167,7 +179,7 @@
                                         <tr>
                                             <td>Tanggapan bukti-bukti penggugat dari tergugat</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->tanggapan_bukti_penggugat; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->tanggapan_bukti_penggugat; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->tanggapan_bukti_penggugat; ?>
                                                 </a>
                                             </td>
@@ -175,7 +187,7 @@
                                         <tr>
                                             <td>Gambar situasi</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->gambar_situasi; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->gambar_situasi; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->gambar_situasi; ?>
                                                 </a>
                                             </td>
@@ -183,7 +195,7 @@
                                         <tr>
                                             <td>Surat-surat lain</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_a/<?= $db->surat_lain; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-a/<?= $db->surat_lain; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->surat_lain; ?>
                                                 </a>
                                             </td>
@@ -209,7 +221,7 @@
                                         <tr>
                                             <td>Salinan Putusan Pengadilan Agama</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->salinan_putusan_pa; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->salinan_putusan_pa; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->salinan_putusan_pa; ?>
                                                 </a>
 
@@ -220,7 +232,7 @@
                                             <td>Salinan Putusan Pengadilan Agama (RTF)</td>
 
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->salinan_putusan_pa_rtf; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->salinan_putusan_pa_rtf; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->salinan_putusan_pa_rtf; ?>
                                                 </a>
                                             </td>
@@ -228,7 +240,7 @@
                                         <tr>
                                             <td>Surat Kuasa dari Kedua Belah Pihak</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->sk_bundelb; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->sk_bundelb; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->sk_bundelb; ?>
                                                 </a>
                                             </td>
@@ -236,7 +248,7 @@
                                         <tr>
                                             <td>Akta Banding</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->akta_banding; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->akta_banding; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->akta_banding; ?>
                                                 </a>
                                             </td>
@@ -244,7 +256,7 @@
                                         <tr>
                                             <td>Akta Penerimaan Memori Banding</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->akta_penerimaan_mb; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->akta_penerimaan_mb; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->akta_penerimaan_mb; ?>
                                                 </a>
                                             </td>
@@ -252,7 +264,7 @@
                                         <tr>
                                             <td>Memori Banding</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->memori_banding; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->memori_banding; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->memori_banding; ?>
                                                 </a>
                                             </td>
@@ -262,7 +274,7 @@
                                             <td>Memori Banding (RTF)</td>
 
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->memori_banding_rtf; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->memori_banding_rtf; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->memori_banding_rtf; ?>
                                                 </a>
                                             </td>
@@ -270,7 +282,7 @@
                                         <tr>
                                             <td>Akta Pemberitahuan Banding</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->akta_pemberitahuan_banding; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->akta_pemberitahuan_banding; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->akta_pemberitahuan_banding; ?>
                                                 </a>
                                             </td>
@@ -278,7 +290,7 @@
                                         <tr>
                                             <td>Pemberitahuan Penyerahan Memori Banding</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->pemberitahuan_penyerahan_mb; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->pemberitahuan_penyerahan_mb; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->pemberitahuan_penyerahan_mb; ?>
                                                 </a>
                                             </td>
@@ -286,7 +298,7 @@
                                         <tr>
                                             <td>Akta Penerimaan Kontra Memori Banding</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->akta_penerimaankontra_mb; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->akta_penerimaankontra_mb; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->akta_penerimaankontra_mb; ?>
                                                 </a>
                                             </td>
@@ -294,7 +306,7 @@
                                         <tr>
                                             <td>Kontra Memori Banding</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->kontra_mb; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->kontra_mb; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->kontra_mb; ?>
                                                 </a>
                                             </td>
@@ -304,7 +316,7 @@
                                             <td>Kontra Memori Banding (RTF)</td>
 
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->kontra_mb_rtf; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->kontra_mb_rtf; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->kontra_mb_rtf; ?>
                                                 </a>
                                             </td>
@@ -312,7 +324,7 @@
                                         <tr>
                                             <td>Pemberitahuan Penyerahan Kotra Memori Banding</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->pemberitahuan_penyerahankontra_mb; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->pemberitahuan_penyerahankontra_mb; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->pemberitahuan_penyerahankontra_mb; ?>
                                                 </a>
                                             </td>
@@ -320,7 +332,7 @@
                                         <tr>
                                             <td>Relaas Pemberitahuan untuk memeriksa (Inzage) Berkas Perkara Banding</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->relaas_periksa_berkas_pb; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->relaas_periksa_berkas_pb; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->relaas_periksa_berkas_pb; ?>
                                                 </a>
                                             </td>
@@ -328,7 +340,7 @@
                                         <tr>
                                             <td>Surat Kuasa Khusus </td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->sk_khusus; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->sk_khusus; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->sk_khusus; ?>
                                                 </a>
                                             </td>
@@ -336,7 +348,7 @@
                                         <tr>
                                             <td>Bukti Penerimaan Biaya Perkara Banding</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->bukt_pengiriman_bpb; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->bukt_pengiriman_bpb; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->bukt_pengiriman_bpb; ?>
                                                 </a>
                                             </td>
@@ -344,7 +356,7 @@
                                         <tr>
                                             <td>Bukti Setor Biaya Pendaftaran Ke Kas Negara</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->bukti_setor_bp_kasnegara; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-b/<?= $db->bukti_setor_bp_kasnegara; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->bukti_setor_bp_kasnegara; ?>
                                                 </a>
                                             </td>
@@ -352,7 +364,7 @@
                                         <tr>
                                             <td>Surat Lainnya</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_b/<?= $db->surat_lainnya_b; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel_b/<?= $db->surat_lainnya_b; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->surat_lainnya_b; ?>
                                                 </a>
                                             </td>
@@ -378,7 +390,7 @@
                                         <tr>
                                             <td>Penunjukkan Majelis Hakim</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->file_pmh; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-pta/<?= $db->file_pmh; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->file_pmh; ?>
                                                 </a>
 
@@ -388,7 +400,7 @@
                                         <tr>
                                             <td>Penunjukkan Panitera Pengganti</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->file_pp; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-pta/<?= $db->file_pp; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->file_pp; ?>
                                                 </a>
                                             </td>
@@ -396,7 +408,7 @@
                                         <tr>
                                             <td>Pembuatan PHS 1</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->phs1; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-pta/<?= $db->phs1; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->phs1; ?>
                                                 </a>
                                             </td>
@@ -404,7 +416,7 @@
                                         <tr>
                                             <td>Pembuatan PHS Lanjutan</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->phs_lanj; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-pta/<?= $db->phs_lanj; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->phs_lanj; ?>
                                                 </a>
                                             </td>
@@ -412,7 +424,7 @@
                                         <tr>
                                             <td>Sidang Pertama</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_pertama; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-pta/<?= $db->sidang_pertama; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->sidang_pertama; ?>
                                                 </a>
                                             </td>
@@ -421,55 +433,55 @@
                                         <tr>
                                             <td>Sidang Lanjutan</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_lanj; ?>" class="text-decoration-none text-reset">
-                                                    <?= $db->sidang_lanj; ?>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-pta/<?= $db->sidang_lanjutan; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_lanjutan; ?>
                                                 </a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Sidang Lanjutan 1</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_lanj1; ?>" class="text-decoration-none text-reset">
-                                                    <?= $db->sidang_lanj1; ?>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-pta/<?= $db->sidang_lanjutan1; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_lanjutan1; ?>
                                                 </a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Sidang Lanjutan 2</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_lanj2; ?>" class="text-decoration-none text-reset">
-                                                    <?= $db->sidang_lanj2; ?>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-pta/<?= $db->sidang_lanjutan2; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_lanjutan2; ?>
                                                 </a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Sidang Lanjutan 3</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_lanj3; ?>" class="text-decoration-none text-reset">
-                                                    <?= $db->sidang_lanj3; ?>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-pta/<?= $db->sidang_lanjutan3; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_lanjutan3; ?>
                                                 </a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Sidang Lanjutan 4</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_lanj4; ?>" class="text-decoration-none text-reset">
-                                                    <?= $db->sidang_lanj4; ?>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-pta/<?= $db->sidang_lanjutan4; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_lanjutan4; ?>
                                                 </a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Sidang Lanjutan 5</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->sidang_lanj5; ?>" class="text-decoration-none text-reset">
-                                                    <?= $db->sidang_lanj5; ?>
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-pta/<?= $db->sidang_lanjutan5; ?>" class="text-decoration-none text-reset">
+                                                    <?= $db->sidang_lanjutan5; ?>
                                                 </a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Putusan Banding</td>
                                             <td>
-                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="bundle_pta/<?= $db->putusan_banding; ?>" class="text-decoration-none text-reset">
+                                                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalPdfAdmin" data-id="<?= str_replace("/", "-", $db->no_perkara); ?>/bundel-pta/<?= $db->putusan_banding; ?>" class="text-decoration-none text-reset">
                                                     <?= $db->putusan_banding; ?>
                                                 </a>
                                             </td>
@@ -481,9 +493,9 @@
                     </div>
 
                 </div>
+            </div>
+        <?php endforeach; ?>
         </div>
-    <?php endforeach; ?>
-    </div>
 </div>
 
 <!-- //modal tampil pdf -->

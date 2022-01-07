@@ -4,10 +4,12 @@ $(document).ready(function () {
     // $('#tablePerkaraHakim').DataTable();
     const prapath = window.location.origin;
     const path = `../../admin/`;
+    // const path = `${prapath}/laperbang/`;
     console.log(path);
+    // cons${prapath}elaperbangog(path);
     // ---Tampil data table kegiatan
     let majelis_hakim = $('#majelis_hakim').DataTable({
-        "ajax": `${path}get_user_mh/`,
+        "ajax": `${path}/get_user_mh/`,
         "columns": [
             {
                 "data": null, "sortable": false,
@@ -33,7 +35,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: `${path}/Admin/add_majelis`,
+            url: `${path}/add_majelis/`,
             data: {
                 id_mh: id_mh,
                 id_user_mh: id_user_mh,
@@ -80,7 +82,7 @@ $(document).ready(function () {
             if (result.isConfirmed) {
                 $.ajax({
                     type: "POST",
-                    url: `${path}/Admin/del_user_mh`,
+                    url: `${path}/del_user_mh/`,
                     data: {
                         id_mh: id_mh
                     },
