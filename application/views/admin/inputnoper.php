@@ -76,7 +76,7 @@
                     <input type="text" id="id_perkara" name="id_perkara" hidden>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Silahkan Upload File Putusan Perkara</label>
-                        <input class="form-control" type="file" id="formFile" name="file_putusan">
+                        <input class="form-control" type="file" id="formFile" name="file_putusan" required>
                     </div>
 
 

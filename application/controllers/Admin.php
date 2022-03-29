@@ -403,7 +403,7 @@ class Admin extends CI_Controller
                 // $this->db->set('putusan_banding', $putusan_banding);
             } else {
                 $this->session->set_flashdata('msg', 'Upload file gagal, ekstensi file harus pdf dan ukuran tidak boleh lebih dari 5 mb');
-                // redirect('banding/');
+                redirect('admin/inputNoper');
             }
         } else {
             $this->session->set_flashdata('msg', 'Tidak ada file yang di upload');
