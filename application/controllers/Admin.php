@@ -372,8 +372,8 @@ class Admin extends CI_Controller
         $pengedit = $this->session->userdata('nama');
 
         $config['upload_path']          = './assets/files/putusan';
-        $config['allowed_types']        = 'doc|docx|pdf';
-        $config['max_size']             = 5000;
+        $config['allowed_types']        = 'doc|docx|pdf|rtf';
+        $config['max_size']             = 5024;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
 
