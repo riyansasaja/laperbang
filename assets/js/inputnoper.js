@@ -145,7 +145,7 @@ $(document).ready(function () {
 
                             }
                         });
-                        Swal.fire('Silahkan Pilih Paniter Pengganti', '', 'warning')
+                        Swal.fire('Silahkan Pilih Panitera Pengganti', '', 'warning')
                         uploadPenunjukkanPP(id_perkara)
                         return false;
                     } else if (value === 'Penunjukan Majelis Hakim') {

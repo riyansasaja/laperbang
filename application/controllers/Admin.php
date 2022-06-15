@@ -437,7 +437,7 @@ class Admin extends CI_Controller
         $this->db->set('rekam_log', 'NOW()', FALSE);
         $this->db->insert('log_audittrail', $audittrail);
 
-        redirect('Admin');
+        redirect('Admin/inputNoper');
     }
 
     public function pilih_mh()
