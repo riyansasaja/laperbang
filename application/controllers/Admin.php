@@ -20,7 +20,7 @@ class Admin extends CI_Controller
         $data['judul'] = 'Dashboard';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'dashboard_admin.js';
-        $data['perkara'] = $this->db->get('v_user_pp')->result_array();
+
 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/dashboard', $data);
@@ -32,6 +32,7 @@ class Admin extends CI_Controller
         $data['judul'] = 'Input Nomor Perkara';
         $data['css'] = 'dashboard_admin.css';
         $data['js'] = 'inputnoper.js';
+        $data['panitera'] = $this->db->get_where('users', ['role_id' => 5])->result_array();
 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/inputnoper', $data);

@@ -145,10 +145,27 @@ $(document).ready(function () {
 
                             }
                         });
-                        Swal.fire('Silahkan Upload Berkas', '', 'warning')
+                        Swal.fire('Silahkan Pilih Paniter Pengganti', '', 'warning')
                         uploadPenunjukkanPP(id_perkara)
                         return false;
-                    } else if (value === 'Pengiriman Salinan Putusan') {
+                    } else if (value === 'Penunjukan Majelis Hakim') {
+                        $.ajax({
+                            type: "POST",
+                            url: `${path}/admin/updateStatus`,
+                            data: {
+                                id_perkara: id_perkara,
+                                status_perkara: value,
+                            },
+                            dataType: "json",
+                            success: function (e) {
+
+                            }
+                        });
+                        Swal.fire('Silahkan Pilih Majelis Hakim', '', 'warning')
+                        PenunjukkanMH(id_perkara)
+                        return false;
+                    }
+                    else if (value === 'Pengiriman Salinan Putusan') {
                         $.ajax({
                             type: "POST",
                             url: `${path}/admin/updateStatus`,
@@ -194,6 +211,14 @@ $(document).ready(function () {
         console.log(id_perkara);
 
     }//end function upload penunjukkan pp
+
+    //function upload penunjukkan MH
+    function PenunjukkanMH(id_perkara) {
+        $('#uploadMH').modal('show');
+        $('#id_perkaramh').val(id_perkara);
+        console.log(id_perkara);
+
+    }//end function upload penunjukkan MH
 
 
     //function upload salinan putusan

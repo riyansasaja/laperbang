@@ -109,7 +109,7 @@
                         <!-- <label for="user_pp" class="form-label">Panitera Pengganti</label> -->
                         <select class="form-select" id="user_pp" name="id_user_pp">
                             <option value="" selected>-- Pilih --</option>
-                            <?php foreach ($perkara as $perk) : ?>
+                            <?php foreach ($panitera as $perk) : ?>
                                 <option value="<?= $perk['id'] ?>"><?= $perk['nama'] ?></option>
                             <?php endforeach; ?>
                         </select>
