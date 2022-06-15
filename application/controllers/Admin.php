@@ -465,7 +465,7 @@ class Admin extends CI_Controller
         $this->db->insert('log_audittrail', $audittrail);
 
         $this->session->set_flashdata('flash', 'Penunjukkan Majelis Hakim Berhasil');
-        redirect('Admin');
+        redirect('Admin/inputNoper');
     }
 
 
